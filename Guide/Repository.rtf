@@ -1,5 +1,5 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1265
-{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 Times-Roman;\f2\fnil\fcharset0 LucidaGrande;
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 ArialMT;\f2\froman\fcharset0 Times-Roman;
 }
 {\colortbl;\red255\green255\blue255;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid2\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}}
@@ -8,26 +8,26 @@
 \deftab720
 \pard\pardeftab720\sl360
 
-\f0\fs32 \cf0 BREVE INTRODUZIONE A GIT\
-				
-\f1\fs24 \
+\f0\b\fs36 \cf0 BREVE INTRODUZIONE A GIT\
 
-\f0\fs32 Le operazioni di sincronizzazione supportate da Git vanno eseguite tassativamente prima e dopo la sessione di lavoro.\
-\
+\b0\fs32 				
+\fs24 \
 
-\fs24 PREREQUISITI: git installato sul pc e un account su sourceforge
-\f1 \
+\fs26 Le operazioni di sincronizzazione supportate da Git vanno eseguite tassativamente prima e dopo la sessione di lavoro.
+\fs32 \
+
+\b\fs24 PREREQUISITI:
+\b0  git installato sul pc e un account su sourceforge\
 Dalla pagina della repo su sourceforge copiare il link di download e dare il comando \'93clone repository\'94 da terminale per ottenere una copia locale dei file\
 \
 
-\f0\fs32 Vanno successivamente eseguite le seguenti operazioni:
-\f1\fs24 \
+\fs32 Vanno successivamente eseguite le seguenti operazioni:
+\fs24 \
 \pard\pardeftab720
 \cf0 \
-\
 \pard\tx220\tx720\pardeftab720\li720\fi-720\sl360
 \ls1\ilvl0
-\f0\fs32 \cf0 {\listtext	1.	}
+\fs32 \cf0 {\listtext	1.	}
 \b git pull
 \b0 : prima di iniziare una nuova sessione di lavoro per ottenere le modifiche apportate dagli altri membri	\
 {\listtext	2.	}inizio sessione di lavoro locale\
@@ -36,14 +36,19 @@ Dalla pagina della repo su sourceforge copiare il link di download e dare il com
 \b git status:
 \b0  permette di vedere lo stato locale dei file rispetto a quelli remoti, in particolare:\
 \pard\tx940\tx1440\pardeftab720\li1440\fi-1440\sl360
-\ls1\ilvl1\cf0 {\listtext	
-\f2 \uc0\u8259 
-\f0 	}compariranno in rosso i documenti non ancora sincronizzati da locale a remoto\
-{\listtext	
-\f2 \uc0\u8259 
-\f0 	}usare il comando 
+\ls1\ilvl1\cf0 {\listtext	\uc0\u8259 	}compariranno in rosso i documenti non ancora sincronizzati da locale a remoto\
+{\listtext	\uc0\u8259 	}usare il comando 
 \b git add nomefile 
 \b0 per aggiungere i file modificati all\'92insieme dei file da committare\
+{\listtext	\uc0\u8259 	}
+\b git add -A
+\b0   aggiunge tutte le cartelle modificate\
+{\listtext	\uc0\u8259 	}
+\b git add -u
+\b0  rimuove tutte le cancellazioni effettuate\
+{\listtext	\uc0\u8259 	}
+\b git rm nomefile
+\b0  per eliminare un singolo file\
 \pard\tx220\tx720\pardeftab720\li720\fi-720\sl360
 \ls1\ilvl0\cf0 {\listtext	5.	}
 \b git commit -m \'91messaggio\'92
@@ -51,8 +56,11 @@ Dalla pagina della repo su sourceforge copiare il link di download e dare il com
 {\listtext	6.	}
 \b git push
 \b0 : dopo l\'92operazione di commit per caricare i file modificati nel repository remoto\
-{\listtext	7.	}git stash: da definire\
+{\listtext	7.	}
+\b git stash
+\b0 : da definire\
 \pard\pardeftab720\sl360
-\cf0 					 				
-\f1\fs24 \
+
+\f1 \cf0 					 				
+\f2\fs24 \
 }
