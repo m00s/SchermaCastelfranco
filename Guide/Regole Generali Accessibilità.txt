@@ -84,4 +84,5 @@ PRESENTAZIONE
 
 NB:	1) Ridefinire pagina di errore 404 rendendola più gradevole
 	2) Titoli pagine che descrivono il contenuto dal particolare al generale
+	3) Impostare accesskey per i link utili, evidenziando la key
 
