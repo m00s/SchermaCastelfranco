@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.schermacastelfranco.com" targetNamespace="http://www.schermacastelfranco.com" elementFormDefault="qualified">
+
+<xs:testi>
+	<xs:choice minOccurs="0" maxOccurs="unbounded">
+
+		<xs:element name="articolo" minOccurs="0" maxOccurs="unbounded"> <!-- inserire in un tag <div> -->
+			<xs:ComplexType>
+				<xs:sequence>
+					<xs:element name="luogo" type="xs:string" /> <!-- inserire in un tag <p> -->
+					<xs:element name="data" type="xs:date" /> <!-- inserire in un tag <p> -->
+					<xs:element ref="titolo" />
+					<xs:element name="immagine" type="xs:string" /> <!-- da inserire nel src del tag img -->
+					<xs:element ref="paragrafo" />
+				</xs:sequence>
+			</xs:ComplexType>
+		</xs:element>
+
+		<xs:element name="documento" minOccurs="0" maxOccurs="unbounded"> <!-- inserire in un tag <div> -->
+			<xs:ComplexType>
+				<xs:sequence>
+					<xs:element ref="titolo" />
+					<xs:element ref="paragrafo" />
+					<xs:element name="doc-completo" type="xs:string" /> <!-- inserire in un tag <a> -->
+				</xs:sequence>
+			</xs:ComplexType>
+		</xs:element>
+
+
+	</xs:choice>
+
+</xs:testi>
+
+<xs:element name="titolo" type="xs:string" /> <!-- inserire in un tag <h1> -->
+<xs:element name="testo" type="xs:string" />
+
+<xs:element name="paragrafo"> <!-- inserire in un tag <p> -->
+	<xs:complexType mixed="true">
+		<!-- FORSE SERVE UNA CHOICE  -->
+		<xs:element ref="testo"/>
+		<xs:element name="span">
+			<xs:element ref="testo" />
+			<xs:attribute name="xml:lang" default="en" />
+		</xs:element>
+
+	</xs:complexType>
+</xs:element>
+
+
+</xs:schema>
+
+<!-- NOTE PER LA CREAZIONE DELLO SCHEMA-->
+<!-- Un testo può essere un articolo o un documento.
+	Se articolo => avrà come campi: luogo,data,titolo,immagine,testo
+	Se documento => avrà come campi: titolo,testo,doc-completo
+	per il testo serve probabilmente un tipo complesso che contiene oltre che al testo, il markup <span xml:lang="en"></span>
+-->
+
+>
+
+
+
+
+
+
+
+
