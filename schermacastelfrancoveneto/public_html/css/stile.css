@@ -2,3 +2,63 @@
 	margin: 0px;
 	padding: 0px;
 }
+
+#header{
+	background-image: url('img/struttura/header_scherma.jpg');
+	background-size: 4em;
+	width: 100%;
+	height: auto;
+	padding:25px;
+}
+
+#footer{
+	font-family: cursive;
+	text-align : center;
+	border-top: 1px black solid;
+	clear:both;
+	padding:0.5em;
+}
+
+.footerElement{
+	vertical-align: middle;
+	padding: 2px;
+}
+
+#nav li{
+	display: inline;
+	border: 1px solid black;
+}
+
+#nav {
+	text-align: center;
+	padding-bottom: 10px;		
+}
+
+/* DA ANGRY BIRDS
+
+#path{
+	background-color : #040a32;
+	text-align : left;
+	color: #f6e40f;
+	border: 1px black solid;
+	padding:15px;
+}
+
+#content{
+	border-left: 1px black solid;
+	width:auto;
+	margin:0px;
+	margin-left:20%;
+	margin-top:0px;
+	padding:40px;
+	overflow: auto;
+}
+
+#sidebar{
+	width:15%;
+	float:left;
+	border-bottom:none;
+	padding:15px;
+}
+
+*/
