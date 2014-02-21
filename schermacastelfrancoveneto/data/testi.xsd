@@ -18,31 +18,33 @@
 	<xs:element name="alt" type="xs:string" />
 </xs:ComplexType>
 
+<xs:complexType name="tipo-paragrafo" mixed="true"> <!-- alternanza tra testo ed elementi span-->
+	<xs:choice minOccurs="0" maxOccurs="unbounded">
+		<xs:element name="span" type="tipo-span" />
+		<xs:element name="em" type="xs:string" />
+		<xs:element name="strong" type="xs:string" />
+	</xs:choice>
+</xs:complexType>
 
-<xs:element name="paragrafo"> <!-- inserire in un tag <p> -->
-	<xs:complexType mixed="true"> <!-- alternanza tra testo ed elementi span-->
-		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element name="span">
-				<xs:element ref="testo" />
-				<xs:attribute name="xml:lang" default="en" />
-			</xs:element>
-			<xs:element name="em">
-				<xs:element ref="testo" />
-			</xs:element>
-			<xs:element name="strong">
-				<xs:element ref="testo" />
-			</xs:element>
-		</xs:choice>
-	</xs:complexType>
-</xs:element>
+<xs:complexType name="tipo-span" mixed="true">
+	<xs:attribute name="xml:lang" default="en" />
+</xs:complexType>
+
+<xs:complexType name="tipo-titolo" mixed="true">
+		<xs:element name="span" type="tipo-span" />
+</xs:complexType>
+
+<xs:element name="paragrafo" type="tipo-paragrafo" /> <!-- inserire in un tag <p> -->
+<xs:element name="titolo" type="tipo-titolo" />
+
 
 <xs:ComplexType name="tipo-articolo">
 	<xs:sequence>
 			<xs:element name="luogo" type="xs:string" /> <!-- inserire in un tag <p> -->
 			<xs:element name="data" type="xs:date" /> <!-- inserire in un tag <p> -->
 			<xs:element ref="titolo" />
-			<xs:element name="immagine" type="tipo-immagine"/> <!-- da inserire nel src del tag img -->
-			<xs:element ref="paragrafo" />
+			<xs:element name="immagine" type="tipo-immagine" /> <!-- da inserire nel src del tag img -->
+			<xs:element ref="paragrafo"  />
 	</xs:sequence>
 </xs:ComplexType>
 
