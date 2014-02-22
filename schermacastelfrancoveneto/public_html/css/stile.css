@@ -4,24 +4,24 @@
 }
 
 #header{
-	background-image: url('img/struttura/header_scherma.jpg');
-	background-size: 4em;
+	padding:25px;
 	width: 100%;
 	height: auto;
-	padding:25px;
+	background-image: url('img/struttura/header_scherma.jpg');
+	background-size: 4em;
 }
 
 #footer{
-	font-family: cursive;
-	text-align : center;
-	border-top: 1px black solid;
 	clear:both;
 	padding:0.5em;
+	border-top: 1px black solid;
+	text-align : center;
+	font-family: cursive;
 }
 
 .footerElement{
-	vertical-align: middle;
 	padding: 2px;
+	vertical-align: middle;
 }
 
 #nav li{
@@ -30,8 +30,12 @@
 }
 
 #nav {
+	padding-bottom: 10px;
 	text-align: center;
-	padding-bottom: 10px;		
+}
+
+#breadcrumb {
+	display: none;
 }
 
 /* DA ANGRY BIRDS
