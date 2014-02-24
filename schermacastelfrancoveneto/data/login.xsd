@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.schermacastelfranco.com" targetNamespace="http://www.schermacastelfranco.com" elementFormDefault="qualified">
 
-<xs:login>
+<xs:element name="login" type="tipo-login"/>
+<xs:complexType name="tipo-login">
 	<xs:sequence>
 		<xs:element name="username" type0"xs:string" />
 		<xs:element name="password" type0"xs:string" />
 	</xs:sequence>
-</xs:login>
+</xs:complexType>
+
 

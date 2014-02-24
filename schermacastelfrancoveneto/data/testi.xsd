@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.schermacastelfranco.com" targetNamespace="http://www.schermacastelfranco.com" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.schermacastelfranco.com" targetNamespace="http://www.schermacastelfranco.com"
+elementFormDefault="qualified">
 
-<xs:testi>
+<xs:element name="testi" type="tipo-testo"/>
+
+<xs:complexType name="tipo-testo">
 	<xs:choice minOccurs="0" maxOccurs="unbounded">
 		<xs:element name="articolo" minOccurs="0" maxOccurs="unbounded" type="tipo-articolo" /> <!-- inserire in un tag <div> -->
 		<xs:element name="documento" minOccurs="0" maxOccurs="unbounded" type="tipo-documento" /> <!-- inserire in un tag <div> -->
 	</xs:choice>
-</xs:testi>
-
-<xs:element name="titolo" type="tipo-titolo" />	<!-- inserire in un tag <h1> -->
-<xs:element name="paragrafo" type="tipo-paragrafo" /> <!-- inserire in un tag <p> -->
+</xs:completxType>
 
 <xs:ComplexType name="tipo-articolo">
 	<xs:sequence>
 			<xs:element name="luogo" type="xs:string" /> <!-- inserire in un tag <p> -->
 			<xs:element name="data" type="xs:date" /> <!-- inserire in un tag <p> -->
-			<xs:element ref="titolo" />
+			<xs:element name="titolo" type="tipo-titolo" />
 			<xs:element name="immagine" type="tipo-immagine" /> <!-- da inserire nel src del tag img -->
-			<xs:element ref="paragrafo"  />
+			<xs:element name="paragrafo" type="tipo-paragrafo" />
 	</xs:sequence>
 </xs:ComplexType>
+
+<xs:complexType name="tipo-titolo" mixed="true">
+		<xs:element name="span" type="tipo-span" />
+</xs:complexType>
+
+<xs:complexType name="tipo-span" >  <!--Content model con attributi e contenuto semplice -->
+	<xs:simpleContent>
+		<xs:extention base="xs:string">
+			<xs:attribute name="xml:lang" type="xs:string" default="en" />
+		</xs:extention>
+	</xs:simpleContent>
+</xs:complexType>
 
 <xs:ComplexType name="tipo-immagine">
 	<xs:element name="path-img" type="xs:anyURI" />
@@ -34,22 +46,10 @@
 	</xs:choice>
 </xs:complexType>
 
-<xs:complexType name="tipo-span" >  <!--Content model con attributi e contenuto semplice -->
-	<xs:simpleContent>
-		<xs:extention base="xs:string">
-			<xs:attribute name="xml:lang" type="xs:string" default="en" />
-		</xs:extention>
-	</xs:simpleContent>
-</xs:complexType>
-
-<xs:complexType name="tipo-titolo" mixed="true">
-		<xs:element name="span" type="tipo-span" />
-</xs:complexType>
-
 <xs:ComplexType name="tipo-documento">
 	<xs:sequence>
-		<xs:element ref="titolo" />
-		<xs:element ref="paragrafo" />
+		<xs:element name="titolo" type="tipo-titolo" />
+		<xs:element name="paragrafo" type="tipo-paragrafo" />
 		<xs:element name="doc-completo" type="xs:string" /> <!-- inserire in un tag <a> -->
 	</xs:sequence>
 </xs:ComplexType>
