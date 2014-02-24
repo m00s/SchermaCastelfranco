@@ -16,7 +16,7 @@ elementFormDefault="qualified">
 			<xs:element name="luogo" type="xs:string" /> <!-- inserire in un tag <p> -->
 			<xs:element name="data" type="xs:date" /> <!-- inserire in un tag <p> -->
 			<xs:element name="titolo" type="tipo-titolo" />
-			<xs:element name="immagine" type="tipo-immagine" /> <!-- da inserire nel src del tag img -->
+			<xs:element name="immagine" nillable="true" type="tipo-immagine" /> <!-- da inserire nel src del tag img -->
 			<xs:element name="paragrafo" type="tipo-paragrafo" />
 	</xs:sequence>
 </xs:ComplexType>
@@ -50,7 +50,7 @@ elementFormDefault="qualified">
 	<xs:sequence>
 		<xs:element name="titolo" type="tipo-titolo" />
 		<xs:element name="paragrafo" type="tipo-paragrafo" />
-		<xs:element name="doc-completo" type="xs:string" /> <!-- inserire in un tag <a> -->
+		<xs:element name="doc-completo" nillable="true" type="xs:string" /> <!-- inserire in un tag <a> -->
 	</xs:sequence>
 </xs:ComplexType>
 
