@@ -3,18 +3,86 @@
 	padding: 0px;
 }
 
+body{
+	margin-right: 3%;
+	margin-left: 3%;
+	background-color: #bb2a2a;
+	color:black;
+	font-size: 100%;
+	font-family: Helvetica,Arial,sans-serif;
+}
+
 #header{
 	padding:25px;
 	width: 100%;
 	height: auto;
-	background-image: url('img/struttura/header_scherma.jpg');
-	background-size: 4em;
+	/* background-image: url('../img/struttura/header_scherma.jpg'); */
+}
+
+#nav li{
+	display: inline;
+	border: 1px solid black;
+	background-color: #eb8b8b;
+	color:black;
+	list-style-type: none;
+	font-size: 1.2em;
+
+}
+
+#nav-1 li a{
+	display: inline-block;
+	width: 5em;
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.2em;
+}
+
+
+#nav-1{
+	float:left;
+}
+
+#nav-1 li{
+	padding:0.5em;
+}
+
+#nav-2{
+	float: right;
+}
+
+#breadcrumb {
+	display: none;
+
+}
+
+#content{
+	float:left;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	width: 75%;
+	background-color: #eb8b8b;
+	color:black;
+}
+
+#sidebar{
+	float:right;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	width: 20%;
+	background-color: #eb8b8b;
+	color:black;
+	text-align: right;
+}
+
+#sidebar li{
+	list-style-type: none;
 }
 
 #footer{
 	clear:both;
 	padding:0.5em;
-	border-top: 1px black solid;
+	background-color: #eb8b8b;
+	color:black;
 	text-align : center;
 	font-family: cursive;
 }
@@ -24,45 +92,26 @@
 	vertical-align: middle;
 }
 
-#nav li{
-	display: inline;
-	border: 1px solid black;
+
+/* MEDIA QUERIES */
+@media screen and (max-width:1024px){
+
+
+
+
 }
 
-#nav {
-	padding-bottom: 10px;
-	text-align: center;
+@media screen and (max-width:768px){
+
+
+
+
 }
 
-#breadcrumb {
-	display: none;
+
+@media screen and (max-width:480px){
+
+
+
+
 }
-
-/* DA ANGRY BIRDS
-
-#path{
-	background-color : #040a32;
-	text-align : left;
-	color: #f6e40f;
-	border: 1px black solid;
-	padding:15px;
-}
-
-#content{
-	border-left: 1px black solid;
-	width:auto;
-	margin:0px;
-	margin-left:20%;
-	margin-top:0px;
-	padding:40px;
-	overflow: auto;
-}
-
-#sidebar{
-	width:15%;
-	float:left;
-	border-bottom:none;
-	padding:15px;
-}
-
-*/
