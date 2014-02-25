@@ -1,0 +1,65 @@
+<html>
+<body>
+<select>
+<option name="tipo">Articolo</option>
+<option name="tipo">Documento</option>
+</select>
+<div style="border:1px solid black;overflow:auto;">
+<form method="" action="" style="width:50%;float:left;">
+<fieldset>
+<legend>Inserimento articolo</legend>
+	<label for="luogo">Luogo </label><input type="text" name="luogo"/><br/>
+	<label for="data">Data </label><input type="text" name="data"/><br/>
+	<label for="titolo">Titolo </label><input type="text" name="titolo" size="80"/><br/>
+	<input type="file" name="immagine" value="Inserisci IMG"/><br/>
+	<label for="alternativa">Descrizione alternativa immagine <input type="text" name="alt"/><br/>
+	<label for="articolo">Articolo </label><br/><textarea name="articolo" rows="20" cols="75"></textarea><br/>
+	<input type="file" name="articoloCompleto" value="Inserimento articolo completo"/><br/>
+	<input type="submit" name="invio" value="Inserimento completato"/>
+</fieldset>
+</form>
+</div>
+
+<div style="border:1px solid black;clear:both;overflow:auto;margin-top:5px;">
+<form method="" action="" style="width:50%;float:left;">
+<fieldset>
+<legend>Inserimento documento</legend>
+	<label for="titolo">Titolo</label><input type="text" name="titolo" size="80"/><br/>
+	<label for="articolo">Articolo</label><br/><textarea name="articolo" rows="20" cols="75"></textarea><br/>
+	<input type="file" name="articoloCompleto" value="Inserimento articolo completo"/><br/>
+	<input type="submit" name="invio" value="Inserimento completato"/>
+</fieldset>
+</form>
+</div>
+
+<div>
+<form method="" action="" style="width:50%;">
+<fieldset>
+<legend>Elimina documenti/articoli</legend>
+	<input type="checkbox" name="elimina_articolo" value="Data-NomeArticolo1"/><label for="articolo">Data - Nome Articolo 1</label><br/>
+	<input type="checkbox" name="elimina_articolo" value="Data-NomeArticolo2"/><label for="articolo">Data - Nome Articolo 2</label><br/>
+	<input type="checkbox" name="elimina_articolo" value="Data-NomeArticolo3"/><label for="articolo">Data - Nome Articolo 3</label><br/>
+	<input type="checkbox" name="elimina_articolo" value="Data-NomeArticolo4"/><label for="articolo">Data - Nome Articolo 4</label><br/>
+	<input type="checkbox" name="elimina_articolo" value="Data-NomeArticolo5"/><label for="articolo">Data - Nome Articolo 5</label><br/>
+</fieldset>
+<input type="submit" value="Elimina articoli/documenti selezionati"/>
+</form>
+</div>
+
+<div>
+<form method="" action="" style="width:50%;">
+<fieldset>
+<legend>Modifica documenti/articoli</legend>
+	<input type="radio" name="modifica_articolo" value="Data-NomeArticolo1"/><label for="articolo">Data - Nome Articolo 1</label><br/>
+	<input type="radio" name="modifica_articolo" value="Data-NomeArticolo2"/><label for="articolo">Data - Nome Articolo 2</label><br/>
+	<input type="radio" name="modifica_articolo" value="Data-NomeArticolo3"/><label for="articolo">Data - Nome Articolo 3</label><br/>
+	<input type="radio" name="modifica_articolo" value="Data-NomeArticolo4"/><label for="articolo">Data - Nome Articolo 4</label><br/>	
+</fieldset>
+<input type="submit" value="Elimina articoli/documenti selezionati"/>
+</form>
+
+</div>
+
+
+</body>
+</html>
