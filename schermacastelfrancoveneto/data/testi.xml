@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href=".xsl" ?> <!-- DA COMPLETARE -->
+<?xml-stylesheet type="text/xsl" href="articoli.xsl" ?>
+<?xml-stylesheet type="text/xsl" href="documenti.xsl" ?>
 
 <ns:testi xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="http://www.schermacastelfranco.com" nome="Testi" xs:schemaLocation="http://www.schermacastelfranco.com testi.xsd">
 
