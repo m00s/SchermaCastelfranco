@@ -20,3 +20,9 @@ $(document).ready(function(){
 
 
 /* FINE */
+
+/* SCRIPT PER LO SFONDO DELLA HOME */
+$(document).ready(function(){
+    $("#sfondo").fadeIn(5000);
+});
+/* FINE */

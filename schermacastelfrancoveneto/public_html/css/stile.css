@@ -12,6 +12,10 @@ body{
 	font-family: Helvetica,Arial,sans-serif;
 }
 
+
+
+
+
 #header{
 	margin-top: 1%;
 	margin-bottom: 2%;
@@ -100,6 +104,7 @@ body{
 
 #panel-sidebar{
 	display: inline;
+
 }
 
 
