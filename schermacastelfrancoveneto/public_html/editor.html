@@ -45,11 +45,11 @@
 					<input id="datepicker" type="text">
 				</div>
 				<div style="margin:10px">
-					<textarea id="titolo" rows="1" cols="40">Titolo</textarea>
+					<textarea id="titolo" rows="1" cols="40" onblur="setId(this.id)">Titolo</textarea>
 					</div>
-				<textarea id="testo" rows="10" cols="50">Testo iniziale</textarea>
+				<textarea id="testo" rows="10" cols="50" onblur="setId(this.id)">Testo iniziale</textarea>
 				<div id="textOptions">
-					<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang="en"></span>')">Inglese</button>
+					<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;en&#34;></span>')">Inglese</button>
 					<button type="button" onclick="InsertCodeInTextArea(' <em></em>')"><em>Corsivo</em></button>
 					<button type="button" onclick="InsertCodeInTextArea(' <strong></strong>')"><strong>Grassetto</strong></button>
 				</div>
@@ -57,12 +57,17 @@
 		</div>
 			
 		<script>
-			function InsertCodeInTextArea(value) {
+		
+		var idTextArea;
+
+		function setId(idValue){
+			idTextArea=idValue;
+		}
+			function InsertCodeInTextArea(textValue) {
 		        //Get textArea HTML control 
-		        var txtArea = document.getElementById("testo");
+		        var txtArea = document.getElementById(idTextArea);
+
 		        
-		        var textValue = value; 
-		         
 		        //IE
 		        if (document.selection) {
 		            txtArea.focus();
