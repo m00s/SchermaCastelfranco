@@ -9,9 +9,9 @@ elementFormDefault="qualified">
 		<xs:element name="articolo" minOccurs="0" maxOccurs="unbounded" type="tipo-articolo" /> <!-- inserire in un tag <div> -->
 		<xs:element name="documento" minOccurs="0" maxOccurs="unbounded" type="tipo-documento" /> <!-- inserire in un tag <div> -->
 	</xs:choice>
-</xs:completxType>
+</xs:complexType>
 
-<xs:ComplexType name="tipo-articolo">
+<xs:complexType name="tipo-articolo">
 	<xs:sequence>
 			<xs:element name="luogo" type="xs:string" /> <!-- inserire in un tag <p> -->
 			<xs:element name="data" type="xs:date" /> <!-- inserire in un tag <p> -->
@@ -19,7 +19,7 @@ elementFormDefault="qualified">
 			<xs:element name="immagine" nillable="true" type="tipo-immagine" /> <!-- da inserire nel src del tag img -->
 			<xs:element name="paragrafo" type="tipo-paragrafo" />
 	</xs:sequence>
-</xs:ComplexType>
+</xs:complexType>
 
 <xs:complexType name="tipo-titolo" mixed="true">
 		<xs:element name="span" type="tipo-span" />
@@ -33,10 +33,10 @@ elementFormDefault="qualified">
 	</xs:simpleContent>
 </xs:complexType>
 
-<xs:ComplexType name="tipo-immagine">
+<xs:complexType name="tipo-immagine">
 	<xs:element name="path-img" type="xs:anyURI" />
 	<xs:element name="alt" type="xs:string" />
-</xs:ComplexType>
+</xs:complexType>
 
 <xs:complexType name="tipo-paragrafo" mixed="true"> <!-- alternanza tra testo ed elementi span-->
 	<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -46,13 +46,13 @@ elementFormDefault="qualified">
 	</xs:choice>
 </xs:complexType>
 
-<xs:ComplexType name="tipo-documento">
+<xs:complexType name="tipo-documento">
 	<xs:sequence>
 		<xs:element name="titolo" type="tipo-titolo" />
 		<xs:element name="paragrafo" type="tipo-paragrafo" />
 		<xs:element name="doc-completo" nillable="true" type="xs:string" /> <!-- inserire in un tag <a> -->
 	</xs:sequence>
-</xs:ComplexType>
+</xs:complexType>
 
 
 </xs:schema>
