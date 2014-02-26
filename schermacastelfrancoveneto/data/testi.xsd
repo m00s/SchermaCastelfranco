@@ -29,9 +29,9 @@ elementFormDefault="qualified">
 
 <xs:complexType name="tipo-span" >  <!--Content model con attributi e contenuto semplice -->
 	<xs:simpleContent>
-		<xs:extention base="xs:string">
+		<xs:extension base="xs:string">
 			<xs:attribute name="xml:lang" type="xs:string" default="en" />
-		</xs:extention>
+		</xs:extension>
 	</xs:simpleContent>
 </xs:complexType>
 

@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="articoli.xsl" ?>
 <?xml-stylesheet type="text/xsl" href="documenti.xsl" ?>
 
-<testi xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.schermacastelfranco.com" nome="Testi" xs:schemaLocation="http://www.schermacastelfranco.com testi.xsd">
+<testi xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.schermacastelfranco.com" xs:schemaLocation="http://www.schermacastelfranco.com testi.xsd">
 
 	<articolo>
 		<luogo>Arricia (RM)</luogo>
