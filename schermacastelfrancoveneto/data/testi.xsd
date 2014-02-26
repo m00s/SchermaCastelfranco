@@ -22,7 +22,9 @@ elementFormDefault="qualified">
 </xs:complexType>
 
 <xs:complexType name="tipo-titolo" mixed="true">
+	<xs:sequence minOccurs="0" maxOccurs="unbounded">
 		<xs:element name="span" type="tipo-span" />
+	</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="tipo-span" >  <!--Content model con attributi e contenuto semplice -->
@@ -34,8 +36,10 @@ elementFormDefault="qualified">
 </xs:complexType>
 
 <xs:complexType name="tipo-immagine">
-	<xs:element name="path-img" type="xs:anyURI" />
-	<xs:element name="alt" type="xs:string" />
+	<xs:sequence>
+		<xs:element name="path-img" type="xs:anyURI" />
+		<xs:element name="alt" type="xs:string" />
+	</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="tipo-paragrafo" mixed="true"> <!-- alternanza tra testo ed elementi span-->
