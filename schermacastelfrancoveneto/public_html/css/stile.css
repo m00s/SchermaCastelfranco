@@ -13,21 +13,22 @@ body{
 }
 
 #home{
-	width: 100%;
-	height: 100%;
+	overflow: hidden;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
+	width: 100%;
+	height: 100%;
 	background-color: white;
+	color: black;
 }
 
 #sfondo{
 	position:absolute;
-	height:100%;
-	width: 100%;
+	display: none;
 	margin: 0;
 	padding: 0;
-	display: none;
+	width: 100%;
+	height:100%;
 }
 
 
@@ -36,13 +37,11 @@ body{
 	margin-bottom: 2%;
 	width: 100%;
 	height: 200px;
-
 	background-image: url('../img/struttura/header_scherma.jpg');
 }
 
 #nav li{
 	display: inline;
-	width: 5em;
 	border: 1px solid black;
 	background-color: #eb8b8b;
 	color:black;
@@ -54,9 +53,17 @@ body{
 	float:left;
 }
 
-#nav-1  li a{
+#nav-1 li{
 	display: inline-block;
-	width: 5em;
+	padding:0.4em;
+	width: 6.5em;
+	text-align: center;
+	font-weight: bold;
+}
+
+
+#nav-1  li a{
+	display: block;
 	text-align: center;
 	text-decoration: none;
 	font-weight: bold;
@@ -64,21 +71,26 @@ body{
 
 }
 
-#nav-1 li{
-	padding:0.4em;
+#sezione-nav-1{
+	display: none;
+}
+
+#image-menu{
+	background-image: url('../img/struttura/menu_mobile.jpg');
+	background-size: 4em;
+	background-repeat: no-repeat;
+}
+
+#panel-nav-1{
+	display: inline;
 }
 
 #nav-2{
 	float: right;
 }
 
-#sezione-nav-1{
-	display: none;
-}
 
-#panel-nav-1{
-	display: inline;
-}
+/* .show{display:block;} */
 
 #breadcrumb {
 	display: none;
@@ -90,19 +102,25 @@ body{
 	margin-top: 5%;
 	margin-bottom: 5%;
 	width: 75%;
-
 }
 
 .article{
 	margin-bottom: 2%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 1%;
 	background-color: #eb8b8b;
 	color:black;
+
 }
 
 #sidebar{
 	float:right;
 	margin-top: 5%;
 	margin-bottom: 5%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 1%;
 	width: 20%;
 	background-color: #eb8b8b;
 	color:black;
@@ -119,9 +137,7 @@ body{
 
 #panel-sidebar{
 	display: inline;
-
 }
-
 
 #footer{
 	clear:both;
@@ -158,15 +174,18 @@ body{
 
 	#sezione-nav-1{
 		display:inline-block;
-
 	}
-
+	#sezione-nav-1 li{
+		width: 3.2em;
+		height: 3.2em;
+	}
 	#panel-nav-1{
 		display: none;
 	}
 
 	#nav-1 li{display:block;}
 	#nav-2 li a{display:block;}
+	/* .show{display:block;} */
 
 	#content {
 		display: block;
@@ -196,6 +215,7 @@ body{
 	#nav-2 a{
 		display: none;
 	}
-
-
+	#footer span{
+		display: none;
+	}
 }
