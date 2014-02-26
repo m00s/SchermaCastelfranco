@@ -1,33 +1,31 @@
 /* SCRIPT PER LA GESTIONE RESPONSIVE DEL MENU' E DEI LINK ESTERNI*/
-/*
-$(document).ready(function(){
-  $("#sezione-nav-1").click(function(){
-    $("#panel-nav-1").toggle();
-  });
-});
-
 
 $(document).ready(function(){
-  $("#sezione-sidebar").click(function(){
-    $("#panel-sidebar").toggle();
-  });
-});
-*/
 
-
-$(document).ready(function(){
 	$("#sezione-nav-1").click(function(){
-		$("#panel-nav-1").css("display","block");
+		var presente=$("#panel-nav-1").css("display");
+		if (presente=="none"){
+			$("#panel-nav-1").css("display","block");
+		}else{
+			$("#panel-nav-1").css("display","");
+		}
+
 	});
 });
 
-/*
 $(document).ready(function(){
-	$("#sezione-nav-1").click(function(){
-		$("#panel-nav-1").toggleClasse("show");
+
+	$("#sezione-sidebar").click(function(){
+		var presente=$("#panel-sidebar").css("display");
+		if (presente=="none"){
+			$("#panel-sidebar").css("display","block");
+		}else{
+			$("#panel-sidebar").css("display","");
+		}
+
 	});
 });
-*/
+
 
 /* FINE */
 
