@@ -26,6 +26,19 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){
+
+	$(".sezione").click(function(){
+		var presente=$(".nascondi-articolo").css("display");
+		if (presente=="none"){
+			$(".nascondi-articolo").css("display","block");
+		}else{
+			$(".nascondi-articolo").css("display","");
+		}
+
+	});
+});
+
 
 /* FINE */
 
