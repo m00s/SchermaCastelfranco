@@ -8,5 +8,4 @@
 		<xs:element name="password" type="xs:string" />
 	</xs:sequence>
 </xs:complexType>
-
-
+</xs:schema>
