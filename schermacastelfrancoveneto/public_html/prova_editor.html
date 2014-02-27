@@ -25,26 +25,34 @@
 		</div>
 
 		<div id="nav">
-			<ul>
-				<li><span class='this'></span>Home</li>
-				<li><a href="articoli.html">Articoli</a></li>
-				<li><a href="documenti.html">Documenti</a></li>
-				<li><a href="storia.html">Storia</a></li>
-				<li><a href="staff.html">Staff</a></li>
-				<li><a href="corsi.html">Corsi</a></li>
-			</ul>
+			<div id="nav-1">
+				<ul id="sezione-nav-1"><li id="image-menu" title="contiene immagine del menù per il mobile"></li></ul>
+				<ul id="panel-nav-1">
+					<li><a href="#">Articoli</a></li>
+					<li><a href="#">Documenti</a></li>
+					<li><a href="../cgi-bin/prova_perl.cgi">Storia</a></li>
+					<li><a href="#">Staff</a></li>
+					<li id="last-link"><a href="#">Corsi</a></li>
+				</ul>
+
+			</div>
+			<div id="nav-2">
+				<a href="#">Accedi Area Riservata</a>
+				<span>RICERCA [-----------]</span>
+			</div>
+
 		</div>
 
 		<div id="breadcrumb">
 			<p>Ti trovi in: Home > Inserisci</p>
 		</div>
-		
-		<div id="main" align="center" style="margin:20px">
+
+		<div id="content" >
 			<form method="post" id="formInserimento">
 				<div>
 					<input id="datepicker" type="text">
 				</div>
-				<div style="margin:10px">
+				<div>
 					<textarea id="titolo" rows="1" cols="40" onblur="setId(this.id)">Titolo</textarea>
 					</div>
 				<textarea id="testo" rows="10" cols="50" onblur="setId(this.id)">Testo iniziale</textarea>
@@ -55,19 +63,19 @@
 				</div>
 			</form>
 		</div>
-			
+
 		<script>
-		
+
 		var idTextArea;
 
 		function setId(idValue){
 			idTextArea=idValue;
 		}
 			function InsertCodeInTextArea(textValue) {
-		        //Get textArea HTML control 
+		        //Get textArea HTML control
 		        var txtArea = document.getElementById(idTextArea);
 
-		        
+
 		        //IE
 		        if (document.selection) {
 		            txtArea.focus();
@@ -90,7 +98,7 @@
 		            txtArea.focus();
 		        }
 		    }
-			
+
 			$(function() {
 				$("#datepicker").datepicker({
 					dateFormat: "dd/mm/yy",
@@ -102,13 +110,42 @@
 					}
 				});
 			});
-			
-			
-		</script>	
-			
+
+
+		</script>
+
+		<div id="sidebar">
+			<ul id="sezione-sidebar"><li>LINK ESTERNI</li></ul>
+			<div id="panel-sidebar">
+				<ul title="">
+					<li><span>SPONSOR LINK</span>
+						<ul>
+							<li title=""><a href="http://www.fabbian.com/it">Fabbian</a></li>
+							<li title=""><a href="http://www.goppioncaffe.it">Goppion</a></li>
+							<li title=""><a href="http://www.carmimari.com">Carminari</a></li>
+							<li title=""><a href="http://www.gnocchimaster.com">Gnocchi Master</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul title="">
+					<li><span>SCHERMA LINK</span>
+						<ul>
+							<li title=""><a href="http://www.fie.ch">FIE</a></li>
+							<li title=""><a href="http://www.federscherma.it/index.asp">Federal Scherma</a></li>
+							<li title=""><a href="http://www.schermaveneto.it">Scherma Veneto</a></li>
+							<li title=""><a href="http://www.comune.castelfrancoveneto.tv.it">Comune Castelfranco Veneto</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<ul title=""><li title=""><a href="#">GALLERY</a></li></ul>
+			</div>
+		</div>
+
+
 		<div id="footer">
 			<img class="footerElement" src="img/struttura/valid-xhtml11.png" alt="Rompere il vetro in caso di maiali"/>
-			<span xml:lang="en" class="footerElement"> - All rights reserved</span>
+			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>
 			<img class="footerElement" src="img/struttura/vcss-blue.gif" alt="Rompere il vetro in caso di maiali"/>
 		</div>
 

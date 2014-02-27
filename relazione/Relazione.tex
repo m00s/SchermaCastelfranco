@@ -1,0 +1,48 @@
+% CARICA IL LAYOUT PER IL DOCUMENTO
+\input{layout.tex}
+	
+% DEFINIZIONE ELEMENTI FRONTESPIZIO
+\title{\bfseries Scherma Castelfranco Veneto}
+\author{Chiara Bigarella mat. \\Pavanello Mirko mat. 1009424 \\Massimiliano Sartoretto mat. 1008168,\\ Paolo Tesser mat. }
+\date{A.A. 2013/2014}
+
+\begin{document}
+\maketitle
+\vspace {20 mm}
+\includegraphics[width=150mm, height=90mm]{images/frontImage.png}
+
+% INDICI DI CONTENUTO E IMMAGINI
+\pagestyle{romano}
+\pagenumbering{Roman}
+\newpage
+	\tableofcontents
+\newpage
+	\listoffigures
+\newpage
+\pagenumbering{arabic}
+\pagestyle{std}
+
+% CORPO DEL DOCUMENTO
+\section{Abstract}
+Il progetto consiste nella realizzazione di un sito..
+
+\newpage
+\section{Accesso al sito}
+	\input{accesso.tex}
+
+\newpage
+\section{Descrizione generale}
+	\input{descrizione.tex}
+	
+\newpage
+\section{Progettazione}
+	\subsection{Struttura}
+		\subsubsection{Definizione}
+		\subsubsection{Database}
+	\subsection{Presentazione}
+
+\newpage
+\section{Accessibilit\`a}
+	\input{accessibilita.tex}
+	
+\end{document}
