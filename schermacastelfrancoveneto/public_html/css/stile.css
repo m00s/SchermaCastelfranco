@@ -117,10 +117,10 @@ body{
 
 .article{
 	margin-bottom: 2%;
-	padding-top: 1%;
-	padding-right: 1%;
-	padding-bottom: 1%;
-	padding-left: 1%;
+	padding-top: 5%;
+	padding-right: 5%;
+	padding-bottom: 5%;
+	padding-left: 5%;
 	background-color: #eb8b8b;
 	color:black;
 	overflow: auto;
@@ -130,6 +130,16 @@ body{
 	margin-bottom: 2%;
 	text-align: center;
 	font-size: 1.6em;
+}
+
+.article img{
+	float: left;
+	overflow: auto;
+	width: 20em;
+	height: 20em;
+	padding-left: 1em;
+	padding-bottom: 1em;
+	padding-right: 1em;
 }
 
 /*	DEFINIRE CLASS PER DATA,LUOGO,TESTO */

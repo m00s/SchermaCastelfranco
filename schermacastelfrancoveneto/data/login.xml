@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href=".xsl" ?> <!-- DA COMPLETARE -->
-
-<ns:login xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns="http://www.schermacastelfranco.com" nome="Login" xs:schemaLocation="http://www.schermacastelfranco.com login.xsd">
-
-	<ns:username>root</ns:username>
-	<ns:password>root</ns:password>
-
-</ns:login>
