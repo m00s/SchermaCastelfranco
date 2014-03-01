@@ -55,10 +55,10 @@ body{
 #nav-1 li{
 	display: inline-block;
 	padding:0.4em;
-	width: 6.5em;
+	width: 7.1em;
+	font-weight: bold;
 	/* border-right: 2px solid; */
 	text-align: center;
-	font-weight: bold;
 
 }
 
@@ -71,16 +71,21 @@ body{
 	font-weight: bold;
 	font-size: 1.2em;
 }
-
+/*
 #nav-1  li:hover{background-color: #b8b5b5;}
 #nav-1  li a:visited{color:black;}
 #nav-1  li a:active{color: black;}
 #nav-1  li:hover a{color: #e77731;}
+*/
+
+#active{
+	background-color: #b8b5b5;
+	color: #e77731;
+}
 
 #last-link{
 	border-right: hidden;
 }
-
 
 #sezione-nav-1{
 	display: none;
@@ -100,9 +105,6 @@ body{
 	float: right;
 }
 
-
-/* .show{display:block;} */
-
 #breadcrumb {
   position: absolute;
   left: -999em;
@@ -116,6 +118,7 @@ body{
 }
 
 .article{
+	overflow: auto;
 	margin-bottom: 2%;
 	padding-top: 5%;
 	padding-right: 5%;
@@ -123,7 +126,6 @@ body{
 	padding-left: 5%;
 	background-color: #eb8b8b;
 	color:black;
-	overflow: auto;
 }
 
 .article h1{
@@ -135,11 +137,11 @@ body{
 .article img{
 	float: left;
 	overflow: auto;
+	padding-right: 1em;
+	padding-bottom: 1em;
+	padding-left: 1em;
 	width: 20em;
 	height: 20em;
-	padding-left: 1em;
-	padding-bottom: 1em;
-	padding-right: 1em;
 }
 
 /*	DEFINIRE CLASS PER DATA,LUOGO,TESTO */
@@ -166,8 +168,8 @@ body{
 #panel-sidebar{
 	display: inline;
 }
-/* #panel-sidebar ul > li{font-weight: bold;} */
-#panel-sidebar span{
+
+.desc-li{
 	display: block;
 	margin-bottom: 2%;
 	font-weight: bold;
@@ -194,9 +196,9 @@ body{
 
 .imgArticle{
 	float: left;
+	overflow: auto;
 	padding-right: 10px;
 	padding-bottom: 10px;
-	overflow: auto;
 	width: 20em;
 	height: 20em;
 }
