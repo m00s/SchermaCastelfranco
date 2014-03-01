@@ -37,8 +37,7 @@
 
 			</div>
 			<div id="nav-2">
-				<a href="#">Accedi Area Riservata</a>
-				<span>RICERCA [-----------]</span>
+				<a href="login.html">Area Riservata</a>
 			</div>
 
 		</div>
@@ -50,10 +49,10 @@
 		<div id="content" >
 			<form method="post" id="formInserimento">
 				<div>
-					<input id="datepicker" type="text">
+					<label>Data<input id="datepicker" type="text"></label>
 				</div>
 				<div>
-					<textarea id="titolo" rows="1" cols="40" onblur="setId(this.id)">Titolo</textarea>
+					<label>Titolo<input type="text" id="titolo" size="40" onblur="setId(this.id)"/></label>
 					</div>
 				<textarea id="testo" rows="10" cols="50" onblur="setId(this.id)">Testo iniziale</textarea>
 				<div id="textOptions">
@@ -62,6 +61,11 @@
 					<button type="button" onclick="InsertCodeInTextArea(' <strong></strong>')"><strong>Grassetto</strong></button>
 				</div>
 			</form>
+			<div style="background-color: lightblue; width:50%; height:50%">
+				<p id="trasfData"></p>
+				<p><b id="trasfTitolo"></b></p>
+				<p id="trasfTesto"></p>
+			</div>
 		</div>
 
 		<script>
@@ -71,6 +75,22 @@
 		function setId(idValue){
 			idTextArea=idValue;
 		}
+		
+		$(document).ready(function () {
+            $("#testo").change(
+                function () {
+                	var date = document.getElementById("datepicker").value;
+					document.getElementById("trasfData").innerHTML = date;
+					
+					var title = document.getElementById("titolo").value;
+					document.getElementById("trasfTitolo").innerHTML = title;
+                
+					var text = document.getElementById("testo").value;
+					document.getElementById("trasfTesto").innerHTML = text;				
+                }
+            );
+        });
+		
 			function InsertCodeInTextArea(textValue) {
 		        //Get textArea HTML control
 		        var txtArea = document.getElementById(idTextArea);
