@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.articoli.com"
-			targetNamespace="http://www.schermacastelfranco.com" elementFormDefault="qualified">
+			targetNamespace="http://www.articoli.com" elementFormDefault="qualified">
 
 <xs:element name="testi" type="tipo-testo"/>
 
@@ -24,12 +24,12 @@
 	<xs:choice minOccurs="0" maxOccurs="unbounded">
 		<xs:element name="span" type="tipo-span" />
 		<xs:element name="abbr" type="tipo-abbr"/>
-	</xs:sequence>
+	</xs:choice>
 </xs:complexType>
 
 <xs:complexType name="tipo-immagine">
-	<xs:attribute name="src" type="xs:anyURI" use="required" />
-	<xs:attribute name="alt" type="xs:string" use="required" />
+	<xs:attribute name="src" type="xs:anyURI"  />
+	<xs:attribute name="alt" type="xs:string"  />
 </xs:complexType>
 
 <xs:complexType name="tipo-paragrafo" mixed="true"> <!-- alternanza tra testo ed elementi span-->
@@ -44,7 +44,7 @@
 <xs:complexType name="tipo-span" >  <!--Content model con attributi e contenuto semplice -->
 	<xs:simpleContent>
 		<xs:extension base="xs:string">
-			<xs:attribute name="lang" type="xs:string" default="en" use="required" />
+			<xs:attribute name="lang" type="xs:string" default="en" />
 		</xs:extension>
 	</xs:simpleContent>
 </xs:complexType>
