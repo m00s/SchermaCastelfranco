@@ -60,13 +60,13 @@ body{
 
 #nav-1 li{
 	display: inline-block;
+	float: left;
 	padding:0.4em;
 	width: 7.3em;
-	font-weight: bold;
 	border-right: 2px solid black;
-	font-size: 1.2em;
 	text-align: center;
-	float: left;
+	font-weight: bold;
+	font-size: 1.2em;
 }
 
 
@@ -88,13 +88,9 @@ li#active{
 	color: #e77731;
 }
 
-#nav-1 li.last-link{
-	border-right: none;
-}
+#nav-1 li.last-link{border-right: none;}
 
-#sezione-nav-1{
-	display: none;
-}
+#sezione-nav-1{display: none;}
 
 #image-menu{
 	background-image: url('../img/struttura/menu_mobile_2.jpg');
@@ -102,13 +98,9 @@ li#active{
 	background-repeat: no-repeat;
 }
 
-#panel-nav-1{
-	display: inline;
-}
+#panel-nav-1{display: inline;}
 
-#nav-2{
-	float: right;
-}
+#nav-2{float: right;}
 
 #breadcrumb {
   position: absolute;
@@ -127,13 +119,24 @@ li#active{
 	width: 75%;
 }
 
+.struttura-content{
+	overflow: auto;
+	margin-bottom: 2%;
+	padding-top: 2%;
+	padding-right: 5%;
+	padding-bottom: 5%;
+	padding-left: 3%;
+	background-color: #eb8b8b;
+	color:black;
+}
+
 .article{
 	overflow: auto;
 	margin-bottom: 2%;
-	padding-top: 5%;
+	padding-top: 2%;
 	padding-right: 5%;
 	padding-bottom: 5%;
-	padding-left: 5%;
+	padding-left: 3%;
 	background-color: #eb8b8b;
 	color:black;
 }
@@ -149,12 +152,73 @@ li#active{
 	overflow: auto;
 	padding-right: 1em;
 	padding-bottom: 1em;
-	padding-left: 1em;
-	width: 20em;
-	height: 20em;
+	max-width: 30em;
+	max-height: 30em;
 }
 
-/*	DEFINIRE CLASS PER DATA,LUOGO,TESTO */
+.document{
+	overflow: auto;
+	margin-bottom: 2%;
+	padding-top: 2%;
+	padding-right: 5%;
+	padding-bottom: 5%;
+	padding-left: 3%;
+	background-color: #eb8b8b;
+	color:black;
+}
+
+.document h1{
+	margin-bottom: 2%;
+	text-align: center;
+	font-size: 1.6em;
+}
+
+.paragrafo-storia{
+	overflow: auto;
+	margin-bottom: 2%;
+	padding-top: 2%;
+	padding-right: 5%;
+	padding-bottom: 5%;
+	padding-left: 3%;
+	background-color: #eb8b8b;
+	color:black;
+}
+
+.paragrafo-right{
+	float: left;
+	width: 60%;
+}
+
+.paragrafo-left{
+	float: left;
+	width: 60%;
+}
+
+.image-storia{
+	float: left;
+	max-width: 20em;
+	max-height: 20em;
+}
+/*
+#image-storia-1{
+	background-image: url('../img/struttura/storia1.jpg');
+	background-size: 4em;
+	background-repeat: no-repeat;
+}
+*/
+#staff{text-align: center;}
+#staff img{
+	max-width: 15em;
+	max-height: 15em;
+}
+
+#info{
+
+}
+
+#info h1{
+	font-size: 1.6em;
+}
 
 #sidebar{
 	float:right;
@@ -166,18 +230,11 @@ li#active{
 	width: 22%;
 	background-color: #eb8b8b;
 	color:black;
-	/* text-align: right; */
 }
 
-#sidebar li{
-	list-style-type: none;
-}
-
+#sidebar li{list-style-type: none;}
 #sezione-sidebar{display: none;}
-
-#panel-sidebar{
-	display: inline;
-}
+#panel-sidebar{display: inline;}
 
 .desc-li{
 	display: block;
@@ -204,16 +261,6 @@ li#active{
 	vertical-align: middle;
 }
 
-.imgArticle{
-	float: left;
-	overflow: auto;
-	padding-right: 10px;
-	padding-bottom: 10px;
-	width: 20em;
-	height: 20em;
-}
-
-
 /* MEDIA QUERIES */
 @media screen and (max-width:1150px){
 
@@ -227,6 +274,11 @@ li#active{
 		clear: both;
 		margin-top: 3%;
 	}
+	.article img{
+		float:none;
+		text-align: center;
+	}
+
 
 }
 
@@ -248,12 +300,13 @@ li#active{
 	#nav-2 li a{display:block;}
 
 	.article h1{font-size: 1.3em;}
+	.document h1{font-size: 1.3em;}
 
 	#panel-nav-1 li{
+		float: none;
 		width: 7.5em;
 		border-right: none;
 		border-bottom: 2px solid black;
-		float: none;
 	}
 
 	#nav-1 li.last-link{
@@ -265,7 +318,9 @@ li#active{
 		clear: both;
 		width: 100%;
 	}
-
+	.image-storia{ /* SISTEMARE */
+		display: none;
+	}
 	#sidebar {
 		display: block;
 		float: left;
@@ -289,10 +344,14 @@ li#active{
 		font-weight: bold;
 	}
 	.article h1{font-size: 1.1em;}
+	.document h1{font-size: 1.1em;}
 	.nascondi-articolo{
 		display: none;
 	}
-
+	.article img{
+		position: absolute;
+		left: -999em;
+	}
 	#sezione-sidebar{
 		display: block;
 		text-align: center;

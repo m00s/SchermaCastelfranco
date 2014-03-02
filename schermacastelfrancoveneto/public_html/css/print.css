@@ -8,10 +8,15 @@ body{
 	color:black;
 	font-family: "Times New Romans", Times, serif;
 	font-size: 1em;
+	margin:1em;
 }
 
 #nav,#sidebar,#footer{
 	display: none;
+}
+
+#breadcrumb{
+
 }
 
 #content{

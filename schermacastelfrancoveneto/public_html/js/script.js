@@ -30,6 +30,10 @@ $(document).ready(function(){
 
 	$(".sezione").click(function(){
 		var presente=$(".nascondi-articolo").css("display");
+		/*
+		var contenuto=$(".nascondi articolo").text();
+		alert (contenuto);
+		*/
 		if (presente=="none"){
 			$(".nascondi-articolo").css("display","block");
 		}else{
