@@ -63,7 +63,8 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					<div class="nascondi-articolo">
 						<xsl:copy-of select="a:img"/>
 						<p class="nascondi-articolo">
-							<xsl:value-of select="a:paragrafo"/>
+							<xsl:value-of select="substring(a:paragrafo, 0, 1000)"/>..
+							<!-- <xsl:value-of select="a:paragrafo"/> -->
 						</p>
 						<p class="nascondi"><a href="#content">Torna sù al contenuto della pagina</a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 					</div>
