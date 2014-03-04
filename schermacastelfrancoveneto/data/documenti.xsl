@@ -62,7 +62,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 						<p><xsl:value-of select="d:paragrafo" /></p>
 					</div>
 					<br />
-					<p><a href="#">Scarica documento [PDF]</a></p>
+					<p><a href="#">Scarica documento [PDF]</a></p> <!-- SISTEMARE -->
 				</div>
 			</xsl:for-each>
 
@@ -83,7 +83,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					</li>
 				</ul>
 				<ul title="lista contenente dei link riferenti ad altri siti di scherma">
-					<li><span xml:lang="en" class="desc-li">SCHERMA LINK</span>
+					<li><span class="desc-li">SCHERMA <span xml:lang="en">LINK</span></span>
 						<ul>
 							<li title="link che manda al sito della federazione internazionale di scherma"><a href="http://www.fie.ch" target="_blank"><abbr title="Federazione Internazionale Scherma">FIE</abbr></a></li>
 							<li title="link che manda al sito della federazione italiana di scherma"><a href="http://www.federscherma.it/index.asp" target="_blank"><span xml:lang="en">Federal Scherma</span></a></li>
