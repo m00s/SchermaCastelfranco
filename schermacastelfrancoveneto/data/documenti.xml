@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="documenti.xsl" ?>
 
-<testi xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.schermacastelfranco.com" xs:schemaLocation="http://www.schermacastelfranco.com documenti.xsd">
+<testi xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.documenti.com" xs:schemaLocation="http://www.documenti.com documenti.xsd">
 	<documento>
-		<titolo>Dichiarazione spese</titolo>
-		<paragrafo></paragrafo>
+		<titolo>DICHIARAZIONE DI SPESE</titolo>
+		<paragrafo>Documento che permette di dichiarare le spese di iscrizione ai corsi del Circolo di Scherma di Castelfranco Veneto.</paragrafo>
 		<doc-completo></doc-completo>
 	</documento>
 
 	<documento>
-		<titolo>Regolamento interno</titolo>
-		<paragrafo></paragrafo>
+		<titolo>REGOLAMENTO INTERNO</titolo>
+		<paragrafo>Disponibile il regolamento interno del Circolo, contenente le regole di comportamento e il ruolo dei vari organi dell'associazione.</paragrafo>
 		<doc-completo></doc-completo>
 	</documento>
 

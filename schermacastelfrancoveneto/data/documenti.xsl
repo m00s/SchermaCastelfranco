@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<xsl:stylesheet version="1.0" xmlns:s="http://www.schermacastelfranco.com" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method='html' version='1.0' encoding='UTF-8' indent='yes'/>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:d="http://www.documenti.com" exclude-result-prefixes="d">
+<xsl:output method='html' version='1.0' encoding='UTF-8' indent='yes'
+doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
+doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 <xsl:template match="/">
 <html xmlns="http://www.w3.org/1999/xhtml" version="-//W3C//DTD XHTML 1.1//EN" xml:lang="it">
@@ -45,20 +46,26 @@
 		</div>
 
 		<div id="breadcrumb">
-			<p>Ti trovi in: <span xml:lang="en">Documenti</span></p>
+			<p>Ti trovi in: Documenti</p>
 		</div>
 		<a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a>
 
 
 		<!--  INIZIO SEZIONE "XSL" DA SISTEMARE -->
 		<div id="content">
-		<!--
-			<xsl:for-each select="a:testi/a:documento">
+			<xsl:for-each select="d:testi/d:documento">
 				<div class="document">
-
+					<div class="sezione">
+						<h1><xsl:value-of select="d:titolo" /></h1>
+					</div>
+					<div class="nascondi-articolo">
+						<p><xsl:value-of select="d:paragrafo" /></p>
+					</div>
+					<br />
+					<p><a href="#">Scarica documento [PDF]</a></p>
 				</div>
 			</xsl:for-each>
-		-->
+
 		</div>
 		<!--  FINE SEZIONE -->
 
@@ -99,5 +106,6 @@
 
 </body>
 </html>
+
 </xsl:template>
 </xsl:stylesheet>

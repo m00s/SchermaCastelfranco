@@ -46,31 +46,31 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		</div>
 
 		<div id="breadcrumb">
-			<p>Ti trovi in: <span xml:lang="en">Articoli</span></p>
+			<p>Ti trovi in: Articoli</p>
 		</div>
 		<a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a>
 
 		<!--  INIZIO SEZIONE "XSL" DA SISTEMARE -->
 		<div id="content">
 			<xsl:for-each select="a:testi/a:articolo">
-
-				<div class="article">
-					<div class="sezione">
-						<p><xsl:value-of select="a:data"/></p>
-						<p><xsl:value-of select="a:luogo"/></p>
-						<h1><xsl:value-of select="a:titolo"/></h1>
+				<xsl:sort select="a:data" order="descending"/>
+					<div class="article">
+						<div class="sezione">
+							<p><xsl:value-of select="a:data"/></p>
+							<p><xsl:value-of select="a:luogo"/></p>
+							<h1><xsl:value-of select="a:titolo"/></h1>
+						</div>
+						<div class="nascondi-articolo">
+							<xsl:copy-of select="a:img"/>
+							<p class="nascondi-articolo">
+								<xsl:value-of select="substring(a:paragrafo, 0, 1000)"/>..
+								<!-- <xsl:value-of select="a:paragrafo"/> -->
+							</p>
+							<p class="nascondi"><a href="#content">Torna sù al contenuto della pagina</a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
+						</div>
+						<p><a href="#">Vai all'articolo intero</a></p>
 					</div>
-					<div class="nascondi-articolo">
-						<xsl:copy-of select="a:img"/>
-						<p class="nascondi-articolo">
-							<xsl:value-of select="substring(a:paragrafo, 0, 1000)"/>..
-							<!-- <xsl:value-of select="a:paragrafo"/> -->
-						</p>
-						<p class="nascondi"><a href="#content">Torna sù al contenuto della pagina</a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
-					</div>
-					<p><a href="#">Vai all'articolo intero</a></p>
-				</div>
-
+				<!--</xsl:sort>-->
 			</xsl:for-each>
 		</div>
 		<!--  FINE SEZIONE -->
