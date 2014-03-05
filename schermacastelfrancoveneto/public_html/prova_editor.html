@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" version="-//W3C//DTD XHTML 1.1//EN" xml:lang="it">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>untitled</title>
+		<title>Inserimento Articolo</title>
 		<meta name="description" content="content" />
 		<meta name="author" content="" />
 		<meta name="keywords" content="" />
@@ -34,7 +34,9 @@
 					<li><a href="#">Staff</a></li>
 					<li id="last-link"><a href="#">Corsi</a></li>
 				</ul>
-
+				<noscript>
+					<p>JavaScript disabled !</p>
+				</noscript>
 			</div>
 			<div id="nav-2">
 				<a href="login.html">Area Riservata</a>
@@ -49,16 +51,25 @@
 		<div id="content" >
 			<form method="post" id="formInserimento">
 				<div>
-					<label>Data<input id="datepicker" type="text"></label>
+					<label>Data <noscript><em>(gg/mm/aaaa)</em></noscript>
+							<input id="datepicker" type="text">
+					</label>
 				</div>
 				<div>
 					<label>Titolo<input type="text" id="titolo" size="40" onblur="setId(this.id)"/></label>
 					</div>
 				<textarea id="testo" rows="10" cols="50" onblur="setId(this.id)">Testo iniziale</textarea>
 				<div id="textOptions">
-					<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;en&#34;></span>')">Inglese</button>
-					<button type="button" onclick="InsertCodeInTextArea(' <em></em>')"><em>Corsivo</em></button>
-					<button type="button" onclick="InsertCodeInTextArea(' <strong></strong>')"><strong>Grassetto</strong></button>
+					<fieldset id="lingue">
+						<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;en&#34;></span>')">Inglese</button>
+						<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;fr&#34;></span>')">Francese</button>
+						<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;de&#34;></span>')">Tedesco</button>
+						<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;ch&#34;></span>')">Svizzero</button>
+					</fieldset>
+					<fieldset id="stile">
+						<button type="button" onclick="InsertCodeInTextArea(' <em></em>')"><em>Corsivo</em></button>
+						<button type="button" onclick="InsertCodeInTextArea(' <strong></strong>')"><strong>Grassetto</strong></button>
+					</fieldset>
 				</div>
 			</form>
 			<div style="background-color: lightblue; width:50%; height:50%">
@@ -79,16 +90,27 @@
 		$(document).ready(function () {
             $("#testo").change(
                 function () {
-                	var date = document.getElementById("datepicker").value;
-					document.getElementById("trasfData").innerHTML = date;
-					
-					var title = document.getElementById("titolo").value;
-					document.getElementById("trasfTitolo").innerHTML = title;
-                
 					var text = document.getElementById("testo").value;
 					document.getElementById("trasfTesto").innerHTML = text;				
                 }
             );
+            
+  
+            $("#datepicker").change(
+                function () {
+                	var date = document.getElementById("datepicker").value;
+					document.getElementById("trasfData").innerHTML = date;
+				}
+            );
+            
+            $("#titolo").change(
+                function () {
+                	var title = document.getElementById("titolo").value;
+					document.getElementById("trasfTitolo").innerHTML = title;
+				}
+            );
+            
+            
         });
 		
 			function InsertCodeInTextArea(textValue) {
