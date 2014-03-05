@@ -15,11 +15,14 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<meta name="robots" content="index,follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../public_html/css/stile.css" type="text/css"/>
-		<link rel="stylesheet" href="../public_html/css/screen.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../public_html/css/aural.css" type="text/css" />
 		<link rel="stylesheet" href="../public_html/css/print.css" type="text/css" media="print" />
 		<link rel="Shortcut Icon" href="../public_html/img/struttura/favicon.ico" type="image/x-icon" />
 		<script  type="text/javascript" charset="UTF-8" src="../public_html/js/jquery.js" ></script>
 		<script  type="text/javascript" charset="UTF-8" src="../public_html/js/script.js" ></script>
+		<noscript>
+			<link rel="stylesheet" href="../public_html/css/stilenojava.css" type="text/css"/>
+		</noscript>
 	</head>
 	<body>
 		<div id="header">

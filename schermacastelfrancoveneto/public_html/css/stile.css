@@ -192,24 +192,33 @@ li#active{
 }
 
 .paragrafo-right{
-	float: left;
+	/* float: left; */
 	margin-left: 3%;
-	width: 65%;
+	/* width: 65%;*/
 }
-
+/*
 .paragrafo-left{
 	float: left;
 	margin-right: 3%;
-	width: 70%;
+	width: 65%;
 }
-
-.image-storia{
+*/
+.image-storia-left{
 	float: left;
+	margin-right: 3%;
+	margin-bottom: 1%;
 	width: 15em;
 	height: 20em;
-
 }
-
+/*
+.image-storia-right{
+	float: right;
+	margin-right: 3%;
+	margin-bottom: 1%;
+	width: 15em;
+	height: 20em;
+}
+*/
 #image-storia-1{
 	background-image: url('../img/struttura/storia1.jpg');
 	background-size: 15em;
@@ -300,8 +309,8 @@ li#active{
 
 	#nav-1{
 		float:none;
-		width: 100%;
 		clear: both;
+		width: 100%;
 	}
 	#nav-2{
 		float:none;
@@ -351,9 +360,8 @@ li#active{
 		clear: both;
 		width: 100%;
 	}
-	.image-storia{ /* SISTEMARE */
-		display: none;
-	}
+	.image-storia-left{display: none;}
+	.image-storia-right{display: none;}
 
 	.article img{
 		display: block;
@@ -375,8 +383,8 @@ li#active{
 		display: block;
 		float: left;
 		clear: both;
-		width: 99%;
 		margin-top: 0;
+		width: 99%;
 	}
 
 }
@@ -395,31 +403,28 @@ li#active{
 		background-repeat: no-repeat;
 	}
 	#nav{
-		margin-top: 1%;
 		float:left;
+		margin-top: 1%;
 		width: 40%;
 	}
 	#nav-2 a{
 	  position: absolute;
 	  left: -999em;
 	}
-	#footer span{
-		display: none;
-	}
+	#footer span{display: none;}
 
 	#sezione-sidebar{
 		display:inline-block;
 		font-weight: bold;
 	}
+	.nascondi-articolo{display: none;}
+
 	.article h1{font-size: 1em;}
-	.document h1{font-size: 1em;}
-	.nascondi-articolo{
-		display: none;
-	}
 	.article img{
 		position: absolute;
 		left: -999em;
 	}
+	.document h1{font-size: 1em;}
 
 	#sezione-sidebar{
 		display: block;

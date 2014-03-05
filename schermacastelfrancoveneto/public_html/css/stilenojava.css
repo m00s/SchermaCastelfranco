@@ -1,0 +1,14 @@
+@media screen and (max-width:850px){
+	#panel-nav-1{display: block;}
+
+}
+
+@media screen and (max-width:480px){
+	.nascondi-articolo{display: block;}
+	.sezione:hover {
+		background-color: #eb8b8b;
+		color:black;
+	}
+	#panel-sidebar{display: block;}
+
+}
