@@ -14,14 +14,14 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<meta name="keywords" content="circolo, scherma, documenti, informazioni, , Castelfranco Veneto" />
 		<meta name="robots" content="index,follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../public_html/css/stile.css" type="text/css"/>
-		<link rel="stylesheet" href="../public_html/css/aural.css" type="text/css" />
-		<link rel="stylesheet" href="../public_html/css/print.css" type="text/css" media="print" />
-		<link rel="Shortcut Icon" href="../public_html/img/struttura/favicon.ico" type="image/x-icon" />
-		<script  type="text/javascript" charset="UTF-8" src="../public_html/js/jquery.js" ></script>
-		<script  type="text/javascript" charset="UTF-8" src="../public_html/js/script.js" ></script>
+		<link rel="stylesheet" href="../css/stile.css" type="text/css"/>
+		<link rel="stylesheet" href="../css/aural.css" type="text/css" />
+		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+		<link rel="Shortcut Icon" href="../img/struttura/favicon.ico" type="image/x-icon" />
+		<script  type="text/javascript" charset="UTF-8" src="../js/jquery.js" ></script>
+		<script  type="text/javascript" charset="UTF-8" src="../js/script.js" ></script>
 		<noscript>
-			<link rel="stylesheet" href="../public_html/css/stilenojava.css" type="text/css"/>
+			<link rel="stylesheet" href="../css/stilenojava.css" type="text/css"/>
 		</noscript>
 	</head>
 	<body>
@@ -34,16 +34,16 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 			<div id="nav-1">
 				<ul id="sezione-nav-1"><li id="image-menu" title="contiene immagine del menù per il mobile"></li></ul>
 				<ul id="panel-nav-1">
-					<li><a href="articoli.xml" tabindex="1">ARTICOLO</a></li>
+					<li><a href="articoli.cgi" tabindex="1">ARTICOLO</a></li>
 					<li id="active">DOCUMENTI</li>
-					<li><a href="../public_html/storia.html" tabindex="2">STORIA</a></li>
-					<li><a href="../public_html/staff.html" tabindex="3"><span xml:lang="en">STAFF</span></a></li>
-					<li class="last-link"><a href="../public_html/corsi.html" tabindex="4">CORSI</a></li>
+					<li><a href="../storia.html" tabindex="2">STORIA</a></li>
+					<li><a href="../staff.html" tabindex="3"><span xml:lang="en">STAFF</span></a></li>
+					<li class="last-link"><a href="../corsi.html" tabindex="4">CORSI</a></li>
 				</ul>
 			</div>
 			<div id="nav-2">
 				<a href="#" tabindex="5">Area Riservata</a>
-				<a href="../public_html/mappa.html" tabindex="6">Mappa del sito</a>
+				<a href="../mappa.html" tabindex="6">Mappa del sito</a>
 			</div>
 
 		</div>
@@ -56,7 +56,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 		<!--  INIZIO SEZIONE "XSL" DA SISTEMARE -->
 		<div id="content">
-			<xsl:for-each select="d:testi/d:documento">
+			<xsl:for-each select="d:testi/d:documento[position()&#60;__DOC__]">
 				<div class="document">
 					<div class="sezione">
 						<h1><xsl:value-of select="d:titolo" /></h1>
@@ -68,7 +68,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					<p><a href="#">Scarica documento [PDF]</a></p> <!-- SISTEMARE -->
 				</div>
 			</xsl:for-each>
-
+			<a href="documenti.cgi?documenti=__NDOC__">Vedi altri articoli</a>
 		</div>
 		<!--  FINE SEZIONE -->
 
@@ -102,9 +102,9 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 
 		<div id="footer">
-			<img class="footerElement" src="../public_html/img/struttura/valid-xhtml11.png" alt=""/>
+			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt=""/>
 			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>
-			<img class="footerElement" src="../public_html/img/struttura/vcss-blue.gif" alt=""/>
+			<img class="footerElement" src="../img/struttura/vcss-blue.gif" alt=""/>
 		</div>
 
 </body>
