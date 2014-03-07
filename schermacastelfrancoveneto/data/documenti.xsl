@@ -42,7 +42,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 				</ul>
 			</div>
 			<div id="nav-2">
-				<a href="#" tabindex="5">Area Riservata</a>
+				<a href="../login.html" tabindex="5">Area Riservata</a>
 				<a href="../mappa.html" tabindex="6">Mappa del sito</a>
 			</div>
 
@@ -56,7 +56,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 		<!--  INIZIO SEZIONE "XSL" DA SISTEMARE -->
 		<div id="content">
-			<xsl:for-each select="d:testi/d:documento[position()&#60;__DOC__]">
+			<xsl:for-each select="d:testi/d:documento[position()&#60;&#61;__DOC__]">
 				<div class="document">
 					<div class="sezione">
 						<h1><xsl:value-of select="d:titolo" /></h1>
@@ -68,7 +68,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					<p><a href="#">Scarica documento [PDF]</a></p> <!-- SISTEMARE -->
 				</div>
 			</xsl:for-each>
-			<a href="documenti.cgi?documenti=__NDOC__">Vedi altri articoli</a>
+			<a href="documenti.cgi?documenti=__NDOC__">Vedi altri documenti(Verranno visualizzati __NDOC__ documenti in totale)</a>
 		</div>
 		<!--  FINE SEZIONE -->
 

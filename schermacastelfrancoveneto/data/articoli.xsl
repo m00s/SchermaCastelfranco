@@ -42,8 +42,8 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 				</ul>
 			</div>
 			<div id="nav-2">
-				<a href="#" tabindex="5">Area Riservata</a>
-				<a href="../public_html/mappa.html" tabindex="6">Mappa del sito</a>
+				<a href="../login.html" tabindex="5">Area Riservata</a>
+				<a href="../mappa.html" tabindex="6">Mappa del sito</a>
 			</div>
 
 		</div>
@@ -55,7 +55,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 		<!--  INIZIO SEZIONE "XSL" DA SISTEMARE -->
 		<div id="content">
-			<xsl:for-each select="a:testi/a:articolo[position()&#60;__ART__]">
+			<xsl:for-each select="a:testi/a:articolo[position()&#60;&#61;__ART__]">
 				<xsl:sort select="a:data" order="descending"/>
 					<div class="article">
 						<div class="sezione">
@@ -75,7 +75,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					</div>
 				<!--</xsl:sort>-->
 			</xsl:for-each>
-			<a href="articoli.cgi?articoli=__NART__">Vedi altri articoli</a>
+			<a href="articoli.cgi?articoli=__NART__">Vedi altri articoli (Verranno visualizzati __NART__ articoli in totale)</a>
 		</div>
 		<!--  FINE SEZIONE -->
 

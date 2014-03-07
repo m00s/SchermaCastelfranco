@@ -28,7 +28,7 @@ my $query = $xslt_doc->toString;
 my $n_documenti=2;
 
 if($page->param('documenti') != 0){
-	$n_articoli=$page->param('documenti');
+	$n_documenti=$page->param('documenti');
 }
 
 #sostituisco nel file xsl quanti articoli far vedere 
