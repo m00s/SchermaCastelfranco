@@ -102,9 +102,9 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 
 		<div id="footer">
-			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt=""/>
+			<img class="footerElement" src="img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>
 			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>
-			<img class="footerElement" src="../img/struttura/vcss-blue.gif" alt=""/>
+			<img class="footerElement" src="img/struttura/vcss-blue.gif" alt="immagine che indica che lo stile applicato al sito web è valido come css attraverso la verifica del W3C"/>
 		</div>
 
 </body>

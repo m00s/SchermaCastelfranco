@@ -258,6 +258,25 @@ li#active{
 	font-size: 1.6em;
 }
 
+#login{
+	background-color: #eb8b8b;
+	color:black;
+	padding: 1em;
+}
+
+#login h1{font-size: 1.2em;}
+
+#login-form{
+	text-align: center;
+}
+#login-form fieldset{
+	border: none;
+}
+#login-form p{
+	margin-bottom: 2%;
+	margin-top: 2%;
+}
+
 #sidebar{
 	float:right;
 	margin-top: 5%;
