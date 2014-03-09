@@ -19,18 +19,19 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
 		<link rel="Shortcut Icon" href="../public_html/img/struttura/favicon.ico" type="image/x-icon" />
 		<script  type="text/javascript" charset="UTF-8" src="../js/jquery.js" ></script>
-		<script  type="text/javascript" charset="UTF-8" src="..s/js/script.js" ></script>
+		<script  type="text/javascript" charset="UTF-8" src="../js/script.js" ></script>
 		<noscript>
-			<link rel="stylesheet" href="../public_html/css/stilenojava.css" type="text/css"/>
+			<link rel="stylesheet" href="../css/stilenojava.css" type="text/css"/>
 		</noscript>
 	</head>
+
 	<body>
 		<div id="header">
-
 		</div>
 
+		<a href="#breadcrumb" class="nascondi">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a>
+
 		<div id="nav">
-			<a href="#content" class="nascondi">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a>
 			<div id="nav-1">
 				<ul id="sezione-nav-1"><li id="image-menu" title="contiene immagine del menù per il mobile"></li></ul>
 				<ul id="panel-nav-1">
@@ -51,7 +52,8 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<div id="breadcrumb">
 			<p>Ti trovi in: Articoli</p>
 		</div>
-		<a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a>
+
+		<a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a>
 
 		<!--  INIZIO SEZIONE "XSL" DA SISTEMARE -->
 		<div id="content">
@@ -69,15 +71,18 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 								<xsl:value-of select="substring(a:paragrafo, 0, 1000)"/>..
 								<!-- <xsl:value-of select="a:paragrafo"/> -->
 							</p>
-							<p class="nascondi"><a href="#content">Torna sù al contenuto della pagina</a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
+
 						</div>
 						<p><a href="#">Vai all'articolo intero</a></p>
+						<p class="nascondi"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 					</div>
-				<!--</xsl:sort>-->
 			</xsl:for-each>
+
 			<a href="articoli.cgi?articoli=__NART__">Vedi altri articoli (Verranno visualizzati __NART__ articoli in totale)</a>
 		</div>
 		<!--  FINE SEZIONE -->
+
+		<a href="#nav" class="nascondi">Torna al <span xml:lang="fr">menù</span> di navigazione</a>
 
 		<div id="sidebar">
 			<div id="sezione-sidebar"><p><span xml:lang="en">LINK</span> ESTERNI</p></div>
@@ -106,7 +111,6 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 				<ul><li title="link che manda alla pagina Google Foto contenente tutte le immagine delle gare disputate dal circolo"><a href="https://plus.google.com/photos/100772179390595520915/albums?banner=pwa" target="_blank"><span xml:lang="en" class="desc-li">GALLERY</span></a></li></ul>
 			</div>
 		</div>
-
 
 		<div id="footer">
 			<img class="footerElement" src="img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>

@@ -78,11 +78,12 @@ body{
 	font-weight: bold;
 }
 
-#nav-1  li:hover{background-color: #b8b5b5;}
+#nav-1  li:hover{background-color:#b8b5b5;}
+/* #7F1C17 #e77731 */
 #nav-1  li a:visited{color:black;}
 #nav-1  li a:active{color: black;}
-#nav-1  li:hover a{color: #e77731;}
-
+#nav-1  li:hover a{color:#e77731;}
+/* #04147F */
 li#active{
 	background-color: #b8b5b5;
 	color: #e77731;
@@ -100,7 +101,11 @@ li#active{
 
 #panel-nav-1{display: inline;}
 
-#nav-2{float: right;}
+#nav-2{
+	float: right;
+	padding:0.4em;
+	background-color: #eb8b8b;
+}
 
 #breadcrumb {
   position: absolute;
@@ -257,11 +262,19 @@ li#active{
 	margin-bottom: 2%;
 	font-size: 1.6em;
 }
+#info table{
+	margin-bottom: 3%;
+	border-collapse: collapse;
+}
+#info table,th,td{border: 1px solid black;}
+#info table caption{margin-bottom:0.7em;}
+#info th{padding: 0.2em;}
+#info td{padding: 0.3em;}
 
 #login{
+	padding: 1em;
 	background-color: #eb8b8b;
 	color:black;
-	padding: 1em;
 }
 
 #login h1{font-size: 1.2em;}
@@ -273,8 +286,8 @@ li#active{
 	border: none;
 }
 #login-form p{
-	margin-bottom: 2%;
 	margin-top: 2%;
+	margin-bottom: 2%;
 }
 
 #sidebar{
@@ -331,11 +344,15 @@ li#active{
 		clear: both;
 		width: 100%;
 	}
+	#nav-1 li.last-link{margin-bottom: 1%;}
+
 	#nav-2{
 		float:none;
 		clear: both;
-		margin-top: 3%;
+		/* margin-top: 3%; */
+		width:14em;
 	}
+
 	.article img{
 		max-width: 22em;
 		max-height: 22em;
@@ -381,7 +398,7 @@ li#active{
 	}
 	.image-storia-left{display: none;}
 	.image-storia-right{display: none;}
-
+	.paragrafo-right{margin-left: 0.5em;}
 	.article img{
 		display: block;
 		float: none;
@@ -426,7 +443,7 @@ li#active{
 		margin-top: 1%;
 		width: 40%;
 	}
-	#nav-2 a{
+	#nav-2 {
 	  position: absolute;
 	  left: -999em;
 	}

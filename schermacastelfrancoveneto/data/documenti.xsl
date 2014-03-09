@@ -14,7 +14,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<meta name="keywords" content="circolo, scherma, documenti, informazioni, , Castelfranco Veneto" />
 		<meta name="robots" content="index,follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../css/stile.css" type="text/css"/>
+		<link rel="stylesheet" href="../css/stile.css " type="text/css"/>
 		<link rel="stylesheet" href="../css/aural.css" type="text/css" />
 		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
 		<link rel="Shortcut Icon" href="../img/struttura/favicon.ico" type="image/x-icon" />
@@ -24,13 +24,14 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 			<link rel="stylesheet" href="../css/stilenojava.css" type="text/css"/>
 		</noscript>
 	</head>
+
 	<body>
 		<div id="header">
-
 		</div>
 
+		<a href="#breadcrumb" class="nascondi">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a>
+
 		<div id="nav">
-			<a href="#content" class="nascondi">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a>
 			<div id="nav-1">
 				<ul id="sezione-nav-1"><li id="image-menu" title="contiene immagine del menù per il mobile"></li></ul>
 				<ul id="panel-nav-1">
@@ -51,8 +52,8 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<div id="breadcrumb">
 			<p>Ti trovi in: Documenti</p>
 		</div>
-		<a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a>
 
+		<a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a>
 
 		<!--  INIZIO SEZIONE "XSL" DA SISTEMARE -->
 		<div id="content">
@@ -66,11 +67,14 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					</div>
 					<br />
 					<p><a href="#">Scarica documento [PDF]</a></p> <!-- SISTEMARE -->
+					<p class="nascondi"><a href="#content">Torna al primo documento della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 				</div>
 			</xsl:for-each>
 			<a href="documenti.cgi?documenti=__NDOC__">Vedi altri documenti(Verranno visualizzati __NDOC__ documenti in totale)</a>
 		</div>
 		<!--  FINE SEZIONE -->
+
+		<a href="#nav" class="nascondi">Torna al <span xml:lang="fr">menù</span> di navigazione</a>
 
 		<div id="sidebar">
 			<div id="sezione-sidebar"><p><span xml:lang="en">LINK</span> ESTERNI</p></div>
