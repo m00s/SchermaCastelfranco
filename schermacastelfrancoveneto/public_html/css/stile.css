@@ -78,15 +78,15 @@ body{
 	font-weight: bold;
 }
 
-#nav-1  li:hover{background-color:#b8b5b5;}
-/* #7F1C17 #e77731 */
+#nav-1  li:hover{background-color:#020000;}
+/* #7F1C17 #e77731 #b8b5b5 #991B00 */
 #nav-1  li a:visited{color:black;}
 #nav-1  li a:active{color: black;}
-#nav-1  li:hover a{color:#e77731;}
-/* #04147F */
+#nav-1  li:hover a{color:#FEFFFF;}
+/* #04147F #FEFFFF #e77731*/
 li#active{
-	background-color: #b8b5b5;
-	color: #e77731;
+	background-color: #020000;
+	color: #FEFFFF;
 }
 
 #nav-1 li.last-link{border-right: none;}
@@ -119,7 +119,7 @@ li#active{
 
 #content{
 	float:left;
-	margin-top: 5%;
+	margin-top: 3%;
 	margin-bottom: 2%;
 	width: 75%;
 }
@@ -292,7 +292,7 @@ li#active{
 
 #sidebar{
 	float:right;
-	margin-top: 5%;
+	margin-top: 3%;
 	margin-bottom: 5%;
 	padding-top: 1%;
 	padding-bottom: 1%;
@@ -468,11 +468,12 @@ li#active{
 		font-size: 1.1em;
 	}
 	.sezione:hover {
-		background-color: #b8b5b5;
-		color: #e77731;
+		background-color:#020000;
+		color: #FEFFFF;
 	}
 	#panel-sidebar{
 		display: none;
 		margin-top: 2%;
 	}
+	#mostra{display: block;}
 }

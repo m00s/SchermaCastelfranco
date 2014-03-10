@@ -55,19 +55,41 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 		<a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a>
 
+		<div id="lista-articoli" class="nascondi" > <!-- class="nascondi" -->
+			<ul title="lista degli articoli mostrati nella pagina classificati per luogo e data di svolgimento raggiungibili direttamente accendendo al link">
+				<!-- <xsl:variable name="contatore">1</xsl:variable>-->
+				<xsl:for-each select="a:testi/a:articolo[position()&#60;&#61;__ART__]">
+					<xsl:sort select="a:data" order="descending"/>
+					<!-- mi salvo la variabile titolo che poi utilizzerò in href del link della lista -->
+					<xsl:variable name="titolo"><xsl:value-of select="a:titolo"/></xsl:variable>
+					<xsl:variable name="luogo"><xsl:value-of select="a:luogo"/></xsl:variable>
+					<xsl:variable name="data"><xsl:value-of select="a:data"/></xsl:variable>
+					<xsl:variable name="luogo-data"><xsl:value-of select="$luogo" /> in data <xsl:value-of select="$data" /></xsl:variable>
+
+					<li><a href="#{$luogo-data}"><xsl:value-of select="$luogo-data" /></a></li>
+				</xsl:for-each>
+			</ul>
+		</div>
+
 		<!--  INIZIO SEZIONE "XSL" DA SISTEMARE -->
 		<div id="content">
 			<xsl:for-each select="a:testi/a:articolo[position()&#60;&#61;__ART__]">
 				<xsl:sort select="a:data" order="descending"/>
-					<div class="article">
-						<div class="sezione">
+					<!-- mi salvo la variabile titolo che poi utilizzerò in id dell'articolo-->
+					<!--<xsl:variable name="titolo"><xsl:value-of select="a:titolo"/></xsl:variable>-->
+					<xsl:variable name="luogo"><xsl:value-of select="a:luogo"/></xsl:variable>
+					<xsl:variable name="data"><xsl:value-of select="a:data"/></xsl:variable>
+					<xsl:variable name="luogo-data"><xsl:value-of select="$luogo" /> in data <xsl:value-of select="$data" /></xsl:variable>
+
+					<div class="article" > <!-- id="{$luogo-data}" -->
+						<div class="sezione" id="{$luogo-data}">
 							<p><xsl:value-of select="a:data"/></p>
 							<p><xsl:value-of select="a:luogo"/></p>
 							<h1><xsl:value-of select="a:titolo"/></h1>
 						</div>
 						<div class="nascondi-articolo">
 							<xsl:copy-of select="a:img"/>
-							<p class="nascondi-articolo">
+							<p> <!-- class="nascondi-articolo" -->
 								<xsl:value-of select="substring(a:paragrafo, 0, 1000)"/>..
 								<!-- <xsl:value-of select="a:paragrafo"/> -->
 							</p>
@@ -77,8 +99,9 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 						<p class="nascondi"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 					</div>
 			</xsl:for-each>
-
+			<!-- da aggiungere stile -->
 			<a href="articoli.cgi?articoli=__NART__">Vedi altri articoli (Verranno visualizzati __NART__ articoli in totale)</a>
+
 		</div>
 		<!--  FINE SEZIONE -->
 
@@ -113,9 +136,9 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		</div>
 
 		<div id="footer">
-			<img class="footerElement" src="img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>
+			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>
 			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>
-			<img class="footerElement" src="img/struttura/vcss-blue.gif" alt="immagine che indica che lo stile applicato al sito web è valido come css attraverso la verifica del W3C"/>
+			<img class="footerElement" src="../img/struttura/vcss-blue.gif" alt="immagine che indica che lo stile applicato al sito web è valido come css attraverso la verifica del W3C"/>
 		</div>
 
 

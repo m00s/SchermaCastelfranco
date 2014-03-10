@@ -29,13 +29,23 @@ $(document).ready(function(){
 $(document).ready(function(){
 
 	$(".sezione").click(function(){
-		var presente=$(".nascondi-articolo").css("display");
+		/* $(this).hide(); */
+		var id=$(this).attr('id'); // mi salvo l'id dell'articolo su cui clicco
+		var parent = $(this).parent("div"); // .attr('id'); // closest // risalgo al padre dell'elemento su cui abbiamo fatto il click
+		var son = parent.find(".nascondi-articolo");
 
-		if (presente=="none"){
-			$(".nascondi-articolo").css("display","block");
+		var attr = son.attr('id');
+		// alert(attr);
+
+		if (attr === undefined) {
+			son.attr('id','mostra');
 		}else{
-			$(".nascondi-articolo").css("display","");
+			// alert('attributo esiste');
+			son.removeAttr("id");
 		}
+
+		var attr = son.attr('id');
+		// alert(attr);
 
 	});
 });
