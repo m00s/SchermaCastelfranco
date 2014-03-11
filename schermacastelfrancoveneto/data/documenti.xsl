@@ -29,7 +29,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<div id="header">
 		</div>
 
-		<a href="#breadcrumb" class="nascondi">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a>
+		<p class="nascondi"><a href="#breadcrumb">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a></p>
 
 		<div id="nav">
 			<div id="nav-1">
@@ -53,12 +53,27 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 			<p>Ti trovi in: Documenti</p>
 		</div>
 
-		<a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a>
+		<p class="nascondi"><a href="#sidebar">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a></p>
+
+		<div id="lista-documenti" class="nascondi" >
+			<ul title="lista dei documenti mostrati nella pagina classificati per titolo raggiungibili direttamente accendendo al link">
+				<!-- <xsl:variable name="contatore">1</xsl:variable>-->
+				<xsl:for-each select="d:testi/d:documento[position()&#60;&#61;__DOC__]">
+					<!-- mi salvo la variabile titolo che poi utilizzerò in href del link della lista -->
+					<xsl:variable name="titolo"><xsl:value-of select="d:titolo"/></xsl:variable>
+
+					<li><a href="#{$titolo}"><xsl:value-of select="$titolo" /></a></li>
+				</xsl:for-each>
+			</ul>
+		</div>
+
 
 		<!--  INIZIO SEZIONE "XSL" DA SISTEMARE -->
 		<div id="content">
 			<xsl:for-each select="d:testi/d:documento[position()&#60;&#61;__DOC__]">
-				<div class="document">
+				<!-- mi salvo la variabile titolo che poi utilizzerò in id della class document -->
+				<xsl:variable name="titolo"><xsl:value-of select="d:titolo"/></xsl:variable>
+				<div class="document" id="{$titolo}">
 					<div class="sezione">
 						<h1><xsl:value-of select="d:titolo" /></h1>
 					</div>
@@ -74,7 +89,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		</div>
 		<!--  FINE SEZIONE -->
 
-		<a href="#nav" class="nascondi">Torna al <span xml:lang="fr">menù</span> di navigazione</a>
+		<p class="nascondi"><a href="#nav">Torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 
 		<div id="sidebar">
 			<div id="sezione-sidebar"><p><span xml:lang="en">LINK</span> ESTERNI</p></div>

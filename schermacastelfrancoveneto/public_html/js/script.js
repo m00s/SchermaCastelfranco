@@ -1,4 +1,3 @@
-/* SCRIPT PER LA GESTIONE RESPONSIVE DEL MENU' E DEI LINK ESTERNI*/
 
 $(document).ready(function(){
 
@@ -12,6 +11,7 @@ $(document).ready(function(){
 
 	});
 });
+/* SCRIPT PER LA GESTIONE RESPONSIVE DEL MENU' E DEI LINK ESTERNI */
 
 $(document).ready(function(){
 

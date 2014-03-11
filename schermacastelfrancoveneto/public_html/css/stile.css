@@ -38,6 +38,7 @@ body{
 	width: 100%;
 	height: 200px;
 	background-image: url('../img/struttura/header_scherma.jpg');
+	/* background-repeat: no-repeat;*/
 }
 
 #nav li{
@@ -372,6 +373,7 @@ li#active{
 		width: 3.1em;
 		height: 2.4em;
 		border: none;
+		cursor:pointer;
 	}
 	#panel-nav-1{
 		display: none;
@@ -467,9 +469,15 @@ li#active{
 		text-align: center;
 		font-size: 1.1em;
 	}
+	#sezione-sidebar:hover{
+		background-color:#020000;
+		color: #FEFFFF;
+		cursor:pointer;
+	}
 	.sezione:hover {
 		background-color:#020000;
 		color: #FEFFFF;
+		cursor:pointer;
 	}
 	#panel-sidebar{
 		display: none;

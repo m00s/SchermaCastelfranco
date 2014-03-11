@@ -29,7 +29,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<div id="header">
 		</div>
 
-		<a href="#breadcrumb" class="nascondi">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a>
+		<p class="nascondi">><a href="#breadcrumb">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a></p>
 
 		<div id="nav">
 			<div id="nav-1">
@@ -53,9 +53,9 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 			<p>Ti trovi in: Articoli</p>
 		</div>
 
-		<a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a>
+		<p class="nascondi">><a href="#sidebar">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a></p>
 
-		<div id="lista-articoli" class="nascondi" > <!-- class="nascondi" -->
+		<div id="lista-articoli" class="nascondi" >
 			<ul title="lista degli articoli mostrati nella pagina classificati per luogo e data di svolgimento raggiungibili direttamente accendendo al link">
 				<!-- <xsl:variable name="contatore">1</xsl:variable>-->
 				<xsl:for-each select="a:testi/a:articolo[position()&#60;&#61;__ART__]">
@@ -100,12 +100,12 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					</div>
 			</xsl:for-each>
 			<!-- da aggiungere stile -->
-			<a href="articoli.cgi?articoli=__NART__">Vedi altri articoli (Verranno visualizzati __NART__ articoli in totale)</a>
+			<p><a href="articoli.cgi?articoli=__NART__">Vedi altri articoli (Verranno visualizzati __NART__ articoli in totale)</a></p>
 
 		</div>
 		<!--  FINE SEZIONE -->
 
-		<a href="#nav" class="nascondi">Torna al <span xml:lang="fr">menù</span> di navigazione</a>
+		<p class="nascondi"><a href="#nav">Torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 
 		<div id="sidebar">
 			<div id="sezione-sidebar"><p><span xml:lang="en">LINK</span> ESTERNI</p></div>
