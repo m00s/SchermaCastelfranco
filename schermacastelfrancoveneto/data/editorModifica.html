@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="-//W3C//DTD XHTML 1.1//EN" xml:lang="it">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Inserimento Articolo</title>
+		<meta name="description" content="content" />
+		<meta name="author" content="" />
+		<meta name="keywords" content="" />
+		<meta name="robots" content="" /> <!-- per le pagine dell'area riservata (da impostare) -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- serve per il responsive nei dispositivi mobile -->
+
+		<link rel="stylesheet" href="../css/stile.css" type="text/css"/>
+		<link rel="stylesheet" href="../css/screen.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+		<link rel="Shortcut Icon" href="img/struttura/favicon.ico" type="image/x-icon" />
+		<script  type="text/javascript" charset="UTF-8" src="../js/jquery.js" ></script> <!-- da impostare quando serve usare qualche script -->
+		<link href="../css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet"/>
+		<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
+		<script src="../js/jquery-1.10.2.js"></script>
+		<script src="../js/jquery-ui-1.10.4.custom.js"></script>
+	</head>
+	<body>
+		<div id="header">
+
+		</div>
+
+		<div id="nav">
+			<div id="nav-1">
+				<ul id="sezione-nav-1"><li id="image-menu" title="contiene immagine del menù per il mobile"></li></ul>
+				<ul id="panel-nav-1">
+					<li><a href="#">Articoli</a></li>
+					<li><a href="#">Documenti</a></li>
+					<li><a href="../cgi-bin/prova_perl.cgi">Storia</a></li>
+					<li><a href="#">Staff</a></li>
+					<li id="last-link"><a href="#">Corsi</a></li>
+				</ul>
+				<noscript>
+					<p>JavaScript disabled !</p>
+				</noscript>
+			</div>
+			<div id="nav-2">
+				<a href="amministra.cgi?logout=esci">Effettua Logout</a>
+			</div>
+
+		</div>
+
+		<div id="breadcrumb">
+			<p>Ti trovi in: Home > Inserisci</p>
+		</div>
+
+		<div id="content" >
+			<div id="nav-admin">
+				<ul id="panel-nav-admin">
+					<li><a href="amministraInserimento.cgi">Inserisci articolo</a></li>
+					<li><a href="amministraInserimento.cgi?modifica=CaricaForm">Modfica articolo</a></li>
+					<li><a href="amministraInserimento.cgi?elimina=CaricaForm">Elimina articlo</a></li>
+				</ul>
+			</div>
+			<form method="post" id="formInserimento" action="amministraInserimento.cgi" enctype="multipart/form-data">
+				<input type="hidden" name="modifica" value="SalvaArticolo"/>
+				<fieldset>
+					<legend>Inserisci dati dell'articolo</legend>
+				<div>
+					<label>Luogo <input id="luogo" type="text" name="luogo" value="__LUOGO__"/>
+					</label><br/>
+					<label>Data <noscript><em>(gg/mm/aaaa)</em></noscript>
+							<input id="datepicker" type="text" name="data" value="__DATA__"/>
+					</label>
+
+				</div>
+				<div>
+					<label>Titolo<input type="text" id="titolo" name="titolo" size="40" value="__TITOLO__" onblur="setId(this.id)" /></label>
+				</div>
+				<textarea id="testo" name="testo" rows="10" cols="50" onblur="setId(this.id)">__TESTO__</textarea>
+				<div id="textOptions">
+					<fieldset id="lingue">
+						<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;en&#34;></span>')">Inglese</button>
+						<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;fr&#34;></span>')">Francese</button>
+						<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;de&#34;></span>')">Tedesco</button>
+						<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;ch&#34;></span>')">Svizzero</button>
+					</fieldset>
+					<fieldset id="stile">
+						<button type="button" onclick="InsertCodeInTextArea(' <em></em>')"><em>Corsivo</em></button>
+						<button type="button" onclick="InsertCodeInTextArea(' <strong></strong>')"><strong>Grassetto</strong></button>
+					</fieldset>
+				</div>
+				<fieldset>
+					<legend>Inserisci immagine</legend>
+					<label>Vecchia foto <input type="text" name="vecchiaFoto" value="__FOTO__" readonly></label><br/>
+					<label>Scegli nuova foto: <input type="file" name="foto"/></label><br/>
+					<label>Scegli nuova alternativa per la foto: <input type="text" name="altfoto" value="__ALT__"/></label>
+				</fieldset>
+				<input type="hidden" name="vecchiaData" value="__DATA__"/>
+				<input type="hidden" name="vecchioLuogo" value="__LUOGO__"/>
+				<input type="submit" name="submit" id="submit" value="Salva Articolo"/>
+				</fieldset>
+			</form>
+			<div style="background-color: lightblue; width:50%; height:50%">
+				<p id="trasfData"></p>
+				<p><b id="trasfTitolo"></b></p>
+				<p id="trasfTesto"></p>
+			</div>
+		</div>
+
+		<script>
+
+		var idTextArea;
+
+		function setId(idValue){
+			idTextArea=idValue;
+		}
+		
+		$(document).ready(function () {
+            $("#testo").change(
+                function () {
+					var text = document.getElementById("testo").value;
+					document.getElementById("trasfTesto").innerHTML = text;				
+                }
+            );
+            
+  
+            $("#datepicker").change(
+                function () {
+                	var date = document.getElementById("datepicker").value;
+					document.getElementById("trasfData").innerHTML = date;
+				}
+            );
+            
+            $("#titolo").change(
+                function () {
+                	var title = document.getElementById("titolo").value;
+					document.getElementById("trasfTitolo").innerHTML = title;
+				}
+            );
+            
+            
+        });
+		
+			function InsertCodeInTextArea(textValue) {
+		        //Get textArea HTML control
+		        var txtArea = document.getElementById(idTextArea);
+
+
+		        //IE
+		        if (document.selection) {
+		            txtArea.focus();
+		            var sel = document.selection.createRange();
+		            sel.text = textValue;
+		            return;
+		        }
+		        //Firefox, chrome, mozilla
+		        else if (txtArea.selectionStart || txtArea.selectionStart == '0') {
+		            var startPos = txtArea.selectionStart;
+		            var endPos = txtArea.selectionEnd;
+		            var scrollTop = txtArea.scrollTop;
+		            txtArea.value = txtArea.value.substring(0, startPos) + textValue + txtArea.value.substring(endPos, txtArea.value.length);
+		            txtArea.focus();
+		            txtArea.selectionStart = startPos + textValue.length;
+		            txtArea.selectionEnd = startPos + textValue.length;
+		        }
+		        else {
+		            txtArea.value += textArea.value;
+		            txtArea.focus();
+		        }
+		    }
+
+			$(function() {
+				$("#datepicker").datepicker({
+					dateFormat: "dd/mm/yy",
+					onSelect: function(dateText, inst) {
+						var date = $.datepicker.parseDate(inst.settings.dateFormat || $.datepicker._defaults.dateFormat, dateText, inst.settings);
+						var dateText1 = $.datepicker.formatDate("D, d M yy", date, inst.settings);
+						date.setDate(date.getDate() + 7);
+						var dateText2 = $.datepicker.formatDate("D, d M yy", date, inst.settings);
+					}
+				});
+			});
+
+
+		</script>
+
+		<div id="sidebar">
+			<ul id="sezione-sidebar"><li>LINK ESTERNI</li></ul>
+			<div id="panel-sidebar">
+				<ul title="">
+					<li><span>SPONSOR LINK</span>
+						<ul>
+							<li title=""><a href="http://www.fabbian.com/it">Fabbian</a></li>
+							<li title=""><a href="http://www.goppioncaffe.it">Goppion</a></li>
+							<li title=""><a href="http://www.carmimari.com">Carminari</a></li>
+							<li title=""><a href="http://www.gnocchimaster.com">Gnocchi Master</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul title="">
+					<li><span>SCHERMA LINK</span>
+						<ul>
+							<li title=""><a href="http://www.fie.ch">FIE</a></li>
+							<li title=""><a href="http://www.federscherma.it/index.asp">Federal Scherma</a></li>
+							<li title=""><a href="http://www.schermaveneto.it">Scherma Veneto</a></li>
+							<li title=""><a href="http://www.comune.castelfrancoveneto.tv.it">Comune Castelfranco Veneto</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<ul title=""><li title=""><a href="#">GALLERY</a></li></ul>
+			</div>
+		</div>
+
+
+		<div id="footer">
+			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="Rompere il vetro in caso di maiali"/>
+			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>
+			<img class="footerElement" src="../img/struttura/vcss-blue.gif" alt="Rompere il vetro in caso di maiali"/>
+		</div>
+
+	</body>
+</html>
