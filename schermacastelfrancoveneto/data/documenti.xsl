@@ -43,8 +43,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 				</ul>
 			</div>
 			<div id="nav-2">
-				<a href="../login.html" tabindex="5">Area Riservata</a>
-				<a href="../mappa.html" tabindex="6">Mappa del sito</a>
+				<a href="login.cgi" tabindex="5">Area Riservata</a>
 			</div>
 
 		</div>
