@@ -278,6 +278,8 @@ li#active{
 	color:black;
 }
 
+#no-area{display: none;}
+
 #login h1{font-size: 1.2em;}
 
 #login-form{
@@ -463,6 +465,9 @@ li#active{
 		left: -999em;
 	}
 	.document h1{font-size: 1em;}
+
+	#no-area{display: block;}
+	#login-form{display: none;}
 
 	#sezione-sidebar{
 		display: block;

@@ -20,7 +20,7 @@ if($session->is_expired or $session->is_empty){
 	$CGISESSID = $session->id();
 }
 
-print $session->header();
+# print $session->header();
 
 #controllo se la form e' stata gia settata
 if($page->param("submit")){
@@ -29,7 +29,7 @@ if($page->param("submit")){
 	if($username eq 'admin' and $password eq 'admin'){
 		$session->param('login', 'admin');
 		$session->flush();
-		#print "Location: $url\n\n";
+		# print "Location: $url\n\n";
 		print header('text/html');
 		print "<!DOCTYPE HTML> <html><head>";
 		print "<link type='text/css' rel='stylesheet' href='../public_html/css/stile.css' media='handheld, screen'/><link type='text/css' rel='stylesheet' href='../public_html/css/print.css' media='braille' />";
@@ -40,19 +40,13 @@ if($page->param("submit")){
 	}
 	else{
 		print "Content-type: text/html\n\n";
-		print "<!DOCTYPE HTML> <html><head>";
-		print "<link type='text/css' rel='stylesheet' href='../style.css' media='handheld, screen'/><link type='text/css' rel='stylesheet' href='../styleAural.css' media='braille' />";
-		print "</head><body>";
 		print &getLogin();
-		print "<p class='error'>Ritenta, sarai pi&ugrave; fortunato!</p>";
-		print "</body> </html>";
+		# print "<p class='error'>Ritenta, sarai pi&ugrave; fortunato!</p>";
 	}
 }
 else{
+
 	print "Content-type: text/html\n\n";
-	print "<!DOCTYPE HTML> <html><head>";
-	print "<link type='text/css' rel='stylesheet' href='../public_html/css/stile.css' media='handheld, screen'/><link type='text/css' rel='stylesheet' href='../public_html/css/print.css' media='braille' />";
-	print "</head><body>";
 	print &getLogin();
-	print "</body> </html>";
+
 }
