@@ -27,7 +27,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 	<body>
 		<div id="header"></div>
-		
+
 		<div id="boxTop"></div>
 
 		<p class="nascondi">><a href="#breadcrumb">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a></p>
@@ -44,7 +44,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 				</ul>
 			</div>
 			<div id="nav-2">
-				<a href="login.cgi" tabindex="5">Area Riservata</a>
+				<a href="amministra.cgi" tabindex="5">Area Riservata</a>
 			</div>
 
 		</div>
@@ -96,11 +96,11 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 						</div>
 						<p><a href="#">Vai all'articolo intero</a></p>
-						<p class="nascondi"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
+						<p class="nascondi-torna"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 					</div>
 			</xsl:for-each>
-			<!-- da aggiungere stile -->
-			<p><a href="articoli.cgi?articoli=__NART__">Vedi altri articoli (Verranno visualizzati __NART__ articoli in totale)</a></p>
+
+			<p id="mostra-piu"><a href="articoli.cgi?articoli=__NART__">Vedi altri articoli (Verranno visualizzati __NART__ articoli in totale)</a></p>
 
 		</div>
 		<!--  FINE SEZIONE -->

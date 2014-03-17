@@ -1,3 +1,5 @@
+.nascondi-torna{position: static;}
+
 @media screen and (max-width:850px){
 	#panel-nav-1{display: block;}
 	#sezione-nav-1{display: none;}

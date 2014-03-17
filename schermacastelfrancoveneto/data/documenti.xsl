@@ -27,7 +27,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 	<body>
 		<div id="header"></div>
-		
+
 		<div id="boxTop"></div>
 
 		<p class="nascondi"><a href="#breadcrumb">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a></p>
@@ -44,7 +44,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 				</ul>
 			</div>
 			<div id="nav-2">
-				<a href="login.cgi" tabindex="5">Area Riservata</a>
+				<a href="amministra.cgi" tabindex="5">Area Riservata</a>
 			</div>
 
 		</div>
@@ -57,7 +57,6 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 		<div id="lista-documenti" class="nascondi" >
 			<ul title="lista dei documenti mostrati nella pagina classificati per titolo raggiungibili direttamente accendendo al link">
-				<!-- <xsl:variable name="contatore">1</xsl:variable>-->
 				<xsl:for-each select="d:testi/d:documento[position()&#60;&#61;__DOC__]">
 					<!-- mi salvo la variabile titolo che poi utilizzerò in href del link della lista -->
 					<xsl:variable name="titolo"><xsl:value-of select="d:titolo"/></xsl:variable>
@@ -80,12 +79,12 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					<div class="nascondi-articolo">
 						<p><xsl:value-of select="d:paragrafo" /></p>
 					</div>
-					<br />
+
 					<p><a href="#">Scarica documento [PDF]</a></p> <!-- SISTEMARE -->
-					<p class="nascondi"><a href="#content">Torna al primo documento della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
+					<p class="nascondi-torna"><a href="#content">Torna al primo documento della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 				</div>
 			</xsl:for-each>
-			<a href="documenti.cgi?documenti=__NDOC__">Vedi altri documenti(Verranno visualizzati __NDOC__ documenti in totale)</a>
+			<p id="mostra-piu"><a href="documenti.cgi?documenti=__NDOC__">Vedi altri documenti(Verranno visualizzati __NDOC__ documenti in totale)</a></p>
 		</div>
 		<!--  FINE SEZIONE -->
 
