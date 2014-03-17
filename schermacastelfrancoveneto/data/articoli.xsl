@@ -26,8 +26,9 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 	</head>
 
 	<body>
-		<div id="header">
-		</div>
+		<div id="header"></div>
+		
+		<div id="boxTop"></div>
 
 		<p class="nascondi">><a href="#breadcrumb">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a></p>
 
