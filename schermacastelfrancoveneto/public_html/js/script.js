@@ -65,3 +65,22 @@ $(document).ready(function(){
     $("#sfondo").fadeIn(5000);
 });
 /* FINE */
+
+
+	$(function() {
+	    $(window).scroll(function() {
+	        if($(this).scrollTop() > 300) {
+	                        //se non siamo in cima alla pagina
+	            $('#boxTop').fadeIn(); //faccio apparire il box    
+	        } else {
+	                        //altrimenti (il visitatore è in cima alla pagina scrollTop = 0)
+	            $('#boxTop').fadeOut();//Il box scompare
+	        }
+	    });//Allo scroll function
+	 
+	    $('#boxTop').click(function() {
+	                //Se clicco sul box torno su (scrollTop:0) con un timing di animazione.
+	        $('body,html').animate({scrollTop:0},800);
+	    });//Click
+	 
+	});//DOM
