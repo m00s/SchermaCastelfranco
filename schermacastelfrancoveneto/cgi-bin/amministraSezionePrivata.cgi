@@ -30,7 +30,8 @@ if(!$session->is_expired && !$session->is_empty){
 }
 
 
-#una volta scelto se modifica un articolo carico la pagina adeguata per inserire,modificare o eliminare articoli
+#una volta scelto se inserire modificare o eliminare 
+#scelgo se farlo in un articolo o documento e carico le form principali per ogni azione
 
 if($page->param('Inserisci'))
 {
@@ -73,8 +74,10 @@ if($page->param('Elimina'))
 }
 
 
+# azioni che coinvologono il salvataggio, la modifica e l'eliminazione dall'xml
 
 
+#azioni submit derivanti direttamente dalla pressione del submit permettono di inserire nuovi articoli o documenti
 if($page->param('submit') eq "Inserisci Articolo"){
 
 	&doInserimento();
@@ -91,6 +94,8 @@ if($page->param('submit') eq "Inserisci Documento"){
 }
 
 
+#azioni per caricare l'editor con i dati richiesti per la modifica di un articolo e 
+#salvataggio dell'articolo modificato
 if($page->param('modifica') eq "CaricaEditorArticolo"){
 
 	&doCaricaEditorModifica();
@@ -103,6 +108,9 @@ if($page->param('modifica') eq "SalvaArticolo"){
 	print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=articoli.cgi'>";
 	exit;
 }
+
+
+#stessa cosa di sopra solo che fatto per i documenti
 if($page->param('modifica') eq "CaricaEditorDocumento"){
 
 	&doCaricaEditorModificaDocumento();
@@ -117,6 +125,8 @@ if($page->param('modifica') eq "SalvaDocumento"){
 
 
 
+#eliminazione dei documenti scelti con il checkbox
+
 if($page->param('elimina') eq 'EliminaDocumenti'){
 
 	&doEliminaDocumenti();
@@ -124,6 +134,9 @@ if($page->param('elimina') eq 'EliminaDocumenti'){
 	exit;
 }
 
+
+
+#eliminazione degli articoli scelti con il checkbox
 if($page->param('elimina') eq 'EliminaArticoli'){
 
 	&doEliminaArticoli();

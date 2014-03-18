@@ -1,8 +1,3 @@
-use XML::Simple;
-use XML::LibXML;
-use XML::Twig;
-
-
 sub doCaricaFormModifica{
 	
 #ottengo il file HTML da modificare
@@ -14,14 +9,19 @@ close FILE;
 
 #estraggo gli articoli che ci sono e ne mostro data e luogo in cui sono stati effettuati per far selezionare quale cambiare
 my $path="../data/articoli.xml";
-my $parser = XMLin($path);
+my $parser = new XML::LibXML;
+my $doc_tree = $parser->parse_file($path);
+my $root = $doc_tree->documentElement();
+my $xpc = XML::LibXML::XPathContext->new($root);
+$xpc->registerNs('ts', 'http://www.articoli.com');
+my @articoli=$xpc->find('//ts:articolo')->get_nodelist();
 my $checkboxarticoli;
 my $appo;
 
-foreach $articolo (@{$parser->{articolo}})
+foreach $articolo (@articoli)
 {
-	$data=$articolo->{data};
-	$luogo=$articolo->{luogo};
+	my $data=$articolo->getElementsByTagName("data")->get_node(1)->string_value;
+	my $luogo=$articolo->getElementsByTagName("luogo")->get_node(1)->string_value;
 	
 	$appo="
 		<input type=\"radio\" name=\"modifica_articolo\"
@@ -54,6 +54,9 @@ close FILE;
 my $page=CGI->new();
 #estraggo i valori dalla query string per poi cercare l'articolo voluto
 @valori=split("/", $page->param("modifica_articolo"));
+
+print $valori[0]."+".$valori[1];
+
 my $path="../data/articoli.xml";
 my $parser = new XML::LibXML;
 my $doc_tree = $parser->parse_file($path);
@@ -61,21 +64,21 @@ my $doc_tree = $parser->parse_file($path);
 my $root = $doc_tree->documentElement();
 my $xpc = XML::LibXML::XPathContext->new($root);
 
-$xpc->registerNs('ts', 'http://www.documenti.com');
-@articoli=$xpc->find('//ts:articolo')->get_nodelist();
+$xpc->registerNs('ts', 'http://www.articoli.com');
+my @articoli=$xpc->find('//ts:articolo')->get_nodelist();
 
 foreach my $node (@articoli) {
 	my $data=$node->getElementsByTagName("data")->get_node(1)->string_value;
 	my $luogo=$node->getElementsByTagName("luogo")->get_node(1)->string_value;
 	if($data eq $valori[0] && $luogo eq $valori[1]){
-		$titolo=$node->getElementsByTagName("titolo")->get_node(1)->string_value;
-		$imgsrc=$node->getElementsByTagName("img")->get_node(1)->getAttribute("src");
+		my $titolo=$node->getElementsByTagName("titolo")->get_node(1)->string_value;
+		my $imgsrc=$node->getElementsByTagName("img")->get_node(1)->getAttribute("src");
 		my $img;
 		foreach $el (split('/',$imgsrc)){
 			$img=$el;
 		}
-		$imgalt=$node->getElementsByTagName("img")->get_node(1)->getAttribute("alt");
-		$paragrafo=$node->getElementsByTagName("paragrafo")->item(0)->toString;
+		my $imgalt=$node->getElementsByTagName("img")->get_node(1)->getAttribute("alt");
+		my $paragrafo=$node->getElementsByTagName("paragrafo")->item(0)->toString;
 		$paragrafo=~ s/\<paragrafo\>//;
 		$paragrafo=~ s/\<\/paragrafo\>//;
 		$editor=~ s/__LUOGO__/$luogo/g;
@@ -88,6 +91,8 @@ foreach my $node (@articoli) {
 	}
 
 }
+$editor=~ s/__ACTION__/Salva Articolo/;
+$editor=~ s/__VALOREMODIFICA__/SalvaArticolo/;
 
 print $editor;
 exit;
@@ -105,10 +110,6 @@ my $page=new CGI;
 
 	my @data=split('/',$page->param('data'));
 	my $dataDaSalvare=$data[2].'-'.$data[1].'-'.$data[0];
-
-	if($datavecchia ne $page->param('data')){
-		$dataDaSalvare=$page->param('data');
-	}
 
 	my $titolo=$page->param('titolo');
 	my $luogo=$page->param('luogo');
@@ -147,13 +148,11 @@ my $page=new CGI;
 	my $path="../data/articoli.xml";
 	my $parser = new XML::LibXML;
 	my $doc_tree = $parser->parse_file($path);
-
 	my $root = $doc_tree->documentElement();
 	my $xpc = XML::LibXML::XPathContext->new($root);
-
 	$xpc->registerNs('ts', 'http://www.articoli.com');
-	$query="//ts:articolo[ts:luogo=\"$vecchioluogo\" and ts:data=\"$datavecchia\"]";
-	@articoli=$xpc->find($query)->get_nodelist();
+	my $query="//ts:articolo[ts:luogo=\"$vecchioluogo\" and ts:data=\"$datavecchia\"]";
+	my @articoli=$xpc->find($query)->get_nodelist();
 
 	foreach my $node(@articoli){
 		$root->removeChild($node);
@@ -179,6 +178,5 @@ my $page=new CGI;
 		print OUT $doc_tree->toString();
 		close(OUT);
 	}
-	exit;	
 
 }

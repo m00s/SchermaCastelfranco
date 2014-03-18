@@ -35,6 +35,4 @@ sub doInserimentoDocumento{
 
 
 	#va fatto il caricamento del file pdf come quello della foto
-
-exit;
 }

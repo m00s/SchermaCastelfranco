@@ -44,7 +44,6 @@
 		<div id="content" >
 			
 			<form method="post" id="formInserimento" action="amministraSezionePrivata.cgi" enctype="multipart/form-data">
-				<input type="hidden" name="modifica" value="SalvaArticolo"/>
 				<fieldset>
 					<legend>Inserisci dati dell'articolo</legend>
 				<div>
@@ -79,7 +78,8 @@
 				</fieldset>
 				<input type="hidden" name="vecchiaData" value="__DATA__"/>
 				<input type="hidden" name="vecchioLuogo" value="__LUOGO__"/>
-				<input type="submit" name="submit" id="submit" value="Salva Articolo"/>
+				<input type="hidden" name="modifica" value="__VALOREMODIFICA__"/>
+				<input type="submit" name="submit" id="submit" value="__ACTION__"/>
 				</fieldset>
 			</form>
 			<div style="background-color: lightblue; width:50%; height:50%">

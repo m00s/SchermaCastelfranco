@@ -8,22 +8,27 @@ sub doCaricaFormElimina{
 
 	#estraggo gli articoli che ci sono e ne mostro data e luogo in cui sono stati effettuati per far selezionare quale cambiare
 	my $path="../data/articoli.xml";
-	my $parser = XMLin($path);
+	my $parser = new XML::LibXML;
+	my $doc_tree = $parser->parse_file($path);
+	my $root = $doc_tree->documentElement();
+	my $xpc = XML::LibXML::XPathContext->new($root);
+	$xpc->registerNs('ts', 'http://www.articoli.com');
+	my @articoli=$xpc->find('//ts:articolo')->get_nodelist();
 	my $checkboxarticoli;
 	my $appo;
 
-	foreach $articolo (@{$parser->{articolo}})
-	{
-	$data=$articolo->{data};
-	$luogo=$articolo->{luogo};
+	foreach $articolo (@articoli){
 
-	$appo="
-		<input type=\"checkbox\" name=\"elimina_articolo\"
-		 value=\"".$data."/".$luogo."\"/><label >"
-		 .$data." @ ".$luogo."</label></br>
-	";
+		my $data=$articolo->getElementsByTagName("data")->get_node(1)->string_value;
+		my $luogo=$articolo->getElementsByTagName("luogo")->get_node(1)->string_value;
 
-	$checkboxarticoli .= $appo;
+		$appo="
+			<input type=\"checkbox\" name=\"elimina_articolo\"
+			 value=\"".$data."/".$luogo."\"/><label >"
+			 .$data." @ ".$luogo."</label></br>
+		";
+
+		$checkboxarticoli .= $appo;
 	}
 
 	$form=~ s/__DATI__/$checkboxarticoli/;
@@ -60,7 +65,7 @@ sub doEliminaArticoli{
 	my $xpc = XML::LibXML::XPathContext->new($root);
 
 	$xpc->registerNs('ts', 'http://www.articoli.com');
-	@articoli=$xpc->find('//ts:articolo['.$query.']')->get_nodelist();
+	my @articoli=$xpc->find('//ts:articolo['.$query.']')->get_nodelist();
 	
 	foreach my $articolo(@articoli){
 		$root->removeChild($articolo);
@@ -73,6 +78,4 @@ sub doEliminaArticoli{
 		close(OUT);
 		
 	}
-exit;
-
 }

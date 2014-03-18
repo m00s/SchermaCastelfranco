@@ -10,14 +10,18 @@ close FILE;
 
 #estraggo gli articoli che ci sono e ne mostro data e luogo in cui sono stati effettuati per far selezionare quale cambiare
 my $path="../data/documenti.xml";
-my $parser = XMLin($path);
+my $parser = new XML::LibXML;
+my $doc_tree = $parser->parse_file($path);
+my $root = $doc_tree->documentElement();
+my $xpc = XML::LibXML::XPathContext->new($root);
+$xpc->registerNs('ts', 'http://www.documenti.com');
+my @documenti=$xpc->find('//ts:documento')->get_nodelist();
 my $checkboxdoc;
 my $appo;
-@documenti={$parser->{documento}};
 
 foreach $documento (@documenti)
 {
-	$titolo=$documento->{titolo}->toString;
+	my $titolo=$documento->getElementsByTagName("titolo")->get_node(1)->string_value;
 	
 	
 	$appo="
@@ -58,7 +62,7 @@ my $root = $doc_tree->documentElement();
 my $xpc = XML::LibXML::XPathContext->new($root);
 
 $xpc->registerNs('ts', 'http://www.documenti.com');
-@documenti=$xpc->find('//ts:documento')->get_nodelist();
+my @documenti=$xpc->find('//ts:documento')->get_nodelist();
 
 foreach my $node (@documenti) {
 	my $titolo=$node->getElementsByTagName("titolo")->get_node(1)->string_value;
@@ -78,6 +82,8 @@ foreach my $node (@documenti) {
 
 }
 
+$editor=~ s/__VALOREMODIFICA__/SalvaDocumento/;
+$editor=~ s/__ACTION__/Salva Documento/;
 print $editor;
 exit;
 
@@ -89,7 +95,6 @@ my $page=new CGI;
 
 	# estraggo i vecchi dati che ho salvato nei campi hidden per trovare l'articolo giusto nell'xml
 	my $vecchioTitolo=$page->param('vecchioTitolo');
-
 	my $titolo=$page->param('titolo');
 	my $testo=$page->param('testo');
 	my $doc=$page->param('documento');
@@ -102,8 +107,8 @@ my $page=new CGI;
 	my $xpc = XML::LibXML::XPathContext->new($root);
 
 	$xpc->registerNs('ts', 'http://www.documenti.com');
-	$query="//ts:documento[ts:titolo=\"$vecchioTitolo\"]";
-	@documenti=$xpc->find($query)->get_nodelist();
+	my $query="//ts:documento[ts:titolo=\"$vecchioTitolo\"]";
+	my @documenti=$xpc->find($query)->get_nodelist();
 
 	foreach my $node(@documenti){
 		$root->removeChild($node);
@@ -125,6 +130,4 @@ my $page=new CGI;
 		open(OUT,">$path");
 		print OUT $doc_tree->toString();
 	}
-	exit;
-
 }

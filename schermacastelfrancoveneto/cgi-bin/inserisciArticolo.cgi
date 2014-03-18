@@ -1,9 +1,3 @@
-#!/usr/bin/perl -w
-
-use XML::LibXML;
-use CGI;
-use File::Basename;
-
 sub doInserimento{
 
 my $page=new CGI;
@@ -41,7 +35,6 @@ my $page=new CGI;
 
 
 	my $fotoPath=$uploadDir."/".$foto;
-	print $fotoPath;
 
 	#esegue l'upload della foto passata 
 	#my $fotoFile = $page->upload("foto");
@@ -88,8 +81,5 @@ my $page=new CGI;
 		print OUT $doc->toString;
 		close(OUT);
 	}
-	exit;
+
 }
-
-
-

@@ -8,13 +8,18 @@ sub doCaricaFormEliminaDocumento{
 	close FILE;
 
 my $path="../data/documenti.xml";
-my $parser = XMLin($path);
+my $parser = new XML::LibXML;
+my $doc_tree = $parser->parse_file($path);
+my $root = $doc_tree->documentElement();
+my $xpc = XML::LibXML::XPathContext->new($root);
+$xpc->registerNs('ts', 'http://www.documenti.com');
+my @documenti=$xpc->find('//ts:documento')->get_nodelist();
 my $checkboxdoc;
 my $appo;
 
-foreach $documento (@{$parser->{documento}})
+foreach $documento (@documenti)
 {
-	$titolo=$documento->{titolo};
+	$titolo=$documento->getElementsByTagName("titolo")->get_node(1)->string_value;
 	
 	
 	$appo="
@@ -70,6 +75,4 @@ sub doEliminaDocumenti{
 		print OUT $doc_tree->toString();
 		close(OUT);
 	}
-
-	exit;
 }

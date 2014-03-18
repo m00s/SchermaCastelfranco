@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="articoli.xsl" ?>
 
-<testi xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.articoli.com" xs:schemaLocation="http://www.articoli.com articoli.xsd">
+<ts:testi xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.articoli.com" xs:schemaLocation="http://www.articoli.com articoli.xsd"  xmlns:ts="http://www.articoli.com">
 
 	<articolo>
 		<luogo>Arricia (RM)</luogo>
@@ -95,4 +95,4 @@ Nello stesso fine settimana a Manzano (UD) si è svolta la prima delle tre prove
 		</paragrafo>
 	</articolo>
 
-</testi>
+</ts:testi>

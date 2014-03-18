@@ -14,6 +14,7 @@ $string=~ s/__TITOLO__//;
 $string=~ s/__TESTO__//;
 $string=~ s/__FOTO__/Non vi sono vecchie foto inserite per questo nuovo articolo/;
 $string=~ s/__ALT__//;
+$string=~ s/__ACTION__/Inserisci Articolo/;
 
 print $string;
 }
@@ -25,9 +26,10 @@ while(!eof(FILE)){
 }
 close FILE;
 
-$string=~ s/__TITOLO__//;
+$string=~ s/__TITOLO__//g;
 $string=~ s/__TESTO__//;
 $string=~ s/__DOC__/Non vi sono vecchi documenti inseriti /;
+$string=~ s/__ACTION__/Inserisci Documento/;
 
 print $string;
 }

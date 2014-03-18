@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="documenti.xsl" ?>
 
-<testi xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.documenti.com" xs:schemaLocation="http://www.documenti.com documenti.xsd">
+<ts:testi xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.documenti.com" xs:schemaLocation="http://www.documenti.com documenti.xsd" xmlns:ts="http://www.documenti.com">
 	<documento>
 		<titolo>DICHIARAZIONE DI SPESE</titolo>
 		<paragrafo>Documento che permette di dichiarare le spese di iscrizione ai corsi del Circolo di Scherma di Castelfranco Veneto.</paragrafo>
@@ -15,4 +15,4 @@
 	</documento>
 
 
-</testi>
+</ts:testi>
