@@ -53,7 +53,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 			<p>Ti trovi in: Documenti</p>
 		</div>
 
-		<p class="nascondi"><a href="#sidebar">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a></p>
+		<p class="nascondi"><a href="#sidebar">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma, agli <span xml:lang="en">sponsor</span> e alla <span xml:lang="en">gallery</span></a></p>
 
 		<div id="lista-documenti" class="nascondi" >
 			<ul title="lista dei documenti mostrati nella pagina classificati per titolo raggiungibili direttamente accendendo al link">
@@ -118,6 +118,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 			</div>
 		</div>
 
+		<p class="nascondi"><a href="#nav">Torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 
 		<div id="footer">
 			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>

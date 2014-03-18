@@ -5,18 +5,21 @@
 		<title>Seleziona tipologia di documento da inserire - Scherma Castelfranco Veneto</title>
 		<meta name="description" content="Pagina per la scelta della tipologia di documento da inserire, con possibilità tra documento o articolo" />
 		<meta name="author" content="Chiara Bigarella, Mirko Pavanello, Massimiliano Sartoretto, Paolo Tesser" />
-		<meta name="keywords" content="circolo, scherma, corsi, orari, Castelfranco Veneto" />
-		<meta name="robots" content="index,follow" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- serve per il responsive nei dispositivi mobile -->
+		<meta name="robots" content="noindex,nofollow" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../css/stile.css" type="text/css"/>
 		<link rel="stylesheet" href="../css/aural.css" type="text/css" />
 		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
 		<link rel="Shortcut Icon" href="../img/struttura/favicon.ico" type="image/x-icon" />
-		<script  type="text/javascript" charset="UTF-8" src="../js/jquery.js" ></script> <!-- da impostare quando serve usare qualche script -->
 		<link href="../css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
 		<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+		<script  type="text/javascript" charset="UTF-8" src="../js/jquery.js" ></script>
 		<script src="../js/jquery-1.10.2.js"></script>
 		<script src="../js/jquery-ui-1.10.4.custom.js"></script>
+		<script  type="text/javascript" charset="UTF-8" src="../js/script.js" ></script>
+		<noscript>
+			<link rel="stylesheet" href="../css/stilenojava.css" type="text/css"/>
+		</noscript>
 	</head>
 	<body>
 		<div id="header">
@@ -25,57 +28,34 @@
 			<div id="nav-1">
 				<ul id="sezione-nav-1"><li id="image-menu" title="contiene immagine del menù per il mobile"></li></ul>
 				<ul id="panel-nav-1">
-					<li>Inserisci</li>
-					<li><a href="amministraSezionePrivata.cgi?Seleziona=modifica">Modfica</a></li>
-					<li><a href="amministraSezionePrivata.cgi?Seleziona=elimina">Elimina</a></li>
+					<li id="active">Inserisci</li>
+					<li><a href="amministraSezionePrivata.cgi?Seleziona=modifica" tabindex="1">Modfica</a></li>
+					<li class="last-link"><a href="amministraSezionePrivata.cgi?Seleziona=elimina" tabindex="2">Elimina</a></li>
 				</ul>
 			</div>
 			<div id="nav-2">
-				<a href="amministra.cgi?logout=esci">Effettua Logout</a>
+				<a href="articoli.cgi" tabindex="3">Torna al sito</a>
+				<a href="amministra.cgi?logout=esci" tabindex="4">Effettua<span xml:lang="en">Logout</span></a>
 			</div>
 		</div>
 		<div id="breadcrumb">
-			<p>Ti trovi in: Home > Inserisci</p>
+			<p>Ti trovi in: Amministra > Inserisci</p>
 		</div>
 
-		<div id="content" >
-			
-			<form method="post" aciton="amministraSezionePrivata">
-				<select name="cosa">
-					<option value="articolo">Articolo</option>
-					<option value="documento">Documento</option>
-				</select>
-				<input type="submit" name="Inserisci" value="Inserisci">
-			</form>
-		</div>
-
-		<div id="sidebar">
-			<ul id="sezione-sidebar"><li>LINK ESTERNI</li></ul>
-			<div id="panel-sidebar">
-				<ul title="">
-					<li><span>SPONSOR LINK</span>
-						<ul>
-							<li title=""><a href="http://www.fabbian.com/it">Fabbian</a></li>
-							<li title=""><a href="http://www.goppioncaffe.it">Goppion</a></li>
-							<li title=""><a href="http://www.carmimari.com">Carminari</a></li>
-							<li title=""><a href="http://www.gnocchimaster.com">Gnocchi Master</a></li>
-						</ul>
-					</li>
-				</ul>
-				<ul title="">
-					<li><span>SCHERMA LINK</span>
-						<ul>
-							<li title=""><a href="http://www.fie.ch">FIE</a></li>
-							<li title=""><a href="http://www.federscherma.it/index.asp">Federal Scherma</a></li>
-							<li title=""><a href="http://www.schermaveneto.it">Scherma Veneto</a></li>
-							<li title=""><a href="http://www.comune.castelfrancoveneto.tv.it">Comune Castelfranco Veneto</a></li>
-						</ul>
-					</li>
-				</ul>
-
-				<ul title=""><li title=""><a href="#">GALLERY</a></li></ul>
+		<div id="content-amministra" >
+			<div class="struttura-content">
+				<form method="post" aciton="amministraSezionePrivata">
+					<select name="cosa">
+						<option value="articolo">Articolo</option>
+						<option value="documento">Documento</option>
+					</select>
+					<input type="submit" name="Inserisci" value="Inserisci">
+				</form>
 			</div>
 		</div>
+
+		<p class="nascondi"><a href="#nav">Torna al <span xml:lang="fr">menù</span> di amministrazione</a></p>
+
 		<div id="footer">
 			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="Logo piè di pagina validazione html"/>
 			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>

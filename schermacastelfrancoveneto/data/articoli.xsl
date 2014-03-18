@@ -53,7 +53,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 			<p>Ti trovi in: Articoli</p>
 		</div>
 
-		<p class="nascondi">><a href="#sidebar">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a></p>
+		<p class="nascondi"><a href="#sidebar">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma, agli <span xml:lang="en">sponsor</span> e alla <span xml:lang="en">gallery</span></a></p>
 
 		<div id="lista-articoli" class="nascondi" >
 			<ul title="lista degli articoli mostrati nella pagina classificati per luogo e data di svolgimento raggiungibili direttamente accendendo al link">
@@ -134,6 +134,8 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 				<ul><li title="link che manda alla pagina Google Foto contenente tutte le immagine delle gare disputate dal circolo"><a href="https://plus.google.com/photos/100772179390595520915/albums?banner=pwa" target="_blank"><span xml:lang="en" class="desc-li">GALLERY</span></a></li></ul>
 			</div>
 		</div>
+
+		<p class="nascondi"><a href="#nav">Torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 
 		<div id="footer">
 			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>
