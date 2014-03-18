@@ -9,12 +9,18 @@
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{hyperref}
+\usepackage{array,booktabs}
+
+% Identazione tabella gruppo Frontespizio.tex
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 % Header and Footer
 
 \fancypagestyle{std}{
 	\fancyhf{}
-	\lhead{\includegraphics[width=2cm]{images/frontImage.png}}
+	\lhead{\includegraphics[width=1.7cm]{images/frontImage.png}}
 	\chead{}
 	\rhead {\nouppercase{\leftmark}}
 	\lfoot{}
@@ -26,7 +32,7 @@
 
 \fancypagestyle{romano}{
 	\fancyhf{}
-	\lhead{\includegraphics[width=2cm]{images/frontImage.png}}
+	\lhead{\includegraphics[width=1.7cm]{images/frontImage.png}}
 	\chead{}
 	\lfoot{}
 	\cfoot{}
