@@ -1,6 +1,8 @@
 use XML::Simple;
 use XML::LibXML;
 use XML::Twig;
+
+
 sub doCaricaFormModifica{
 	
 #ottengo il file HTML da modificare
@@ -23,14 +25,16 @@ foreach $articolo (@{$parser->{articolo}})
 	
 	$appo="
 		<input type=\"radio\" name=\"modifica_articolo\"
-		 value=\"".$data."/".$luogo."\"/><label for=\"m_articolo_4\">"
+		 value=\"".$data."/".$luogo."\"/><label>"
 		 .$data." @ ".$luogo."</label><br/>
 	";
 
 	$checkboxarticoli .= $appo;
 }
 
-$form=~ s/__ARTICOLI__/$checkboxarticoli/;
+$form=~ s/__DATI__/$checkboxarticoli/;
+$form=~ s/__TIPO__/Articolo/g;
+$form=~ s/__VALOREMODIFICA__/CaricaEditorArticolo/;
 
 print $form;
 exit;
@@ -41,7 +45,7 @@ exit;
 
 sub doCaricaEditorModifica{
 #ottengo il file HTML da modificare
-open (FILE, "<","../data/editorModifica.html");
+open (FILE, "<","../data/editorArticoli.html");
 while(!eof(FILE)){
 	$editor .= <FILE>;
 }
@@ -57,7 +61,7 @@ my $doc_tree = $parser->parse_file($path);
 my $root = $doc_tree->documentElement();
 my $xpc = XML::LibXML::XPathContext->new($root);
 
-$xpc->registerNs('ts', 'http://www.articoli.com');
+$xpc->registerNs('ts', 'http://www.documenti.com');
 @articoli=$xpc->find('//ts:articolo')->get_nodelist();
 
 foreach my $node (@articoli) {
@@ -85,8 +89,6 @@ foreach my $node (@articoli) {
 
 }
 
-
-
 print $editor;
 exit;
 }
@@ -101,14 +103,10 @@ my $page=new CGI;
 	my $datavecchia=$page->param('vecchiaData');
 	my $vecchioluogo=$page->param('vecchioLuogo');
 
-	my @data;
-	my $dataDaSalvare;
+	my @data=split('/',$page->param('data'));
+	my $dataDaSalvare=$data[2].'-'.$data[1].'-'.$data[0];
 
 	if($datavecchia ne $page->param('data')){
-		@data=split('/',$page->param('data'));
-		$dataDaSalvare=$data[2].'-'.$data[1].'-'.$data[0];
-	}
-	else{
 		$dataDaSalvare=$page->param('data');
 	}
 
@@ -180,8 +178,7 @@ my $page=new CGI;
 		open(OUT,">$path");
 		print OUT $doc_tree->toString();
 		close(OUT);
-		print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=articoli.cgi'>";
-		exit;
 	}
+	exit;	
 
 }

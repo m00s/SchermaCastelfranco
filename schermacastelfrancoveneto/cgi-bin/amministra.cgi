@@ -30,12 +30,12 @@ if($page->param("submit")){
 		$session->param('login', 'admin');
 		$session->flush();
 		# print "Location: $url\n\n";
-		print header('text/html');
+		print "Content-type: text/html\n\n";
 		print "<!DOCTYPE HTML> <html><head>";
 		print "<link type='text/css' rel='stylesheet' href='../public_html/css/stile.css' media='handheld, screen'/><link type='text/css' rel='stylesheet' href='../public_html/css/print.css' media='braille' />";
 		print "</head><body>";
 		print $session->header();
-		print "<p>Login effettuato con successo</p><META HTTP-EQUIV='Refresh' CONTENT='3; URL=http://www.google.com'>";
+		print "<p>Login effettuato con successo</p><META HTTP-EQUIV='Refresh' CONTENT='3; URL=amministraSezionePrivata.cgi'>";
 		print "</body> </html>";
 	}
 	else{

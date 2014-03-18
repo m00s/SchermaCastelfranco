@@ -19,7 +19,7 @@ my $page=new CGI;
 	my $fotoNome=$page->param('foto');
 	my $altFoto=$page->param('altfoto');
 
-	my $uploadDir="../img/gare";
+	my $uploadDir="../public_html/img/gare";
 
 
 	#setta la grandezza massima della foto
@@ -29,20 +29,37 @@ my $page=new CGI;
 	#my $caratteri_permessi = "a-zA-Z0-9_.-";
 
 	#faccio parse della stringa passata direttamente dal browser
-	my ( $nome, $path, $estensione ) = fileparse ( $fotoNome, '..*' );
-	$fotoNome = $nome.$estensione;
+	#my ( $nome, $path, $estensione ) = fileparse ( $fotoNome, '..*' );
+	$foto ="ciao.jpg";
 
-	$fotoNome =~ tr/ /_/; #in caso ci siano spazi nel nome della foto li cambio con degli _ per non creare problemi
+	$foto =~ tr/ /_/; #in caso ci siano spazi nel nome della foto li cambio con degli _ per non creare problemi
+	
 	#nel caso volessi eseguire il passo di rimuovere dal nome tutti i caratteri che potrebbero dare problemi eseguo 
 	#il seguente comando
 	#$fotoname =~ s/[^$safe_filename_characters]//g;
 
-	my $fotoPath=$uploadDir."/".$fotoNome;
+
+
+	my $fotoPath=$uploadDir."/".$foto;
+	print $fotoPath;
 
 	#esegue l'upload della foto passata 
-	my $fotoFile = $page->upload("photo");
+	#my $fotoFile = $page->upload("foto");
 
+	#salvo il file dentro la cartella che avevo scelto con il nome scelto
+	open ( OUTFILE, ">",$fotoPath ) or die "$!";
+	my $nBytes = 0;
+	my $totBytes = 0;
+	my $buffer = "";
+	binmode($fotoNome);
+	binmode(OUTFILE);
+	while ( $nBytes = read($fotoNome, $buffer, 1024) ) {
+		print OUTFILE $buffer;
+		$totBytes += $nBytes;
+	}
 
+	close(OUTFILE);
+	
 	
 	#INSERIMENTO DEI DATI VERIFICATI DENTO articoli.xml
 	my $path="../data/articoli.xml";
@@ -70,9 +87,9 @@ my $page=new CGI;
 		open(OUT,">$path");
 		print OUT $doc->toString;
 		close(OUT);
-		print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=articoli.cgi'>";
-		exit;
 	}
-
-
+	exit;
 }
+
+
+

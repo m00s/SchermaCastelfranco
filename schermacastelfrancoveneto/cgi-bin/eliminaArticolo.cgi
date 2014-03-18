@@ -1,3 +1,78 @@
-sub doCaricaFormElimina{}
+sub doCaricaFormElimina{
+	#ottengo il file HTML da modificare
+	open (FILE, "< ../data/formElimina.html");
+	while(!eof(FILE)){
+	$form .= <FILE>;
+	}
+	close FILE;
 
-sub doEliminaArticoli{}
+	#estraggo gli articoli che ci sono e ne mostro data e luogo in cui sono stati effettuati per far selezionare quale cambiare
+	my $path="../data/articoli.xml";
+	my $parser = XMLin($path);
+	my $checkboxarticoli;
+	my $appo;
+
+	foreach $articolo (@{$parser->{articolo}})
+	{
+	$data=$articolo->{data};
+	$luogo=$articolo->{luogo};
+
+	$appo="
+		<input type=\"checkbox\" name=\"elimina_articolo\"
+		 value=\"".$data."/".$luogo."\"/><label >"
+		 .$data." @ ".$luogo."</label></br>
+	";
+
+	$checkboxarticoli .= $appo;
+	}
+
+	$form=~ s/__DATI__/$checkboxarticoli/;
+	$form=~ s/__TIPO__/Articoli/g;
+	$form=~ s/__VALOREELIMINA__/EliminaArticoli/;
+
+
+	print $form;
+	exit;
+
+}
+
+sub doEliminaArticoli{
+
+	my $page=CGI->new();
+
+
+	my @valori=$page->param("elimina_articolo");
+
+	foreach  my $valore (@valori){
+		my @dati=split("/", $valore);
+	
+		$query.="(ts:luogo=\"".$dati[1]."\" and ts:data=\"".$dati[0]."\") or ";
+	
+	}
+
+	$query=	substr $query, 0, -3;
+
+	my $path="../data/articoli.xml";
+	my $parser = new XML::LibXML;
+	my $doc_tree = $parser->parse_file($path);
+
+	my $root = $doc_tree->documentElement();
+	my $xpc = XML::LibXML::XPathContext->new($root);
+
+	$xpc->registerNs('ts', 'http://www.articoli.com');
+	@articoli=$xpc->find('//ts:articolo['.$query.']')->get_nodelist();
+	
+	foreach my $articolo(@articoli){
+		$root->removeChild($articolo);
+	}
+
+	if($root){
+
+		open(OUT,">$path");
+		print OUT $doc_tree->toString();
+		close(OUT);
+		
+	}
+exit;
+
+}
