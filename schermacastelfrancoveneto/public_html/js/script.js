@@ -26,7 +26,7 @@ function checkLogin(){
 		
 		return (uok && pok);
 	}
-
+/* FINE */
 
 $(document).ready(function(){
 
@@ -79,8 +79,85 @@ $(document).ready(function(){
 	});
 });
 
+/* FINE */
+
+/* SCRIPT PER LA PREVALIDAZIONE DEI FORM DI INSERIMENTO */
+
+function checkInserimentoArticolo(){
+	var luogo = document.inserisciArticoloForm.luogo.value;
+	var data = document.inserisciArticoloForm.data.value;
+	var titolo = document.inserisciArticoloForm.titolo.value;
+	var testo = document.inserisciArticoloForm.testo.value;
+	var altfoto = document.inserisciArticoloForm.altfoto.value;
+	
+	var lok = true;
+	var dok = true;
+	var tok = true;
+	var teok = true;
+	var aok = true;
+	
+	document.getElementById('errors').innerHTML = " ";
+	
+	if ((luogo == "") || (luogo == "undefined")){
+			document.getElementById('errors').innerHTML += 'Luogo non valido';
+			lok=false;
+		}
+		
+	if ((data == "") || (data == "undefined")){
+			document.getElementById('errors').innerHTML += '<br />Data non valida';
+			dok=false;
+		}
+	
+	if ((titolo == "") || (titolo == "undefined")){
+			document.getElementById('errors').innerHTML += '<br />Titolo non valido';
+			tok=false;
+		}
+	if ((testo == "") || (testo == "undefined")){
+			document.getElementById('errors').innerHTML += '<br />Testo non valido';
+			teok=false;
+		}
+		
+	if ((altfoto == "") || (altfoto == "undefined")){
+			document.getElementById('errors').innerHTML += '<br />Descrizione fotografia non valida';
+			aok=false;
+		}
+	
+	return (lok && doc && tok && teok && aok);
+}
+
+function checkInserimentoDocumento(){
+	var titolo = document.inserisciDocumentoForm.titolo.value;
+	var testo = document.inserisciDocumentoForm.testo.value;
+	var tok = true;
+	var teok = true;
+	
+	document.getElementById('errors').innerHTML = " ";
+	
+	
+	if ((titolo == "") || (titolo == "undefined")){
+			document.getElementById('errors').innerHTML += '<br />Titolo non valido';
+			tok=false;
+		}
+		
+	if ((testo == "") || (testo == "undefined")){
+			document.getElementById('errors').innerHTML += '<br />Testo non valido';
+			teok=false;
+		}
+	
+	return (tok && teok); 
+}
 
 /* FINE */
+
+
+/* CAMBIO DI SELECT VALUE*/
+
+function selectChange(){
+	document.selectCategory.submit();
+}
+
+/* FINE */
+
 
 /* SCRIPT PER LA GESTIONE DELL'EDITOR DELL'AREA RISERVATA */
 
@@ -120,7 +197,6 @@ $(document).ready(function(){
 		        //Get textArea HTML control
 		        var txtArea = document.getElementById(idTextArea);
 
-
 		        //IE
 		        if (document.selection) {
 		            txtArea.focus();
@@ -158,6 +234,9 @@ $(document).ready(function(){
 
 
 /* FINE */
+
+
+
 
 /* SCRIPT PER LO SFONDO DELLA HOME */
 $(document).ready(function(){

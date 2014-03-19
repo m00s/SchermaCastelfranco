@@ -49,13 +49,16 @@
 
 		<div id="content-amministra">
 			<div class="struttura-content">
-				<form method="post" aciton="amministraSezionePrivata">
-					<select name="cosa">
+				<form name="selectCategory"method="post" action="amministraSezionePrivata.cgi">
+					<label>Seleziona categoria:</label>
+					<select onchange="selectChange()" name="cosa">
 						<option __SELECTART__ value="articolo">Articolo</option>
 						<option __SELECTDOC__ value="documento">Documento</option>
 					</select>
 					<input type="hidden" name="Seleziona" value="modifica"/>
-					<input type="submit" name="Modifica" value="Modifica">
+					<noscript>
+						<input type="submit" name="Modifica" value="Modifica">
+					</noscript>
 				</form>
 			</div>
 			<div class="struttura-content">

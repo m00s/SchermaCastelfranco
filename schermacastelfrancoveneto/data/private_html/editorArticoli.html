@@ -48,17 +48,20 @@
 
 		<div id="content" >
 			<div class="struttura-content">
-				<form method="post" aciton="amministraSezionePrivata">
-					<select name="cosa">
+				<form name="selectCategory" method="post" action="amministraSezionePrivata.cgi">
+					<label>Seleziona categoria:</label>
+					<select onchange="selectChange()" name="cosa">
 						<option selected value="articolo">Articolo</option>
 						<option value="documento">Documento</option>
 					</select>
 					<input type="hidden" name="Seleziona" value="__VALSELEZIONA__"/>
-					<input type="submit" name="__SUBMITYPE__" value="__SUBMITYPE__">
+					<noscript>
+						<input type="submit" name="__SUBMITYPE__" value="__SUBMITYPE__">
+					</noscript>
 				</form>
 			</div>
 			<div class="struttura-content" id="inserisci">
-				<form id="inserisci-form" method="post" action="amministraSezionePrivata.cgi" enctype="multipart/form-data">
+				<form name="inserisciArticoloForm" id="inserisci-form" method="POST" action="amministraSezionePrivata.cgi" enctype="multipart/form-data">
 					<fieldset>
 						<legend>Inserisci dati dell'articolo</legend>
 					<div>
@@ -89,6 +92,7 @@
 						<fieldset id="stile">
 							<button type="button" onclick="InsertCodeInTextArea(' <em></em>')"><em>Corsivo</em></button>
 							<button type="button" onclick="InsertCodeInTextArea(' <strong></strong>')"><strong>Grassetto</strong></button>
+							<button type="button" onclick="InsertCodeInTextArea(' <abbr title=&#34; &#34;></abbr>')">Abbreviazione</button>
 						</fieldset>
 					</div>
 					<fieldset>
@@ -100,13 +104,16 @@
 					<input type="hidden" name="vecchiaData" value="__DATA__"/>
 					<input type="hidden" name="vecchioLuogo" value="__LUOGO__"/>
 					<input type="hidden" name="modifica" value="__VALOREMODIFICA__"/>
-					<p><input type="submit" name="submit" id="submit" value="__ACTION__"/></p>
+					<p><input type="submit" name="submit" id="submit" value="__ACTION__" onclick="return checkInserimentoArticolo();"/></p>
 					</fieldset>
 				</form>
 				<div>
 					<p id="trasfData"></p>
 					<p><b id="trasfTitolo"></b></p>
 					<p id="trasfTesto"></p>
+				</div>
+				<div>
+					<span id="errors"></span>
 				</div>
 			</div>
 		</div>

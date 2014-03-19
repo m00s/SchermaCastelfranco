@@ -48,17 +48,20 @@
 
 		<div id="content" >
 			<div class="struttura-content">
-				<form method="post" aciton="amministraSezionePrivata">
-					<select name="cosa">
+				<form name="selectCategory" method="post" action="amministraSezionePrivata.cgi">
+					<label>Seleziona categoria:</label>
+					<select onchange="selectChange()" name="cosa">
 						<option value="articolo">Articolo</option>
 						<option selected value="documento">Documento</option>
 					</select>
 					<input type="hidden" name="Seleziona" value="__VALSELEZIONA__"/>
-					<input type="submit" name="__SUBMITYPE__" value="__SUBMITYPE__">
+					<noscript>
+						<input type="submit" name="__SUBMITYPE__" value="__SUBMITYPE__">
+					</noscript>
 				</form>
 			</div>
 			<div class="struttura-content">
-				<form id="inserisci-form" method="post" action="amministraSezionePrivata.cgi" enctype="multipart/form-data">
+				<form name="inserisciDocumentoForm" id="inserisci-form" method="post" action="amministraSezionePrivata.cgi" enctype="multipart/form-data">
 					<fieldset>
 						<legend>Inserisci dati del documento</legend>
 					<div>
@@ -88,13 +91,15 @@
 					</fieldset>
 					<input type="hidden" name="vecchioTitolo" value="__TITOLO__"/>
 					<input type="hidden" name="modifica" value="__VALOREMODIFICA__"/>
-					<p><input type="submit" name="submit" id="submit" value="__ACTION__"/></p>
+					<p><input type="submit" name="submit" id="submit" value="__ACTION__" onclick="return checkInserimentoDocumento();"/></p>
 					</fieldset>
 				</form>
 				<div>
-					<p id="trasfData"></p>
 					<p><b id="trasfTitolo"></b></p>
 					<p id="trasfTesto"></p>
+				</div>
+				<div>
+					<span id="errors"></span>
 				</div>
 			</div>
 		</div>
