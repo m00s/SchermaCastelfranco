@@ -24,8 +24,8 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 			<link rel="stylesheet" href="../css/stilenojava.css" type="text/css"/>
 		</noscript>
 	</head>
-
-	<body>
+	
+	<body onload="scrollTo()">
 		<div id="header"></div>
 
 		<div id="boxTop"></div>
@@ -80,8 +80,8 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					<xsl:variable name="luogo"><xsl:value-of select="a:luogo"/></xsl:variable>
 					<xsl:variable name="data"><xsl:value-of select="a:data"/></xsl:variable>
 					<xsl:variable name="luogo-data"><xsl:value-of select="$luogo" /> in data <xsl:value-of select="$data" /></xsl:variable>
-
 					<div class="article" > <!-- id="{$luogo-data}" -->
+					
 						<div class="sezione" id="{$luogo-data}">
 							<p><xsl:value-of select="a:data"/></p>
 							<p><xsl:value-of select="a:luogo"/></p>
@@ -93,14 +93,19 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 								<xsl:value-of select="substring(a:paragrafo, 0, 1000)"/>..
 								<!-- <xsl:value-of select="a:paragrafo"/> -->
 							</p>
-
 						</div>
 						<p><a href="#">Vai all'articolo intero</a></p>
 						<p class="nascondi-torna"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
+						
+						<xsl:if test="__NART__&#62;2">
+							<xsl:if test="position()&#61;(__ART__-2)">
+								<div id="anchor"></div>
+							</xsl:if>
+						</xsl:if>
 					</div>
 			</xsl:for-each>
 
-			<p id="mostra-piu"><a href="articoli.cgi?articoli=__NART__">Vedi altri articoli (Verranno visualizzati __NART__ articoli in totale)</a></p>
+			<p id="mostra-piu"><a href="articoli.cgi?articoli=__NART__">Mostra articoli meno recenti</a></p>
 
 		</div>
 		<!--  FINE SEZIONE -->

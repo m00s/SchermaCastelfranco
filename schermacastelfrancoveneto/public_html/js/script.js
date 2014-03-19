@@ -158,6 +158,14 @@ function selectChange(){
 
 /* FINE */
 
+/* SCRIPT RIPOSIZIONAMENTO ULTIMI ARTICOLI VISUALIZZATI */
+
+function scrollTo(){
+	location.hash = "#anchor";
+}
+
+/* FINE */
+
 
 /* SCRIPT PER LA GESTIONE DELL'EDITOR DELL'AREA RISERVATA */
 
@@ -244,10 +252,9 @@ $(document).ready(function(){
 });
 /* FINE */
 
-
 	$(function() {
 	    $(window).scroll(function() {
-	        if($(this).scrollTop() > 300) {
+	        if($(this).scrollTop() > 0) {
 	                        //se non siamo in cima alla pagina
 	            $('#boxTop').fadeIn(); //faccio apparire il box    
 	        } else {
