@@ -25,7 +25,7 @@ sub getLogin{
 # return $bodyPagina;
 
 #ottengo il file HTML da modificare
-open (FILE, "<","../data/pagLogin.html");
+open (FILE, "<","../data/private_html/pagLogin.html");
 while(!eof(FILE)){
 	$pagina .= <FILE>;
 }

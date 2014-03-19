@@ -48,6 +48,16 @@
 
 		<div id="content" >
 			<div class="struttura-content">
+				<form method="post" aciton="amministraSezionePrivata">
+					<select name="cosa">
+						<option value="articolo">Articolo</option>
+						<option value="documento">Documento</option>
+					</select>
+					<input type="hidden" name="Seleziona" value="inserisci"/>
+					<input type="submit" name="Inserisci" value="Inserisci">
+				</form>
+			</div>
+			<div class="struttura-content">
 				<form id="inserisci-form" method="post" action="amministraSezionePrivata.cgi" enctype="multipart/form-data">
 					<fieldset>
 						<legend>Inserisci dati del documento</legend>

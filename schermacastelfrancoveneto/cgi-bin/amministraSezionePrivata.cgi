@@ -33,44 +33,41 @@ if(!$session->is_expired && !$session->is_empty){
 #una volta scelto se inserire modificare o eliminare 
 #scelgo se farlo in un articolo o documento e carico le form principali per ogni azione
 
-if($page->param('Inserisci'))
+if($page->param('Seleziona') eq 'inserisci')
 {
-	if($page->param('cosa') eq "articolo"){
-
-		&getEditor();
-		exit;	
-	}
 	if($page->param('cosa') eq "documento"){
 
 		&getEditorDocumento();
 		exit;	
 	}
-}
-if($page->param('Modifica'))
-{
-	if($page->param('cosa') eq "articolo"){
 
-		&doCaricaFormModifica();
-		exit;	
-	}
+	&getEditor();
+	exit;	
+	
+	
+}
+if($page->param('Seleziona') eq 'modifica')
+{
 	if($page->param('cosa') eq "documento"){
 
 		&doCaricaFormModificaDocumento();
 		exit;	
 	}
-}
-if($page->param('Elimina'))
-{
-	if($page->param('cosa') eq "articolo"){
 
-		&doCaricaFormElimina();
-		exit;	
-	}
+	&doCaricaFormModifica();
+	exit;	
+
+}
+if($page->param('Seleziona') eq 'elimina')
+{
 	if($page->param('cosa') eq "documento"){
 
 		&doCaricaFormEliminaDocumento();
 		exit;	
 	}
+
+	&doCaricaFormElimina();
+	exit;
 }
 
 
@@ -145,5 +142,5 @@ if($page->param('elimina') eq 'EliminaArticoli'){
 	exit;
 }
 
-&selezionaCosa();
+&getEditor();
 exit;

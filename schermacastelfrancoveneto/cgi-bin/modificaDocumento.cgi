@@ -2,7 +2,7 @@ sub doCaricaFormModificaDocumento{
 	
 
 #ottengo il file HTML da modificare
-open (FILE, "< ../data/formModifica.html");
+open (FILE, "< ../data/private_html/formModifica.html");
 while(!eof(FILE)){
 	$form .= <FILE>;
 }

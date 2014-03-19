@@ -1,7 +1,7 @@
 sub getEditor{
 	
 #ottengo il file HTML da modificare
-open (FILE, "< ../data/editorArticoli.html");
+open (FILE, "< ../data/private_html/editorArticoli.html");
 while(!eof(FILE)){
 	$string .= <FILE>;
 }
@@ -20,7 +20,7 @@ print $string;
 }
 
 sub getEditorDocumento{
-open (FILE, "< ../data/editorDocumenti.html");
+open (FILE, "< ../data/private_html/editorDocumenti.html");
 while(!eof(FILE)){
 	$string .= <FILE>;
 }

@@ -40,23 +40,28 @@ my $page=new CGI;
 	#my $fotoFile = $page->upload("foto");
 
 	#salvo il file dentro la cartella che avevo scelto con il nome scelto
-	open ( OUTFILE, ">",$fotoPath ) or die "$!";
-	my $nBytes = 0;
-	my $totBytes = 0;
-	my $buffer = "";
-	binmode($fotoNome);
-	binmode(OUTFILE);
-	while ( $nBytes = read($fotoNome, $buffer, 1024) ) {
-		print OUTFILE $buffer;
-		$totBytes += $nBytes;
-	}
+	my ($bytesread, $buffer);
+    my $num_bytes = 1024;
+    my $totalbytes;
+    my $untainted_filename;
+	open (OUTFILE, ">", "$fotoPath") or die "Couldn't open $file for writing: $!";
 
-	close(OUTFILE);
-	
+        while ($bytesread = read($fotoNome, $buffer, $num_bytes)) {
+            $totalbytes += $bytesread;
+            print OUTFILE $buffer;
+            print $buffer;
+            print $bytesread;
+        }
+        print "ciao";
+        print $page->param('foto')->toString;
+        print totalbytes;
+        exit;
+
+
+	my $fotoSRC="../img/gare/".$foto;
 	
 	#INSERIMENTO DEI DATI VERIFICATI DENTO articoli.xml
 	my $path="../data/articoli.xml";
-
 	my $parser = XML::LibXML->new();
 	my $doc = $parser->parse_file($path);
 	my $rootDoc= $doc->getDocumentElement;
@@ -67,7 +72,7 @@ my $page=new CGI;
 		<luogo>".$luogo."</luogo>
 		<data>".$dataDaSalvare."</data>
 		<titolo>".$titolo."</titolo>
-		<img src=\"".$fotoPath."\" alt=\"".$altFoto."\"/>
+		<img src=\"".$fotoSRC."\" alt=\"".$altFoto."\"/>
 		<paragrafo>".$testo."</paragrafo>
 	</articolo>
 
