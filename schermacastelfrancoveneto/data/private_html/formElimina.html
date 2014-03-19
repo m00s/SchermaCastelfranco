@@ -8,14 +8,9 @@
 		<meta name="robots" content="noindex,nofollow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../css/stile.css" type="text/css"/>
-		<link rel="stylesheet" href="../css/aural.css" type="text/css" />
 		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
 		<link rel="Shortcut Icon" href="../img/struttura/favicon.ico" type="image/x-icon" />
-		<link href="../css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet"/>
-		<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
-		<script  type="text/javascript" charset="UTF-8" src="../js/jquery.js" ></script>
-		<script src="../js/jquery-1.10.2.js"></script>
-		<script src="../js/jquery-ui-1.10.4.custom.js"></script>
+		<script  type="text/javascript" charset="UTF-8" src="../js/librerie/jquery-1.11.0.min.js" ></script>
 		<script  type="text/javascript" charset="UTF-8" src="../js/script.js" ></script>
 		<noscript>
 			<link rel="stylesheet" href="../css/stilenojava.css" type="text/css"/>
@@ -31,7 +26,7 @@
 				<ul id="panel-nav-1">
 					<li><a href="amministraSezionePrivata.cgi?Seleziona=inserisci" tabindex="1">Inserisci</a></li>
 					<li><a href="amministraSezionePrivata.cgi?Seleziona=modifica" tabindex="2">Modfica</a></li>
-					<li id="active" class="last-link"><!--<a href="amministraSezionePrivata.cgi?Seleziona=elimina">Elimina</a>-->Elimina</li>
+					<li id="active" class="last-link">Elimina</li>
 				</ul>
 			</div>
 			<div id="nav-2">
@@ -47,20 +42,20 @@
 
 		<div id="content-amministra">
 			<div class="struttura-content">
-				<form name="selectCategory" method="post" action="amministraSezionePrivata.cgi">
+				<form  name="selectCategory" method="post" action="amministraSezionePrivata.cgi">
 					<label>Seleziona categoria:</label>
 					<select onchange="selectChange()" name="cosa">
-						<option __SELECTART__ value="articolo">Articolo</option>
-						<option __SELECTDOC__ value="documento">Documento</option>
+						<option __SELECTART__ value="articolo" tabindex="5">Articolo</option>
+						<option __SELECTDOC__ value="documento" tabindex="6">Documento</option>
 					</select>
 					<input type="hidden" name="Seleziona" value="elimina" />
 					<noscript>
-						<input type="submit" name="Elimina" value="Elimina">
+						<input type="submit" name="Elimina" value="Elimina" tabindex="7">
 					</noscript>
 				</form>
 			</div>
-			<div class="struttura-content">
-				<form method="post" action="amministraSezionePrivata.cgi" style="width:50%;">
+			<div class="struttura-content" id="elimina">
+				<form id="elimina-form" method="post" action="amministraSezionePrivata.cgi">
 					<input type="hidden" name="elimina" value="__VALOREELIMINA__"/>
 					<fieldset>
 					<legend>Seleziona il/gli __TIPO__/i da eliminare</legend>
@@ -75,7 +70,7 @@
 
 		<div id="footer">
 			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>
-			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>
+			<span class="footerElement">- L'intrusa - <span xml:lang="en">All rights reserved</span> - </span>
 			<img class="footerElement" src="../img/struttura/vcss-blue.gif" alt="immagine che indica che lo stile applicato al sito web è valido come css attraverso la verifica del W3C"/>
 		</div>
 

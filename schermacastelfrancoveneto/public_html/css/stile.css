@@ -90,6 +90,13 @@ li#active{
 	background-color: #eb8b8b;
 }
 
+#nav-2-active{
+	float: right;
+	padding:0.4em;
+	background-color: #020000;
+	color: #FEFFFF;
+}
+
 #breadcrumb {
   position: absolute;
   left: -999em;
@@ -251,6 +258,11 @@ li#active{
 #info th{padding: 0.2em;}
 #info td{padding: 0.3em;}
 
+div#active{
+	background-color: #020000;
+	color: #FEFFFF;
+}
+
 #login{
 	padding: 0.5em;
 	background-color: #eb8b8b;
@@ -260,7 +272,6 @@ li#active{
 #no-area{display: none;}
 
 #login h1{font-size: 1.2em;}
-
 #login-form{
 	text-align: center;
 }
@@ -269,12 +280,29 @@ li#active{
 	margin-top: 2%;
 	margin-bottom: 2%;
 }
+
 #inserisci-form p{
 	margin-top: 0.2em;
 	margin-bottom: 0.2em;
 }
 #inserisci-form fieldset{border: none;}
 #inserisci-form fieldset legend{
+	margin-bottom: 1.5%;
+	font-weight: bold;
+}
+
+#modifica-form fieldset{border: none;}
+#modifica-form fieldset legend{
+	margin-bottom: 1.5%;
+	font-weight: bold;
+}
+#modfica-form fieldset input[type="radio"]{
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+}
+
+#elimina-form fieldset{border: none;}
+#elimina-form fieldset legend{
 	margin-bottom: 1.5%;
 	font-weight: bold;
 }
@@ -289,8 +317,8 @@ li#active{
 	width: 23%;
 	background-color: #eb8b8b;
 	color:black;
-	/* margin-top: 3%;*/
-	margin-top: 35px;
+	margin-top: 3%;
+	/* margin-top: 35px; */
 }
 
 .sidebar-fixed{
@@ -312,6 +340,12 @@ li#active{
 #panel-sidebar ul li ul li{
 	margin-bottom: 3%;
 	text-indent: 2%;
+}
+
+#legenda-inserimento{ }
+#legenda-inserimento dt{
+	margin-bottom: 6%;
+	font-weight: bold;
 }
 
 #footer{
@@ -372,8 +406,15 @@ li#active{
 	#nav-2{
 		float:none;
 		clear: both;
+		text-align: center;
 		/* margin-top: 3%; */
+		width:14em;
+	}
+	#nav-2-active{
+		float:none;
+		clear: both;
 		width:6.8em;
+		text-align: center;
 	}
 
 	.article img{
@@ -462,8 +503,16 @@ li#active{
 	}
 	.sidebar-fixed{
 		position: static;
+		display: block;
+		float: left;
+		clear: both;
+		margin-top: 0;
+		width: 99%;
 	}
 
+	#legenda-inserimento dt{
+		margin-bottom: 2%;
+	}
 
 	#boxTop{
 	    right:0.6em;

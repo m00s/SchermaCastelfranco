@@ -10,10 +10,9 @@
 		<meta name="robots" content="index,follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../css/stile.css" type="text/css"/>
-		<link rel="stylesheet" href="../css/aural.css" type="text/css" />
 		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
 		<link rel="Shortcut Icon" href="../img/struttura/favicon.ico" type="image/x-icon" />
-		<script  type="text/javascript" charset="UTF-8" src="../js/jquery.js" ></script>
+		<script  type="text/javascript" charset="UTF-8" src="../js/librerie/jquery-1.11.0.min.js" ></script>
 		<script  type="text/javascript" charset="UTF-8" src="../js/script.js" ></script>
 		<noscript>
 			<link rel="stylesheet" href="../css/stilenojava.css" type="text/css"/>
@@ -24,7 +23,7 @@
 		<div id="header">
 		</div>
 
-		<p class="nascondi"><a href="#breadcrumb">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a></p>
+		<p class="nascondi"><a href="#breadcrumb">Salta <span xml:lang="fr">menù</span> e vai al contenuto</a></p>
 
 		<div id="nav">
 			<div id="nav-1">
@@ -38,14 +37,14 @@
 				</ul>
 			</div>
 
-			<div id="nav-2">
-				<a href="amministra.cgi" tabindex="6">Area Riservata</a>
+			<div id="nav-2-active">
+				<p>Area Riservata</p>
 			</div>
 
 		</div>
 
 		<div id="breadcrumb">
-			<p>Ti trovi in: Storia</p>
+			<p>Ti trovi in: Accedi all'area privata</p>
 		</div>
 
 		<p class="nascondi"><a href="#sidebar">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a></p>
@@ -59,9 +58,9 @@
 				<form name="loginForm" method="POST" action="amministra.cgi" id="login-form">
 					<fieldset>
 			   			<legend><span xml:lang="en" class="nascondi">Login</span></legend>
-			   			<p><label for="username"><span xml:lang="en">Username </span></label><input type="text" name="username" id="username" /></p>
-			   			<p><label for="password" id="passLabel"><span xml:lang="en">Password </span></label><input type="password" id="password" name="password" /></p>
-			   			<p><input type="submit" id="submit" name="submit" value="Accedi" onclick="return checkLogin();"/></p>
+			   			<p><label for="username"><span xml:lang="en">Username </span></label><input type="text" name="username" id="username" tabindex="6"/></p>
+			   			<p><label for="password" id="passLabel"><span xml:lang="en">Password </span></label><input type="password" id="password" name="password" tabindex="7"/></p>
+			   			<p><input type="submit" id="submit" name="submit" value="Accedi" onclick="return checkLogin();" tabindex="8" /></p>
 			   			<p><span id="userError"></span></p>
 			   			<p><span id="passError"></span></p>
 				   	</fieldset>
@@ -100,10 +99,11 @@
 			</div>
 		</div>
 
+		<p class="nascondi"><a href="#nav">Torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 
 		<div id="footer">
 			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>
-			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>
+			<span class="footerElement">- L'intrusa - <span xml:lang="en">All rights reserved</span> - </span>
 			<img class="footerElement" src="../img/struttura/vcss-blue.gif" alt="immagine che indica che lo stile applicato al sito web è valido come css attraverso la verifica del W3C"/>
 		</div>
 	</body>

@@ -8,14 +8,12 @@
 		<meta name="robots" content="noindex,nofollow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../css/stile.css" type="text/css"/>
-		<link rel="stylesheet" href="../css/screen.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
 		<link rel="Shortcut Icon" href="../img/struttura/favicon.ico" type="image/x-icon" />
 		<link href="../css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
 		<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
-		<script  type="text/javascript" charset="UTF-8" src="../js/jquery.js" ></script>
-		<script src="../js/jquery-1.10.2.js"></script>
-		<script src="../js/jquery-ui-1.10.4.custom.js"></script>
+		<script type="text/javascript" src="../js/librerie/jquery-ui-1.10.4.custom.min.js"></script>
+		<script  type="text/javascript" charset="UTF-8" src="../js/librerie/jquery-1.11.0.min.js" ></script>
 		<script  type="text/javascript" charset="UTF-8" src="../js/script.js" ></script>
 		<noscript>
 			<link rel="stylesheet" href="../css/stilenojava.css" type="text/css"/>
@@ -51,8 +49,8 @@
 				<form name="selectCategory" method="post" action="amministraSezionePrivata.cgi">
 					<label>Seleziona categoria:</label>
 					<select onchange="selectChange()" name="cosa">
-						<option value="articolo">Articolo</option>
-						<option selected value="documento">Documento</option>
+						<option value="articolo" tabindex="5">Articolo</option>
+						<option selected value="documento" tabindex="6">Documento</option>
 					</select>
 					<input type="hidden" name="Seleziona" value="__VALSELEZIONA__"/>
 					<noscript>
@@ -67,31 +65,31 @@
 					<div>
 						<label>
 							<p>Titolo:</p>
-							<p><input type="text" id="titolo" name="titolo" size="40" value="__TITOLO__"onblur="setId(this.id)"/></p>
+							<p><input type="text" id="titolo" name="titolo" size="40" value="__TITOLO__"onblur="setId(this.id)" tabindex="7" /></p>
 						</label>
 						</div>
 					<p>Testo:</p>
-					<p><textarea id="testo" name="testo" rows="10" cols="50" onblur="setId(this.id)">__TESTO__</textarea></p>
+					<p><textarea id="testo" name="testo" rows="10" cols="50" onblur="setId(this.id)" tabindex="8">__TESTO__</textarea></p>
 					<div id="textOptions">
 						<fieldset id="lingue">
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;en&#34;></span>')">Inglese</button>
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;fr&#34;></span>')">Francese</button>
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;de&#34;></span>')">Tedesco</button>
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;ch&#34;></span>')">Svizzero</button>
+							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;en&#34;></span>')" tabindex="9">Inglese</button>
+							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;fr&#34;></span>')" tabindex="10">Francese</button>
+							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;de&#34;></span>')" tabindex="11">Tedesco</button>
+							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;ch&#34;></span>')" tabindex="12">Svizzero</button>
 						</fieldset>
 						<fieldset id="stile">
-							<button type="button" onclick="InsertCodeInTextArea(' <em></em>')"><em>Corsivo</em></button>
-							<button type="button" onclick="InsertCodeInTextArea(' <strong></strong>')"><strong>Grassetto</strong></button>
+							<button type="button" onclick="InsertCodeInTextArea(' <em></em>')" tabindex="13"><em>Corsivo</em></button>
+							<button type="button" onclick="InsertCodeInTextArea(' <strong></strong>')" tabindex="14"><strong>Grassetto</strong></button>
 						</fieldset>
 					</div>
 					<fieldset>
 						<p>__INPUTVECCHIODOCUMENTO__</p>
 						<legend>Inserisci documento in PDF</legend>
-						<p><label>Aggiungi pdf: <input type="file" name="documento" /></label></p>
+						<p><label>Aggiungi pdf: <input type="file" name="documento" tabindex="15"/></label></p>
 					</fieldset>
 					<input type="hidden" name="vecchioTitolo" value="__TITOLO__"/>
 					<input type="hidden" name="modifica" value="__VALOREMODIFICA__"/>
-					<p><input type="submit" name="submit" id="submit" value="__ACTION__" onclick="return checkInserimentoDocumento();"/></p>
+					<p><input type="submit" name="submit" id="submit" value="__ACTION__" onclick="return checkInserimentoDocumento();" tabindex="16"/></p>
 					</fieldset>
 				</form>
 				<div>
@@ -104,14 +102,25 @@
 			</div>
 		</div>
 		<div id="sidebar">
-
+			<dl id="legenda-inserimento">
+				<dt>Legenda tag inserimento</dt>
+				<dd>Le seguenti istruzioni servono per comprendere l'utilizzo dei pulsanti presenti nella form e di come utilizzarli in caso javascript sia disabilitato.</dd>
+				<dd>Per ognuno dei tag </dd>
+				<dd>Inglese: </dd>
+				<dd>Francese:</dd>
+				<dd>Tedesco:</dd>
+				<dd>Svizzero:</dd>
+				<dd>Corsivo:</dd>
+				<dd>Grassetto:</dd>
+				<dd>Abbreviazione:</dd>
+			</dl>
 		</div>
 
 
 		<div id="footer">
-			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="Rompere il vetro in caso di maiali"/>
-			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>
-			<img class="footerElement" src="../img/struttura/vcss-blue.gif" alt="Rompere il vetro in caso di maiali"/>
+			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>
+			<span class="footerElement">- L'intrusa - <span xml:lang="en">All rights reserved</span> - </span>
+			<img class="footerElement" src="../img/struttura/vcss-blue.gif" alt="immagine che indica che lo stile applicato al sito web è valido come css attraverso la verifica del W3C"/>
 		</div>
 
 	</body>

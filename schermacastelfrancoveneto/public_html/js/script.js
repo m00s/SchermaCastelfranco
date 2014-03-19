@@ -6,7 +6,7 @@ function checkLogin(){
 		var password = document.loginForm.password.value;
 		var uok=true;
 		var pok=true;
-		
+
 		if ((username == "") || (username == "undefined")){
 			document.getElementById('userError').innerHTML = '(!) Username non valido';
 			uok=false;
@@ -23,7 +23,7 @@ function checkLogin(){
 			document.getElementById('passError').innerHTML = '';
 			pok=true;
 		}
-		
+
 		return (uok && pok);
 	}
 /* FINE */
@@ -41,7 +41,7 @@ $(document).ready(function(){
 	});
 });
 
-/* SCRIPT PER LA GESTIONE RESPONSIVE DEL MENU' E DEI LINK ESTERNI */
+/* SCRIPT PER LA GESTIONE RESPONSIVE DEL MENU', DEI LINK ESTERNI E DEI DOCUMENTI/ARTICOLI */
 
 $(document).ready(function(){
 
@@ -95,34 +95,34 @@ function checkInserimentoArticolo(){
 	var tok = true;
 	var teok = true;
 	var aok = true;
-	
+
 	document.getElementById('errors').innerHTML = " ";
-	
+
 	if ((luogo == "") || (luogo == "undefined")){
 			document.getElementById('errors').innerHTML += '<br /> (!) Luogo non valido';
 			lok=false;
 		}
-		
+
 	if ((datepicker == "") || (datepicker == "undefined")){
 			document.getElementById('errors').innerHTML += '<br /> (!) Data non valida';
 			dok=false;
 		}
-	
+
 	if ((titolo == "") || (titolo == "undefined")){
 			document.getElementById('errors').innerHTML += '<br /> (!) Titolo non valido';
 			tok=false;
 		}
-		
+
 	if ((testo == "") || (testo == "undefined")){
 			document.getElementById('errors').innerHTML += '<br /> (!) Testo non valido';
 			teok=false;
 		}
-		
+
 	if ((altfoto == "") || (altfoto == "undefined")){
 			document.getElementById('errors').innerHTML += '<br /> (!) Descrizione fotografia non valida';
 			aok=false;
 		}
-	
+
 	return (lok && dok && tok && teok && aok);
 }
 
@@ -131,20 +131,20 @@ function checkInserimentoDocumento(){
 	var testo = document.inserisciDocumentoForm.testo.value;
 	var tok = true;
 	var teok = true;
-	
-	document.getElementById('errors').innerHTML = " ";	
-	
+
+	document.getElementById('errors').innerHTML = " ";
+
 	if ((titolo == "") || (titolo == "undefined")){
 			document.getElementById('errors').innerHTML += '<br /> (!) Titolo non valido';
 			tok=false;
 		}
-		
+
 	if ((testo == "") || (testo == "undefined")){
 			document.getElementById('errors').innerHTML += '<br /> (!) Testo non valido';
 			teok=false;
 		}
-	
-	return (tok && teok); 
+
+	return (tok && teok);
 }
 
 /* FINE */
@@ -240,32 +240,90 @@ function scrollTo(){
 				});
 			});
 
-
 /* FINE */
 
 
+/* SCRIPT PER IL BOX TORNA SU */
 
-
-/* SCRIPT PER LO SFONDO DELLA HOME */
-$(document).ready(function(){
-    $("#sfondo").fadeIn(5000);
-});
-/* FINE */
-
-	$(function() {
-	    $(window).scroll(function() {
-	        if($(this).scrollTop() > 0) {
-	                        //se non siamo in cima alla pagina
-	            $('#boxTop').fadeIn(); //faccio apparire il box    
+$(function() {
+	  $(window).scroll(function() {
+	       if($(this).scrollTop() > 0) {
+	            //se non siamo in cima alla pagina
+	            $('#boxTop').fadeIn(); //faccio apparire il box
 	        } else {
-	                        //altrimenti (il visitatore è in cima alla pagina scrollTop = 0)
+	            //altrimenti (il visitatore è in cima alla pagina scrollTop = 0)
 	            $('#boxTop').fadeOut();//Il box scompare
 	        }
 	    });//Allo scroll function
-	 
+
 	    $('#boxTop').click(function() {
 	                //Se clicco sul box torno su (scrollTop:0) con un timing di animazione.
 	        $('body,html').animate({scrollTop:0},800);
 	    });//Click
-	 
-	});//DOM
+
+});//DOM
+
+/* FINE */
+
+/* GESTIONE SIDEBAR POSIZIONAMENTO*/
+/*
+$(document).ready(function(){
+	var topFixed=272;
+
+	var msie6 = $.browser == 'msie' && $.browser.version < 7;
+	// var safari = ;
+	if ($(window).width()>850){
+		if (!msie6){
+			// alert(topFixed);
+			var top=$("#sidebar").offset().top - parseFloat($("#sidebar").css("marginTop").replace(/auto/,0));
+			// alert(top);
+			var y=$(window).scrollTop();
+			// alert(y);
+
+			if (y>=top){
+				$("#sidebar").addClass("sidebar-fixed");
+				$("#sidebar").css("margin-top","0");
+				$("#sidebar").css("width","21.6%");
+			}
+			$(window).scroll(function(){
+				var y=$(window).scrollTop();
+				if (y>= top){
+					$("#sidebar").addClass("sidebar-fixed");
+					$("#sidebar").css("margin-top","0");
+					$("#sidebar").css("width","21.6%");
+				}else{
+					$("#sidebar").removeClass("sidebar-fixed");
+					$("#sidebar").css("margin-top","3%");
+					$("#sidebar").css("width","23%");
+				}
+				/*
+				if ($(window).width()<850){
+						$("#sidebar").removeClass("sidebar-fixed")
+						$("#sidebar").css("width","99%");
+						$("#sidebar").css("margin-top","0");
+				}
+				*/
+//			});
+
+//	}
+//	}
+
+//});
+
+
+/*
+function staticF(){
+	$("#sidebar").css({
+		"position": "static",
+		"display": "block",
+		"float": "left",
+		"clear": "both",
+		"margin-top": "0",
+		"width": "99%"
+
+	});
+}
+
+/*
+
+/* FINE */
