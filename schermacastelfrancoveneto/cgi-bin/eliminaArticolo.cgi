@@ -34,6 +34,8 @@ sub doCaricaFormElimina{
 	$form=~ s/__DATI__/$checkboxarticoli/;
 	$form=~ s/__TIPO__/Articoli/g;
 	$form=~ s/__VALOREELIMINA__/EliminaArticoli/;
+	$form=~ s/__SELECTART__/selected/;
+	$form=~ s/__SELECTDOC__//;
 
 
 	print $form;

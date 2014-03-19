@@ -51,10 +51,11 @@
 			<div class="struttura-content">
 				<form method="post" aciton="amministraSezionePrivata">
 					<select name="cosa">
-						<option value="articolo">Articolo</option>
-						<option value="documento">Documento</option>
+						<option __SELECTART__ value="articolo">Articolo</option>
+						<option __SELECTDOC__ value="documento">Documento</option>
 					</select>
-					<input type="submit" name="Inserisci" value="Inserisci">
+					<input type="hidden" name="Seleziona" value="modifica"/>
+					<input type="submit" name="Modifica" value="Modifica">
 				</form>
 			</div>
 			<div class="struttura-content">

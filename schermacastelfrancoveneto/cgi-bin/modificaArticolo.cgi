@@ -35,6 +35,8 @@ foreach $articolo (@articoli)
 $form=~ s/__DATI__/$checkboxarticoli/;
 $form=~ s/__TIPO__/Articolo/g;
 $form=~ s/__VALOREMODIFICA__/CaricaEditorArticolo/;
+$form=~ s/__SELECTART__/selected/;
+$form=~ s/__SELECTDOC__//;
 
 print $form;
 exit;
@@ -45,17 +47,24 @@ exit;
 
 sub doCaricaEditorModifica{
 #ottengo il file HTML da modificare
-open (FILE, "<","../data/editorArticoli.html");
+open (FILE, "<","../data/private_html/editorArticoli.html");
 while(!eof(FILE)){
 	$editor .= <FILE>;
 }
 close FILE;
+$editor=~ s/__INPUTFOTOVECCHIA__/<label>Vecchia foto: <input type="text" name="vecchiaFoto" value="__FOTO__" readonly\/><\/label>/g;
+$editor=~ s/__ACTION__/Salva Articolo/;
+$editor=~ s/__VALOREMODIFICA__/SalvaArticolo/;
+$editor=~ s/__VALSELEZIONA__/modifica/;
+$editor=~ s/__SUBMITYPE__/Modifica/g;
+$editor=~ s/__ACTIVEINS__//;
+$editor=~ s/__ACTIVEMOD__/ id="active"/;
+$editor=~ s/__LINKINS__/<a href="amministraSezionePrivata.cgi?Seleziona=inserisci" tabindex="1">Inserisci<\/a>/;
+$editor=~ s/__LINKMOD__/Modifica/;
 
 my $page=CGI->new();
 #estraggo i valori dalla query string per poi cercare l'articolo voluto
 @valori=split("/", $page->param("modifica_articolo"));
-
-print $valori[0]."+".$valori[1];
 
 my $path="../data/articoli.xml";
 my $parser = new XML::LibXML;
@@ -91,8 +100,7 @@ foreach my $node (@articoli) {
 	}
 
 }
-$editor=~ s/__ACTION__/Salva Articolo/;
-$editor=~ s/__VALOREMODIFICA__/SalvaArticolo/;
+
 
 print $editor;
 exit;

@@ -33,6 +33,8 @@ foreach $documento (@documenti)
 $form=~ s/__DATI__/$checkboxdoc/;
 $form=~ s/__TIPO__/Documenti/g;
 $form=~ s/__VALOREELIMINA__/EliminaDocumenti/;
+$form=~ s/__SELECTART__//;
+$form=~ s/__SELECTDOC__/selected/;
 
 
 print $form;

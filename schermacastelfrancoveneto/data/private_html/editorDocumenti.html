@@ -30,8 +30,8 @@
 			<div id="nav-1">
 				<ul id="sezione-nav-1"><li id="image-menu" title="contiene immagine del menù per il mobile"></li></ul>
 				<ul id="panel-nav-1">
-					<li id="active"><!--<a href="amministraSezionePrivata.cgi?Seleziona=inserisci">Inserisci</a>-->Inserisci</li>
-					<li><a href="amministraSezionePrivata.cgi?Seleziona=modifica" tabindex="1">Modfica</a></li>
+					<li __ACTIVEINS__ > __LINKINS__ </li>
+					<li __ACTIVEMOD__ > __LINKMOD__ </li>
 					<li class="last-link"><a href="amministraSezionePrivata.cgi?Seleziona=elimina" tabindex="2">Elimina</a></li>
 				</ul>
 			</div>
@@ -43,7 +43,7 @@
 		</div>
 
 		<div id="breadcrumb">
-			<p>Ti trovi in: Amministra > Inserisci documento</p>
+			<p>Ti trovi in: Amministra > Inserisci</p>
 		</div>
 
 		<div id="content" >
@@ -53,8 +53,8 @@
 						<option value="articolo">Articolo</option>
 						<option selected value="documento">Documento</option>
 					</select>
-					<input type="hidden" name="Seleziona" value="inserisci"/>
-					<input type="submit" name="Inserisci" value="Inserisci">
+					<input type="hidden" name="Seleziona" value="__VALSELEZIONA__"/>
+					<input type="submit" name="__SUBMITYPE__" value="__SUBMITYPE__">
 				</form>
 			</div>
 			<div class="struttura-content">
@@ -82,9 +82,9 @@
 						</fieldset>
 					</div>
 					<fieldset>
-						<label>Vecchio documento: <input type="text" name="vecchioDoc" value="__DOC__" readonly></label><br/>
+						<p>__INPUTVECCHIODOCUMENTO__</p>
 						<legend>Inserisci documento in PDF</legend>
-						<label>Aggiungi pdf: <input type="file" name="documento" /></label>
+						<p><label>Aggiungi pdf: <input type="file" name="documento" /></label></p>
 					</fieldset>
 					<input type="hidden" name="vecchioTitolo" value="__TITOLO__"/>
 					<input type="hidden" name="modifica" value="__VALOREMODIFICA__"/>
@@ -98,7 +98,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div id="sidebar">
 
 		</div>

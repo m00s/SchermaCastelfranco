@@ -1,6 +1,4 @@
 sub doCaricaFormModificaDocumento{
-	
-
 #ottengo il file HTML da modificare
 open (FILE, "< ../data/private_html/formModifica.html");
 while(!eof(FILE)){
@@ -35,6 +33,8 @@ foreach $documento (@documenti)
 $form=~ s/__DATI__/$checkboxdoc/;
 $form=~ s/__TIPO__/Documento/g;
 $form=~ s/__VALOREMODIFICA__/CaricaEditorDocumento/;
+$form=~ s/__SELECTART__//;
+$form=~ s/__SELECTDOC__/selected/;
 
 
 print $form;
@@ -45,11 +45,23 @@ exit;
 sub doCaricaEditorModificaDocumento{
 
 #ottengo il file HTML da modificare
-open (FILE, "<","../data/editorDocumenti.html");
+open (FILE, "<","../data/private_html/editorDocumenti.html");
 while(!eof(FILE)){
 	$editor .= <FILE>;
 }
 close FILE;
+
+$editor=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__DOC__" readonly \/><\/label>/g;
+
+$editor=~ s/__VALOREMODIFICA__/SalvaDocumento/;
+$editor=~ s/__ACTION__/Salva Documento/;
+$editor=~ s/__VALSELEZIONA__/modifica/;
+$editor=~ s/__SUBMITYPE__/Modifica/g;
+$editor=~ s/__ACTIVEINS__//;
+$editor=~ s/__ACTIVEMOD__/ id="active"/;
+$editor=~ s/__LINKINS__/<a href="amministraSezionePrivata.cgi?Seleziona=inserisci" tabindex="1">Inserisci<\/a>/;
+$editor=~ s/__LINKMOD__/Modifica/;
+
 
 my $page=CGI->new();
 #estraggo i valori dalla query string per poi cercare l'articolo voluto
@@ -82,8 +94,6 @@ foreach my $node (@documenti) {
 
 }
 
-$editor=~ s/__VALOREMODIFICA__/SalvaDocumento/;
-$editor=~ s/__ACTION__/Salva Documento/;
 print $editor;
 exit;
 
