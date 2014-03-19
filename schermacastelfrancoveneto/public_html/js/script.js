@@ -40,6 +40,7 @@ $(document).ready(function(){
 
 	});
 });
+
 /* SCRIPT PER LA GESTIONE RESPONSIVE DEL MENU' E DEI LINK ESTERNI */
 
 $(document).ready(function(){
@@ -85,11 +86,10 @@ $(document).ready(function(){
 
 function checkInserimentoArticolo(){
 	var luogo = document.inserisciArticoloForm.luogo.value;
-	var data = document.inserisciArticoloForm.data.value;
+	var datepicker = document.inserisciArticoloForm.datepicker.value;
 	var titolo = document.inserisciArticoloForm.titolo.value;
 	var testo = document.inserisciArticoloForm.testo.value;
 	var altfoto = document.inserisciArticoloForm.altfoto.value;
-	
 	var lok = true;
 	var dok = true;
 	var tok = true;
@@ -99,30 +99,31 @@ function checkInserimentoArticolo(){
 	document.getElementById('errors').innerHTML = " ";
 	
 	if ((luogo == "") || (luogo == "undefined")){
-			document.getElementById('errors').innerHTML += 'Luogo non valido';
+			document.getElementById('errors').innerHTML += '<br /> (!) Luogo non valido';
 			lok=false;
 		}
 		
-	if ((data == "") || (data == "undefined")){
-			document.getElementById('errors').innerHTML += '<br />Data non valida';
+	if ((datepicker == "") || (datepicker == "undefined")){
+			document.getElementById('errors').innerHTML += '<br /> (!) Data non valida';
 			dok=false;
 		}
 	
 	if ((titolo == "") || (titolo == "undefined")){
-			document.getElementById('errors').innerHTML += '<br />Titolo non valido';
+			document.getElementById('errors').innerHTML += '<br /> (!) Titolo non valido';
 			tok=false;
 		}
+		
 	if ((testo == "") || (testo == "undefined")){
-			document.getElementById('errors').innerHTML += '<br />Testo non valido';
+			document.getElementById('errors').innerHTML += '<br /> (!) Testo non valido';
 			teok=false;
 		}
 		
 	if ((altfoto == "") || (altfoto == "undefined")){
-			document.getElementById('errors').innerHTML += '<br />Descrizione fotografia non valida';
+			document.getElementById('errors').innerHTML += '<br /> (!) Descrizione fotografia non valida';
 			aok=false;
 		}
 	
-	return (lok && doc && tok && teok && aok);
+	return (lok && dok && tok && teok && aok);
 }
 
 function checkInserimentoDocumento(){
@@ -131,16 +132,15 @@ function checkInserimentoDocumento(){
 	var tok = true;
 	var teok = true;
 	
-	document.getElementById('errors').innerHTML = " ";
-	
+	document.getElementById('errors').innerHTML = " ";	
 	
 	if ((titolo == "") || (titolo == "undefined")){
-			document.getElementById('errors').innerHTML += '<br />Titolo non valido';
+			document.getElementById('errors').innerHTML += '<br /> (!) Titolo non valido';
 			tok=false;
 		}
 		
 	if ((testo == "") || (testo == "undefined")){
-			document.getElementById('errors').innerHTML += '<br />Testo non valido';
+			document.getElementById('errors').innerHTML += '<br /> (!) Testo non valido';
 			teok=false;
 		}
 	
