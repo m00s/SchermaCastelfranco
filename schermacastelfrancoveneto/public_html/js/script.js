@@ -1,4 +1,33 @@
 
+/* Script di controllo preventivo dei campi del login */
+
+function checkLogin(){
+		var username = document.loginForm.username.value;
+		var password = document.loginForm.password.value;
+		var uok=true;
+		var pok=true;
+		
+		if ((username == "") || (username == "undefined")){
+			document.getElementById('userError').innerHTML = '(!) Username non valido';
+			uok=false;
+		}
+		else{
+			document.getElementById('userError').innerHTML = '';
+			uok=true;
+		}
+		if ((password == "") || (password == "undefined")){
+			document.getElementById('passError').innerHTML = '(!) Password non valida';
+			pok=false;
+		}
+		else{
+			document.getElementById('passError').innerHTML = '';
+			pok=true;
+		}
+		
+		return (uok && pok);
+	}
+
+
 $(document).ready(function(){
 
 	$("#sezione-nav-1").click(function(){
@@ -55,7 +84,77 @@ $(document).ready(function(){
 
 /* SCRIPT PER LA GESTIONE DELL'EDITOR DELL'AREA RISERVATA */
 
+		var idTextArea;
 
+		function setId(idValue){
+			idTextArea=idValue;
+		}
+
+		$(document).ready(function () {
+            $("#testo").change(
+                function () {
+					var text = document.getElementById("testo").value;
+					document.getElementById("trasfTesto").innerHTML = text;
+                }
+            );
+
+
+            $("#datepicker").change(
+                function () {
+                	var date = document.getElementById("datepicker").value;
+					document.getElementById("trasfData").innerHTML = date;
+				}
+            );
+
+            $("#titolo").change(
+                function () {
+                	var title = document.getElementById("titolo").value;
+					document.getElementById("trasfTitolo").innerHTML = title;
+				}
+            );
+
+
+        });
+
+			function InsertCodeInTextArea(textValue) {
+		        //Get textArea HTML control
+		        var txtArea = document.getElementById(idTextArea);
+
+
+		        //IE
+		        if (document.selection) {
+		            txtArea.focus();
+		            var sel = document.selection.createRange();
+		            sel.text = textValue;
+		            return;
+		        }
+		        //Firefox, chrome, mozilla
+		        else if (txtArea.selectionStart || txtArea.selectionStart == '0') {
+		            var startPos = txtArea.selectionStart;
+		            var endPos = txtArea.selectionEnd;
+		            var scrollTop = txtArea.scrollTop;
+		            txtArea.value = txtArea.value.substring(0, startPos) + textValue + txtArea.value.substring(endPos, txtArea.value.length);
+		            txtArea.focus();
+		            txtArea.selectionStart = startPos + textValue.length;
+		            txtArea.selectionEnd = startPos + textValue.length;
+		        }
+		        else {
+		            txtArea.value += textArea.value;
+		            txtArea.focus();
+		        }
+		    }
+
+			$(function() {
+				$("#datepicker").datepicker({
+					dateFormat: "dd/mm/yy",
+					onSelect: function(dateText, inst) {
+						var date = $.datepicker.parseDate(inst.settings.dateFormat || $.datepicker._defaults.dateFormat, dateText, inst.settings);
+						var dateText1 = $.datepicker.formatDate("D, d M yy", date, inst.settings);
+						date.setDate(date.getDate() + 7);
+						var dateText2 = $.datepicker.formatDate("D, d M yy", date, inst.settings);
+					}
+				});
+			});
 
 
 /* FINE */

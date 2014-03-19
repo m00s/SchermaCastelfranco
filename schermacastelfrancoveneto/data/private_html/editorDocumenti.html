@@ -43,7 +43,7 @@
 		</div>
 
 		<div id="breadcrumb">
-			<p>Ti trovi in: Amministra > Inserisci</p>
+			<p>Ti trovi in: Amministra > Inserisci documento</p>
 		</div>
 
 		<div id="content" >
@@ -51,7 +51,7 @@
 				<form method="post" aciton="amministraSezionePrivata">
 					<select name="cosa">
 						<option value="articolo">Articolo</option>
-						<option value="documento">Documento</option>
+						<option selected value="documento">Documento</option>
 					</select>
 					<input type="hidden" name="Seleziona" value="inserisci"/>
 					<input type="submit" name="Inserisci" value="Inserisci">
@@ -98,63 +98,6 @@
 				</div>
 			</div>
 		</div>
-
-		<script>
-
-		var idTextArea;
-
-		function setId(idValue){
-			idTextArea=idValue;
-		}
-
-		$(document).ready(function () {
-            $("#testo").change(
-                function () {
-					var text = document.getElementById("testo").value;
-					document.getElementById("trasfTesto").innerHTML = text;
-                }
-            );
-
-            $("#titolo").change(
-                function () {
-                	var title = document.getElementById("titolo").value;
-					document.getElementById("trasfTitolo").innerHTML = title;
-				}
-            );
-
-
-        });
-
-			function InsertCodeInTextArea(textValue) {
-		        //Get textArea HTML control
-		        var txtArea = document.getElementById(idTextArea);
-
-
-		        //IE
-		        if (document.selection) {
-		            txtArea.focus();
-		            var sel = document.selection.createRange();
-		            sel.text = textValue;
-		            return;
-		        }
-		        //Firefox, chrome, mozilla
-		        else if (txtArea.selectionStart || txtArea.selectionStart == '0') {
-		            var startPos = txtArea.selectionStart;
-		            var endPos = txtArea.selectionEnd;
-		            var scrollTop = txtArea.scrollTop;
-		            txtArea.value = txtArea.value.substring(0, startPos) + textValue + txtArea.value.substring(endPos, txtArea.value.length);
-		            txtArea.focus();
-		            txtArea.selectionStart = startPos + textValue.length;
-		            txtArea.selectionEnd = startPos + textValue.length;
-		        }
-		        else {
-		            txtArea.value += textArea.value;
-		            txtArea.focus();
-		        }
-		    }
-
-
-		</script>
 
 		<div id="sidebar">
 
