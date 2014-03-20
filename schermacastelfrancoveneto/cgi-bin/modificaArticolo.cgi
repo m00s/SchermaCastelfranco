@@ -27,9 +27,9 @@ foreach $articolo (@articoli)
 	my $luogo=$articolo->getElementsByTagName("luogo")->get_node(1)->string_value;
 	
 	$appo="
-		<input type=\"radio\" name=\"modifica_articolo\" class=\"stile-radio\" tabindex=\"$tabindex\"
-		 value=\"".$data."/".$luogo."\"/><label>"
-		 .$data." @ ".$luogo."</label><br/>
+		<p><label><input type=\"radio\" name=\"modifica_articolo\" class=\"stile-radio\" tabindex=\"$tabindex\"
+		 value=\"".$data."/".$luogo."\"/>" 
+		 .$data." @ ".$luogo."</label></p>
 	";
 	$tabindex+=1;
 	$checkboxarticoli .= $appo;

@@ -27,8 +27,8 @@ my $page=CGI->new();
 
 #controllo lo stato della sessione
 my $session = CGI::Session->load();
-if($session->is_expired || $session->is_expired){
-	print $session->header(-location=>"amministra.cgi");
+if($session->is_expired || $session->is_empty){
+	print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=amministra.cgi'>";
 }else{
 
 #la sessione esiste e quindi posso far vedere quel che serve all'amministratore

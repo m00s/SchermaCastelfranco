@@ -18,8 +18,6 @@ if($page->param('logout') eq "esci"){
 	$session->close();
 	$session->delete();
 	$session->flush();
-	print $session->header(-location=>"articoli.cgi");
-	exit;
 }
 
 if($session->is_expired or $session->is_empty){
@@ -36,14 +34,18 @@ if($session->is_expired or $session->is_empty){
 		}
 		else{
 			print "Content-type: text/html\n\n";
-			print &getLogin();
+			my $pagLogin=&getLogin();
+			$pagLogin=~ s/__ERRORE__/<p>Errore inserimento dati amminsitrazione<\/p>/;
+			print $pagLogin;
 			exit;
 		}
 	}
 	else{
 
 		print "Content-type: text/html\n\n";
-		print &getLogin();
+		my $pagLogin=&getLogin();
+		$pagLogin=~ s/__ERRORE__//;
+		print $pagLogin;
 		exit;
 	}
 }

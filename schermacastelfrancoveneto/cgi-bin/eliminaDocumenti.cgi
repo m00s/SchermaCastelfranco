@@ -24,8 +24,8 @@ foreach $documento (@documenti)
 	
 	
 	$appo="
-		<input type=\"checkbox\" name=\"elimina_doc\" class=\"stile-checkbox\" tabindex=\"$tabindex\"
-		 value=\"$titolo\"/><label>$titolo</label><br/>
+		<p><label><input type=\"checkbox\" name=\"elimina_doc\" class=\"stile-checkbox\" tabindex=\"$tabindex\"
+		 value=\"$titolo\"/>$titolo</label></p>
 	";
 	$tabindex+=1;
 	$checkboxdoc .= $appo;

@@ -24,8 +24,8 @@ foreach $documento (@documenti)
 	
 	
 	$appo="
-		<input type=\"radio\" name=\"modifica_doc\" class=\"stile-radio\" tabindex=\"$tabindex\"
-		 value=\"$titolo\"/><label>$titolo</label><br/>
+		<p><label><input type=\"radio\" name=\"modifica_doc\" class=\"stile-radio\" tabindex=\"$tabindex\"
+		 value=\"$titolo\"/><label> $titolo</label></p>
 	";
 	$tabindex+=1;
 	$checkboxdoc .= $appo;
