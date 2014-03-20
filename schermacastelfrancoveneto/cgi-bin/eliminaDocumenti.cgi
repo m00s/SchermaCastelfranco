@@ -16,6 +16,7 @@ $xpc->registerNs('ts', 'http://www.documenti.com');
 my @documenti=$xpc->find('//ts:documento')->get_nodelist();
 my $checkboxdoc;
 my $appo;
+my $tabindex=5;
 
 foreach $documento (@documenti)
 {
@@ -23,10 +24,10 @@ foreach $documento (@documenti)
 	
 	
 	$appo="
-		<input type=\"checkbox\" name=\"elimina_doc\"
+		<input type=\"checkbox\" name=\"elimina_doc\" class=\"stile-checkbox\" tabindex=\"$tabindex\"
 		 value=\"$titolo\"/><label>$titolo</label><br/>
 	";
-
+	$tabindex+=1;
 	$checkboxdoc .= $appo;
 }
 

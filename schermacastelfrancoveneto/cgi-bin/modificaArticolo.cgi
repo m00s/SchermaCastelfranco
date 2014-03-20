@@ -19,6 +19,7 @@ $xpc->registerNs('ts', 'http://www.articoli.com');
 my @articoli=$xpc->find('//ts:articolo')->get_nodelist();
 my $checkboxarticoli;
 my $appo;
+my $tabindex=5;
 
 foreach $articolo (@articoli)
 {
@@ -26,11 +27,11 @@ foreach $articolo (@articoli)
 	my $luogo=$articolo->getElementsByTagName("luogo")->get_node(1)->string_value;
 	
 	$appo="
-		<input type=\"radio\" name=\"modifica_articolo\"
+		<input type=\"radio\" name=\"modifica_articolo\" class=\"stile-radio\" tabindex=\"$tabindex\"
 		 value=\"".$data."/".$luogo."\"/><label>"
 		 .$data." @ ".$luogo."</label><br/>
 	";
-
+	$tabindex+=1;
 	$checkboxarticoli .= $appo;
 }
 

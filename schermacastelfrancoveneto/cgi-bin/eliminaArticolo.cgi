@@ -16,6 +16,7 @@ sub doCaricaFormElimina{
 	my @articoli=$xpc->find('//ts:articolo')->get_nodelist();
 	my $checkboxarticoli;
 	my $appo;
+	my $tabindex+=1;
 
 	foreach $articolo (@articoli){
 
@@ -23,11 +24,11 @@ sub doCaricaFormElimina{
 		my $luogo=$articolo->getElementsByTagName("luogo")->get_node(1)->string_value;
 
 		$appo="
-			<input type=\"checkbox\" name=\"elimina_articolo\"
+			<input type=\"checkbox\" name=\"elimina_articolo\" class=\"stile-checkbox\" tabindex=\"$tabindex\"
 			 value=\"".$data."/".$luogo."\"/><label >"
 			 .$data." @ ".$luogo."</label></br>
 		";
-
+		$tabindex+=1;
 		$checkboxarticoli .= $appo;
 	}
 
