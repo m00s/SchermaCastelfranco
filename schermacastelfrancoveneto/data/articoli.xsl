@@ -15,19 +15,20 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<meta name="robots" content="index,follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../css/stile.css" type="text/css"/>
+		<link rel="stylesheet" href="../css/aural.css" type="text/css" />
 		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
 		<link rel="Shortcut Icon" href="../public_html/img/struttura/favicon.ico" type="image/x-icon" />
-		<script  type="text/javascript" charset="UTF-8" src="../js/librerie/jquery-1.11.0.min.js" ></script>
+		<script  type="text/javascript" charset="UTF-8" src="../js/jquery.js" ></script>
 		<script  type="text/javascript" charset="UTF-8" src="../js/script.js" ></script>
 		<noscript>
 			<link rel="stylesheet" href="../css/stilenojava.css" type="text/css"/>
 		</noscript>
 	</head>
 
-	<body onload="scrollTo()">
+	<body>
 		<div id="header"></div>
 
-		<div id="boxTop">Torna su</div>
+		<div id="boxTop"></div>
 
 		<p class="nascondi">><a href="#breadcrumb">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a></p>
 
@@ -79,8 +80,9 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					<xsl:variable name="luogo"><xsl:value-of select="a:luogo"/></xsl:variable>
 					<xsl:variable name="data"><xsl:value-of select="a:data"/></xsl:variable>
 					<xsl:variable name="luogo-data"><xsl:value-of select="$luogo" /> in data <xsl:value-of select="$data" /></xsl:variable>
-					<div class="article" > <!-- id="{$luogo-data}" -->
+					<xsl:variable name="url">?artCompleto=on&amp;data=<xsl:value-of select="$data" />&amp;luogo=<xsl:value-of select="$luogo" /></xsl:variable>
 
+					<div class="article" > <!-- id="{$luogo-data}" -->
 						<div class="sezione" id="{$luogo-data}">
 							<p><xsl:value-of select="a:data"/></p>
 							<p><xsl:value-of select="a:luogo"/></p>
@@ -92,19 +94,14 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 								<xsl:value-of select="substring(a:paragrafo, 0, 1000)"/>..
 								<!-- <xsl:value-of select="a:paragrafo"/> -->
 							</p>
-						</div>
-						<p><a href="#">Vai all'articolo intero</a></p>
-						<p class="nascondi-torna"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 
-						<xsl:if test="__NART__&#62;2">
-							<xsl:if test="position()&#61;(__ART__-2)">
-								<div id="anchor"></div>
-							</xsl:if>
-						</xsl:if>
+						</div>
+						<p><a href="{$url}"> Vai all'articolo intero</a></p>
+						<p class="nascondi-torna"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 					</div>
 			</xsl:for-each>
 
-			<p id="mostra-piu"><a href="articoli.cgi?articoli=__NART__">Mostra articoli meno recenti</a></p>
+			<p id="mostra-piu"><a href="articoli.cgi?articoli=__NART__">Vedi altri articoli (Verranno visualizzati __NART__ articoli in totale)</a></p>
 
 		</div>
 		<!--  FINE SEZIONE -->
@@ -143,7 +140,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 		<div id="footer">
 			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>
-			<span class="footerElement">- L'intrusa - <span xml:lang="en">All rights reserved</span> - </span>
+			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>
 			<img class="footerElement" src="../img/struttura/vcss-blue.gif" alt="immagine che indica che lo stile applicato al sito web è valido come css attraverso la verifica del W3C"/>
 		</div>
 
