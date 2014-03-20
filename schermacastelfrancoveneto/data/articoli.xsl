@@ -24,7 +24,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		</noscript>
 	</head>
 
-	<body>
+	<body onload="scrollTo()">
 		<div id="header"></div>
 
 		<div id="boxTop">Torna Su</div>
@@ -97,10 +97,16 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 						</div>
 						<p><a href="{$url}"> Vai all'articolo intero</a></p>
 						<p class="nascondi-torna"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
+						
+						<xsl:if test="__NART__&#62;3">
+							<xsl:if test="position()&#61;(__ART__-3)">
+								<div id="anchor"></div>
+							</xsl:if>
+						</xsl:if>
 					</div>
 			</xsl:for-each>
 
-			<p id="mostra-piu"><a href="articoli.cgi?articoli=__NART__">Vedi altri articoli (Verranno visualizzati __NART__ articoli in totale)</a></p>
+			<p id="mostra-piu"><a href="articoli.cgi?articoli=__NART__">Mostra articoli meno recenti</a></p>
 
 		</div>
 		<!--  FINE SEZIONE -->
@@ -139,7 +145,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 		<div id="footer">
 			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>
-			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>
+			<span class="footerElement">- L'intrusa - <span xml:lang="en">All rights reserved</span> - </span>
 			<img class="footerElement" src="../img/struttura/vcss-blue.gif" alt="immagine che indica che lo stile applicato al sito web è valido come css attraverso la verifica del W3C"/>
 		</div>
 
