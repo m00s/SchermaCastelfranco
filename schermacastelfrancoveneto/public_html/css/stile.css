@@ -330,7 +330,7 @@ p#editor-title{
 	display:inline-block;
 	margin-top: 1em;
 	margin-bottom: 0.6em;
-	width:10em;
+	width:13em;
 	height:2em;
 	-webkit-border-top-left-radius:0px;
 	-moz-border-radius-topleft:0px;
@@ -356,7 +356,7 @@ p#editor-title{
 	font-weight:bold;
 	font-style:normal;
 	font-size:1em;
-	line-height:40px;
+
 }
 .stile-submit:hover {
 	background-color:#381a17;

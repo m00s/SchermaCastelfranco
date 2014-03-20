@@ -14,11 +14,10 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<meta name="keywords" content="circolo, scherma, articoli, news, notizie, Castelfranco Veneto" />
 		<meta name="robots" content="index,follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../css/stile.css" type="text/css"/>
-		<link rel="stylesheet" href="../css/aural.css" type="text/css" />
+		<link rel="stylesheet" href="../css/stile.css " type="text/css"/>
 		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
-		<link rel="Shortcut Icon" href="../public_html/img/struttura/favicon.ico" type="image/x-icon" />
-		<script  type="text/javascript" charset="UTF-8" src="../js/jquery.js" ></script>
+		<link rel="Shortcut Icon" href="../img/struttura/favicon.ico" type="image/x-icon" />
+		<script  type="text/javascript" charset="UTF-8" src="../js/librerie/jquery-1.11.0.min.js" ></script>
 		<script  type="text/javascript" charset="UTF-8" src="../js/script.js" ></script>
 		<noscript>
 			<link rel="stylesheet" href="../css/stilenojava.css" type="text/css"/>
@@ -28,7 +27,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 	<body>
 		<div id="header"></div>
 
-		<div id="boxTop"></div>
+		<div id="boxTop">Torna Su</div>
 
 		<p class="nascondi">><a href="#breadcrumb">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a></p>
 

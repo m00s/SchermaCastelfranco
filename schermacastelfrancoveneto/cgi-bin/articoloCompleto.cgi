@@ -82,7 +82,9 @@ print <<EOF;
 		<div id="header">
 		</div>
 
-		<a href="#breadcrumb" class="nascondi">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a>
+		<div id="boxTop">Torna Su</div>
+
+		<p><a href="#breadcrumb" class="nascondi">Salta <span xml:lang="fr">menù</span> contenente anche il <span xml:lang="en">link</span> per l'accesso all'area riservata</a></p>
 
 		<div id="nav">
 			<div id="nav-1">
@@ -96,8 +98,7 @@ print <<EOF;
 				</ul>
 			</div>
 			<div id="nav-2">
-				<a href="../login.html" tabindex="5">Area Riservata</a>
-				<a href="../mappa.html" tabindex="6">Mappa del sito</a>
+				<a href="amministra.cgi" tabindex="5">Area Riservata</a>
 			</div>
 
 		</div>
@@ -106,20 +107,22 @@ print <<EOF;
 			<p>Ti trovi in: Articoli</p>
 		</div>
 
-		<a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a>
+		<p><a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a></p>
 
 		<div id="content">
+
+			<div class="struttura-content"><a href="articoli.cgi">Torna ad articoli</a></div>
+
 			<div class="article">
 					<p>$data</p>
 					<p>$luogo</p>
 					<h1>$titolo</h1>
 					$img
 					<p>$paragrafo</p>
-					<a href="articoli.cgi">Torna ad articoli</a>
 			</div>
 		</div>
 
-		<a href="#nav" class="nascondi">Torna al <span xml:lang="fr">menù</span> di navigazione</a>
+		<p><a href="#nav" class="nascondi">Torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 
 		<div id="sidebar">
 			<div id="sezione-sidebar"><p><span xml:lang="en">LINK</span> ESTERNI</p></div>
