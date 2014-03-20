@@ -1,6 +1,7 @@
 sub doCaricaFormElimina{
 	#ottengo il file HTML da modificare
 	open (FILE, "< ../data/private_html/formElimina.html");
+	flock(FILE,1);
 	while(!eof(FILE)){
 	$form .= <FILE>;
 	}
@@ -75,6 +76,7 @@ sub doEliminaArticoli{
 	if($root){
 
 		open(OUT,">$path");
+		flock(OUT,2);
 		print OUT $doc_tree->toString();
 		close(OUT);
 		

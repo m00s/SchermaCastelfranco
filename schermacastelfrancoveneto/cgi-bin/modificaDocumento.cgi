@@ -1,6 +1,7 @@
 sub doCaricaFormModificaDocumento{
 #ottengo il file HTML da modificare
 open (FILE, "< ../data/private_html/formModifica.html");
+flock(FILE,1);
 while(!eof(FILE)){
 	$form .= <FILE>;
 }
@@ -47,6 +48,7 @@ sub doCaricaEditorModificaDocumento{
 
 #ottengo il file HTML da modificare
 open (FILE, "<","../data/private_html/editorDocumenti.html");
+flock(FILE,1);
 while(!eof(FILE)){
 	$editor .= <FILE>;
 }
@@ -142,17 +144,20 @@ my $page=new CGI;
 	if($root){		
 		$root->appendChild($nodo);
 		open(OUT,">$path");
+		flock(OUT,2);
 		print OUT $doc_tree->toString();
+		close(OUT);
 	}
 }
 
 
 sub documentoNonCorrettoModifica{
-	open (FILE, "< ../data/private_html/editorDocumenti.html");
+open (FILE, "< ../data/private_html/editorDocumenti.html");
+flock(FILE,1);
 while(!eof(FILE)){
 	$string .= <FILE>;
 }
-  close FILE;
+close FILE;
 
 my $errorField="<h2>Ci sono errori nell'inserimento dei dati</h2>";
 $string=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__DOC__" readonly \/><\/label>/g;

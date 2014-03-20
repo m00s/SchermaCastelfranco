@@ -30,6 +30,7 @@ sub ordinaElementi
 					xmlns=\"http://www.articoli.com\" xs:schemaLocation=\"http://www.articoli.com articoli.xsd\" 
 					xmlns:ts=\"http://www.articoli.com\">".$articoliFinali."</ts:testi>";
 	open(OUT,">$path");
+	flock(OUT,2);
 	print OUT $finalResult;
 	close(OUT);
 }

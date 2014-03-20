@@ -29,6 +29,7 @@ sub doInserimentoDocumento{
 		eval{$nodo=$parser->parse_balanced_chunk($nuovoDoc)} || die &documentoNonCorretto($titolo,$testo);
 		$rootDoc->appendChild($nodo);
 		open(OUT,">$path");
+		flock(OUT,2);
 		print OUT $doc->toString;
 		close(OUT);
 	
@@ -41,7 +42,8 @@ sub doInserimentoDocumento{
 
 
 sub documentoNonCorrettoInserimento{
-	open (FILE, "< ../data/private_html/editorDocumenti.html");
+open (FILE, "< ../data/private_html/editorDocumenti.html");
+flock(FILE,1);
 while(!eof(FILE)){
 	$string .= <FILE>;
 }

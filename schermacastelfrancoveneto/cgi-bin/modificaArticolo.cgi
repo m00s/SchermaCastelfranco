@@ -4,6 +4,7 @@ sub doCaricaFormModifica{
 	
 #ottengo il file HTML da modificare
 open (FILE, "< ../data/private_html/formModifica.html");
+flock(FILE,1);
 while(!eof(FILE)){
 	$form .= <FILE>;
 }
@@ -51,6 +52,7 @@ exit;
 sub doCaricaEditorModifica{
 #ottengo il file HTML da modificare
 open (FILE, "<","../data/private_html/editorArticoli.html");
+flock(FILE,1);
 while(!eof(FILE)){
 	$editor .= <FILE>;
 }
@@ -209,6 +211,7 @@ my $page=new CGI;
 	if($root){
 		$root->appendChild($nodo);
 		open(OUT,">$path");
+		flock(OUT,2);
 		print OUT $doc_tree->toString();
 		close(OUT);
 	}
@@ -219,6 +222,7 @@ my $page=new CGI;
 sub articoloNonCorrettoModifica{
 
 open (FILE, "<","../data/private_html/editorArticoli.html");
+flock(FILE,1);
 while(!eof(FILE)){
 	$editor .= <FILE>;
 }

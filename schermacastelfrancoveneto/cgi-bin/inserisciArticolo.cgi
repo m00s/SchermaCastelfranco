@@ -5,8 +5,8 @@ my $page=new CGI;
 # VERIFICA DEI DATI INSERITI
 
 #estraggo la data inserita nella form e la converto in formato YYYY-MM-DD
-	my @data=split('/',$page->param('data'));
-	my $dataDaSalvare=$data[2].'-'.$data[1].'-'.$data[0];
+	my @data;
+	my $dataDaSalvare;
 	my $titolo=$page->param('titolo');
 	my $luogo=$page->param('luogo');
 	my $testo=$page->param('testo');
@@ -14,14 +14,21 @@ my $page=new CGI;
 	my $fotoNome=$page->upload('foto');
 	my $altFoto=$page->param('altfoto');	
 
-	if($page->param('data')=~ m/\d{4}\/\d{2}\/\d{2}/){
-		@data=split("/",$page->param('data'));
+	if($page->param('datepicker')=~ m/\d{4}\/\d{2}\/\d{2}/){
+		@data=split("/",$page->param('datepicker'));
 		$dataDaSalvare=$data[0]."-".$data[1]."-".$data[2];
 	}
 	else{
-		@data=split("-",$page->param('data'));
-		$dataDaSalvare=	$page->param('data');
+		@data=split("-",$page->param('datepicker'));
+		$dataDaSalvare=	$page->param('datepicker');
 	}
+
+	print $page->param('datepicker');
+	print "<br/>";
+	print @data;
+	print "<br/>";
+	print $dataDaSalvare;
+	exit;
 
 	eval{timelocal(0,0,0,$data[2],$data[1]-1,$data[0]);} || die (&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo));
 	
@@ -48,6 +55,7 @@ my $page=new CGI;
 		eval{$nodo=$parser->parse_balanced_chunk($nuovoArticolo)} || die (&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo));
 		$rootDoc->appendChild($nodo);
 		open(OUT,">$path");
+		flock(OUT,2);
 		print OUT $doc->toString;
 		close(OUT);
 	}
@@ -56,7 +64,8 @@ my $page=new CGI;
 
 
 sub articoloNonCorretto{
-	open (FILE, "< ../data/private_html/editorArticoli.html");
+open (FILE, "< ../data/private_html/editorArticoli.html");
+flock(FILE,1);
 while(!eof(FILE)){
 	$string .= <FILE>;
 }
@@ -88,9 +97,6 @@ exit;
 
 
 sub blablabla{
-
-
-
 
 #DA USARE PER PROVARE A INSERIRE UN FILE BINARIO COME IMMAGINE O PDF
 my $uploadDir="../public_html/img/gare";

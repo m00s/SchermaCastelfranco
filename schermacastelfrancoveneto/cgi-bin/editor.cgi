@@ -2,6 +2,7 @@ sub getEditor{
 	
 #ottengo il file HTML da modificare
 open (FILE, "< ../data/private_html/editorArticoli.html");
+flock(FILE,1);
 while(!eof(FILE)){
 	$string .= <FILE>;
 }
@@ -28,6 +29,7 @@ print $string;
 
 sub getEditorDocumento{
 open (FILE, "< ../data/private_html/editorDocumenti.html");
+flock(FILE,1);
 while(!eof(FILE)){
 	$string .= <FILE>;
 }
