@@ -5,13 +5,15 @@
 	<documento>
 		<titolo>DICHIARAZIONE DI SPESE</titolo>
 		<paragrafo>Documento che permette di dichiarare le spese di iscrizione ai corsi del Circolo di Scherma di Castelfranco Veneto.</paragrafo>
-		<doc-completo></doc-completo>
+		<doc-completo>../document/dichiarazione-spese.pdf</doc-completo>
+		<dimensione>159</dimensione>
 	</documento>
 
 	<documento>
 		<titolo>REGOLAMENTO INTERNO</titolo>
 		<paragrafo>Disponibile il regolamento interno del Circolo, contenente le regole di comportamento e il ruolo dei vari organi dell'associazione.</paragrafo>
-		<doc-completo></doc-completo>
+		<doc-completo>../document/regolamento-interno.pdf</doc-completo>
+		<dimensione>246</dimensione>
 	</documento>
 
 

@@ -71,6 +71,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 			<xsl:for-each select="d:testi/d:documento[position()&#60;&#61;__DOC__]">
 				<!-- mi salvo la variabile titolo che poi utilizzerò in id della class document -->
 				<xsl:variable name="titolo"><xsl:value-of select="d:titolo"/></xsl:variable>
+				<xsl:variable name="doc-completo"><xsl:value-of select="d:doc-completo"/></xsl:variable>
 				<div class="document" id="{$titolo}">
 					<div class="sezione">
 						<h1><xsl:value-of select="d:titolo" /></h1>
@@ -79,7 +80,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 						<p><xsl:value-of select="d:paragrafo" /></p>
 					</div>
 
-					<p><a href="#">Scarica documento [PDF]</a></p> <!-- SISTEMARE -->
+					<p><a href="{$doc-completo}">Scarica documento [PDF] (<xsl:value-of select="d:dimensione" /> KB)</a></p> <!-- SISTEMARE -->
 					<p class="nascondi-torna"><a href="#content">Torna al primo documento della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 				</div>
 			</xsl:for-each>
