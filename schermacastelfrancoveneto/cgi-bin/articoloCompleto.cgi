@@ -7,18 +7,24 @@ my $parser=XML::LibXML->new();
 # apertura file e lettura input
 my $doc=$parser->parse_file($file); # da testo a struttura ad albero
 
+my $data="d";
+my $luogo="l";
+
 #recupero parametri formali
-my $data=$_[0];
-my $luogo=$_[1];
+if ($_[0] && $_[1]) {
+	$data=$_[0];
+	$luogo=$_[1];
+	$luogo=~ s/%20/ /;
+}
 
 my $paragrafo="p";
 my $titolo="t";
 my $img="i";
 
-my $artNodo=$doc->findnodes("//articolo[data='$data' and luogo='$luogo']")->get_node(1);
+my $artNodo=$doc->findnodes("//ts:articolo[ts:data='$data' and ts:luogo='$luogo']")->get_node(1);
 
 #estrazione IMMAGINE con attributi
-my $imgNodo=$doc->findnodes("//articolo[data='$data' and luogo='$luogo']/img")->get_node(1);
+my $imgNodo=$doc->findnodes("//ts:articolo[ts:data='$data' and ts:luogo='$luogo']/ts:img")->get_node(1);
 my @imgAtts = $imgNodo->getAttributes();
 my %imgAttsString;
 foreach $imgAtt (@imgAtts) {
@@ -50,23 +56,25 @@ $titolo=~ s/\<\/titolo\>//;
 print "Content-type: text/html\n\n";
 print <<EOF;
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="-//W3C//DTD XHTML 1.1//EN" xml:lang="it">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>Articoli - Scherma Castelfranco Veneto</title>
-		<meta name="description" content="Pagina che mostra gli articoli delle gare disputate dal Circolo di Scherma di Castefranco Veneto redatti dal presidente dell'associazione" />
+		<title>Articolo completo  - Scherma Castelfranco Veneto</title>
+		<meta name="description" content="Pagina che visualizza un articolo completo" />
 		<meta name="author" content="Chiara Bigarella, Mirko Pavanello, Massimiliano Sartoretto, Paolo Tesser" />
-		<meta name="keywords" content="circolo, scherma, articoli, news, notizie, Castelfranco Veneto" />
-		<meta name="robots" content="index,follow" />
+		<meta name="robots" content="index, follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../public_html/css/stile.css" type="text/css"/>
-		<link rel="stylesheet" href="../public_html/css/aural.css" type="text/css" />
-		<link rel="stylesheet" href="../public_html/css/print.css" type="text/css" media="print" />
-		<link rel="Shortcut Icon" href="../public_html/img/struttura/favicon.ico" type="image/x-icon" />
-		<script  type="text/javascript" charset="UTF-8" src="../public_html/js/jquery.js" ></script>
-		<script  type="text/javascript" charset="UTF-8" src="../public_html/js/script.js" ></script>
+		<link rel="stylesheet" href="../css/stile.css" type="text/css"/>
+		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
+		<link rel="Shortcut Icon" href="../img/struttura/favicon.ico" type="image/x-icon" />
+		<link href="../css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet"/>
+		<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
+		<script type="text/javascript" src="../js/librerie/jquery-ui-1.10.4.custom.min.js"></script>
+		<script  type="text/javascript" charset="UTF-8" src="../js/librerie/jquery-1.11.0.min.js" ></script>
+		<script  type="text/javascript" charset="UTF-8" src="../js/script.js" ></script>
 		<noscript>
-			<link rel="stylesheet" href="../public_html/css/stilenojava.css" type="text/css"/>
+			<link rel="stylesheet" href="../css/stilenojava.css" type="text/css"/>
 		</noscript>
 	</head>
 
@@ -107,6 +115,7 @@ print <<EOF;
 					<h1>$titolo</h1>
 					$img
 					<p>$paragrafo</p>
+					<a href="articoli.cgi">Torna ad articoli</a>
 			</div>
 		</div>
 
@@ -141,11 +150,10 @@ print <<EOF;
 		</div>
 
 		<div id="footer">
-			<img class="footerElement" src="img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>
-			<span xml:lang="en" class="footerElement"> - All rights reserved - </span>
-			<img class="footerElement" src="img/struttura/vcss-blue.gif" alt="immagine che indica che lo stile applicato al sito web è valido come css attraverso la verifica del W3C"/>
+			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>
+			<span class="footerElement">- L'intrusa - <span xml:lang="en">All rights reserved</span> - </span>
+			<img class="footerElement" src="../img/struttura/vcss-blue.gif" alt="immagine che indica che lo stile applicato al sito web è valido come css attraverso la verifica del W3C"/>
 		</div>
-
 
 </body>
 </html>

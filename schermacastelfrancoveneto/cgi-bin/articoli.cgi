@@ -8,7 +8,14 @@ use CGI::Session;
 use charnames qw( :full :short );
 use CGI::Carp qw(fatalsToBrowser);
 
-$page=new CGI;
+do 'articoloCompleto.cgi';
+
+my $page=new CGI;
+if($page->param('artCompleto')) {
+
+	&articoloCompleto($page->param('data'), $page->param('luogo'));
+}
+else {
 
 my $file_xml="../data/articoli.xml";
 my $file_xsl="../data/articoli.xsl";
@@ -27,7 +34,7 @@ my $query = $xslt_doc->toString;
 
 my $n_articoli=2;
 
-if($page->param('articoli') != 0){
+if($page->param('articoli')!=0){
 	$n_articoli=$page->param('articoli');
 }
 
@@ -47,3 +54,4 @@ my $stylesheet = $xslt->parse_stylesheet($xslt_doc);
 my $risultato = $stylesheet->transform($doc);
 print "Content-type: text/html\n\n";
 print $risultato->toString();
+}
