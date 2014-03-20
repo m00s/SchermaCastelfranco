@@ -26,7 +26,7 @@
 				<ul id="sezione-nav-1"><li id="image-menu" title="contiene immagine del menù per il mobile"></li></ul>
 				<ul id="panel-nav-1">
 					<li><a href="amministraSezionePrivata.cgi?Seleziona=inserisci" tabindex="1">Inserisci</a></li>
-					<li id="active"><!--<a href="amministraSezionePrivata.cgi?Seleziona=modifica">Modfica</a>-->Modifica</li>
+					<li id="active">Modifica</li>
 					<li class="last-link"><a href="amministraSezionePrivata.cgi?Seleziona=elimina" tabindex="2">Elimina</a></li>
 				</ul>
 			</div>
@@ -47,8 +47,8 @@
 				<form name="selectCategory"method="post" action="amministraSezionePrivata.cgi">
 					<label>Seleziona categoria:</label>
 					<select onchange="selectChange()" name="cosa">
-						<option __SELECTART__ value="articolo" tabindex="5">Articolo</option>
-						<option __SELECTDOC__ value="documento" tabindex="6">Documento</option>
+						<option __SELECTART__ value="articolo" >Articolo</option>
+						<option __SELECTDOC__ value="documento" >Documento</option>
 					</select>
 					<input type="hidden" name="Seleziona" value="modifica"/>
 					<noscript>
@@ -68,7 +68,7 @@
 			</div>
 		</div>
 
-		<p class="nascondi"><a href="#nav">Torna al <span xml:lang="fr">men&ugrave;</span> di amministrazione</a></p>
+		<p class="nascondi"><a href="#nav">Torna al <span xml:lang="fr">menù</span> di amministrazione</a></p>
 
 		<div id="footer">
 			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>

@@ -49,8 +49,8 @@
 				<form name="selectCategory" method="post" action="amministraSezionePrivata.cgi">
 					<label>Seleziona categoria:</label>
 					<select onchange="selectChange()" name="cosa">
-						<option selected value="articolo" tabindex="5">Articolo</option>
-						<option value="documento" tabindex="6">Documento</option>
+						<option selected value="articolo" >Articolo</option>
+						<option value="documento" >Documento</option>
 					</select>
 					<input type="hidden" name="Seleziona" value="__VALSELEZIONA__"/>
 					<noscript>
@@ -64,50 +64,48 @@
 						<legend>Inserisci dati dell'articolo</legend>
 					<div>
 						<label>
-							<p>Luogo:</p>
-							<p><input id="luogo" type="text" name="luogo" value="__LUOGO__" tabindex="7"/></p>
+							<p>Luogo: <input id="luogo" type="text" name="luogo" value="__LUOGO__" tabindex="5"/></p>
 						</label>
 						<label>
-							<p>Data: <noscript><em>(gg/mm/aaaa)</em></noscript></p>
-							<p><input id="datepicker" type="text" name="datepicker" value="__DATA__" tabindex="8"/></p>
+							<p>Data: <noscript><em>(gg/mm/aaaa)</em></noscript><input id="datepicker" type="text" name="datepicker" value="__DATA__" tabindex="6"/></p>
 						</label>
 					</div>
 					<div>
 						<label>
-							<p>Titolo:</p>
-							<p><input type="text" id="titolo" name="titolo" size="40" value="__TITOLO__" onblur="setId(this.id)" tabindex="9" /></p>
+							<p>Titolo: <input type="text" id="titolo" name="titolo" size="40" value="__TITOLO__" onblur="setId(this.id)" tabindex="7" /></p>
 						</label>
 					</div>
 					<p>Testo: </p>
-					<p><textarea id="testo" name="testo" rows="10" cols="50" onblur="setId(this.id)" tabindex="10">__TESTO__</textarea></p>
+					<p><textarea id="testo" name="testo" rows="10" cols="50" onblur="setId(this.id)" tabindex="8">__TESTO__</textarea></p>
 					<div id="textOptions">
 						<fieldset id="lingue">
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;en&#34;></span>')" tabindex="11">Inglese</button>
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;fr&#34;></span>')" tabindex="12">Francese</button>
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;de&#34;></span>')" tabindex="13">Tedesco</button>
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;ch&#34;></span>')" tabindex="14">Svizzero</button>
+							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;en&#34;></span>')" tabindex="9">Inglese</button>
+							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;fr&#34;></span>')" tabindex="10">Francese</button>
+							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;de&#34;></span>')" tabindex="11">Tedesco</button>
+							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;ch&#34;></span>')" tabindex="12">Svizzero</button>
 						</fieldset>
 						<fieldset id="stile">
-							<button type="button" onclick="InsertCodeInTextArea(' <em></em>')" tabindex="15"><em>Corsivo</em></button>
-							<button type="button" onclick="InsertCodeInTextArea(' <strong></strong>')" tabindex="16"><strong>Grassetto</strong></button>
-							<button type="button" onclick="InsertCodeInTextArea(' <abbr title=&#34; &#34;></abbr>')" tabindex="17">Abbreviazione</button>
+							<button type="button" onclick="InsertCodeInTextArea(' <em></em>')" tabindex="13"><em>Corsivo</em></button>
+							<button type="button" onclick="InsertCodeInTextArea(' <strong></strong>')" tabindex="14"><strong>Grassetto</strong></button>
+							<button type="button" onclick="InsertCodeInTextArea(' <abbr title=&#34; &#34;></abbr>')" tabindex="15">Abbreviazione</button>
 						</fieldset>
 					</div>
 					<fieldset>
 						<legend>Inserisci immagine</legend>
 						<p>__INPUTFOTOVECCHIA__</p>
-						<p><label>Scegli nuova foto: <input type="file" name="foto" tabindex="18"/></label></p>
-						<label>Scegli nuova alternativa per la foto:<input type="text" id="altfoto" name="altfoto" value="__ALT__" tabindex="19"/></label></p>
+						<p><label>Scegli nuova foto: <input type="file" name="foto" tabindex="16"/></label></p>
+						<label>Scegli nuova alternativa per la foto:<input type="text" id="altfoto" name="altfoto" value="__ALT__" tabindex="17"/></label></p>
 					</fieldset>
 					<input type="hidden" name="vecchiaData" value="__DATA__"/>
 					<input type="hidden" name="vecchioLuogo" value="__LUOGO__"/>
 					<input type="hidden" name="modifica" value="__VALOREMODIFICA__"/>
-					<p><input type="submit" name="submit" id="submit" value="__ACTION__" onclick="return checkInserimentoArticolo();" tabindex="20"/></p>
+					<p><input type="submit" name="submit" id="submit" value="__ACTION__" onclick="return checkInserimentoArticolo();" tabindex="18"/></p>
 					</fieldset>
 				</form>
-				<div>
+				<div id="editor-finale">
+					<p id="editor-title" class="editor-bold">VISTA DOCUMENTO FINALE</p>
 					<p id="trasfData"></p>
-					<p><b id="trasfTitolo"></b></p>
+					<p id="trasfTitolo" class="editor-bold"></p>
 					<p id="trasfTesto"></p>
 				</div>
 				<div>
@@ -115,10 +113,13 @@
 				</div>
 			</div>
 		</div>
+
+		<p class="nascondi"><a href="#nav">Torna al <span xml:lang="fr">menù</span> di amministrazione</a></p>
+
 		<div id="sidebar">
 			<dl id="legenda-inserimento">
 				<dt>Legenda tag inserimento</dt>
-				<dd>Le seguenti istruzioni servono per comprendere l'utilizzo dei pulsanti presenti nella form e di come utilizzarli in caso javascript sia disabilitato.</dd>
+				<dd>Le seguenti istruzioni servono per comprendere l'utilizzo dei pulsanti presenti nella <span xml:lang="en">form</span> e di come utilizzarli in caso javascript sia disabilitato.</dd>
 				<dd>Per ognuno dei tag </dd>
 				<dd>Inglese: </dd>
 				<dd>Francese:</dd>
@@ -130,6 +131,7 @@
 			</dl>
 		</div>
 
+		<p class="nascondi"><a href="#nav">Torna al <span xml:lang="fr">menù</span> di amministrazione</a></p>
 
 		<div id="footer">
 			<img class="footerElement" src="../img/struttura/valid-xhtml11.png" alt="immagine che indica che il sito web è valido come xhtml attraverso la verifica del W3C"/>

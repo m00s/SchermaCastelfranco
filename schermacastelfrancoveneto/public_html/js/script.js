@@ -82,6 +82,95 @@ $(document).ready(function(){
 
 /* FINE */
 
+/* GESTIONE SIDEBAR POSIZIONAMENTO*/
+
+$(document).ready(function(){
+
+	var topFixed=272;
+	// bloccarlo per safari e internet explorer 6
+
+	if ($(window).width() > 850){
+			// mi salavo di quanto la scroll è distante dall'inizio pagina
+			var y = $(window).scrollTop();
+
+			if (y >= topFixed){ // se è maggiore di un valore fissato devo cambiarli classe e metterla fissa (GESTIONE RELOAD PAGINA GIA' SCROLLATA)
+				$("#sidebar").addClass("sidebar-fixed");
+				$("#sidebar").attr("id","sidebarFix");
+			}
+
+	}
+});
+
+// scroll
+$(window).scroll(function(){
+		var topFixed=272;
+		// alert(topFixed);
+		var y = $(window).scrollTop();
+		// alert(y);
+		if (y>= topFixed){
+				// alert("maggiore");
+				$("#sidebar").addClass("sidebar-fixed");
+				$("#sidebar").attr("id","sidebarFix");
+		}else{
+				$("#sidebarFix").removeClass("sidebar-fixed");
+				$("#sidebarFix").attr("id","sidebar");
+		}
+});
+
+
+// resize
+$(window).resize(function(){
+	var topFixed = 272;
+	var y = $(window).scrollTop();
+	// alert(y);
+	if($(window).width() > 850){
+			$(window).scroll(function(){
+				if (y >= topFixed){
+					$("#sidebar").addClass("sidebar-fixed");
+					$("#sidebar").attr("id","sidebarFix");
+				}else{
+					$("#sidebarFix").removeClass("sidebar-fixed");
+					$("#sidebarFix").attr("id","sidebar");
+				}
+			});
+
+
+	}else{
+		// se siamo nella parte mobile/tablet
+			$("#sidebarFix").removeClass("sidebar-fixed");
+			$("#sidebarFix").attr("id","sidebar");
+	}
+
+});
+
+
+
+/* FINE */
+
+/* SCRIPT PER IL BOX TORNA SU */
+
+$(function() {
+	  $(window).scroll(function() {
+	       if($(this).scrollTop() > 0) {
+	            //se non siamo in cima alla pagina
+	            $('#boxTop').fadeIn(); //faccio apparire il box
+	        } else {
+	            //altrimenti (il visitatore è in cima alla pagina scrollTop = 0)
+	            $('#boxTop').fadeOut();//Il box scompare
+	        }
+	    });//Allo scroll function
+
+	    $('#boxTop').click(function() {
+	                //Se clicco sul box torno su (scrollTop:0) con un timing di animazione.
+	        $('body,html').animate({scrollTop:0},800);
+	    });//Click
+
+});//DOM
+
+/* FINE */
+
+
+
 /* SCRIPT PER LA PREVALIDAZIONE DEI FORM DI INSERIMENTO */
 
 function checkInserimentoArticolo(){
@@ -240,90 +329,8 @@ function scrollTo(){
 				});
 			});
 
-/* FINE */
-
-
-/* SCRIPT PER IL BOX TORNA SU */
-
-$(function() {
-	  $(window).scroll(function() {
-	       if($(this).scrollTop() > 0) {
-	            //se non siamo in cima alla pagina
-	            $('#boxTop').fadeIn(); //faccio apparire il box
-	        } else {
-	            //altrimenti (il visitatore è in cima alla pagina scrollTop = 0)
-	            $('#boxTop').fadeOut();//Il box scompare
-	        }
-	    });//Allo scroll function
-
-	    $('#boxTop').click(function() {
-	                //Se clicco sul box torno su (scrollTop:0) con un timing di animazione.
-	        $('body,html').animate({scrollTop:0},800);
-	    });//Click
-
-});//DOM
 
 /* FINE */
 
-/* GESTIONE SIDEBAR POSIZIONAMENTO*/
-/*
-$(document).ready(function(){
-	var topFixed=272;
-
-	var msie6 = $.browser == 'msie' && $.browser.version < 7;
-	// var safari = ;
-	if ($(window).width()>850){
-		if (!msie6){
-			// alert(topFixed);
-			var top=$("#sidebar").offset().top - parseFloat($("#sidebar").css("marginTop").replace(/auto/,0));
-			// alert(top);
-			var y=$(window).scrollTop();
-			// alert(y);
-
-			if (y>=top){
-				$("#sidebar").addClass("sidebar-fixed");
-				$("#sidebar").css("margin-top","0");
-				$("#sidebar").css("width","21.6%");
-			}
-			$(window).scroll(function(){
-				var y=$(window).scrollTop();
-				if (y>= top){
-					$("#sidebar").addClass("sidebar-fixed");
-					$("#sidebar").css("margin-top","0");
-					$("#sidebar").css("width","21.6%");
-				}else{
-					$("#sidebar").removeClass("sidebar-fixed");
-					$("#sidebar").css("margin-top","3%");
-					$("#sidebar").css("width","23%");
-				}
-				/*
-				if ($(window).width()<850){
-						$("#sidebar").removeClass("sidebar-fixed")
-						$("#sidebar").css("width","99%");
-						$("#sidebar").css("margin-top","0");
-				}
-				*/
-//			});
-
-//	}
-//	}
-
-//});
 
 
-/*
-function staticF(){
-	$("#sidebar").css({
-		"position": "static",
-		"display": "block",
-		"float": "left",
-		"clear": "both",
-		"margin-top": "0",
-		"width": "99%"
-
-	});
-}
-
-/*
-
-/* FINE */
