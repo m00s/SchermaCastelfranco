@@ -21,8 +21,9 @@
 	</head>
 	<body>
 		<div id="header">
-
 		</div>
+
+		<div id="boxTop">Torna Su</div>
 
 		<div id="nav">
 			<div id="nav-1">
@@ -45,7 +46,7 @@
 		</div>
 
 		<div id="content" >
-			<div class="struttura-content">
+			<div class="struttura-select">
 				<form name="selectCategory" method="post" action="amministraSezionePrivata.cgi">
 					<label>Seleziona categoria:</label>
 					<select onchange="selectChange()" name="cosa">
@@ -99,7 +100,7 @@
 						<p>__INPUTFOTOVECCHIA__</p>
 						<p>__REINSERISCIFOTO__</p>
 						<p><label>Scegli nuova foto: <input type="file" name="foto" tabindex="16"/></label></p>
-						<label>Scegli nuova alternativa per la foto:<input type="text" id="altfoto" name="altfoto" value="__ALT__" tabindex="17"/></label></p>
+						<label>Scegli nuova alternativa per la foto: <input type="text" id="altfoto" name="altfoto" value="__ALT__" tabindex="17"/></label></p>
 					</fieldset>
 					<input type="hidden" name="vecchiaData" value="__DATA__"/>
 					<input type="hidden" name="vecchioLuogo" value="__LUOGO__"/>

@@ -107,11 +107,11 @@ print <<EOF;
 			<p>Ti trovi in: Articoli</p>
 		</div>
 
-		<p><a href="#sidebar" class="nascondi">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma e agli <span xml:lang="en">sponsor</span></a></p>
+		<p class="nascondi"><a href="#sidebar">Salta contenuto e vai alla <span xml:lang="en">sidebar</span> contenente i <span xml:lang="en">link</span> ad altri siti di scherma, agli <span xml:lang="en">sponsor</span> e alla <span xml:lang="en">gallery</span></a></p>
 
 		<div id="content">
 
-			<div class="struttura-content"><a href="articoli.cgi">Torna ad articoli</a></div>
+			<div class="struttura-select"><a href="articoli.cgi">Torna ad articoli</a></div>
 
 			<div class="article">
 					<p>$data</p>
