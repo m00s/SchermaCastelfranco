@@ -82,6 +82,12 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 					<p><a href="{$doc-completo}">Scarica documento [PDF] (<xsl:value-of select="d:dimensione" /> KB)</a></p> <!-- SISTEMARE -->
 					<p class="nascondi-torna"><a href="#content">Torna al primo documento della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
+					
+					<xsl:if test="__NDOC__&#62;5">
+						<xsl:if test="position()&#61;(__DOC__-3)">
+							<div id="anchor"></div>
+						</xsl:if>
+					</xsl:if>
 				</div>
 			</xsl:for-each>
 
