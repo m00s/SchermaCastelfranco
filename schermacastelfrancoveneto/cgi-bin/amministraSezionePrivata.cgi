@@ -9,6 +9,7 @@ use utf8;
 use charnames qw( :full :short );
 use CGI::Carp qw(fatalsToBrowser);
 use File::Basename;
+use Time::Local;
 
 do 'eliminaDocumenti.cgi';
 do 'modificaDocumento.cgi';
@@ -26,8 +27,11 @@ my $page=CGI->new();
 
 #controllo lo stato della sessione
 my $session = CGI::Session->load();
-if(!$session->is_expired && !$session->is_empty){
-}
+if($session->is_expired || $session->is_expired){
+	print $session->header(-location=>"amministra.cgi");
+}else{
+
+#la sessione esiste e quindi posso far vedere quel che serve all'amministratore
 
 
 #una volta scelto se inserire modificare o eliminare 
@@ -123,15 +127,12 @@ if($page->param('modifica') eq "SalvaDocumento"){
 
 
 #eliminazione dei documenti scelti con il checkbox
-
 if($page->param('elimina') eq 'EliminaDocumenti'){
 
 	&doEliminaDocumenti();
 	print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=documenti.cgi'>";
 	exit;
 }
-
-
 
 #eliminazione degli articoli scelti con il checkbox
 if($page->param('elimina') eq 'EliminaArticoli'){
@@ -144,3 +145,6 @@ if($page->param('elimina') eq 'EliminaArticoli'){
 
 &getEditor();
 exit;
+
+
+}

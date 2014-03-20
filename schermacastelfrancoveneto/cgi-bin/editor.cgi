@@ -7,12 +7,10 @@ while(!eof(FILE)){
 }
   close FILE;
 
-
 $string=~ s/__LUOGO__//;
 $string=~ s/__DATA__//;
 $string=~ s/__TITOLO__//;
 $string=~ s/__TESTO__//;
-$string=~ s/__FOTO__/Non vi sono vecchie foto inserite per questo nuovo articolo/;
 $string=~ s/__ALT__//;
 $string=~ s/__ACTION__/Inserisci Articolo/;
 $string=~ s/__VALSELEZIONA__/inserisci/;
@@ -22,6 +20,8 @@ $string=~ s/__ACTIVEINS__/ id="active"/;
 $string=~ s/__ACTIVEMOD__//;
 $string=~ s/__LINKINS__/Inserisci/;
 $string=~ s/__LINKMOD__/<a href="amministraSezionePrivata.cgi?Seleziona=modifica" tabindex="1">Modifica<\/a>/;
+$string=~ s/__INCASODIERRORE__//;
+$string=~ s/__REINSERISCIFOTO__//;
 
 print $string;
 }
@@ -34,8 +34,8 @@ while(!eof(FILE)){
 close FILE;
 
 $string=~ s/__TITOLO__//g;
+$string=~ s/__VECCHIOTITOLO__//g;
 $string=~ s/__TESTO__//;
-$string=~ s/__DOC__/Non vi sono vecchi documenti inseriti /;
 $string=~ s/__ACTION__/Inserisci Documento/;
 $string=~ s/__VALSELEZIONA__/inserisci/;
 $string=~ s/__SUBMITYPE__/Inserisci/g;
@@ -44,5 +44,7 @@ $string=~ s/__ACTIVEMOD__//;
 $string=~ s/__LINKINS__/Inserisci/;
 $string=~ s/__LINKMOD__/<a href="amministraSezionePrivata.cgi?Seleziona=modifica" tabindex="1">Modifica<\/a>/;
 $string=~ s/__INPUTVECCHIODOCUMENTO__//g;
+$string=~ s/__INCASODIERRORE__//;
+
 print $string;
 }

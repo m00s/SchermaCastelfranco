@@ -52,7 +52,7 @@ while(!eof(FILE)){
 close FILE;
 
 $editor=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__DOC__" readonly \/><\/label>/g;
-
+$editor=~ s/__INCASODIERRORE__//;
 $editor=~ s/__VALOREMODIFICA__/SalvaDocumento/;
 $editor=~ s/__ACTION__/Salva Documento/;
 $editor=~ s/__VALSELEZIONA__/modifica/;
@@ -87,7 +87,8 @@ foreach my $node (@documenti) {
 		$paragrafo=$node->getElementsByTagName("paragrafo")->item(0)->toString;
 		$paragrafo=~ s/\<paragrafo\>//;
 		$paragrafo=~ s/\<\/paragrafo\>//;
-		$editor=~ s/__TITOLO__/$titolo/g;
+		$editor=~ s/__TITOLO__/$titolo/;
+		$editor=~ s/__VECCHIOTITOLO__/$titolo/;
 		$editor=~ s/__TESTO__/$paragrafo/;
 		$editor=~ s/__DOC__/$doc/;
 	}
@@ -120,9 +121,6 @@ my $page=new CGI;
 	my $query="//ts:documento[ts:titolo=\"$vecchioTitolo\"]";
 	my @documenti=$xpc->find($query)->get_nodelist();
 
-	foreach my $node(@documenti){
-		$root->removeChild($node);
-	}
 	my $nuovoDoc="
 
 	<documento>
@@ -132,12 +130,47 @@ my $page=new CGI;
 	</documento>
 
 	";
+	
+	my $nodo;
+	eval{$nodo=$parser->parse_balanced_chunk($nuovoDoc)} || die &documentoNonCorrettoModifica($titolo,$testo,$vecchioTitolo,$doc);
+	
+	foreach my $node(@documenti){
+		$root->removeChild($node);
+	}
 
-	if($root){
-
-		my $nodo=$parser->parse_balanced_chunk($nuovoDoc) || die "documento non corretto";
+	if($root){		
 		$root->appendChild($nodo);
 		open(OUT,">$path");
 		print OUT $doc_tree->toString();
 	}
+}
+
+
+sub documentoNonCorrettoModifica{
+	open (FILE, "< ../data/private_html/editorDocumenti.html");
+while(!eof(FILE)){
+	$string .= <FILE>;
+}
+  close FILE;
+
+my $errorField="<h2>Ci sono errori nell'inserimento dei dati</h2>";
+$string=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__DOC__" readonly \/><\/label>/g;
+$string=~ s/__TITOLO__/$_[0]/;
+$string=~ s/__TESTO__/$_[1]/;
+$string=~ s/__VECCHIOTITOLO__/$_[2]/;
+$string=~ s/__DOC__/$_[3]/;
+$string=~ s/__VALOREMODIFICA__/SalvaDocumento/;
+$string=~ s/__ACTION__/Salva Documento/;
+$string=~ s/__VALSELEZIONA__/modifica/;
+$string=~ s/__SUBMITYPE__/Modifica/g;
+$string=~ s/__ACTIVEINS__//;
+$string=~ s/__ACTIVEMOD__/ id="active"/;
+$string=~ s/__LINKINS__/<a href="amministraSezionePrivata.cgi?Seleziona=inserisci" tabindex="1">Inserisci<\/a>/;
+$string=~ s/__LINKMOD__/Modifica/;
+$string=~ s/__INCASODIERRORE__/$errorField/;
+
+print $string;
+
+exit;
+
 }

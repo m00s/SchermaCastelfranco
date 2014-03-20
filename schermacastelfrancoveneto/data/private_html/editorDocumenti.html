@@ -60,6 +60,7 @@
 			</div>
 			<div class="struttura-content">
 				<form name="inserisciDocumentoForm" id="inserisci-form" method="post" action="amministraSezionePrivata.cgi" enctype="multipart/form-data">
+					__INCASODIERRORE__
 					<fieldset>
 						<legend>Inserisci dati del documento</legend>
 					<div>
@@ -86,7 +87,7 @@
 						<legend>Inserisci documento in PDF</legend>
 						<p><label>Aggiungi pdf: <input type="file" name="documento" tabindex="13"/></label></p>
 					</fieldset>
-					<input type="hidden" name="vecchioTitolo" value="__TITOLO__"/>
+					<input type="hidden" name="vecchioTitolo" value="__VECCHIOTITOLO__"/>
 					<input type="hidden" name="modifica" value="__VALOREMODIFICA__"/>
 					<p><input type="submit" name="submit" id="submit" value="__ACTION__" onclick="return checkInserimentoDocumento();" tabindex="14"/></p>
 					</fieldset>

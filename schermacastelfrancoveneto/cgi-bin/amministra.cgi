@@ -12,35 +12,42 @@ do 'login.cgi';
 
 $page=new CGI;
 $currentPage=$page->param("pagina");
-
 #controllo lo stato della sessione
 $session = CGI::Session->load();
-if($session->is_expired or $session->is_empty){
-	$session = CGI::Session->new();
-	$CGISESSID = $session->id();
+if($page->param('logout') eq "esci"){
+	$session->close();
+	$session->delete();
+	$session->flush();
+	print $session->header(-location=>"articoli.cgi");
+	exit;
 }
 
-# print $session->header();
+if($session->is_expired or $session->is_empty){
+	$session = new CGI::Session;
 
-#controllo se la form e' stata gia settata
-if($page->param("submit")){
-	$username = $page->param("username");
-	$password = $page->param("password");
-	if($username eq 'admin' and $password eq 'admin'){
-		$session->param('login', 'admin');
-		$session->flush();
-		print $session->header();
-		print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=amministraSezionePrivata.cgi'>";
+	#controllo se la form e' stata gia settata
+	if($page->param("submit")){
+		$username = $page->param("username");
+		$password = $page->param("password");
+		if($username eq 'admin' and $password eq 'admin'){
+			$session->param('login', 'admin');
+			print $session->header(-location=>"amministraSezionePrivata.cgi");
+			exit;
+		}
+		else{
+			print "Content-type: text/html\n\n";
+			print &getLogin();
+			exit;
+		}
 	}
 	else{
+
 		print "Content-type: text/html\n\n";
 		print &getLogin();
-		# print "<p class='error'>Ritenta, sarai pi&ugrave; fortunato!</p>";
+		exit;
 	}
 }
 else{
-
-	print "Content-type: text/html\n\n";
-	print &getLogin();
-
+	print $session->header(-location=>"amministraSezionePrivata.cgi");
+	exit;
 }

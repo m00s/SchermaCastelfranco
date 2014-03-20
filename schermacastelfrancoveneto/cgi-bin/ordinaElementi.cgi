@@ -23,7 +23,7 @@ sub ordinaElementi
 		$articoliFinali=$articolo->toString().$articoliFinali;
 	}
 
-	$articoliFinali=~ s/^(articolo)(.*?)(>)$/<articolo>/g;
+	$articoliFinali=~ s/^(<)articolo.*(>)$/<articolo>/g;
 	my $finalResult="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 					<?xml-stylesheet type=\"text/xsl\" href=\"articoli.xsl\"?>
 					<ts:testi xmlns:xs=\"http://www.w3.org/2001/XMLSchema-instance\" 
