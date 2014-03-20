@@ -285,9 +285,13 @@ div#active{
 	margin-top: 0.2em;
 	margin-bottom: 0.2em;
 }
-#inserisci-form fieldset{border:1px solid black;}
+#inserisci-form fieldset{
+	padding-left: 1em;
+	border:1px solid black;
+}
+
 #inserisci-form fieldset legend{
-	margin-bottom: 1.5%;
+	margin-bottom: 1%;
 	font-weight: bold;
 }
 #inserisci-form fieldset textarea{
@@ -312,17 +316,110 @@ p#editor-title{
 
 .editor-bold{font-weight: bold;}
 
-#modifica-form fieldset{border:1px solid black;}
-#modifica-form fieldset legend{
-	margin-bottom: 1.5%;
-	font-weight: bold;
-}
-#modfica-form fieldset input[type="radio"]{
-	margin-top: 0.2em;
-	margin-bottom: 0.2em;
+#modifica-form fieldset{
+	padding-left: 1em;
+	border:1px solid black;
 }
 
-#elimina-form fieldset{border: 1px solid black;}
+#modifica-form fieldset legend{
+	margin-bottom: 1.2%;
+	font-weight: bold;
+}
+
+.stile-submit{
+	display:inline-block;
+	margin-top: 1em;
+	margin-bottom: 0.6em;
+	width:10em;
+	height:2em;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	background-color:#d6271a;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	box-shadow:inset 0px 1px 0px 0px #f5978e;
+	color:#ffffff;
+	text-align:center;
+	text-decoration:none;
+	text-indent:0;
+	text-shadow:1px 1px 0px #381916;
+	font-weight:bold;
+	font-style:normal;
+	font-size:1em;
+	line-height:40px;
+}
+.stile-submit:hover {
+	background-color:#381a17;
+}
+.stile-submit:active {
+	position:relative;
+	top:1px;
+}
+
+.stile-button {
+	display:inline-block;
+	width:10em;
+	height:1.8em;
+	border:1px solid #d02718;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
+	background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
+	background-color:#f24537;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	box-shadow:inset 0px 1px 0px 0px #f5978e;
+	color:#ffffff;
+	text-align: center;
+	text-decoration:none;
+	text-indent:0;
+	text-shadow:1px 1px 0px #810e05;
+	font-weight:bold;
+	font-style:normal;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
+}
+.stile-button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
+	background:-moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
+	background-color:#c62d1f;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537');
+}
+.stile-button:active {
+	position:relative;
+	top:1px;
+}
+
+.stile-radio{
+	margin-top: 0.6em;
+	margin-right: 1em;
+	margin-bottom: 0.6em;
+}
+
+#elimina-form fieldset{
+	padding-left: 1em;
+	border: 1px solid black;
+}
+
 #elimina-form fieldset legend{
 	margin-bottom: 1.5%;
 	font-weight: bold;
@@ -348,7 +445,7 @@ p#editor-title{
 	padding-top: 1%;
 	padding-bottom: 1%;
 	padding-left: 1%;
-	width: 21.6%;
+	width: 21.55%;
 	background-color: #eb8b8b;
 	color:black;
 }

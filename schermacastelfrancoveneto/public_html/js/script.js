@@ -82,11 +82,11 @@ $(document).ready(function(){
 
 /* FINE */
 
-/* GESTIONE SIDEBAR POSIZIONAMENTO*/
+/* GESTIONE SIDEBAR POSIZIONAMENTO */ /* DA NON FARE SE USA IE6 */
 
 $(document).ready(function(){
 
-	var topFixed=272;
+	var topFixed=290;
 	// bloccarlo per safari e internet explorer 6
 
 	if ($(window).width() > 850){
@@ -103,39 +103,38 @@ $(document).ready(function(){
 
 // scroll
 $(window).scroll(function(){
-		var topFixed=272;
-		// alert(topFixed);
-		var y = $(window).scrollTop();
-		// alert(y);
-		if (y>= topFixed){
-				// alert("maggiore");
-				$("#sidebar").addClass("sidebar-fixed");
-				$("#sidebar").attr("id","sidebarFix");
-		}else{
-				$("#sidebarFix").removeClass("sidebar-fixed");
-				$("#sidebarFix").attr("id","sidebar");
-		}
+
+		if($(window).width() > 850){
+
+			var topFixed=280;
+			// alert(topFixed);
+			var y = $(window).scrollTop();
+			// alert(y);
+			if (y>= topFixed){
+					// alert("maggiore");
+					$("#sidebar").addClass("sidebar-fixed");
+					$("#sidebar").attr("id","sidebarFix");
+			}else{
+					$("#sidebarFix").removeClass("sidebar-fixed");
+					$("#sidebarFix").attr("id","sidebar");
+			}
+		}else{}
 });
 
 
 // resize
 $(window).resize(function(){
-	var topFixed = 272;
-	var y = $(window).scrollTop();
-	// alert(y);
+
 	if($(window).width() > 850){
-			$(window).scroll(function(){
-				if (y >= topFixed){
-					$("#sidebar").addClass("sidebar-fixed");
-					$("#sidebar").attr("id","sidebarFix");
-				}else{
-					$("#sidebarFix").removeClass("sidebar-fixed");
-					$("#sidebarFix").attr("id","sidebar");
-				}
-			});
+			var topFixed=272;
+			var y = $(window).scrollTop();
 
-
-	}else{
+			if (y >= topFixed){ // se è maggiore di un valore fissato devo cambiarli classe e metterla fissa (GESTIONE RELOAD PAGINA GIA' SCROLLATA)
+				$("#sidebar").addClass("sidebar-fixed");
+				$("#sidebar").attr("id","sidebarFix");
+			}
+	}
+	else{
 		// se siamo nella parte mobile/tablet
 			$("#sidebarFix").removeClass("sidebar-fixed");
 			$("#sidebarFix").attr("id","sidebar");
@@ -143,9 +142,8 @@ $(window).resize(function(){
 
 });
 
-
-
 /* FINE */
+
 
 /* SCRIPT PER IL BOX TORNA SU */
 
@@ -258,76 +256,77 @@ function scrollTo(){
 
 /* SCRIPT PER LA GESTIONE DELL'EDITOR DELL'AREA RISERVATA */
 
-		var idTextArea;
+var idTextArea;
 
-		function setId(idValue){
-			idTextArea=idValue;
+function setId(idValue){
+	idTextArea=idValue;
+}
+
+$(document).ready(function () {
+	$("#testo").change(
+		function () {
+			var text = document.getElementById("testo").value;
+			document.getElementById("trasfTesto").innerHTML = text;
+        }
+     );
+
+
+     $("#datepicker").change(
+ 	    function () {
+           	var date = document.getElementById("datepicker").value;
+			document.getElementById("trasfData").innerHTML = date;
 		}
+	  );
 
-		$(document).ready(function () {
-            $("#testo").change(
-                function () {
-					var text = document.getElementById("testo").value;
-					document.getElementById("trasfTesto").innerHTML = text;
-                }
-            );
-
-
-            $("#datepicker").change(
-                function () {
-                	var date = document.getElementById("datepicker").value;
-					document.getElementById("trasfData").innerHTML = date;
-				}
-            );
-
-            $("#titolo").change(
-                function () {
-                	var title = document.getElementById("titolo").value;
-					document.getElementById("trasfTitolo").innerHTML = title;
-				}
-            );
+      $("#titolo").change(
+         function () {
+	     var title = document.getElementById("titolo").value;
+	     document.getElementById("trasfTitolo").innerHTML = title;
+	     }
+      );
 
 
-        });
+});
 
-			function InsertCodeInTextArea(textValue) {
-		        //Get textArea HTML control
-		        var txtArea = document.getElementById(idTextArea);
+function InsertCodeInTextArea(textValue) {
+       //Get textArea HTML control
+       var txtArea = document.getElementById(idTextArea);
 
-		        //IE
-		        if (document.selection) {
-		            txtArea.focus();
-		            var sel = document.selection.createRange();
-		            sel.text = textValue;
-		            return;
-		        }
-		        //Firefox, chrome, mozilla
-		        else if (txtArea.selectionStart || txtArea.selectionStart == '0') {
-		            var startPos = txtArea.selectionStart;
-		            var endPos = txtArea.selectionEnd;
-		            var scrollTop = txtArea.scrollTop;
-		            txtArea.value = txtArea.value.substring(0, startPos) + textValue + txtArea.value.substring(endPos, txtArea.value.length);
-		            txtArea.focus();
-		            txtArea.selectionStart = startPos + textValue.length;
-		            txtArea.selectionEnd = startPos + textValue.length;
-		        }
-		        else {
-		            txtArea.value += textArea.value;
-		            txtArea.focus();
-		        }
-		    }
+       //IE
+       if (document.selection) {
+	         txtArea.focus();
+	         var sel = document.selection.createRange();
+	         sel.text = textValue;
+		     return;
+		}
+		//Firefox, chrome, mozilla
+		else if (txtArea.selectionStart || txtArea.selectionStart == '0') {
+		         var startPos = txtArea.selectionStart;
+		         var endPos = txtArea.selectionEnd;
+		         var scrollTop = txtArea.scrollTop;
+		         txtArea.value = txtArea.value.substring(0, startPos) + textValue + txtArea.value.substring(endPos, txtArea.value.length);
+		         txtArea.focus();
+		         txtArea.selectionStart = startPos + textValue.length;
+		         txtArea.selectionEnd = startPos + textValue.length;
+		      }
+		      else {
+		         txtArea.value += textArea.value;
+		         txtArea.focus();
+		      }
 
-			$(function() {
-				$("#datepicker").datepicker({
-					dateFormat: "dd/mm/yy",
-					onSelect: function(dateText, inst) {
-						var date = $.datepicker.parseDate(inst.settings.dateFormat || $.datepicker._defaults.dateFormat, dateText, inst.settings);
-						var dateText1 = $.datepicker.formatDate("D, d M yy", date, inst.settings);
-						date.setDate(date.getDate() + 7);
-						var dateText2 = $.datepicker.formatDate("D, d M yy", date, inst.settings);
-					}
-				});
-			});
+}
+
+$(function() {
+	$("#datepicker").datepicker({
+		dateFormat: "dd/mm/yy",
+		onSelect: function(dateText, inst) {
+			var date = $.datepicker.parseDate(inst.settings.dateFormat || $.datepicker._defaults.dateFormat, dateText, inst.settings);
+			var dateText1 = $.datepicker.formatDate("D, d M yy", date, inst.settings);
+			date.setDate(date.getDate() + 7);
+			var dateText2 = $.datepicker.formatDate("D, d M yy", date, inst.settings);
+		}
+	});
+});
 
 
 /* FINE */

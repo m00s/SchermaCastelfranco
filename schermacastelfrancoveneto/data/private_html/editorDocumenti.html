@@ -54,7 +54,7 @@
 					</select>
 					<input type="hidden" name="Seleziona" value="__VALSELEZIONA__"/>
 					<noscript>
-						<input type="submit" name="__SUBMITYPE__" value="__SUBMITYPE__">
+						<input class ="stile-button" type="submit" name="__SUBMITYPE__" value="__SUBMITYPE__">
 					</noscript>
 				</form>
 			</div>
@@ -71,15 +71,18 @@
 					<p>Testo:</p>
 					<p><textarea id="testo" name="testo" rows="10" cols="50" onblur="setId(this.id)" tabindex="6">__TESTO__</textarea></p>
 					<div id="textOptions">
-						<fieldset id="lingue">
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;en&#34;></span>')" tabindex="7">Inglese</button>
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;fr&#34;></span>')" tabindex="8">Francese</button>
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;de&#34;></span>')" tabindex="9">Tedesco</button>
-							<button type="button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;ch&#34;></span>')" tabindex="10">Svizzero</button>
-						</fieldset>
-						<fieldset id="stile">
-							<button type="button" onclick="InsertCodeInTextArea(' <em></em>')" tabindex="11"><em>Corsivo</em></button>
-							<button type="button" onclick="InsertCodeInTextArea(' <strong></strong>')" tabindex="12"><strong>Grassetto</strong></button>
+						<legend>Pulsanti inserimento tag speciali</legend>
+						<fieldset id="lingue-stile">
+							<p>
+							<button type="button" class ="stile-button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;en&#34;></span>')" tabindex="7">Inglese</button>
+							<button type="button" class ="stile-button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;fr&#34;></span>')" tabindex="8">Francese</button>
+							<button type="button" class ="stile-button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;de&#34;></span>')" tabindex="9">Tedesco</button>
+							<button type="button" class ="stile-button" onclick="InsertCodeInTextArea(' <span xml:lang=&#34;ch&#34;></span>')" tabindex="10">Svizzero</button>
+							</p>
+							<p>
+							<button type="button" class ="stile-button" onclick="InsertCodeInTextArea(' <em></em>')" tabindex="11"><em>Corsivo</em></button>
+							<button type="button" class ="stile-button" onclick="InsertCodeInTextArea(' <strong></strong>')" tabindex="12"><strong>Grassetto</strong></button>
+							</p>
 						</fieldset>
 					</div>
 					<fieldset>
@@ -89,7 +92,7 @@
 					</fieldset>
 					<input type="hidden" name="vecchioTitolo" value="__VECCHIOTITOLO__"/>
 					<input type="hidden" name="modifica" value="__VALOREMODIFICA__"/>
-					<p><input type="submit" name="submit" id="submit" value="__ACTION__" onclick="return checkInserimentoDocumento();" tabindex="14"/></p>
+					<p><input type="submit" class ="stile-submit" name="submit" id="submit" value="__ACTION__" onclick="return checkInserimentoDocumento();" tabindex="14"/></p>
 					</fieldset>
 				</form>
 
