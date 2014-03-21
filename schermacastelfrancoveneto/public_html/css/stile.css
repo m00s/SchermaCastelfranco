@@ -13,6 +13,9 @@ body{
 	font-family: Helvetica,Arial,sans-serif;
 
 }
+a:active{
+	color:blue;
+}
 
 #header{
 	margin-top: 1%;
@@ -20,8 +23,8 @@ body{
 	width: 100%;
 	height: 15em;
 	background-image: url('../img/struttura/header_scherma_2.png');
-	background-repeat: no-repeat;
 	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 #nav li{
@@ -78,11 +81,16 @@ li#active{
 #sezione-nav-1{display: none;}
 
 #image-menu{
-	background-image: url('../img/struttura/menu_mobile_2.jpg');
-	background-size: 4em;
+	background-image: url('../img/struttura/menu_mobile.png');
+	background-size: 5em;
 	background-repeat: no-repeat;
-}
+	margin-top:5%;
 
+}
+#nav-1 ul li#image-menu{
+		width: 4em;
+	height: 3em;
+}
 #panel-nav-1{display: inline;}
 
 #nav-2{
@@ -297,8 +305,8 @@ div#active{
 	margin-bottom: 0.2em;
 }
 #inserisci-form fieldset{
-	padding-left: 0.5em;
 	padding-right: 0.5em;
+	padding-left: 0.5em;
 	border:1px solid black;
 }
 
@@ -308,26 +316,26 @@ div#active{
 }
 #inserisci-form fieldset textarea{
 	float: left;
-	margin-bottom: 1.5em;
 	margin-right: 0.8em;
+	margin-bottom: 1.5em;
 	width: 480px;
 	height: 450px;
 	resize: none;
 }
 fieldset#lingue-stile{
-	margin-left: 1.2em;
 	margin-right: 0.8em;
+	margin-left: 1.2em;
 }
 
 fieldset#inserisci-immagine{
-	margin-left: 1.2em;
 	margin-right: 0.8em;
+	margin-left: 1.2em;
 }
 
 
 fieldset#inserisci-documento{
-	margin-left: 1.2em;
 	margin-right: 0.8em;
+	margin-left: 1.2em;
 }
 
 #editor-finale{
@@ -357,8 +365,8 @@ p#editor-title{
 }
 
 .stile-submit{
-	clear: both;
 	display:block;
+	clear: both;
 	margin-top: 1em;
 	margin-bottom: 0.6em;
 	width:13em;
@@ -389,6 +397,9 @@ p#editor-title{
 	font-size:1em;
 
 }
+
+#login .stile-submit{display: inline-block;}
+
 .stile-submit:hover {
 	background-color:#381a17;
 }
@@ -414,10 +425,6 @@ p#editor-title{
 	-webkit-border-bottom-left-radius:0px;
 	-moz-border-radius-bottomleft:0px;
 	border-bottom-left-radius:0px;
-	/*
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
-	background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
-	*/
 	background-color:#f24537;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
 	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
@@ -690,11 +697,11 @@ p#editor-title{
 @media screen and (max-width:480px){
 
 	#header{
-		float:left;
+		float:right;
 		margin-top: 1%;
 		margin-bottom: 1%;
-		width:55%;
-		height: 150px;
+		width:50%;
+		height: 6.5em;
 		background-image: url('../img/struttura/header_mobile.png');
 		background-size: 80%;
 		background-repeat: no-repeat;
@@ -702,7 +709,11 @@ p#editor-title{
 	#nav{
 		float:left;
 		margin-top: 1%;
+		margin-bottom: 0.8em;
 		width: 40%;
+	}
+	#panel-nav-1 li{
+		width: 7em;
 	}
 	#nav-2 {
 	  position: absolute;
