@@ -262,32 +262,6 @@ function setId(idValue){
 	idTextArea=idValue;
 }
 
-$(document).ready(function () {
-	$("#testo").change(
-		function () {
-			var text = document.getElementById("testo").value;
-			document.getElementById("trasfTesto").innerHTML = text;
-        }
-     );
-
-
-     $("#datepicker").change(
- 	    function () {
-           	var date = document.getElementById("datepicker").value;
-			document.getElementById("trasfData").innerHTML = date;
-		}
-	  );
-
-      $("#titolo").change(
-         function () {
-	     var title = document.getElementById("titolo").value;
-	     document.getElementById("trasfTitolo").innerHTML = title;
-	     }
-      );
-
-
-});
-
 function InsertCodeInTextArea(textValue) {
        //Get textArea HTML control
        var txtArea = document.getElementById(idTextArea);
@@ -304,7 +278,7 @@ function InsertCodeInTextArea(textValue) {
 		         var startPos = txtArea.selectionStart;
 		         var endPos = txtArea.selectionEnd;
 		         var scrollTop = txtArea.scrollTop;
-		         txtArea.value = txtArea.value.substring(0, startPos) + textValue + txtArea.value.substring(endPos, txtArea.value.length);
+		         txtArea.value = txtArea.value.substring(0, startPos) + textValue + 					txtArea.value.substring(endPos, txtArea.value.length);
 		         txtArea.focus();
 		         txtArea.selectionStart = startPos + textValue.length;
 		         txtArea.selectionEnd = startPos + textValue.length;
@@ -313,7 +287,6 @@ function InsertCodeInTextArea(textValue) {
 		         txtArea.value += textArea.value;
 		         txtArea.focus();
 		      }
-
 }
 
 $(function() {
