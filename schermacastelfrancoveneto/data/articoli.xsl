@@ -80,6 +80,8 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					<xsl:variable name="data"><xsl:value-of select="a:data"/></xsl:variable>
 					<xsl:variable name="luogo-data"><xsl:value-of select="$luogo" /> in data <xsl:value-of select="$data" /></xsl:variable>
 					<xsl:variable name="url">?artCompleto=on&amp;data=<xsl:value-of select="$data" />&amp;luogo=<xsl:value-of select="$luogo" /></xsl:variable>
+					<xsl:variable name="src"><xsl:value-of select="a:img/@src"/></xsl:variable>
+					<xsl:variable name="alt"><xsl:value-of select="a:img/@alt"/></xsl:variable>
 
 					<div class="article" > <!-- id="{$luogo-data}" -->
 						<div class="sezione" id="{$luogo-data}">
@@ -88,7 +90,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 							<h1><xsl:value-of select="a:titolo"/></h1>
 						</div>
 						<div class="nascondi-articolo">
-							<xsl:copy-of select="a:img"/>
+							<img src="{$src}" alt="{$alt}" />
 							<p> <!-- class="nascondi-articolo" -->
 								<xsl:value-of select="substring(a:paragrafo, 0, 1000)"/>..
 								<!-- <xsl:value-of select="a:paragrafo"/> -->
