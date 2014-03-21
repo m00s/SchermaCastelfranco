@@ -7,7 +7,7 @@ body{
 	margin-right: 3%;
 	margin-left: 3%;
 	height: 100%;
-	background-color: #bb2a2a;
+	background-color: #d3d3d3;/*#fffe3a;/*#ffc204; /*#bb2a2a;*/
 	color:black;
 	font-size: 100%;
 	font-family: Helvetica,Arial,sans-serif;
@@ -19,7 +19,7 @@ a:active{
 
 #header{
 	margin-top: 1%;
-	margin-bottom: 2em;
+	margin-bottom: 0.8em;
 	width: 100%;
 	height: 15em;
 	background-image: url('../img/struttura/header_scherma_2.png');
@@ -29,7 +29,7 @@ a:active{
 
 #nav li{
 	display: inline;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 	list-style-type: none;
 	font-size: 1.2em;
@@ -88,7 +88,7 @@ li#active{
 
 }
 #nav-1 ul li#image-menu{
-		width: 4em;
+	width: 4em;
 	height: 3em;
 }
 #panel-nav-1{display: inline;}
@@ -96,7 +96,8 @@ li#active{
 #nav-2{
 	float: right;
 	padding:0.4em;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
+
 }
 
 #nav-2-active{
@@ -140,7 +141,7 @@ li#active{
 	padding-right: 5%;
 	padding-bottom: 4%;
 	padding-left: 3%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -151,7 +152,7 @@ li#active{
 	padding-right: 2%;
 	padding-bottom: 2%;
 	padding-left: 1%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -162,16 +163,16 @@ li#active{
 	padding-right: 5%;
 	padding-bottom: 2%;
 	padding-left: 3%;
-	background-color: #eb8b8b;
-	color:black;
+	background-color: #ffffca;/*#eb8b8b;*/
+	color:black; /*#ffffca;*/
 }
 
 .article h1{
 	display: block;
 	float: none;
 	margin-bottom: 2%;
-	font-size: 1.4em;
 	text-align: center;
+	font-size: 1.4em;
 }
 .article h1 a{
 	color:black;
@@ -205,7 +206,7 @@ li#active{
 	padding-right: 5%;
 	padding-bottom: 5%;
 	padding-left: 3%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -222,7 +223,7 @@ li#active{
 	padding-right: 5%;
 	padding-bottom: 5%;
 	padding-left: 3%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 .paragrafo-storia p{
@@ -295,7 +296,7 @@ div#active{
 
 #login{
 	padding: 0.5em;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -385,6 +386,14 @@ p#editor-title{
 	margin-bottom: 0.6em;
 	width:13em;
 	height:2em;
+	color:black;
+	text-align:center;
+	text-decoration:none;
+	text-indent:0;
+	font-weight:bold;
+	font-style:normal;
+	font-size:1em;
+	/*
 	-webkit-border-top-left-radius:0px;
 	-moz-border-radius-topleft:0px;
 	border-top-left-radius:0px;
@@ -397,18 +406,12 @@ p#editor-title{
 	-webkit-border-bottom-left-radius:0px;
 	-moz-border-radius-bottomleft:0px;
 	border-bottom-left-radius:0px;
-	background-color:#d6271a;
+
 	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
 	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
 	box-shadow:inset 0px 1px 0px 0px #f5978e;
-	color:#ffffff;
-	text-align:center;
-	text-decoration:none;
-	text-indent:0;
-	text-shadow:1px 1px 0px #381916;
-	font-weight:bold;
-	font-style:normal;
-	font-size:1em;
+	*/
+	background-color:#d3d3d3;
 
 }
 
@@ -427,6 +430,7 @@ p#editor-title{
 	display:inline-block;
 	width:10em;
 	height:1.9em;
+	/*
 	-moz-border-radius-topleft:0px;
 	border-top-left-radius:0px;
 	-webkit-border-top-right-radius:0px;
@@ -438,20 +442,17 @@ p#editor-title{
 	-webkit-border-bottom-left-radius:0px;
 	-moz-border-radius-bottomleft:0px;
 	border-bottom-left-radius:0px;
-	background-color:#f24537;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
 	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
 	box-shadow:inset 0px 1px 0px 0px #f5978e;
-	color:#ffffff;
+	*/
+	background-color:#d3d3d3;
+	color:black;
 	text-align: center;
 	text-decoration:none;
 	text-indent:0;
-	text-shadow:1px 1px 0px #810e05;
 	font-style:normal;
 	font-size: 0.8em;
-
-	/*border:1px solid #d02718;*/
-	-webkit-border-top-left-radius:0px;
 }
 .stile-button:hover {
 	background-color:black;
@@ -492,9 +493,9 @@ p#editor-title{
 	padding-bottom: 1%;
 	padding-left: 1%;
 	width: 23%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;
 	color:black;
-	/* margin-top: 35px; */
+
 }
 
 #sidebarFix{
@@ -505,7 +506,7 @@ p#editor-title{
 	padding-bottom: 1%;
 	padding-left: 1%;
 	width: 21.55%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 #sidebarFix li{list-style-type: none;}
@@ -541,7 +542,7 @@ p#editor-title{
 	clear:both;
 	margin-bottom: 1%;
 	padding:0.5em;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 	text-align : center;
 }
@@ -556,7 +557,7 @@ p#editor-title{
 	padding-bottom: 0.2em;
 	padding-left: 1%;
 	width: 99%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 	font-weight: bold;
 }
@@ -583,6 +584,7 @@ p#editor-title{
 /* MEDIA QUERIES */
 @media screen and (max-width:1150px){
 
+	#header{height: 12em;}
 	#nav-1{
 		float:none;
 		clear: both;
@@ -651,7 +653,7 @@ p#editor-title{
 		padding-bottom: 0.2em;
 		padding-left: 1%;
 		width: 99%;
-		background-color: #eb8b8b;
+		background-color: #ffffca;
 		color:black;
 		font-weight: bold;
 	}
@@ -664,13 +666,7 @@ p#editor-title{
 	.image-storia-left{display: none;}
 	.image-storia-right{display: none;}
 	.paragrafo-right{margin-left: 0.5em;}
-	/*
-	.article img{
-		display: block;
-		float: none;
-		margin:0 auto;
-	}
-	*/
+
 	.paragrafo-right{
 		float: none;
 		width: 100%;
