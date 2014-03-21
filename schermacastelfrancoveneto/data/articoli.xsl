@@ -87,15 +87,11 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 						<div class="sezione" id="{$luogo-data}">
 							<p><xsl:value-of select="a:data"/></p>
 							<p><xsl:value-of select="a:luogo"/></p>
-							<h1><xsl:value-of select="a:titolo"/></h1>
+							
 						</div>
 						<div class="nascondi-articolo">
 							<img src="{$src}" alt="{$alt}" />
-							<p> <!-- class="nascondi-articolo" -->
-								<xsl:value-of select="substring(a:paragrafo, 0, 1000)"/>..
-								<!-- <xsl:value-of select="a:paragrafo"/> -->
-							</p>
-
+							<h1><xsl:value-of select="a:titolo"/></h1>
 						</div>
 						<p><a href="{$url}"> Vai all'articolo intero</a></p>
 						<p class="nascondi-torna"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>

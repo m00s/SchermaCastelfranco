@@ -52,6 +52,10 @@ my $stylesheet = $xslt->parse_stylesheet($xslt_doc);
 
 #applicazione del foglio di trasformazione
 my $risultato = $stylesheet->transform($doc);
+my $risultatoS=$risultato->toString();
+$risultatoS=~ s/<paragrafo xmlns:xs="http:\/\/www.w3.org\/2001\/XMLSchema-instance" xmlns="http:\/\/www.articoli.com" xmlns:ts="http:\/\/www.articoli.com">//g;
+$risultatoS=~ s/<\/paragrafo>//g;
+
 print "Content-type: text/html\n\n";
-print $risultato->toString();
+print $risultatoS;
 }
