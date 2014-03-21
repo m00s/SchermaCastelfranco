@@ -10,8 +10,6 @@ my $page=new CGI;
 	my $titolo=$page->param('titolo');
 	my $luogo=$page->param('luogo');
 	my $testo=$page->param('testo');
-
-	my $fotoNome=$page->upload('foto');
 	my $altFoto=$page->param('altfoto');	
 
 	if($page->param('datepicker')=~ m/\d{4}\/\d{2}\/\d{2}/){
@@ -23,14 +21,29 @@ my $page=new CGI;
 		$dataDaSalvare=	$page->param('datepicker');
 	}
 
-	print $page->param('datepicker');
-	print "<br/>";
-	print @data;
-	print "<br/>";
-	print $dataDaSalvare;
-	exit;
+	eval{timelocal(0,0,0,$data[2],$data[1]-1,$data[0]);} || die (&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo,$altFoto));
 
-	eval{timelocal(0,0,0,$data[2],$data[1]-1,$data[0]);} || die (&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo));
+	$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
+	$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
+	 
+	#DA USARE PER PROVARE A INSERIRE UN FILE BINARIO COME IMMAGINE O PDF
+	my $uploadDir="../public_html/img/gare";
+
+	#imposto il nome della foto da salvare
+	$fotoN ="$luogo-$dataDaSalvare";
+
+	my $fotoPath=$uploadDir."/".$fotoN;
+	my $foto_handle=$page->upload('foto');
+
+	open (FH, ">",$fotoPath);
+	while (my $length = sysread($foto_handle, $buffer, 262144)) { #256KB
+        syswrite(FH, $buffer, $length);
+    }
+    close FH;
+	#esegue l'upload della foto passata 
+	#my $fotoFile = $page->upload("foto");
+
+	my $fotoSRC="../img/gare/".$fotoN;
 	
 	#INSERIMENTO DEI DATI VERIFICATI DENTO articoli.xml
 	my $path="../data/articoli.xml";
@@ -52,7 +65,7 @@ my $page=new CGI;
 
 	if($rootDoc){
 		my $nodo;
-		eval{$nodo=$parser->parse_balanced_chunk($nuovoArticolo)} || die (&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo));
+		eval{$nodo=$parser->parse_balanced_chunk($nuovoArticolo)} || die (&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo,$altFoto));
 		$rootDoc->appendChild($nodo);
 		open(OUT,">$path");
 		flock(OUT,2);
@@ -74,6 +87,7 @@ while(!eof(FILE)){
 my $errorField="Ci sono errori nell'inserimento dei dati, controlla tag apertura e chiusura, la data che sia scritta in maniera corretta 
 			YYYY-MM-DD(prima l'anno, poi mese,poi giorno)";
 $string=~ s/__REINSERISCIFOTO__/Errore nell'inserimento dei dati, reinserisci la foto se l'avevi cambiata/;
+$string=~ s/__ALT__/$_[4]/;
 $string=~ s/__LUOGO__/$_[2]/;
 $string=~ s/__DATA__/$_[0]/;
 $string=~ s/__TITOLO__/$_[1]/;
@@ -93,49 +107,4 @@ print $string;
 
 exit;
 
-}
-
-
-sub blablabla{
-
-#DA USARE PER PROVARE A INSERIRE UN FILE BINARIO COME IMMAGINE O PDF
-my $uploadDir="../public_html/img/gare";
-
-	#stringa da utilizzare nel caso in cui l'utente potesse inserire foto con nome che contenga caratteri non validi come "/"
-	#my $caratteri_permessi = "a-zA-Z0-9_.-";
-
-	#faccio parse della stringa passata direttamente dal browser
-	#my ( $nome, $path, $estensione ) = fileparse ( $fotoNome, '..*' );
-	$foto ="ciao.jpg";
-
-	$foto =~ tr/ /_/; #in caso ci siano spazi nel nome della foto li cambio con degli _ per non creare problemi
-	
-	#nel caso volessi eseguire il passo di rimuovere dal nome tutti i caratteri che potrebbero dare problemi eseguo 
-	#il seguente comando
-	#$fotoname =~ s/[^$safe_filename_characters]//g;
-
-
-
-	my $fotoPath=$uploadDir."/".$foto;
-
-	#esegue l'upload della foto passata 
-	#my $fotoFile = $page->upload("foto");
-
-	#salvo il file dentro la cartella che avevo scelto con il nome scelto
-	my ($bytesread, $buffer);
-    my $num_bytes = 1024;
-    my $totalbytes;
-
-	open (OUTFILE, ">",$fotoPath) or die "Couldn't open $file for writing: $!";
-	binmode (OUTFILE);	
-        while ($bytesread = read($fotoNome, $buffer, $num_bytes)) {
-            print OUTFILE $buffer;
-            print "tra buffer e bytesread";
-        }
-        close(OUTFILE);
-        print OUTFILE $fotoNome;
-        print "ciao";
-        exit;
-
-	my $fotoSRC="../img/gare/".$foto;
 }
