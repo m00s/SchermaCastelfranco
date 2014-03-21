@@ -7,3 +7,4 @@ while(!eof(FILE)){
 }
 close FILE;
 print $pagina;
+exit;
