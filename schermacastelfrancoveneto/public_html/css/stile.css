@@ -16,11 +16,12 @@ body{
 
 #header{
 	margin-top: 1%;
-	margin-bottom: 2%;
+	margin-bottom: 2em;
 	width: 100%;
-	height: 200px;
-	background-image: url('../img/struttura/header_scherma.jpg');
-	/* background-repeat: no-repeat;*/
+	height: 15em;
+	background-image: url('../img/struttura/header_scherma_2.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 #nav li{
@@ -296,7 +297,8 @@ div#active{
 	margin-bottom: 0.2em;
 }
 #inserisci-form fieldset{
-	padding-left: 1em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
 	border:1px solid black;
 }
 
@@ -305,10 +307,27 @@ div#active{
 	font-weight: bold;
 }
 #inserisci-form fieldset textarea{
+	float: left;
 	margin-bottom: 1.5em;
+	margin-right: 0.8em;
 	width: 480px;
-	height: 350px;
+	height: 450px;
 	resize: none;
+}
+fieldset#lingue-stile{
+	margin-left: 1.2em;
+	margin-right: 0.8em;
+}
+
+fieldset#inserisci-immagine{
+	margin-left: 1.2em;
+	margin-right: 0.8em;
+}
+
+
+fieldset#inserisci-documento{
+	margin-left: 1.2em;
+	margin-right: 0.8em;
 }
 
 #editor-finale{
@@ -338,7 +357,8 @@ p#editor-title{
 }
 
 .stile-submit{
-	display:inline-block;
+	clear: both;
+	display:block;
 	margin-top: 1em;
 	margin-bottom: 0.6em;
 	width:13em;
@@ -394,8 +414,10 @@ p#editor-title{
 	-webkit-border-bottom-left-radius:0px;
 	-moz-border-radius-bottomleft:0px;
 	border-bottom-left-radius:0px;
+	/*
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
 	background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
+	*/
 	background-color:#f24537;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
 	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
@@ -405,7 +427,6 @@ p#editor-title{
 	text-decoration:none;
 	text-indent:0;
 	text-shadow:1px 1px 0px #810e05;
-	font-weight:bold;
 	font-style:normal;
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
 }
@@ -533,8 +554,7 @@ p#editor-title{
 	background-size: 4em;
 	color: white;
 	text-align:center;
-    font-size:1em;
-    font-family : "Comic Sans MS", cursive, sans-serif;
+    font-size:1.1em;
     cursor:pointer;
 }
 
@@ -574,7 +594,7 @@ p#editor-title{
 }
 
 @media screen and (max-width:850px){
-
+	#header{height: 9em;}
 	#sezione-nav-1{
 		display:inline-block;
 	}
@@ -675,7 +695,7 @@ p#editor-title{
 		margin-bottom: 1%;
 		width:55%;
 		height: 150px;
-		background-image: url('../img/struttura/logo-scherma.jpg');
+		background-image: url('../img/struttura/header_mobile.png');
 		background-size: 80%;
 		background-repeat: no-repeat;
 	}

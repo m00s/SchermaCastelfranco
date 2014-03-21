@@ -35,7 +35,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 			<div id="nav-1">
 				<ul id="sezione-nav-1"><li id="image-menu" title="contiene immagine del menù per il mobile"></li></ul>
 				<ul id="panel-nav-1">
-					<li id="active" >ARTICOLO</li>
+					<li id="active" >ARTICOLI</li>
 					<li><a href="documenti.cgi" tabindex="1">DOCUMENTI</a></li>
 					<li><a href="../storia.html" tabindex="2">STORIA</a></li>
 					<li><a href="../staff.html" tabindex="3"><span xml:lang="en">STAFF</span></a></li>
@@ -97,7 +97,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 						</div>
 						<p><a href="{$url}"> Vai all'articolo intero</a></p>
 						<p class="nascondi-torna"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
-						
+
 						<xsl:if test="__NART__&#62;3">
 							<xsl:if test="position()&#61;(__ART__-3)">
 								<div id="anchor"></div>

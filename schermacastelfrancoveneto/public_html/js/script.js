@@ -86,7 +86,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
-	var topFixed=290;
+	var topFixed=320;
 	// bloccarlo per safari e internet explorer 6
 
 	if ($(window).width() > 850){
@@ -106,7 +106,7 @@ $(window).scroll(function(){
 
 		if($(window).width() > 850){
 
-			var topFixed=280;
+			var topFixed=320;
 			// alert(topFixed);
 			var y = $(window).scrollTop();
 			// alert(y);
@@ -126,7 +126,7 @@ $(window).scroll(function(){
 $(window).resize(function(){
 
 	if($(window).width() > 850){
-			var topFixed=272;
+			var topFixed=320;
 			var y = $(window).scrollTop();
 
 			if (y >= topFixed){ // se è maggiore di un valore fissato devo cambiarli classe e metterla fissa (GESTIONE RELOAD PAGINA GIA' SCROLLATA)
