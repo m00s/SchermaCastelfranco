@@ -152,6 +152,11 @@ my $page=new CGI;
 	eval{timelocal(0,0,0,$data[2],$data[1]-1,$data[0]);} || 
 				die (&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto,$vecchioAlt));
 
+	if($titolo eq '' or $luogo eq '' or $testo eq ''){
+		&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto,$vecchioAlt);
+	}
+
+
 	if($page->param('foto')){
 		if($page->param('altFoto')){
 			$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)

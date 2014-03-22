@@ -26,7 +26,7 @@ my $page=new CGI;
 
 	eval{timelocal(0,0,0,$data[2],$data[1]-1,$data[0]);} || die (&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo,$altFoto));
 
-	if($titolo eq 0 or $luogo eq 0 or $testo eq 0){
+	if($titolo eq '' or $luogo eq '' or $testo eq ''){
 		&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo,$altFoto);
 	}
 
