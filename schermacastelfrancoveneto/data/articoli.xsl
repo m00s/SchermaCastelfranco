@@ -74,8 +74,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<div id="content">
 			<xsl:for-each select="a:testi/a:articolo[position()&#60;&#61;__ART__]">
 				<xsl:sort select="a:data" order="descending"/>
-					<!-- mi salvo la variabile titolo che poi utilizzerò in id dell'articolo-->
-					<!--<xsl:variable name="titolo"><xsl:value-of select="a:titolo"/></xsl:variable>-->
+
 					<xsl:variable name="luogo"><xsl:value-of select="a:luogo"/></xsl:variable>
 					<xsl:variable name="data"><xsl:value-of select="a:data"/></xsl:variable>
 					<xsl:variable name="luogo-data"><xsl:value-of select="$luogo" /> in data <xsl:value-of select="$data" /></xsl:variable>
@@ -83,20 +82,13 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 					<xsl:variable name="src"><xsl:value-of select="a:img/@src"/></xsl:variable>
 					<xsl:variable name="alt"><xsl:value-of select="a:img/@alt"/></xsl:variable>
 
-					<div class="article" > <!-- id="{$luogo-data}" -->
-						<div class="sezione" id="{$luogo-data}">
+					<div class="article" id="{$luogo-data}">
+						<!--<div class="sezione" id="{$luogo-data}">-->
 							<p><xsl:value-of select="a:data"/></p>
 							<p><xsl:value-of select="a:luogo"/></p>
-							<h1><xsl:value-of select="a:titolo"/></h1>
-						</div>
-						<div class="nascondi-articolo">
+							<h1><a href="{$url}"><xsl:value-of select="a:titolo"/></a></h1>
 							<img src="{$src}" alt="{$alt}" />
-							<p> <!-- class="nascondi-articolo" -->
-								<xsl:value-of select="substring(a:paragrafo, 0, 1000)"/>..
-								<!-- <xsl:value-of select="a:paragrafo"/> -->
-							</p>
-
-						</div>
+						<!--</div>-->
 						<p><a href="{$url}"> Vai all'articolo intero</a></p>
 						<p class="nascondi-torna"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 

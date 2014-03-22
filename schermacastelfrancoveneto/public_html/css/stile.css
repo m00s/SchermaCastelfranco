@@ -7,26 +7,29 @@ body{
 	margin-right: 3%;
 	margin-left: 3%;
 	height: 100%;
-	background-color: #bb2a2a;
+	background-color: #d3d3d3;/*#fffe3a;/*#ffc204; /*#bb2a2a;*/
 	color:black;
 	font-size: 100%;
 	font-family: Helvetica,Arial,sans-serif;
 
 }
+a:active{
+	color:blue;
+}
 
 #header{
 	margin-top: 1%;
-	margin-bottom: 2em;
+	margin-bottom: 0.8em;
 	width: 100%;
 	height: 15em;
 	background-image: url('../img/struttura/header_scherma_2.png');
-	background-repeat: no-repeat;
 	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 #nav li{
 	display: inline;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 	list-style-type: none;
 	font-size: 1.2em;
@@ -78,17 +81,23 @@ li#active{
 #sezione-nav-1{display: none;}
 
 #image-menu{
-	background-image: url('../img/struttura/menu_mobile_2.jpg');
-	background-size: 4em;
+	margin-top:5%;
+	background-image: url('../img/struttura/menu_mobile.png');
+	background-size: 5em;
 	background-repeat: no-repeat;
-}
 
+}
+#nav-1 ul li#image-menu{
+	width: 4em;
+	height: 3em;
+}
 #panel-nav-1{display: inline;}
 
 #nav-2{
 	float: right;
 	padding:0.4em;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
+
 }
 
 #nav-2-active{
@@ -132,7 +141,7 @@ li#active{
 	padding-right: 5%;
 	padding-bottom: 4%;
 	padding-left: 3%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -143,7 +152,7 @@ li#active{
 	padding-right: 2%;
 	padding-bottom: 2%;
 	padding-left: 1%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -152,28 +161,42 @@ li#active{
 	margin-bottom: 2%;
 	padding-top: 2%;
 	padding-right: 5%;
-	padding-bottom: 5%;
+	padding-bottom: 2%;
 	padding-left: 3%;
-	background-color: #eb8b8b;
-	color:black;
+	background-color: #ffffca;/*#eb8b8b;*/
+	color:black; /*#ffffca;*/
 }
 
 .article h1{
+	display: block;
+	float: none;
 	margin-bottom: 2%;
 	text-align: center;
 	font-size: 1.4em;
+}
+.article h1 a{
+	color:black;
+	text-decoration: none;
+}
+
+.article h1 a:hover{
+	color: blue;
+	text-decoration: underline;
 }
 .article p{
 	margin-bottom: 1%;
 	line-height: 1.3;
 }
 .article img{
-	float: left;
+	display: block;
+	float: none;
 	overflow: auto;
+	margin:0 auto;
+	margin-bottom: 2%;
 	padding-right: 1em;
 	padding-bottom: 1em;
-	max-width: 26em;
-	max-height: 26em;
+	max-width: 30em;
+	max-height: 30em;
 }
 
 .document{
@@ -183,7 +206,7 @@ li#active{
 	padding-right: 5%;
 	padding-bottom: 5%;
 	padding-left: 3%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -200,7 +223,7 @@ li#active{
 	padding-right: 5%;
 	padding-bottom: 5%;
 	padding-left: 3%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 .paragrafo-storia p{
@@ -251,9 +274,6 @@ li#active{
 }
 #staff img{margin-bottom: 1%;}
 
-#info{
-
-}
 #info p{margin-bottom: 2%;}
 #info h1{
 	margin-top: 1%;
@@ -276,7 +296,7 @@ div#active{
 
 #login{
 	padding: 0.5em;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -297,8 +317,8 @@ div#active{
 	margin-bottom: 0.2em;
 }
 #inserisci-form fieldset{
-	padding-left: 0.5em;
 	padding-right: 0.5em;
+	padding-left: 0.5em;
 	border:1px solid black;
 }
 
@@ -308,26 +328,29 @@ div#active{
 }
 #inserisci-form fieldset textarea{
 	float: left;
-	margin-bottom: 1.5em;
 	margin-right: 0.8em;
+	margin-bottom: 1.5em;
 	width: 480px;
 	height: 450px;
 	resize: none;
 }
 fieldset#lingue-stile{
-	margin-left: 1.2em;
 	margin-right: 0.8em;
+	margin-bottom: 0.5em;
+	margin-left: 1.2em;
 }
-
+fieldset#lingue-stile p{
+	margin-bottom: 0.5em;
+}
 fieldset#inserisci-immagine{
-	margin-left: 1.2em;
 	margin-right: 0.8em;
+	margin-left: 1.2em;
 }
 
 
 fieldset#inserisci-documento{
-	margin-left: 1.2em;
 	margin-right: 0.8em;
+	margin-left: 1.2em;
 }
 
 #editor-finale{
@@ -357,12 +380,20 @@ p#editor-title{
 }
 
 .stile-submit{
-	clear: both;
 	display:block;
+	clear: both;
 	margin-top: 1em;
 	margin-bottom: 0.6em;
 	width:13em;
 	height:2em;
+	color:black;
+	text-align:center;
+	text-decoration:none;
+	text-indent:0;
+	font-weight:bold;
+	font-style:normal;
+	font-size:1em;
+	/*
 	-webkit-border-top-left-radius:0px;
 	-moz-border-radius-topleft:0px;
 	border-top-left-radius:0px;
@@ -375,22 +406,20 @@ p#editor-title{
 	-webkit-border-bottom-left-radius:0px;
 	-moz-border-radius-bottomleft:0px;
 	border-bottom-left-radius:0px;
-	background-color:#d6271a;
+
 	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
 	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
 	box-shadow:inset 0px 1px 0px 0px #f5978e;
-	color:#ffffff;
-	text-align:center;
-	text-decoration:none;
-	text-indent:0;
-	text-shadow:1px 1px 0px #381916;
-	font-weight:bold;
-	font-style:normal;
-	font-size:1em;
+	*/
+	background-color:#d3d3d3;
 
 }
+
+#login .stile-submit{display: inline-block;}
+
 .stile-submit:hover {
-	background-color:#381a17;
+	background-color:black;
+	color: white;
 }
 .stile-submit:active {
 	position:relative;
@@ -400,9 +429,8 @@ p#editor-title{
 .stile-button {
 	display:inline-block;
 	width:10em;
-	height:1.8em;
-	border:1px solid #d02718;
-	-webkit-border-top-left-radius:0px;
+	height:1.9em;
+	/*
 	-moz-border-radius-topleft:0px;
 	border-top-left-radius:0px;
 	-webkit-border-top-right-radius:0px;
@@ -414,27 +442,21 @@ p#editor-title{
 	-webkit-border-bottom-left-radius:0px;
 	-moz-border-radius-bottomleft:0px;
 	border-bottom-left-radius:0px;
-	/*
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
-	background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
-	*/
-	background-color:#f24537;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
 	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
 	box-shadow:inset 0px 1px 0px 0px #f5978e;
-	color:#ffffff;
+	*/
+	background-color:#d3d3d3;
+	color:black;
 	text-align: center;
 	text-decoration:none;
 	text-indent:0;
-	text-shadow:1px 1px 0px #810e05;
 	font-style:normal;
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
+	font-size: 0.8em;
 }
 .stile-button:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
-	background:-moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
-	background-color:#c62d1f;
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537');
+	background-color:black;
+	color: white;
 }
 .stile-button:active {
 	position:relative;
@@ -471,9 +493,9 @@ p#editor-title{
 	padding-bottom: 1%;
 	padding-left: 1%;
 	width: 23%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;
 	color:black;
-	/* margin-top: 35px; */
+
 }
 
 #sidebarFix{
@@ -484,7 +506,7 @@ p#editor-title{
 	padding-bottom: 1%;
 	padding-left: 1%;
 	width: 21.55%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 }
 #sidebarFix li{list-style-type: none;}
@@ -520,7 +542,7 @@ p#editor-title{
 	clear:both;
 	margin-bottom: 1%;
 	padding:0.5em;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 	text-align : center;
 }
@@ -535,7 +557,7 @@ p#editor-title{
 	padding-bottom: 0.2em;
 	padding-left: 1%;
 	width: 99%;
-	background-color: #eb8b8b;
+	background-color: #ffffca;/*#eb8b8b;*/
 	color:black;
 	font-weight: bold;
 }
@@ -562,6 +584,7 @@ p#editor-title{
 /* MEDIA QUERIES */
 @media screen and (max-width:1150px){
 
+	#header{height: 12em;}
 	#nav-1{
 		float:none;
 		clear: both;
@@ -630,7 +653,7 @@ p#editor-title{
 		padding-bottom: 0.2em;
 		padding-left: 1%;
 		width: 99%;
-		background-color: #eb8b8b;
+		background-color: #ffffca;
 		color:black;
 		font-weight: bold;
 	}
@@ -643,11 +666,6 @@ p#editor-title{
 	.image-storia-left{display: none;}
 	.image-storia-right{display: none;}
 	.paragrafo-right{margin-left: 0.5em;}
-	.article img{
-		display: block;
-		float: none;
-		margin:0 auto;
-	}
 
 	.paragrafo-right{
 		float: none;
@@ -690,11 +708,11 @@ p#editor-title{
 @media screen and (max-width:480px){
 
 	#header{
-		float:left;
+		float:right;
 		margin-top: 1%;
 		margin-bottom: 1%;
-		width:55%;
-		height: 150px;
+		width:50%;
+		height: 6.5em;
 		background-image: url('../img/struttura/header_mobile.png');
 		background-size: 80%;
 		background-repeat: no-repeat;
@@ -702,7 +720,11 @@ p#editor-title{
 	#nav{
 		float:left;
 		margin-top: 1%;
+		margin-bottom: 0.8em;
 		width: 40%;
+	}
+	#panel-nav-1 li{
+		width: 7em;
 	}
 	#nav-2 {
 	  position: absolute;
