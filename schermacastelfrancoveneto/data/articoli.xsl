@@ -99,7 +99,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 						</xsl:if>
 					</div>
 			</xsl:for-each>
-			<p>__MOSTRAPIU__</p>
+			__MOSTRAPIU__
 		</div>
 		<!--  FINE SEZIONE -->
 

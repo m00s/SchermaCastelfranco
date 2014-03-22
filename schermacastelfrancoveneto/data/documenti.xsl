@@ -91,7 +91,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 				</div>
 			</xsl:for-each>
 
-			<p id="mostra-piu"><a href="documenti.cgi?documenti=__NDOC__">Mostra documenti meno recenti</a></p>
+			__MOSTRAPIU__
 
 		</div>
 		<!--  FINE SEZIONE -->
