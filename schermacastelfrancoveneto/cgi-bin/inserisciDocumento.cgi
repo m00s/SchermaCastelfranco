@@ -5,7 +5,38 @@ sub doInserimentoDocumento{
 
 	my $titolo=$page->param('titolo');
 	my $testo=$page->param('testo');
-	my $documento=$page->param('documento');
+	my $docSRC;
+	my $uploadDir;
+	my $docN;
+
+	if($titolo eq '' or $testo eq ''){
+		&documentoNonCorrettoInserimento($titolo,$testo);
+	}
+
+
+		#va fatto il caricamento del file pdf come quello della foto
+	if($page->param('documento')){
+		
+			$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
+			$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
+			 
+			#upload immagine
+			$uploadDir="../public_html/document";
+			my $dt   = DateTime->now;
+			my $date = $dt->ymd;
+			#imposto il nome della foto da salvare
+			$docN ="$titolo-$date.pdf";
+			$docSRC="../document/".$docN;
+
+			my $docPath=$uploadDir."/".$docN;
+			my $doc_handle=$page->upload('documento');
+
+			open (FH, ">",$docPath);
+			while (my $length = sysread($doc_handle, $buffer, 262144)) { #256KB
+		        syswrite(FH, $buffer, $length);
+		    }
+		    close FH;
+	}
 	
 	my $path="../data/documenti.xml";
 
@@ -18,7 +49,7 @@ sub doInserimentoDocumento{
 	<documento>
 		<titolo>$titolo</titolo>
 		<paragrafo>$testo</paragrafo>
-		<doc-completo></doc-completo>
+		<doc-completo>$docSRC</doc-completo>
 	</documento>
 
 	";
@@ -26,7 +57,7 @@ sub doInserimentoDocumento{
 	if($rootDoc){
 
 		my $nodo;
-		eval{$nodo=$parser->parse_balanced_chunk($nuovoDoc)} || die &documentoNonCorretto($titolo,$testo);
+		eval{$nodo=$parser->parse_balanced_chunk($nuovoDoc)} || die &documentoNonCorrettoInserimento($titolo,$testo);
 		$rootDoc->appendChild($nodo);
 		open(OUT,">$path");
 		flock(OUT,2);
@@ -34,16 +65,12 @@ sub doInserimentoDocumento{
 		close(OUT);
 	
 	}
-
-
-	#va fatto il caricamento del file pdf come quello della foto
 }
 
 
 
 sub documentoNonCorrettoInserimento{
 open (FILE, "< ../data/private_html/editorDocumenti.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$string .= <FILE>;
 }
@@ -62,6 +89,7 @@ $string=~ s/__LINKINS__/Inserisci/;
 $string=~ s/__LINKMOD__/<a href="amministraSezionePrivata.cgi?Seleziona=modifica" tabindex="1">Modifica<\/a>/;
 $string=~ s/__INPUTVECCHIODOCUMENTO__//g;
 $string=~ s/__INCASODIERRORE__/$errorField/;
+$string=~ s/__ERROREDOC__/Errore nell'inserimento dei dati, inserisci nuovamente il documento/;
 
 print $string;
 

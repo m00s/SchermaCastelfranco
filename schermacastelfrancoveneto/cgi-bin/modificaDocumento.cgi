@@ -1,7 +1,6 @@
 sub doCaricaFormModificaDocumento{
 #ottengo il file HTML da modificare
 open (FILE, "< ../data/private_html/formModifica.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$form .= <FILE>;
 }
@@ -48,7 +47,6 @@ sub doCaricaEditorModificaDocumento{
 
 #ottengo il file HTML da modificare
 open (FILE, "<","../data/private_html/editorDocumenti.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$editor .= <FILE>;
 }
@@ -111,7 +109,37 @@ my $page=new CGI;
 	my $vecchioTitolo=$page->param('vecchioTitolo');
 	my $titolo=$page->param('titolo');
 	my $testo=$page->param('testo');
-	my $doc=$page->param('documento');
+	my $docSRC;
+	my $uploadDir;
+	my $docN;
+
+	if($titolo eq '' or $testo eq ''){
+		&documentoNonCorrettoModifica($titolo,$testo,$vecchioTitolo,$docN);
+	}
+
+	if($page->param('documento')){
+		
+			$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
+			$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
+			 
+			#upload immagine
+			$uploadDir="../public_html/document";
+			my $dt   = DateTime->now;
+			my $date = $dt->ymd;
+			#imposto il nome della foto da salvare
+			$docN ="$titolo-$date.pdf";
+			$docSRC="../document/".$docN;
+
+			my $docPath=$uploadDir."/".$docN;
+			my $doc_handle=$page->upload('documento');
+
+			open (FH, ">",$docPath);
+			while (my $length = sysread($doc_handle, $buffer, 262144)) { #256KB
+		        syswrite(FH, $buffer, $length);
+		    }
+		    close FH;
+	}
+	
 	
 	my $path="../data/documenti.xml";
 	my $parser = new XML::LibXML;
@@ -129,7 +157,7 @@ my $page=new CGI;
 	<documento>
 		<titolo>$titolo</titolo>
 		<paragrafo>$testo</paragrafo>
-		<doc-completo></doc-completo>
+		<doc-completo>$docSRC</doc-completo>
 	</documento>
 
 	";
@@ -153,14 +181,13 @@ my $page=new CGI;
 
 sub documentoNonCorrettoModifica{
 open (FILE, "< ../data/private_html/editorDocumenti.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$string .= <FILE>;
 }
 close FILE;
 
 my $errorField="<h2>Ci sono errori nell'inserimento dei dati</h2>";
-$string=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__DOC__" readonly \/><\/label>/g;
+$string=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__VECCHIOTITOLO__" readonly \/><\/label>/g;
 $string=~ s/__TITOLO__/$_[0]/;
 $string=~ s/__TESTO__/$_[1]/;
 $string=~ s/__VECCHIOTITOLO__/$_[2]/;
@@ -174,6 +201,7 @@ $string=~ s/__ACTIVEMOD__/ id="active"/;
 $string=~ s/__LINKINS__/<a href="amministraSezionePrivata.cgi?Seleziona=inserisci" tabindex="1">Inserisci<\/a>/;
 $string=~ s/__LINKMOD__/Modifica/;
 $string=~ s/__INCASODIERRORE__/$errorField/;
+$string=~ s/__ERROREDOC__/Errore nell'inserimento dei dati, inserisci nuovamente il documento/;
 
 print $string;
 

@@ -2,7 +2,6 @@ sub doCaricaFormEliminaDocumento{
 
 #ottengo il file HTML da modificare
 	open (FILE, "< ../data/private_html/formElimina.html");
-	flock(FILE,1);
 	while(!eof(FILE)){
 	$form .= <FILE>;
 	}

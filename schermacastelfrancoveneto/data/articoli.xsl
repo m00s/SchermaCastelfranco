@@ -99,9 +99,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 						</xsl:if>
 					</div>
 			</xsl:for-each>
-
-			<p id="mostra-piu"><a href="articoli.cgi?articoli=__NART__">Mostra articoli meno recenti</a></p>
-
+			__MOSTRAPIU__
 		</div>
 		<!--  FINE SEZIONE -->
 

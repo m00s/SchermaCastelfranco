@@ -10,7 +10,10 @@ my $page=new CGI;
 	my $titolo=$page->param('titolo');
 	my $luogo=$page->param('luogo');
 	my $testo=$page->param('testo');
-	my $altFoto=$page->param('altfoto');	
+	my $altFoto=$page->param('altfoto');
+	my $fotoN;	
+	my $uploadDir;
+	my $fotoSRC;
 
 	if($page->param('datepicker')=~ m/\d{4}\/\d{2}\/\d{2}/){
 		@data=split("/",$page->param('datepicker'));
@@ -23,27 +26,36 @@ my $page=new CGI;
 
 	eval{timelocal(0,0,0,$data[2],$data[1]-1,$data[0]);} || die (&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo,$altFoto));
 
-	$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
-	$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
-	 
-	#DA USARE PER PROVARE A INSERIRE UN FILE BINARIO COME IMMAGINE O PDF
-	my $uploadDir="../public_html/img/gare";
+	if($titolo eq '' or $luogo eq '' or $testo eq ''){
+		&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo,$altFoto);
+	}
 
-	#imposto il nome della foto da salvare
-	$fotoN ="$luogo-$dataDaSalvare";
+	if($page->param('foto')){
+		if($page->param('altfoto')){
+			$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
+			$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
+			 
+			#upload immagine
+			$uploadDir="../public_html/img/gare";
 
-	my $fotoPath=$uploadDir."/".$fotoN;
-	my $foto_handle=$page->upload('foto');
+			#imposto il nome della foto da salvare
+			$fotoN ="$luogo-$dataDaSalvare";
+			$fotoSRC="../img/gare/".$fotoN;
 
-	open (FH, ">",$fotoPath);
-	while (my $length = sysread($foto_handle, $buffer, 262144)) { #256KB
-        syswrite(FH, $buffer, $length);
-    }
-    close FH;
-	#esegue l'upload della foto passata 
-	#my $fotoFile = $page->upload("foto");
+			my $fotoPath=$uploadDir."/".$fotoN;
+			my $foto_handle=$page->upload('foto');
 
-	my $fotoSRC="../img/gare/".$fotoN;
+			open (FH, ">",$fotoPath);
+			while (my $length = sysread($foto_handle, $buffer, 262144)) { #256KB
+		        syswrite(FH, $buffer, $length);
+		    }
+		    close FH;
+		}
+		else
+		{
+			&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo,$altFoto);
+		}
+	}
 	
 	#INSERIMENTO DEI DATI VERIFICATI DENTO articoli.xml
 	my $path="../data/articoli.xml";
@@ -52,7 +64,6 @@ my $page=new CGI;
 	my $rootDoc= $doc->getDocumentElement;
 
 	my $nuovoArticolo="
-
 	<articolo>
 		<luogo>".$luogo."</luogo>
 		<data>".$dataDaSalvare."</data>
@@ -75,10 +86,10 @@ my $page=new CGI;
 
 }
 
-
+#in caso ci siano errori nell'inserimento dell'articolo torno alla pagina segnalando che ci sono errori e rifaccio vedere 
+#tutti i dati inseriti precedentemente
 sub articoloNonCorretto{
 open (FILE, "< ../data/private_html/editorArticoli.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$string .= <FILE>;
 }
@@ -86,7 +97,7 @@ while(!eof(FILE)){
 
 my $errorField="Ci sono errori nell'inserimento dei dati, controlla tag apertura e chiusura, la data che sia scritta in maniera corretta 
 			YYYY-MM-DD(prima l'anno, poi mese,poi giorno)";
-$string=~ s/__REINSERISCIFOTO__/Errore nell'inserimento dei dati, reinserisci la foto se l'avevi cambiata/;
+$string=~ s/__REINSERISCIFOTO__/Errore nell'inserimento dei dati, reinserisci la foto e controlla l'alt se è corretto/;
 $string=~ s/__ALT__/$_[4]/;
 $string=~ s/__LUOGO__/$_[2]/;
 $string=~ s/__DATA__/$_[0]/;
@@ -97,6 +108,7 @@ $string=~ s/__ACTION__/Inserisci Articolo/;
 $string=~ s/__VALSELEZIONA__/inserisci/;
 $string=~ s/__SUBMITYPE__/Inserisci/g;
 $string=~ s/__INPUTFOTOVECCHIA__//g;
+$string=~ s/__VECCHIOALTFOTO__//g;
 $string=~ s/__ACTIVEINS__/ id="active"/;
 $string=~ s/__ACTIVEMOD__//;
 $string=~ s/__LINKINS__/Inserisci/;

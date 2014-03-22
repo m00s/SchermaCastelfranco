@@ -4,7 +4,6 @@ sub doCaricaFormModifica{
 	
 #ottengo il file HTML da modificare
 open (FILE, "< ../data/private_html/formModifica.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$form .= <FILE>;
 }
@@ -52,7 +51,6 @@ exit;
 sub doCaricaEditorModifica{
 #ottengo il file HTML da modificare
 open (FILE, "<","../data/private_html/editorArticoli.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$editor .= <FILE>;
 }
@@ -60,6 +58,7 @@ close FILE;
 $editor=~ s/__REINSERISCIFOTO__//;
 $editor=~ s/__INCASODIERRORE__//;
 $editor=~ s/__INPUTFOTOVECCHIA__/<label>Vecchia foto: <input type="text" name="vecchiaFoto" value="__VECCHIAFOTO__" readonly\/><\/label>/g;
+$editor=~ s/__VECCHIOALTFOTO__/<label>Vecchia alternativa foto: <input type="text" name="vecchioAlt" value="__VECCHIOALT__" readonly\/><\/label>/g;
 $editor=~ s/__ACTION__/Salva Articolo/;
 $editor=~ s/__VALOREMODIFICA__/SalvaArticolo/;
 $editor=~ s/__VALSELEZIONA__/modifica/;
@@ -111,7 +110,7 @@ foreach my $node (@articoli) {
 		$editor=~ s/__FOTO__/$img/g;
 		$editor=~ s/__VECCHIAFOTO__/$img/g;
 		$editor=~ s/__ALT__/$imgalt/;
-		
+		$editor=~ s/__VECCHIOALT__/$imgalt/;
 	}
 
 }
@@ -130,14 +129,14 @@ my $page=new CGI;
 	my $vecchioluogo=$page->param('vecchioLuogo');
 	my @data;
 	my $dataDaSalvare;
-
-	if($page->param('data')=~ m/\d{4}\/\d{2}\/\d{2}/){
-		@data=split("/",$page->param('data'));
+	
+	if($page->param('datepicker')=~ m/\d{4}\/\d{2}\/\d{2}/){
+		@data=split("/",$page->param('datepicker'));
 		$dataDaSalvare=$data[0]."-".$data[1]."-".$data[2];
 	}
 	else{
-		@data=split("-",$page->param('data'));
-		$dataDaSalvare=	$page->param('data');
+		@data=split("-",$page->param('datepicker'));
+		$dataDaSalvare=	$page->param('datepicker');
 	}
 
 	my $titolo=$page->param('titolo');
@@ -145,38 +144,44 @@ my $page=new CGI;
 	my $testo=$page->param('testo');
 	my $fotoNome=$page->param('foto');
 	my $vecchiaFoto=$page->param('vecchiaFoto');
+	my $altVecchio=$page->param('vecchioAlt');
 	my $altFoto=$page->param('altfoto');
-	my $uploadDir="../img/gare";
-	my $fotoPath;
+	my $uploadDir="../public_html/img/gare/";
+	my $fotoSRC="../img/gare/";
 
 	eval{timelocal(0,0,0,$data[2],$data[1]-1,$data[0]);} || 
-				die (&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto));
-	
-	$dataDaSalvare=$data[0]."-".$data[1]."-".$data[2];
+				die (&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto,$vecchioAlt));
+
+	if($titolo eq '' or $luogo eq '' or $testo eq ''){
+		&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto,$vecchioAlt);
+	}
+
 
 	if($page->param('foto')){
-		#faccio parse della stringa passata direttamente dal browser
-		my ( $nome, $path, $estensione ) = fileparse ( $fotoNome, '..*' );
-		$fotoNome = $nome.$estensione;
+		if($page->param('altFoto')){
+			$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
+			$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
 
-		$fotoNome =~ tr/ /_/; #in caso ci siano spazi nel nome della foto li cambio con degli _ per non creare problemi
-		#nel caso volessi eseguire il passo di rimuovere dal nome tutti i caratteri che potrebbero dare problemi eseguo 
-		#il seguente comando
+			#imposto il nome della foto da salvare
+			$fotoN ="$luogo-$dataDaSalvare";
+			$fotoSRC.=$fotoN;
 
-		#$fotoname =~ s/[^$safe_filename_characters]//g;
+			my $fotoPath=$uploadDir."/".$fotoN;
+			my $foto_handle=$page->upload('foto');
 
-		$fotoPath=$uploadDir."/".$fotoNome;
-
-		
-		#esegue l'upload della foto passata 
-		my $fotoFile = $page->upload("foto");
-
-		#fare upload foto sul server
-
-
+			open (FH, ">",$fotoPath);
+			while (my $length = sysread($foto_handle, $buffer, 262144)) { #256KB
+		        syswrite(FH, $buffer, $length);
+		    }
+		    close FH;
+		}
+		else{
+			&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto,$vecchioAlt);
+		}
 	}
 	else{
-		$fotoPath=$uploadDir."/".$page->param("vecchiaFoto");
+		$fotoSRC=$uploadDir."/".$page->param("vecchiaFoto");
+		$altFoto=$page->param('vecchioAlt');
 	}
 	
 	my $path="../data/articoli.xml";
@@ -194,7 +199,7 @@ my $page=new CGI;
 		<luogo>".$luogo."</luogo>
 		<data>".$dataDaSalvare."</data>
 		<titolo>".$titolo."</titolo>
-		<img src=\"".$fotoPath."\" alt=\"".$altFoto."\"/>
+		<img src=\"".$fotoSRC."\" alt=\"".$altFoto."\"/>
 		<paragrafo>".$testo."</paragrafo>
 	</articolo>
 
@@ -202,7 +207,7 @@ my $page=new CGI;
 
 	my $nodo;
 	eval{$nodo=$parser->parse_balanced_chunk($nuovoArticolo)}|| die 
-				&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome);
+				&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchioAlt);
 
 	foreach my $node(@articoli){
 		$root->removeChild($node);	
@@ -222,7 +227,6 @@ my $page=new CGI;
 sub articoloNonCorrettoModifica{
 
 open (FILE, "<","../data/private_html/editorArticoli.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$editor .= <FILE>;
 }
@@ -230,8 +234,10 @@ close FILE;
 
 my $errorField="Ci sono errori nell'inserimento dei dati, controlla tag apertura e chiusura, la data che sia scritta in maniera corretta 
 			YYYY-MM-DD(prima l'anno, poi mese,poi giorno)";
-$editor=~ s/__REINSERISCIFOTO__/Errore nell'inserimento dei dati, reinserisci la foto se l'avevi cambiata/;
+$editor=~ s/__REINSERISCIFOTO__/Errore nell'inserimento dei dati, reinserisci la foto e controlla l'alt se è corretto/;
 $editor=~ s/__INPUTFOTOVECCHIA__/<label>Vecchia foto: <input type="text" name="vecchiaFoto" value="__VECCHIAFOTO__" readonly\/><\/label>/g;
+$editor=~ s/__VECCHIOALTFOTO__/<label>Vecchia alternativa foto: <input type="text" name="vecchioAlt" value="__VECCHIOALT__" readonly\/><\/label>/g;
+$editor=~ s/__VECCHIOALT__/$_[8]/g;
 $editor=~ s/__ACTION__/Salva Articolo/;
 $editor=~ s/__VALOREMODIFICA__/SalvaArticolo/;
 $editor=~ s/__VALSELEZIONA__/modifica/;

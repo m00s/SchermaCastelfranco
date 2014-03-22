@@ -278,7 +278,7 @@ function InsertCodeInTextArea(textValue) {
 		         var startPos = txtArea.selectionStart;
 		         var endPos = txtArea.selectionEnd;
 		         var scrollTop = txtArea.scrollTop;
-		         txtArea.value = txtArea.value.substring(0, startPos) + textValue + 					txtArea.value.substring(endPos, txtArea.value.length);
+		         txtArea.value = txtArea.value.substring(0, startPos) + textValue + txtArea.value.substring(endPos, txtArea.value.length);
 		         txtArea.focus();
 		         txtArea.selectionStart = startPos + textValue.length;
 		         txtArea.selectionEnd = startPos + textValue.length;

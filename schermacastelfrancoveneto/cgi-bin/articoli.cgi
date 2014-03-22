@@ -32,18 +32,30 @@ my $xslt_doc = $parser->parse_file($file_xsl);
 #porto in formato testuale il file dell'xsl
 my $query = $xslt_doc->toString;
 
-my $n_articoli=2;
+my $n_articoli=5;
 
 if($page->param('articoli')!=0){
 	$n_articoli=$page->param('articoli');
 }
 
+my $doc_tree = $parser->parse_file($file_xml);
+my $root = $doc_tree->documentElement();
+my $xpc = XML::LibXML::XPathContext->new($root);
+$xpc->registerNs('ts', 'http://www.articoli.com');
+my $querycount="count(/ts:testi/ts:articolo)";
+my $numero_articoli=$xpc->find($querycount);
+
+if($numero_articoli>$n_articoli){
+	$query=~ s/__MOSTRAPIU__/<p id="mostra-piu"><a href="articoli.cgi?articoli=__NART__">Mostra articoli meno recenti<\/a><\/p>/g;
+}
+else{
+	$query=~ s/__MOSTRAPIU__//g;
+}
+
 #sostituisco nel file xsl quanti articoli far vedere 
 $query=~ s/__ART__/$n_articoli/g;
-$xslt_doc = $parser->parse_string($query);
-
 #sostituisco quanti articoli in più fare vedere 
-$n_articoli+=2;
+$n_articoli+=3;
 $query=~ s/__NART__/$n_articoli/g;
 $xslt_doc = $parser->parse_string($query);
 
