@@ -26,6 +26,10 @@ my $page=new CGI;
 
 	eval{timelocal(0,0,0,$data[2],$data[1]-1,$data[0]);} || die (&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo,$altFoto));
 
+	if($titolo eq 0 or $luogo eq 0 or $testo eq 0){
+		&articoloNonCorretto($dataDaSalvare,$titolo,$luogo,$testo,$altFoto);
+	}
+
 	if($page->param('foto')){
 		if($page->param('altfoto')){
 			$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
@@ -46,8 +50,6 @@ my $page=new CGI;
 		        syswrite(FH, $buffer, $length);
 		    }
 		    close FH;
-
-			$fotoSRC="../img/gare/".$fotoN;
 		}
 		else
 		{
@@ -88,7 +90,6 @@ my $page=new CGI;
 #tutti i dati inseriti precedentemente
 sub articoloNonCorretto{
 open (FILE, "< ../data/private_html/editorArticoli.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$string .= <FILE>;
 }
@@ -107,6 +108,7 @@ $string=~ s/__ACTION__/Inserisci Articolo/;
 $string=~ s/__VALSELEZIONA__/inserisci/;
 $string=~ s/__SUBMITYPE__/Inserisci/g;
 $string=~ s/__INPUTFOTOVECCHIA__//g;
+$string=~ s/__VECCHIOALTFOTO__//g;
 $string=~ s/__ACTIVEINS__/ id="active"/;
 $string=~ s/__ACTIVEMOD__//;
 $string=~ s/__LINKINS__/Inserisci/;

@@ -4,7 +4,6 @@ sub doCaricaFormModifica{
 	
 #ottengo il file HTML da modificare
 open (FILE, "< ../data/private_html/formModifica.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$form .= <FILE>;
 }
@@ -52,7 +51,6 @@ exit;
 sub doCaricaEditorModifica{
 #ottengo il file HTML da modificare
 open (FILE, "<","../data/private_html/editorArticoli.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$editor .= <FILE>;
 }
@@ -60,6 +58,7 @@ close FILE;
 $editor=~ s/__REINSERISCIFOTO__//;
 $editor=~ s/__INCASODIERRORE__//;
 $editor=~ s/__INPUTFOTOVECCHIA__/<label>Vecchia foto: <input type="text" name="vecchiaFoto" value="__VECCHIAFOTO__" readonly\/><\/label>/g;
+$editor=~ s/__VECCHIOALTFOTO__/<label>Vecchia alternativa foto: <input type="text" name="vecchioAlt" value="__VECCHIOALT__" readonly\/><\/label>/g;
 $editor=~ s/__ACTION__/Salva Articolo/;
 $editor=~ s/__VALOREMODIFICA__/SalvaArticolo/;
 $editor=~ s/__VALSELEZIONA__/modifica/;
@@ -111,7 +110,7 @@ foreach my $node (@articoli) {
 		$editor=~ s/__FOTO__/$img/g;
 		$editor=~ s/__VECCHIAFOTO__/$img/g;
 		$editor=~ s/__ALT__/$imgalt/;
-		
+		$editor=~ s/__VECCHIOALT__/$imgalt/;
 	}
 
 }
@@ -145,12 +144,13 @@ my $page=new CGI;
 	my $testo=$page->param('testo');
 	my $fotoNome=$page->param('foto');
 	my $vecchiaFoto=$page->param('vecchiaFoto');
+	my $altVecchio=$page->param('vecchioAlt');
 	my $altFoto=$page->param('altfoto');
 	my $uploadDir="../public_html/img/gare/";
 	my $fotoSRC="../img/gare/";
 
 	eval{timelocal(0,0,0,$data[2],$data[1]-1,$data[0]);} || 
-				die (&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto));
+				die (&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto,$vecchioAlt));
 
 	if($page->param('foto')){
 		if($page->param('altFoto')){
@@ -171,7 +171,7 @@ my $page=new CGI;
 		    close FH;
 		}
 		else{
-			&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto);
+			&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto,$vecchioAlt);
 		}
 	}
 	else{
@@ -202,7 +202,7 @@ my $page=new CGI;
 
 	my $nodo;
 	eval{$nodo=$parser->parse_balanced_chunk($nuovoArticolo)}|| die 
-				&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome);
+				&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchioAlt);
 
 	foreach my $node(@articoli){
 		$root->removeChild($node);	
@@ -222,7 +222,6 @@ my $page=new CGI;
 sub articoloNonCorrettoModifica{
 
 open (FILE, "<","../data/private_html/editorArticoli.html");
-flock(FILE,1);
 while(!eof(FILE)){
 	$editor .= <FILE>;
 }
@@ -232,6 +231,8 @@ my $errorField="Ci sono errori nell'inserimento dei dati, controlla tag apertura
 			YYYY-MM-DD(prima l'anno, poi mese,poi giorno)";
 $editor=~ s/__REINSERISCIFOTO__/Errore nell'inserimento dei dati, reinserisci la foto e controlla l'alt se è corretto/;
 $editor=~ s/__INPUTFOTOVECCHIA__/<label>Vecchia foto: <input type="text" name="vecchiaFoto" value="__VECCHIAFOTO__" readonly\/><\/label>/g;
+$editor=~ s/__VECCHIOALTFOTO__/<label>Vecchia alternativa foto: <input type="text" name="vecchioAlt" value="__VECCHIOALT__" readonly\/><\/label>/g;
+$editor=~ s/__VECCHIOALT__/$_[8]/g;
 $editor=~ s/__ACTION__/Salva Articolo/;
 $editor=~ s/__VALOREMODIFICA__/SalvaArticolo/;
 $editor=~ s/__VALSELEZIONA__/modifica/;
