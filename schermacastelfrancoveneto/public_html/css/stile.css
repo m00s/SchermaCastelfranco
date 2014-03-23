@@ -7,15 +7,15 @@ body{
 	margin-right: 3%;
 	margin-left: 3%;
 	height: 100%;
-	background-color: #d3d3d3;/*#fffe3a;/*#ffc204; /*#bb2a2a;*/
+	background-color: #000000;/*#fffe3a;/*#ffc204; /*#bb2a2a;*/
 	color:black;
 	font-size: 100%;
 	font-family: Helvetica,Arial,sans-serif;
 
 }
-a:active{
-	color:blue;
-}
+a:active{color:#0000EE;}
+a{color:#0000EE;}
+a:visited{color:#521888;}
 
 #header{
 	margin-top: 1%;
@@ -29,7 +29,7 @@ a:active{
 
 #nav li{
 	display: inline;
-	background-color: #ffffca;/*#eb8b8b;*/
+	background-color: #ebffff;/*#eb8b8b;*/
 	color:black;
 	list-style-type: none;
 	font-size: 1.2em;
@@ -50,7 +50,7 @@ a:active{
 	float: left;
 	padding:0.4em;
 	width: 7.3em;
-	border-right: 2px solid black;
+	border-right: 5px solid black;
 	text-align: center;
 	font-weight: bold;
 	font-size: 1.2em;
@@ -65,15 +65,19 @@ a:active{
 	font-weight: bold;
 }
 
-#nav-1  li:hover{background-color:#020000;}
+#nav-1  li:hover{
+	background-color:#0424B6;/*#000000;*/
+	/* border: 3.5px solid #ebffff; */
+}
 /* #7F1C17 #e77731 #b8b5b5 #991B00 */
 #nav-1  li a:visited{color:black;}
 #nav-1  li a:active{color: black;}
 #nav-1  li:hover a{color:#FEFFFF;}
 /* #04147F #FEFFFF #e77731*/
 li#active{
-	background-color: #020000;
+	background-color: #0424B6;/*#020000;*/
 	color: #FEFFFF;
+	/*border: 3.5px solid #ebffff;*/
 }
 
 #nav-1 li.last-link{border-right: none;}
@@ -96,19 +100,21 @@ li#active{
 #nav-2{
 	float: right;
 	padding:0.4em;
-	background-color: #ffffca;/*#eb8b8b;*/
+	background-color: #ebffff;/*#eb8b8b;*/
 
 }
 #nav-2 a{
-	margin-right: 0.3em;
-	margin-left: 0.3em;
+	margin-right: 0.2em;
+	margin-left: 0.2em;
+	font-weight: bold;
 }
 
 #nav-2-active{
 	float: right;
-	padding:0.4em;
-	background-color: #020000;
+	padding:0.5em;
+	background-color: #0424B6;/*#020000;*/
 	color: #FEFFFF;
+	font-weight: bold;
 }
 
 #breadcrumb {
@@ -145,7 +151,7 @@ li#active{
 	padding-right: 5%;
 	padding-bottom: 4%;
 	padding-left: 3%;
-	background-color: #ffffca;/*#eb8b8b;*/
+	background-color: #ebffff;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -156,7 +162,7 @@ li#active{
 	padding-right: 2%;
 	padding-bottom: 2%;
 	padding-left: 1%;
-	background-color: #ffffca;/*#eb8b8b;*/
+	background-color: #ebffff;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -167,7 +173,7 @@ li#active{
 	padding-right: 5%;
 	padding-bottom: 2%;
 	padding-left: 3%;
-	background-color: #ffffca;/*#eb8b8b;*/
+	background-color: #ebffff;/*#eb8b8b;*/
 	color:black; /*#ffffca;*/
 }
 
@@ -210,7 +216,7 @@ li#active{
 	padding-right: 5%;
 	padding-bottom: 5%;
 	padding-left: 3%;
-	background-color: #ffffca;/*#eb8b8b;*/
+	background-color: #ebffff;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -227,7 +233,7 @@ li#active{
 	padding-right: 5%;
 	padding-bottom: 5%;
 	padding-left: 3%;
-	background-color: #ffffca;/*#eb8b8b;*/
+	background-color: #ebffff;/*#eb8b8b;*/
 	color:black;
 }
 .paragrafo-storia p{
@@ -300,7 +306,7 @@ div#active{
 
 #login{
 	padding: 0.5em;
-	background-color: #ffffca;/*#eb8b8b;*/
+	background-color: #ebffff;/*#eb8b8b;*/
 	color:black;
 }
 
@@ -390,6 +396,7 @@ p#editor-title{
 	margin-bottom: 0.6em;
 	width:13em;
 	height:2em;
+	background-color:#d3d3d3;
 	color:black;
 	text-align:center;
 	text-decoration:none;
@@ -397,25 +404,6 @@ p#editor-title{
 	font-weight:bold;
 	font-style:normal;
 	font-size:1em;
-	/*
-	-webkit-border-top-left-radius:0px;
-	-moz-border-radius-topleft:0px;
-	border-top-left-radius:0px;
-	-webkit-border-top-right-radius:0px;
-	-moz-border-radius-topright:0px;
-	border-top-right-radius:0px;
-	-webkit-border-bottom-right-radius:0px;
-	-moz-border-radius-bottomright:0px;
-	border-bottom-right-radius:0px;
-	-webkit-border-bottom-left-radius:0px;
-	-moz-border-radius-bottomleft:0px;
-	border-bottom-left-radius:0px;
-
-	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
-	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
-	box-shadow:inset 0px 1px 0px 0px #f5978e;
-	*/
-	background-color:#d3d3d3;
 
 }
 
@@ -434,29 +422,13 @@ p#editor-title{
 	display:inline-block;
 	width:10em;
 	height:1.9em;
+	background-color:#d3d3d3;
 	color:black;
 	text-align: center;
 	text-decoration:none;
 	text-indent:0;
 	font-style:normal;
 	font-size: 0.8em;
-	/*
-	-moz-border-radius-topleft:0px;
-	border-top-left-radius:0px;
-	-webkit-border-top-right-radius:0px;
-	-moz-border-radius-topright:0px;
-	border-top-right-radius:0px;
-	-webkit-border-bottom-right-radius:0px;
-	-moz-border-radius-bottomright:0px;
-	border-bottom-right-radius:0px;
-	-webkit-border-bottom-left-radius:0px;
-	-moz-border-radius-bottomleft:0px;
-	border-bottom-left-radius:0px;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
-	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
-	box-shadow:inset 0px 1px 0px 0px #f5978e;
-	*/
-	background-color:#d3d3d3;
 }
 .stile-button:hover {
 	background-color:black;
@@ -497,7 +469,7 @@ p#editor-title{
 	padding-bottom: 1%;
 	padding-left: 1%;
 	width: 23%;
-	background-color: #ffffca;
+	background-color: #ebffff;
 	color:black;
 
 }
@@ -510,7 +482,7 @@ p#editor-title{
 	padding-bottom: 1%;
 	padding-left: 1%;
 	width: 21.55%;
-	background-color: #ffffca;/*#eb8b8b;*/
+	background-color: #ebffff;/*#eb8b8b;*/
 	color:black;
 }
 #sidebarFix li{list-style-type: none;}
@@ -532,7 +504,7 @@ p#editor-title{
 }
 
 #panel-sidebar ul li ul li{
-	margin-bottom: 3%;
+	margin-bottom: 6%;
 	text-indent: 2%;
 }
 
@@ -546,7 +518,7 @@ p#editor-title{
 	clear:both;
 	margin-bottom: 1%;
 	padding:0.5em;
-	background-color: #ffffca;/*#eb8b8b;*/
+	background-color: #ebffff;/*#eb8b8b;*/
 	color:black;
 	text-align : center;
 }
@@ -561,7 +533,7 @@ p#editor-title{
 	padding-bottom: 0.2em;
 	padding-left: 1%;
 	width: 99%;
-	background-color: #ffffca;/*#eb8b8b;*/
+	background-color: #ebffff;/*#eb8b8b;*/
 	color:black;
 	text-align: center;
 	font-weight: bold;
@@ -577,7 +549,7 @@ p#editor-title{
     width:50px;
     height: 50px;
     border:1px solid #d2d2d2;
-	background-color: #000000;
+	background-color: #0424B6;/*#000000;*/
 	background-size: 4em;
 	color: white;
 	text-align:center;
@@ -602,12 +574,12 @@ p#editor-title{
 		clear: both;
 		text-align: center;
 		/* margin-top: 3%; */
-		width:14em;
+		width:15em;
 	}
 	#nav-2-active{
 		float:none;
 		clear: both;
-		width:6.8em;
+		width:15em;
 		text-align: center;
 	}
 
@@ -658,7 +630,7 @@ p#editor-title{
 		padding-bottom: 0.2em;
 		padding-left: 1%;
 		width: 99%;
-		background-color: #ffffca;
+		background-color: #ebffff;
 		color:black;
 		font-weight: bold;
 	}
@@ -707,6 +679,8 @@ p#editor-title{
 	    right:0.6em;
 	    bottom:0.6em;
 	}
+	#panel-sidebar ul li ul li{margin-bottom: 2.5%;}
+
 }
 
 
