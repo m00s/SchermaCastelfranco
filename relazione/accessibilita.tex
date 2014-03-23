@@ -3,7 +3,7 @@ Per rendere il sito pi\`u accessibile e migliorare la navigazione, in particolar
 Ecco nel dettaglio la loro implementazione:
 	\begin{itemize}
 		\item \textbf{Salta men\`u di navigazione}: questo link ti permette di saltare il men\`u principale e posizionarti prima del breadcrumb in modo che l'utente possa ricordarsi dove si trova e poi leggere il contenuto della pagina. Questo aiuto ti informa anche che se salti quest'area della pagina salterai anche il link per accedere alla parte riservata all'amministrazione;
-		\item \textbf{Salta contenuto}: questo collegamento serve se si ha la necessit\`a di andare alla sidebar perch\'e si vuole entrare in qualche sito correlato con il Circolo di Scherma o per visitare la Gallery;
+		\item \textbf{Salta contenuto}: questo collegamento serve se si ha la necessit\`a di andare alla sidebar perch\'e si vuole entrare in qualche sito correlato con il Circolo di Scherma o per visitare la Gallery per quanto riguarda la parte pubblica, mentre per la parte amministrativa ti consente di andare alla spiegazione di alcuni elementi per l'inserimento del testo nella form;
 		\item \textbf{Torna su al men\`u di navigazione}: se si \`e letto tutto il contenuto o si ha superato la sidebar \`e possibile tornare al men\`u di navigazione per muoversi su altre pagine;
 		\item \textbf{Torna al primo articolo/documento della pagina}: solo per le pagine che mostrano gli articoli e i documenti presenti \`e stata impostata una scorciatoia che ti permette di tornare al primo articolo/documento presente nel contenuto.
  
@@ -28,26 +28,19 @@ Per verificare che ci sia il giusto contrasto tra i colori applicati al sito abb
 Abbiamo fatto due tipi di test, uno relativo al giusto contrasto tra il testo e lo sfondo e uno riguardante le possibile difficolt\`a che possono riscontrare utenti affetti da alcune distorsioni visive su una generica pagina del sito.
 	\subsubsection {Test - Contrasto testo e sfondo}
 	Questo tipo di test \`e  stato effettuato con Colour Contrast Analyser e si riscontrano i seguenti risultati:
-	\\ Il contrasto risultante del colore rosso chiaro (eb8b8b) di sfondo e nero come testo ha superato tutti i test presenti nell'applicazione.
-	\\ L'analisi della \textbf{differenza colore/luminosit\`a} per una visione normale da risultati (513/255) con soglia minima fissata per superare il test a 500. Anche per chi soffre di alcuni distrubi della vista* i test sono superati con un minimo margine, ma sufficiente a garantirne l'accessibilit\`a.
-	\\ Anche l'analisi \textbf{della luminosit\`a} risulta positiva a tutte le prove con rapporto di contrasto 8.6:1, con soglia minima perchè tutti i test siano validi fissata a 7:1, per chi vede normalmente la pagina. Rimane comunque un buon rapporto, anche se minimo,  per chi soffre di alcuni disturbi della vista* compreso tra i (7.7 e 8.7):1.
-	\\ \\ 
-	\begin{figure}[htbp]
-		\centering
-		\includegraphics[width=60mm, height=10mm]{images/contrasto_testo.png}
-		\caption{figura che illustra}
-	\end{figure}
+	\\ Il contrasto risultante del colore azzurro chiaro (ebffff) di sfondo e nero come testo ha superato tutti i test presenti nell'applicazione.
+	\\ L'analisi della \textbf{differenza colore/luminosit\`a} per una visione normale da risultati (745/249) con soglia minima fissata per superare il test a 500. Anche per chi soffre di alcuni distrubi della vista* i test sono superati con un minimo margine, ma sufficiente a garantirne l'accessibilit\`a.
+	\\ Anche l'analisi \textbf{della luminosit\`a} risulta positiva a tutte le prove con rapporto di contrasto 20.3:1, con soglia minima perchè tutti i test siano validi fissata a 7:1, per chi vede normalmente la pagina. Rimane un rapporto alto anche per chi soffre di alcuni disturbi della vista* compreso tra i (17.3 e 19.9):1.
 	\\
-	\\Il contrasto risultante del colore nero di sfondo e bianco come testo ha superato tutti i test presenti nell'applicazione.
-	\\ L'analisi della \textbf{differenza colore/luminosit\`a} per una visione normale da risultati (765/255) con soglia minima fissata per superare il test a 500. Anche per chi soffre di alcuni distrubi della vista* i test sono superati ampiamente.
-	\\ Anche l'analisi \textbf{della luminosit\`a} risulta positiva a tutte le prove con rapporto di contrasto 21.0:1, con soglia minima perchè tutti i test siano validi fissata a 7:1, per chi vede normalmente la pagina. Rimane comunque a un buon rapporto compreso tra i (17.9 e 21.0):1 per chi soffre di alcuni disturbi della vista*.
-	\\ \\ 
-	\begin{figure}[htbp]
-		\centering
-		\includegraphics[width=105mm, height=13mm]{images/contrasto_menu.png}
-		\caption{figura che illustra}
-	\end{figure}
-	\\ \textbf{*Disturbi della vista testati}: daltonismo, protanopia, tritanopia, deuteranopia.
+	\\
+	\\Il contrasto risultante del colore blu di sfondo e bianco come testo usato nel men\`u di navigazione ha superato tutti i test presenti nell'applicazione.
+	\\ L'analisi della \textbf{differenza colore/luminosit\`a} per una visione normale da risultati (543/212) con soglia minima fissata per superare il test a 500. Anche per chi soffre di alcuni distrubi della vista* i test sono superati con un discreto margine.
+	\\ Anche l'analisi \textbf{della luminosit\`a} risulta positiva a tutte le prove con rapporto di contrasto 10.9:1, con soglia minima perchè tutti i test siano validi fissata a 7:1, per chi vede normalmente la pagina. Rimane comunque a un buon rapporto compreso tra i (9.7 e 14.4):1 per chi soffre di alcuni disturbi della vista*.
+	\\
+	\\
+	\\Sono stati analizzati anche i contrasti con i colori dei link (normale,visitato) con lo sfondo azzurrino.
+	\\Per quanto riguarda questi link, sia l'analisi della differenza colore/luminosit\`a sia quella della luminosit\`a,  vengono superate. In alcuni casi e per alcune distorsioni con una soglia minima, mentre per altri con un ampio margine.
+	\\ \\ \textbf{*Disturbi della vista testati}: daltonismo, protanopia, tritanopia, deuteranopia.
 
 	\subsubsection {Test - Distorsioni visive}
 	Il sequente test invece \`e  stato effettuato attraverso il sito web Vischeck e si riscontrano i seguenti risultati:
@@ -58,25 +51,25 @@ Abbiamo fatto due tipi di test, uno relativo al giusto contrasto tra il testo e 
 	\begin{figure}[htbp]
 		\centering
 		\includegraphics[width=150mm, height=85mm]{images/contrasto_pagina_deuteranope.png}
-		\caption{figura che illustra}
+		\caption{figura che illustra come viene visualizzato il sito per chi soffre di deuteranopia}
 	\end{figure}	
 	\\
 	\\ Per chi soffre di \textbf{pronatopia}, cio\'e una forma di daltonismo per i colori rosso e verde,  questo \`e ci\`o che appare:
 	\\
 	\\ 
-	\begin{figure}
+	\begin{figure}[htbp]
 		\centering
 		\includegraphics[width=150mm, height=85mm]{images/contrasto_pagina_protanope.png}
-		\caption{figura che illustra}
+		\caption{figura che illustra come viene visualizzato il sito per chi soffre di protanopia}
 	\end{figure}
 	\\
 	\\ Per chi soffre di \textbf{tritanopia}, cio\`e cecit\`a per il blu e il violetto, questo \`e ci\`o che appare:
 	\\
 	\\ 
-	\begin{figure}
+	\begin{figure}[htbp]
 		\centering
 		\includegraphics[width=150mm, height=85mm]{images/contrasto_pagina_tritanope.png}
-		\caption{figura che illustra}
+		\caption{figura che illustra come viene visualizzato il sito per chi soffre di tritanopia}
 	\end{figure}
 	\\
 	\\ \textbf{Conclusioni}: per tutti e tre i tipi di distorsione il contrasto che si ottiene fa si che l'utente riesca comunque a comprendere il contenuto e a orientarsi nella pagina riuscendo ad interpretare il men\`u e i link presenti.
