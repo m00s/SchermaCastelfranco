@@ -1,4 +1,5 @@
-
+#legenda-inserimento{display: none;}
+#legenda-inserimento-nojava{display: block;}
 #lingue-stile{display: none;}
 #editor-finale{display: none;}
 .nascondi-torna{position: static;}
