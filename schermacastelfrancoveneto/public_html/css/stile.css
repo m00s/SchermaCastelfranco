@@ -508,8 +508,12 @@ p#editor-title{
 	text-indent: 2%;
 }
 
-#legenda-inserimento{ }
 #legenda-inserimento dt{
+	margin-bottom: 6%;
+	font-weight: bold;
+}
+#legenda-inserimento-nojava{display: none;}
+#legenda-inserimento-nojava dt{
 	margin-bottom: 6%;
 	font-weight: bold;
 }
@@ -527,6 +531,8 @@ p#editor-title{
 	padding: 2px;
 	vertical-align: middle;
 }
+
+.bold{font-weight: bold;}
 
 #mostra-piu{
 	padding-top: 0.2em;
@@ -671,9 +677,8 @@ p#editor-title{
 		width: 99%;
 	}
 
-	#legenda-inserimento dt{
-		margin-bottom: 2%;
-	}
+	#legenda-inserimento dt{margin-bottom: 2%;}
+	#legenda-inserimento-nojava dt{margin-bottom: 2%;}
 
 	#boxTop{
 	    right:0.6em;
