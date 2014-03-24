@@ -546,7 +546,10 @@ p#editor-title{
 }
 
 .bold{font-weight: bold;}
-
+.errore{
+	font-weight: bold;
+	color: #B91D01;
+}
 #mostra-piu{
 	padding-top: 0.2em;
 	padding-bottom: 0.2em;
