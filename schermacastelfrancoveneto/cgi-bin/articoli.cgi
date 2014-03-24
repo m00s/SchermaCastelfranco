@@ -67,9 +67,11 @@ my $risultato = $stylesheet->transform($doc);
 my $risultatoS=$risultato->toString();
 $risultatoS=~ s/<paragrafo xmlns:xs="http:\/\/www.w3.org\/2001\/XMLSchema-instance" xmlns="http:\/\/www.articoli.com" xmlns:ts="http:\/\/www.articoli.com">//g;
 $risultatoS=~ s/<\/paragrafo>//g;
+$risultatoS=~ s/<!DOCTYPE html PUBLIC "-\/\/W3C\/\/DTD XHTML 1.0 Strict\/\/EN" "http:\/\/www.w3.org\/TR\/xhtml1\/DTD\/xhtml1-strict.dtd">//;
+$risultatoS=~ s/xmlns="http:\/\/www.w3.org\/1999\/xhtml" lang="it" xml:lang="it"/lang="it"/g;
+$risultatoS=~ s/<\?xml version="1.0" encoding="UTF-8" standalone="yes"\?>//g;
 
 print "Content-type: text/html\n\n";
-print "<!DOCTYPE html >";
-$risultatoS=~ s/<!DOCTYPE html PUBLIC "-\/\/W3C\/\/DTD XHTML 1.0 Strict\/\/EN" "http:\/\/www.w3.org\/TR\/xhtml1\/DTD\/xhtml1-strict.dtd">//;
+print "<!DOCTYPE html > ";
 print $risultatoS;
 }
