@@ -8,6 +8,8 @@ while(!eof(FILE)){
   close FILE;
 
 $string=~ s/__LUOGO__//;
+$string=~ s/__SELECTART__/selected/;
+$string=~ s/__SELECTDOC__//;
 $string=~ s/__DATA__//;
 $string=~ s/__TITOLO__//;
 $string=~ s/__TESTO__//;
@@ -34,6 +36,8 @@ while(!eof(FILE)){
 }
 close FILE;
 
+$string=~ s/__SELECTART__//;
+$string=~ s/__SELECTDOC__/selected/;
 $string=~ s/__TITOLO__//g;
 $string=~ s/__VECCHIOTITOLO__//g;
 $string=~ s/__TESTO__//;

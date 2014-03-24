@@ -52,6 +52,8 @@ while(!eof(FILE)){
 }
 close FILE;
 
+$editor=~ s/__SELECTART__//;
+$editor=~ s/__SELECTDOC__/selected/;
 $editor=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__DOC__" readonly \/><\/label>/g;
 $editor=~ s/__INCASODIERRORE__//;
 $editor=~ s/__VALOREMODIFICA__/SalvaDocumento/;

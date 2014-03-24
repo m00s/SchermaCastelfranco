@@ -55,6 +55,10 @@ while(!eof(FILE)){
 	$editor .= <FILE>;
 }
 close FILE;
+
+
+$editor=~ s/__SELECTART__/selected/;
+$editor=~ s/__SELECTDOC__//;
 $editor=~ s/__REINSERISCIFOTO__//;
 $editor=~ s/__INCASODIERRORE__//;
 $editor=~ s/__INPUTFOTOVECCHIA__/<label>Vecchia foto: <input type="text" name="vecchiaFoto" value="__VECCHIAFOTO__" readonly\/><\/label>/g;
