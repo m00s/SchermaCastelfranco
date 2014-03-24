@@ -85,25 +85,22 @@ $(document).ready(function(){
 /* GESTIONE SIDEBAR POSIZIONAMENTO */ /* DA NON FARE SE USA IE6 */
 function msieversion()
    {
-      var ua = window.navigator.userAgent
-      var msie = ua.indexOf ( "MSIE " )
+      var ua = window.navigator.userAgent;
+      var msie = ua.indexOf ( "MSIE " );
 
       if ( msie > 0 )      // If Internet Explorer, return version number
-         return parseInt (ua.substring (msie+5, ua.indexOf (".", msie )))
+         return parseInt (ua.substring (msie+5, ua.indexOf (".", msie )));
       else                 // If another browser, return 0
-         return 0
+         return 11;
 }
 
 
 
 var ie = msieversion();
-
-if (ie>=9){
-
+if (ie >= 9){
 	$(document).ready(function(){
 
 		var topFixed=320;
-
 		if ($(window).width() > 850){
 				// mi salavo di quanto la scroll è distante dall'inizio pagina
 				var y = $(window).scrollTop();
@@ -157,8 +154,8 @@ if (ie>=9){
 
 	});
 
-/* FINE */
 }
+/* FINE */
 
 /* SCRIPT PER IL BOX TORNA SU */
 
