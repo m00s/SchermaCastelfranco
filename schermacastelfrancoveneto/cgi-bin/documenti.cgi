@@ -56,5 +56,12 @@ my $stylesheet = $xslt->parse_stylesheet($xslt_doc);
 
 #applicazione del foglio di trasformazione
 my $risultato = $stylesheet->transform($doc);
+my $risultatoS=$risultato->toString();
+$risultatoS=~ s/<!DOCTYPE html PUBLIC "-\/\/W3C\/\/DTD XHTML 1.0 Strict\/\/EN" "http:\/\/www.w3.org\/TR\/xhtml1\/DTD\/xhtml1-strict.dtd">//;
+$risultatoS=~ s/xmlns="http:\/\/www.w3.org\/1999\/xhtml" version="-\/\/W3C\/\/DTD XHTML 1.1\/\/EN" xml:lang="it" lang="it"/lang="it"/g;
+$risultatoS=~ s/<\?xml version="1.0" encoding="UTF-8" standalone="yes"\?>//g;
+
+
 print "Content-type: text/html\n\n";
-print $risultato->toString();
+print "<!DOCTYPE html >";
+print $risultatoS;
