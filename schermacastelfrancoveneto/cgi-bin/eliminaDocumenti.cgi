@@ -20,7 +20,7 @@ my $tabindex=5;
 
 foreach $documento (@documenti)
 {
-	$titolo=$documento->getElementsByTagName("titolo")->get_node(1)->string_value;
+	$titolo=Encode::encode('utf8',$documento->getElementsByTagName("titolo")->get_node(1)->string_value);
 	
 	
 	$appo="

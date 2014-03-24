@@ -1,4 +1,6 @@
 use utf8;
+require Encode;
+
 sub doCaricaFormModificaDocumento{
 #ottengo il file HTML da modificare
 open (FILE, "< ../data/private_html/formModifica.html");
@@ -21,7 +23,7 @@ my $tabindex=5;
 
 foreach $documento (@documenti)
 {
-	my $titolo=$documento->getElementsByTagName("titolo")->get_node(1)->string_value;
+	my $titolo=Encode::encode('utf8',$documento->getElementsByTagName("titolo")->get_node(1)->string_value);
 	
 	
 	$appo="
@@ -82,14 +84,14 @@ $xpc->registerNs('ts', 'http://www.documenti.com');
 my @documenti=$xpc->find('//ts:documento')->get_nodelist();
 
 foreach my $node (@documenti) {
-	my $titolo=$node->getElementsByTagName("titolo")->get_node(1)->string_value;
+	my $titolo=Encode::encode('utf8',$node->getElementsByTagName("titolo")->get_node(1)->string_value);
 	if($titolo eq $valore){
-		$docPath=$node->getElementsByTagName("doc-completo")->get_node(1)->string_value;
+		$docPath=Encode::encode('utf8',$node->getElementsByTagName("doc-completo")->get_node(1)->string_value);
 		my $doc;
 		foreach $el (split('/',$docPath)){
 			$doc=$el;
 		}
-		$paragrafo= $node->getElementsByTagName("paragrafo")->item(0)->toString;
+		$paragrafo= Encode::encode('utf8',$node->getElementsByTagName("paragrafo")->item(0)->toString);
 		$paragrafo=~ s/\<paragrafo\>//;
 		$paragrafo=~ s/\<\/paragrafo\>//;
 		$editor=~ s/__TITOLO__/$titolo/;

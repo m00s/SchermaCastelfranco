@@ -22,7 +22,7 @@ sub ordinaElementi
 	my @articoli=$risultato->find("//ts:articolo")->get_nodelist();
 	my $articoliFinali='';
 	foreach $articolo(@articoli){
-		$articoliFinali=$articolo->toString().$articoliFinali;
+		$articoliFinali=Encode::encode('utf8',$articolo->toString()).$articoliFinali;
 	}
 	
 	my $finalResult="<?xml version=\"1.0\" encoding=\"UTF-8\"?>

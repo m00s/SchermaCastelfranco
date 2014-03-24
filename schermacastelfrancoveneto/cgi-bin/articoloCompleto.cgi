@@ -1,3 +1,4 @@
+require Encode;
 sub articoloCompleto() {
 
 my $file="../data/articoli.xml";
@@ -42,18 +43,16 @@ if ($imgAttsString{'src'} && $imgAttsString{'alt'})
 #estrazione PARAGRAFO con nodi figli:
 my $parNodo=$artNodo->getElementsByTagName("paragrafo");
 
-$paragrafo=$parNodo->item(0)->toString;
+$paragrafo=Encode::encode('utf8',$parNodo->item(0)->toString);
 $paragrafo=~ s/\<paragrafo\>//;
 $paragrafo=~ s/\<\/paragrafo\>//;
 
 #estrazione TITOLO con nodi figli:
 my $titoloNodo=$artNodo->getElementsByTagName("titolo");
 
-$titolo=$titoloNodo->item(0)->toString;
+$titolo=Encode::encode('utf8',$titoloNodo->item(0)->toString);
 $titolo=~ s/\<titolo\>//;
 $titolo=~ s/\<\/titolo\>//;
-
-
 
 #STAMPA PAGINA HTML: (controllare link)
 print "Content-type: text/html\n\n";

@@ -1,5 +1,6 @@
 use Time::Local;
 use utf8;
+require Encode;
 
 sub doCaricaFormModifica{
 	
@@ -24,8 +25,8 @@ my $tabindex=5;
 
 foreach $articolo (@articoli)
 {
-	my $data=$articolo->getElementsByTagName("data")->get_node(1)->string_value;
-	my $luogo=$articolo->getElementsByTagName("luogo")->get_node(1)->string_value;
+	my $data=Encode::encode('utf8',$articolo->getElementsByTagName("data")->get_node(1)->string_value);
+	my $luogo=Encode::encode('utf8',$articolo->getElementsByTagName("luogo")->get_node(1)->string_value);
 	
 	$appo="
 		<p><label><input type=\"radio\" name=\"modifica_articolo\" class=\"stile-radio\" tabindex=\"$tabindex\"
@@ -93,17 +94,17 @@ $xpc->registerNs('ts', 'http://www.articoli.com');
 my @articoli=$xpc->find('//ts:articolo')->get_nodelist();
 
 foreach my $node (@articoli) {
-	my $data=$node->getElementsByTagName("data")->get_node(1)->string_value;
-	my $luogo=$node->getElementsByTagName("luogo")->get_node(1)->string_value;
+	my $data=Encode::encode('utf8',$node->getElementsByTagName("data")->get_node(1)->string_value);
+	my $luogo=Encode::encode('utf8',$node->getElementsByTagName("luogo")->get_node(1)->string_value);
 	if($data eq $valori[0] && $luogo eq $valori[1]){
-		my $titolo=$node->getElementsByTagName("titolo")->get_node(1)->string_value;
-		my $imgsrc=$node->getElementsByTagName("img")->get_node(1)->getAttribute("src");
+		my $titolo=Encode::encode('utf8',$node->getElementsByTagName("titolo")->get_node(1)->string_value);
+		my $imgsrc=Encode::encode('utf8',$node->getElementsByTagName("img")->get_node(1)->getAttribute("src"));
 		my $img;
 		foreach $el (split('/',$imgsrc)){
 			$img=$el;
 		}
-		my $imgalt=$node->getElementsByTagName("img")->get_node(1)->getAttribute("alt");
-		my $paragrafo=$node->getElementsByTagName("paragrafo")->item(0)->toString;
+		my $imgalt=Encode::encode('utf8',$node->getElementsByTagName("img")->get_node(1)->getAttribute("alt"));
+		my $paragrafo=Encode::encode('utf8',$node->getElementsByTagName("paragrafo")->item(0)->toString);
 		$paragrafo=~ s/\<paragrafo\>//;
 		$paragrafo=~ s/\<\/paragrafo\>//;
 		$editor=~ s/__LUOGO__/$luogo/g;

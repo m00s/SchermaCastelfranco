@@ -20,8 +20,8 @@ sub doCaricaFormElimina{
 
 	foreach $articolo (@articoli){
 
-		my $data=$articolo->getElementsByTagName("data")->get_node(1)->string_value;
-		my $luogo=$articolo->getElementsByTagName("luogo")->get_node(1)->string_value;
+		my $data=Encode::encode('utf8',$articolo->getElementsByTagName("data")->get_node(1)->string_value);
+		my $luogo=Encode::encode('utf8',$articolo->getElementsByTagName("luogo")->get_node(1)->string_value);
 
 		$appo="
 			<p><label ><input type=\"checkbox\" name=\"elimina_articolo\" class=\"stile-checkbox\" tabindex=\"$tabindex\"
