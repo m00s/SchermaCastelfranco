@@ -16,6 +16,7 @@
 		<xs:element name="titolo" type="tipo-titolo" />
 		<xs:element name="paragrafo" type="tipo-paragrafo" />
 		<xs:element name="doc-completo" nillable="true" type="xs:string" /> <!-- inserire in un tag <a> -->
+		<xs:element name="dimensione" nillable="true" type="xs:integer" />
 	</xs:sequence>
 </xs:complexType>
 
