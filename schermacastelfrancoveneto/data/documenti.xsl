@@ -87,7 +87,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 						<p><xsl:value-of select="d:paragrafo" /></p>
 					</div>
 
-					<p><a href="{$doc-completo}">Scarica documento [PDF] (<xsl:value-of select="d:dimensione" /> KB)</a></p> <!-- SISTEMARE -->
+					<p><a href="{$doc-completo}">Scarica documento [PDF]</a></p> <!-- SISTEMARE -->
 					<p class="nascondi-torna"><a href="#content">Torna al primo documento della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
 					
 					<xsl:if test="__NDOC__&#62;5">
