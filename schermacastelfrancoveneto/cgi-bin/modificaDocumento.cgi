@@ -1,5 +1,6 @@
 use utf8;
 require Encode;
+use File::stat;
 
 sub doCaricaFormModificaDocumento{
 #ottengo il file HTML da modificare
@@ -119,6 +120,7 @@ my $page=new CGI;
 	my $uploadDir;
 	my $docN;
 	my $docXML="<doc-completo/>";
+	my $docDim;
 
 	if($titolo eq '' or $testo eq ''){
 		&documentoNonCorrettoModifica($titolo,$testo,$vecchioTitolo,$docN);
@@ -145,11 +147,15 @@ my $page=new CGI;
 		        syswrite(FH, $buffer, $length);
 		    }
 		    close FH;
+		    $docDim= stat($docPath)->size;
+		    $docDim=int($docDim/1024);
 		    $docXML="<doc-completo>$docSRC</doc-completo>";
 	}
 	else{
 		if($page->param('vecchioDoc')){
 			$docSRC="../document/".$page->param('vecchioDoc');
+			$docDim= stat($uploadDir."/".$page->param('vecchioDoc'))->size;
+			$docDim=int($docDim/1024);
 			$docXML="<doc-completo>$docSRC</doc-completo>";
 		}
 	}
@@ -172,6 +178,7 @@ my $page=new CGI;
 		<titolo>$titolo</titolo>
 		<paragrafo>$testo</paragrafo>
 		$docXML
+		<dimensione>$docDim</dimensione>
 	</documento>
 
 	";

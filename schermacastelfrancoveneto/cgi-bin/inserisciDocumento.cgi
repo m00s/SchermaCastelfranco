@@ -1,4 +1,5 @@
 use utf8;
+use File::stat;
 
 sub doInserimentoDocumento{
 
@@ -11,7 +12,7 @@ sub doInserimentoDocumento{
 	my $uploadDir;
 	my $docN;
 	my $docXML="<doc-completo/>";
-
+	my $docDim;
 	if($titolo eq '' or $testo eq ''){
 		&documentoNonCorrettoInserimento($titolo,$testo);
 	}
@@ -39,8 +40,15 @@ sub doInserimentoDocumento{
 		        syswrite(FH, $buffer, $length);
 		    }
 		    close FH;
-		    my $docXML="<doc-completo>$docSRC</doc-completo>";
+		    $docDim= stat($docPath)->size;
+		    $docDim=int($docDim/1024);
+		    $docXML="<doc-completo>$docSRC</doc-completo>";
 	}
+	else{
+		&documentoNonCorrettoInserimento($titolo,$testo);
+	}
+
+
 	
 	my $path="../data/documenti.xml";
 
@@ -54,6 +62,7 @@ sub doInserimentoDocumento{
 		<titolo>$titolo</titolo>
 		<paragrafo>$testo</paragrafo>
 		$docXML
+		<dimensione>$docDim</dimensione>
 	</documento>
 
 	";
