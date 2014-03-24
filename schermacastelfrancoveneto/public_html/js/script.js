@@ -8,7 +8,7 @@ function checkLogin(){
 		var pok=true;
 
 		if ((username == "") || (username == "undefined")){
-			document.getElementById('userError').innerHTML = '(!) Username non valido';
+			document.getElementById('userError').innerHTML = '<p class="errore">(!) Username non valido</p>';
 			uok=false;
 		}
 		else{
@@ -16,7 +16,7 @@ function checkLogin(){
 			uok=true;
 		}
 		if ((password == "") || (password == "undefined")){
-			document.getElementById('passError').innerHTML = '(!) Password non valida';
+			document.getElementById('passError').innerHTML = '<p class="errore">(!) Password non valida</p>';
 			pok=false;
 		}
 		else{
@@ -248,12 +248,12 @@ function checkInserimentoDocumento(){
 			document.getElementById('errors').innerHTML += '<p class="errore"> (!) Testo non valido</p>';
 			teok=false;
 		}
-	
+
 	if (!(doc)){
 			document.getElementById('errors').innerHTML += '<p class="errore"> (!) Nessun documento inserito</p>';
 			doc=false;
 		}
-	
+
 	return (tok && teok && dok);
 }
 
