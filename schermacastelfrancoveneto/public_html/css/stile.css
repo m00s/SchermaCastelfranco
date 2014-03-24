@@ -742,6 +742,10 @@ p#editor-title{
 	  position: absolute;
 	  left: -999em;
 	}
+	#nav-2-active{
+	  position: absolute;
+	  left: -999em;
+	}
 
 	#breadcrumb{
 		width: 11em;

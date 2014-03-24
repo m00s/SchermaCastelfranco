@@ -6,7 +6,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 <xsl:template match="/">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<html lang="it">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>Articoli - Scherma Castelfranco Veneto</title>
