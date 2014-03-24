@@ -84,14 +84,14 @@ if($page->param('submit') eq "Inserisci Articolo"){
 
 	&doInserimento();
 	&ordinaElementi();
-	print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=articoli.cgi'>";
+	&getEditor();
 	exit;
 }
 
 if($page->param('submit') eq "Inserisci Documento"){
 
 	&doInserimentoDocumento();
-	print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=documenti.cgi'>";
+	&getEditorDocumento();
 	exit;
 }
 
@@ -107,7 +107,7 @@ if($page->param('modifica') eq "SalvaArticolo"){
 
 	&doSalvaArticolo();
 	&ordinaElementi();
-	print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=articoli.cgi'>";
+	&doCaricaFormModifica();
 	exit;
 }
 
@@ -121,7 +121,7 @@ if($page->param('modifica') eq "CaricaEditorDocumento"){
 if($page->param('modifica') eq "SalvaDocumento"){
 
 	&doSalvaDocumento();
-	print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=documenti.cgi'>";
+	&doCaricaFormModificaDocumento();
 	exit;
 }
 
@@ -131,7 +131,7 @@ if($page->param('modifica') eq "SalvaDocumento"){
 if($page->param('elimina') eq 'EliminaDocumenti'){
 
 	&doEliminaDocumenti();
-	print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=documenti.cgi'>";
+	&doCaricaFormEliminaDocumento();
 	exit;
 }
 
@@ -140,7 +140,7 @@ if($page->param('elimina') eq 'EliminaArticoli'){
 
 	&doEliminaArticoli();
 	&ordinaElementi();
-	print "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=articoli.cgi'>";
+	&doCaricaFormElimina();
 	exit;
 }
 

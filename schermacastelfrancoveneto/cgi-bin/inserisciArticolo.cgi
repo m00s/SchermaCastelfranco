@@ -41,6 +41,7 @@ my $page=new CGI;
 
 			#imposto il nome della foto da salvare
 			$fotoN ="$luogo-$dataDaSalvare";
+			$fotoN=~ s/ /-/g;
 			$fotoSRC="../img/gare/".$fotoN;
 
 			my $fotoPath=$uploadDir."/".$fotoN;
