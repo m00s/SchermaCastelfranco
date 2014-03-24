@@ -232,8 +232,10 @@ function checkInserimentoArticolo(){
 function checkInserimentoDocumento(){
 	var titolo = document.inserisciDocumentoForm.titolo.value;
 	var testo = document.inserisciDocumentoForm.testo.value;
+	var doc = document.inserisciDocumentoForm.documento.value;
 	var tok = true;
 	var teok = true;
+	var dok = true;
 
 	document.getElementById('errors').innerHTML = " ";
 
@@ -246,8 +248,13 @@ function checkInserimentoDocumento(){
 			document.getElementById('errors').innerHTML += '<p class="errore"> (!) Testo non valido</p>';
 			teok=false;
 		}
-
-	return (tok && teok);
+	
+	if (!(doc)){
+			document.getElementById('errors').innerHTML += '<p class="errore"> (!) Nessun documento inserito</p>';
+			doc=false;
+		}
+	
+	return (tok && teok && dok);
 }
 
 /* FINE */
