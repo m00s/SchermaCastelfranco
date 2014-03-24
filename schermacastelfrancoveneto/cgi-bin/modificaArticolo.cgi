@@ -151,7 +151,7 @@ my $page=new CGI;
 	my $vecchiaFoto=$page->param('vecchiaFoto');
 	my $altVecchio=$page->param('vecchioAlt');
 	my $altFoto=$page->param('altfoto');
-	my $uploadDir="../public_html/img/gare/";
+	my $uploadDir="../public_html/img/gare";
 	my $fotoSRC="../img/gare/";
 	my $fotoXML="<img/>";
 
@@ -189,7 +189,7 @@ my $page=new CGI;
 	}
 	else{
 		if($page->param("vecchiaFoto") and $page->param('vecchioAlt')){
-			$fotoSRC=$uploadDir."/".$page->param("vecchiaFoto");
+			$fotoSRC.=$page->param("vecchiaFoto");
 			$altFoto=$page->param('vecchioAlt');
 			$fotoXML="<img src=\"".$fotoSRC."\" alt=\"".$altFoto."\"/>";	
 		}
