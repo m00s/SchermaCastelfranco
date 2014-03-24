@@ -1,27 +1,25 @@
 \subsubsection{Definizione}
 	\noindent La parte \underline{utente} \`e composta da 7 pagine:
 \begin{itemize}
-	\item {\bfseries\textit{Articoli}} che mostra gli articoli recentemente inseriti.
-	\item {\bfseries\textit{Articolo}} che mostra un singolo articolo selezionato.
-	\item {\bfseries\textit{Documenti}} che rende scaricabili dei documenti di interesse.
-	\item {\bfseries\textit{Storia}} che descrive la storia della societ\`a.
-	\item {\bfseries\textit{Staff}} che mostra le persone che fanno parte dello staff.
-	\item {\bfseries\textit{Corsi}} che mostra l'orario dei corsi.
-	\item {\bfseries\textit{Login}} che mostra un form di login per l'accesso all'area privata.
+	\item {\bfseries\textit{Articoli.cgi}} mostra gli articoli recentemente inseriti. Ne rende disponibili 5 al primo caricamento, e attraverso un link "mostra altri" permette di visualizzarne un numero sempre superiore. Uno script javascript si occupa di creare un'ancora sull'ultimo articolo visionato in modo da non causare disorientamento.
+	\item {\bfseries\textit{Documenti.cgi}} mostra i documento scaricabili con una breve descrizione. Ad ogni documento \`e associata l'estensione del file e la dimensione, in modo da dare all'utente pi\`u informazioni sul download.
+	\item {\bfseries\textit{Storia.html}} pagina statica che descrive la storia della societ\`a.
+	\item {\bfseries\textit{Staff.html}} pagina statica che mostra le persone che fanno parte dello staff.
+	\item {\bfseries\textit{Corsi.html}} pagina statica che mostra l'orario dei corsi.
+	\item {\bfseries\textit{amministra.cgi}} mostra un form di login per l'accesso all'area privata.
 \end{itemize}
-	In particolare le pagine \textit{staff.html}, \textit{storia.html} e \textit{corsi.html} sono statiche, mentre le altre pagine sono state ottenute attraverso l'associazione dei file xml ad un foglio di stile e la stampa tramite Perl.
 
 La parte \underline{amministratore} \`e composta da 6 pagine:
 \begin{itemize}
-	\item {\bfseries\textit{InserisciArticolo.cgi}} che permette di inserire un nuovo articolo.
-	\item {\bfseries\textit{ModificaArticolo.cgi}} che permette di scegliere un articolo da modificare.
-	\item {\bfseries\textit{EliminaArticolo.cgi}} che permette di selezionare articoli da eliminare.
-	\item {\bfseries\textit{InserisciDocumento.cgi}} che permette di inserire un nuovo documento.
-	\item {\bfseries\textit{ModificaDocumento.cgi}} che permette di scegliere un documento da modificare.
-	\item {\bfseries\textit{EliminaDocumento.cgi}} che permette di selezionare documento da eliminare.
-\end{itemize}	
-	
-	Tutte queste pagine sono dinamiche, create come composizione di documenti definiti in HTML e istruzioni Perl.
+	\item {\bfseries\textit{InserisciArticolo.cgi}} permette di inserire un nuovo articolo. In questa pagina \`e presente un form di inserimento con dei bottoni che permettono di inserire il testo formattato con i tag html, in modo da rendere valido l'articolo che verr\`a stampato in output successivamente.
+	\item {\bfseries\textit{ModificaArticolo.cgi}} che permette di scegliere un articolo da modificare e lo ripresenta in un form di modifica.
+	\item {\bfseries\textit{EliminaArticolo.cgi}} che permette di selezionare uno o pi\`u articoli da eliminare.
+	\item {\bfseries\textit{InserisciDocumento.cgi}} che permette di inserire un nuovo documento attraverso un form, dal quale \`e possibile inserire un titolo, una breve descrizione e il documento stesso.
+	\item {\bfseries\textit{ModificaDocumento.cgi}} permette di scegliere un documento da modificare, e lo ripresenta in un form di modifica.
+	\item {\bfseries\textit{EliminaDocumento.cgi}}  permette di selezionare uno o pi\`u documenti da eliminare.
+\end{itemize}
+
+	Tutte queste pagine sono dinamiche, create attraverso lo script perl \textit{amministraSezionePrivata.cgi} che si occupa di delegare alle funzioni la composizione delle pagine html da dare in output.
 	
 \subsubsection{Database}
-	La persistenza dei data \`e ottenuta attraverso due file XML validi secondo gli schemi definiti in \textit{articoli.xsl} e \textit{documenti.xsd}. Si \`e scelto XML Schema poich\`e garantisce l'espressivit\`a di cui abbiamo bisogno, in particolare per avere a disposizione i primitivi date e anyURI, utili nella definizione di articoli e documenti.
+	La persistenza dei data \`e ottenuta attraverso due file XML validi secondo gli schemi definiti in \textit{articoli.xsl} e \textit{documenti.xsd}. Si \`e scelto XML Schema poich\`e garantisce l'espressivit\`a di cui abbiamo bisogno, in particolare per avere a disposizione i tipi primitivi date e anyURI, utili nella definizione di articoli e documenti.
