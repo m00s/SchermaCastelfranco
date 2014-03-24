@@ -291,7 +291,7 @@ function InsertCodeInTextArea(textValue) {
 
 $(function() {
 	$("#datepicker").datepicker({
-		dateFormat: "dd/mm/yy",
+		dateFormat: "yy/mm/dd",
 		onSelect: function(dateText, inst) {
 			var date = $.datepicker.parseDate(inst.settings.dateFormat || $.datepicker._defaults.dateFormat, dateText, inst.settings);
 			var dateText1 = $.datepicker.formatDate("D, d M yy", date, inst.settings);
