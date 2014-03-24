@@ -1,3 +1,4 @@
+use utf8;
 sub doCaricaFormModificaDocumento{
 #ottengo il file HTML da modificare
 open (FILE, "< ../data/private_html/formModifica.html");
@@ -54,6 +55,7 @@ close FILE;
 
 $editor=~ s/__SELECTART__//;
 $editor=~ s/__SELECTDOC__/selected/;
+$editor=~ s/__ERROREDOC__//;
 $editor=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__DOC__" readonly \/><\/label>/g;
 $editor=~ s/__INCASODIERRORE__//;
 $editor=~ s/__VALOREMODIFICA__/SalvaDocumento/;
@@ -87,7 +89,7 @@ foreach my $node (@documenti) {
 		foreach $el (split('/',$docPath)){
 			$doc=$el;
 		}
-		$paragrafo=$node->getElementsByTagName("paragrafo")->item(0)->toString;
+		$paragrafo= decode('UTF-8',$node->getElementsByTagName("paragrafo")->item(0)->toString);
 		$paragrafo=~ s/\<paragrafo\>//;
 		$paragrafo=~ s/\<\/paragrafo\>//;
 		$editor=~ s/__TITOLO__/$titolo/;
@@ -141,7 +143,7 @@ my $page=new CGI;
 		        syswrite(FH, $buffer, $length);
 		    }
 		    close FH;
-		    my $docXML="<doc-completo>$docSRC</doc-completo>";
+		    $docXML="<doc-completo>$docSRC</doc-completo>";
 	}
 	
 	

@@ -1,3 +1,5 @@
+use utf8;
+
 sub doInserimentoDocumento{
 
 	my $page=new CGI;
