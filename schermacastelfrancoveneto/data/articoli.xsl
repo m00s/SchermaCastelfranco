@@ -88,7 +88,9 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 							<p><xsl:value-of select="a:data"/></p>
 							<p><xsl:value-of select="a:luogo"/></p>
 							<h1><xsl:value-of select="a:titolo"/></h1>
-							<img src="{$src}" alt="{$alt}" />
+							<xsl:if test="a:img/@src and a:img/@alt">
+								<img src="{$src}" alt="{$alt}" />
+							</xsl:if>
 						<!--</div>-->
 						<p><a href="{$url}"> Vai all'articolo intero</a></p>
 						<p class="nascondi-torna"><a href="#content">Torna al primo articolo della pagina </a>o <a href="#nav">torna al <span lang="fr">menù</span> di navigazione</a></p>
