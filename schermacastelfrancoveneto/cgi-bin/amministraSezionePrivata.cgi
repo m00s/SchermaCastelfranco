@@ -12,6 +12,7 @@ use File::Basename;
 use Time::Local;
 use DateTime;
 
+do 'successo.cgi';
 do 'eliminaDocumenti.cgi';
 do 'modificaDocumento.cgi';
 do 'inserisciDocumento.cgi';
@@ -84,14 +85,14 @@ if($page->param('submit') eq "Inserisci Articolo"){
 
 	&doInserimento();
 	&ordinaElementi();
-	&getEditor();
+	&successo("Articolo","inserito","articoli");
 	exit;
 }
 
 if($page->param('submit') eq "Inserisci Documento"){
 
 	&doInserimentoDocumento();
-	&getEditorDocumento();
+	&successo("Documento","inserito","documenti");
 	exit;
 }
 
@@ -107,7 +108,7 @@ if($page->param('modifica') eq "SalvaArticolo"){
 
 	&doSalvaArticolo();
 	&ordinaElementi();
-	&doCaricaFormModifica();
+	&successo("Articolo","modificato","articoli");
 	exit;
 }
 
@@ -121,7 +122,7 @@ if($page->param('modifica') eq "CaricaEditorDocumento"){
 if($page->param('modifica') eq "SalvaDocumento"){
 
 	&doSalvaDocumento();
-	&doCaricaFormModificaDocumento();
+	&successo("Documento","modificato","documenti");
 	exit;
 }
 
@@ -131,7 +132,7 @@ if($page->param('modifica') eq "SalvaDocumento"){
 if($page->param('elimina') eq 'EliminaDocumenti'){
 
 	&doEliminaDocumenti();
-	&doCaricaFormEliminaDocumento();
+	&successo("Documento/i","eliminato/i","documenti");
 	exit;
 }
 
@@ -140,7 +141,7 @@ if($page->param('elimina') eq 'EliminaArticoli'){
 
 	&doEliminaArticoli();
 	&ordinaElementi();
-	&doCaricaFormElimina();
+	&successo("Articolo/i","eliminato/i","articoli");
 	exit;
 }
 

@@ -1,3 +1,5 @@
+use utf8;
+
 sub getEditor{
 	
 #ottengo il file HTML da modificare
