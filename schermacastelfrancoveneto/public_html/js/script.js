@@ -188,28 +188,28 @@ function checkInserimentoArticolo(){
 	document.getElementById('errors').innerHTML = " ";
 
 	if ((luogo == "") || (luogo == "undefined")){
-			document.getElementById('errors').innerHTML += '<p> (!) Luogo non valido</p>';
+			document.getElementById('errors').innerHTML += '<p class="errore"> (!) Luogo non valido</p>';
 			lok=false;
 		}
 
 	if ((datepicker == "") || (datepicker == "undefined")){
-			document.getElementById('errors').innerHTML += '<p> (!) Data non valida</p>';
+			document.getElementById('errors').innerHTML += '<p class="errore"> (!) Data non valida</p>';
 			dok=false;
 		}
 
 	if ((titolo == "") || (titolo == "undefined")){
-			document.getElementById('errors').innerHTML += '<p> (!) Titolo non valido</p>';
+			document.getElementById('errors').innerHTML += '<p class="errore"> (!) Titolo non valido</p>';
 			tok=false;
 		}
 
 	if ((testo == "") || (testo == "undefined")){
-			document.getElementById('errors').innerHTML += '<p> (!) Testo non valido</p>';
+			document.getElementById('errors').innerHTML += '<p class="errore"> (!) Testo non valido</p>';
 			teok=false;
 		}
 
 	if(foto){
 		if ((altfoto == "") || (altfoto == "undefined")){
-			document.getElementById('errors').innerHTML += '<p> (!) Descrizione fotografia non valida</p>';
+			document.getElementById('errors').innerHTML += '<p class="errore"> (!) Descrizione fotografia non valida</p>';
 			aok=false;
 		}
 	}
@@ -226,12 +226,12 @@ function checkInserimentoDocumento(){
 	document.getElementById('errors').innerHTML = " ";
 
 	if ((titolo == "") || (titolo == "undefined")){
-			document.getElementById('errors').innerHTML += '<p> (!) Titolo non valido</p>';
+			document.getElementById('errors').innerHTML += '<p class="errore"> (!) Titolo non valido</p>';
 			tok=false;
 		}
 
 	if ((testo == "") || (testo == "undefined")){
-			document.getElementById('errors').innerHTML += '<p> (!) Testo non valido</p>';
+			document.getElementById('errors').innerHTML += '<p class="errore"> (!) Testo non valido</p>';
 			teok=false;
 		}
 

@@ -92,8 +92,8 @@ li#active{
 
 }
 #nav-1 ul li#image-menu{
-	width: 4em;
-	height: 3em;
+	width: 4.3em;
+	height: 1.9em;
 }
 #panel-nav-1{display: inline;}
 
@@ -207,6 +207,19 @@ li#active{
 	padding-bottom: 1em;
 	max-width: 30em;
 	max-height: 30em;
+}
+
+img.img-completa{
+	/*display: block;*/
+	float: left;
+	overflow: auto;
+	margin:0 auto;
+	margin-bottom: 2%;
+	padding-right: 1em;
+	padding-bottom: 1em;
+	max-width: 30em;
+	max-height: 30em;
+
 }
 
 .document{
@@ -533,6 +546,15 @@ p#editor-title{
 }
 
 .bold{font-weight: bold;}
+.errore{
+	font-weight: bold;
+	color: #B91D01;
+}
+#errore h1,h2,p{margin-bottom: 0.3em;}
+#errore p{
+	font-weight: bold;
+	font-size: 1.1em;
+}
 
 #mostra-piu{
 	padding-top: 0.2em;
@@ -685,6 +707,12 @@ p#editor-title{
 	    bottom:0.6em;
 	}
 	#panel-sidebar ul li ul li{margin-bottom: 2.5%;}
+	img.img-completa{
+		display: block;
+		float: none;
+		overflow: auto;
+		margin:0 auto;
+	}
 
 }
 
