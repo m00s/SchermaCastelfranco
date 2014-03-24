@@ -176,39 +176,43 @@ function checkInserimentoArticolo(){
 	var datepicker = document.inserisciArticoloForm.datepicker.value;
 	var titolo = document.inserisciArticoloForm.titolo.value;
 	var testo = document.inserisciArticoloForm.testo.value;
+	var foto = document.inserisciArticoloForm.foto.value;
 	var altfoto = document.inserisciArticoloForm.altfoto.value;
 	var lok = true;
 	var dok = true;
 	var tok = true;
 	var teok = true;
+	var fok = true;
 	var aok = true;
 
 	document.getElementById('errors').innerHTML = " ";
 
 	if ((luogo == "") || (luogo == "undefined")){
-			document.getElementById('errors').innerHTML += '<br /> (!) Luogo non valido';
+			document.getElementById('errors').innerHTML += '<p> (!) Luogo non valido</p>';
 			lok=false;
 		}
 
 	if ((datepicker == "") || (datepicker == "undefined")){
-			document.getElementById('errors').innerHTML += '<br /> (!) Data non valida';
+			document.getElementById('errors').innerHTML += '<p> (!) Data non valida</p>';
 			dok=false;
 		}
 
 	if ((titolo == "") || (titolo == "undefined")){
-			document.getElementById('errors').innerHTML += '<br /> (!) Titolo non valido';
+			document.getElementById('errors').innerHTML += '<p> (!) Titolo non valido</p>';
 			tok=false;
 		}
 
 	if ((testo == "") || (testo == "undefined")){
-			document.getElementById('errors').innerHTML += '<br /> (!) Testo non valido';
+			document.getElementById('errors').innerHTML += '<p> (!) Testo non valido</p>';
 			teok=false;
 		}
 
-	if ((altfoto == "") || (altfoto == "undefined")){
-			document.getElementById('errors').innerHTML += '<br /> (!) Descrizione fotografia non valida';
+	if(foto){
+		if ((altfoto == "") || (altfoto == "undefined")){
+			document.getElementById('errors').innerHTML += '<p> (!) Descrizione fotografia non valida</p>';
 			aok=false;
 		}
+	}
 
 	return (lok && dok && tok && teok && aok);
 }
@@ -222,12 +226,12 @@ function checkInserimentoDocumento(){
 	document.getElementById('errors').innerHTML = " ";
 
 	if ((titolo == "") || (titolo == "undefined")){
-			document.getElementById('errors').innerHTML += '<br /> (!) Titolo non valido';
+			document.getElementById('errors').innerHTML += '<p> (!) Titolo non valido</p>';
 			tok=false;
 		}
 
 	if ((testo == "") || (testo == "undefined")){
-			document.getElementById('errors').innerHTML += '<br /> (!) Testo non valido';
+			document.getElementById('errors').innerHTML += '<p> (!) Testo non valido</p>';
 			teok=false;
 		}
 
@@ -291,7 +295,7 @@ function InsertCodeInTextArea(textValue) {
 
 $(function() {
 	$("#datepicker").datepicker({
-		dateFormat: "dd/mm/yy",
+		dateFormat: "yy/mm/dd",
 		onSelect: function(dateText, inst) {
 			var date = $.datepicker.parseDate(inst.settings.dateFormat || $.datepicker._defaults.dateFormat, dateText, inst.settings);
 			var dateText1 = $.datepicker.formatDate("D, d M yy", date, inst.settings);
@@ -303,6 +307,8 @@ $(function() {
 
 
 /* FINE */
+
+
 
 
 

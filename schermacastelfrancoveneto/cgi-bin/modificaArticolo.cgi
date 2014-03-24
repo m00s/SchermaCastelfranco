@@ -55,6 +55,10 @@ while(!eof(FILE)){
 	$editor .= <FILE>;
 }
 close FILE;
+
+
+$editor=~ s/__SELECTART__/selected/;
+$editor=~ s/__SELECTDOC__//;
 $editor=~ s/__REINSERISCIFOTO__//;
 $editor=~ s/__INCASODIERRORE__//;
 $editor=~ s/__INPUTFOTOVECCHIA__/<label>Vecchia foto: <input type="text" name="vecchiaFoto" value="__VECCHIAFOTO__" readonly\/><\/label>/g;
@@ -148,7 +152,8 @@ my $page=new CGI;
 	my $altFoto=$page->param('altfoto');
 	my $uploadDir="../public_html/img/gare/";
 	my $fotoSRC="../img/gare/";
-
+	my $fotoXML="<img/>";
+	
 	eval{timelocal(0,0,0,$data[2],$data[1]-1,$data[0]);} || 
 				die (&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto,$vecchioAlt));
 
@@ -174,6 +179,7 @@ my $page=new CGI;
 		        syswrite(FH, $buffer, $length);
 		    }
 		    close FH;
+		    $fotoXML="<img src=\"".$fotoSRC."\" alt=\"".$altFoto."\"/>";
 		}
 		else{
 			&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto,$vecchioAlt);

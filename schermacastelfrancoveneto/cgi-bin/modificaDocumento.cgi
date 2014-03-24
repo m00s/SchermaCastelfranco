@@ -52,6 +52,8 @@ while(!eof(FILE)){
 }
 close FILE;
 
+$editor=~ s/__SELECTART__//;
+$editor=~ s/__SELECTDOC__/selected/;
 $editor=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__DOC__" readonly \/><\/label>/g;
 $editor=~ s/__INCASODIERRORE__//;
 $editor=~ s/__VALOREMODIFICA__/SalvaDocumento/;
@@ -112,6 +114,7 @@ my $page=new CGI;
 	my $docSRC;
 	my $uploadDir;
 	my $docN;
+	my $docXML="<doc-completo/>";
 
 	if($titolo eq '' or $testo eq ''){
 		&documentoNonCorrettoModifica($titolo,$testo,$vecchioTitolo,$docN);
@@ -138,6 +141,7 @@ my $page=new CGI;
 		        syswrite(FH, $buffer, $length);
 		    }
 		    close FH;
+		    my $docXML="<doc-completo>$docSRC</doc-completo>";
 	}
 	
 	
