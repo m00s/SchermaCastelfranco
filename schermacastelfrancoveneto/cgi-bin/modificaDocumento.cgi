@@ -114,6 +114,7 @@ my $page=new CGI;
 	my $docSRC;
 	my $uploadDir;
 	my $docN;
+	my $docXML="<doc-completo/>";
 
 	if($titolo eq '' or $testo eq ''){
 		&documentoNonCorrettoModifica($titolo,$testo,$vecchioTitolo,$docN);
@@ -140,6 +141,7 @@ my $page=new CGI;
 		        syswrite(FH, $buffer, $length);
 		    }
 		    close FH;
+		    my $docXML="<doc-completo>$docSRC</doc-completo>";
 	}
 	
 	

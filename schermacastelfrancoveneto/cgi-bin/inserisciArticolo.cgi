@@ -14,6 +14,7 @@ my $page=new CGI;
 	my $fotoN;	
 	my $uploadDir;
 	my $fotoSRC;
+	my $fotoXML="<img/>";
 
 	if($page->param('datepicker')=~ m/\d{4}\/\d{2}\/\d{2}/){
 		@data=split("/",$page->param('datepicker'));
@@ -50,6 +51,7 @@ my $page=new CGI;
 		        syswrite(FH, $buffer, $length);
 		    }
 		    close FH;
+		   	$fotoXML="<img src=\"".$fotoSRC."\" alt=\"".$altFoto."\"/>";
 		}
 		else
 		{
@@ -67,8 +69,7 @@ my $page=new CGI;
 	<articolo>
 		<luogo>".$luogo."</luogo>
 		<data>".$dataDaSalvare."</data>
-		<titolo>".$titolo."</titolo>
-		<img src=\"".$fotoSRC."\" alt=\"".$altFoto."\"/>
+		<titolo>".$titolo."</titolo>".$fotoXML."
 		<paragrafo>".$testo."</paragrafo>
 	</articolo>
 

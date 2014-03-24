@@ -8,6 +8,7 @@ sub doInserimentoDocumento{
 	my $docSRC;
 	my $uploadDir;
 	my $docN;
+	my $docXML="<doc-completo/>";
 
 	if($titolo eq '' or $testo eq ''){
 		&documentoNonCorrettoInserimento($titolo,$testo);
@@ -36,6 +37,7 @@ sub doInserimentoDocumento{
 		        syswrite(FH, $buffer, $length);
 		    }
 		    close FH;
+		    my $docXML="<doc-completo>$docSRC</doc-completo>";
 	}
 	
 	my $path="../data/documenti.xml";
@@ -49,7 +51,7 @@ sub doInserimentoDocumento{
 	<documento>
 		<titolo>$titolo</titolo>
 		<paragrafo>$testo</paragrafo>
-		<doc-completo>$docSRC</doc-completo>
+		$docXML
 	</documento>
 
 	";
