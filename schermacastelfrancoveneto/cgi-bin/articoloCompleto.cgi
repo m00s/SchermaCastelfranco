@@ -34,7 +34,7 @@ foreach $imgAtt (@imgAtts) {
 }
 my $src=$imgAttsString{'src'};
 my $alt=$imgAttsString{'alt'};
-$img="<img ".$src." ".$alt." />";
+$img="<img class=\"img-completa\" ".$src." ".$alt." />";
 
 #estrazione PARAGRAFO con nodi figli:
 my $parNodo=$artNodo->getElementsByTagName("paragrafo");
