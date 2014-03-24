@@ -29,8 +29,8 @@ my $imgNodo=$doc->findnodes("//ts:articolo[ts:data='$data' and ts:luogo='$luogo'
 my @imgAtts = $imgNodo->getAttributes();
 my %imgAttsString;
 foreach $imgAtt (@imgAtts) {
-	my $nome_a = $imgAtt->getName();
-	my $valore_a = $imgAtt->getValue();
+	my $nome_a =Encode::encode('utf8', $imgAtt->getName());
+	my $valore_a = Encode::encode('utf8',$imgAtt->getValue());
 	$imgAttsString{$nome_a}=$nome_a."=\"".$valore_a."\"";
 }
 if ($imgAttsString{'src'} && $imgAttsString{'alt'})
