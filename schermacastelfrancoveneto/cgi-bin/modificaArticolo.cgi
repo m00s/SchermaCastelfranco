@@ -1,4 +1,5 @@
 use Time::Local;
+use utf8;
 
 sub doCaricaFormModifica{
 	
@@ -57,8 +58,8 @@ while(!eof(FILE)){
 close FILE;
 
 
-$editor=~ s/__SELECTART__/selected/;
-$editor=~ s/__SELECTDOC__//;
+$editor=~ s/__SELECTART__/selected/g;
+$editor=~ s/__SELECTDOC__//g;
 $editor=~ s/__REINSERISCIFOTO__//;
 $editor=~ s/__INCASODIERRORE__//;
 $editor=~ s/__INPUTFOTOVECCHIA__/<label>Vecchia foto: <input type="text" name="vecchiaFoto" value="__VECCHIAFOTO__" readonly\/><\/label>/g;
@@ -153,7 +154,7 @@ my $page=new CGI;
 	my $uploadDir="../public_html/img/gare/";
 	my $fotoSRC="../img/gare/";
 	my $fotoXML="<img/>";
-	
+
 	eval{timelocal(0,0,0,$data[2],$data[1]-1,$data[0]);} || 
 				die (&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchiaFoto,$vecchioAlt));
 
@@ -163,12 +164,13 @@ my $page=new CGI;
 
 
 	if($page->param('foto')){
-		if($page->param('altFoto')){
+		if($page->param('altfoto')){
 			$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
 			$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
 
 			#imposto il nome della foto da salvare
 			$fotoN ="$luogo-$dataDaSalvare";
+			$fotoN=~ s/ /-/g;
 			$fotoSRC.=$fotoN;
 
 			my $fotoPath=$uploadDir."/".$fotoN;
@@ -186,10 +188,14 @@ my $page=new CGI;
 		}
 	}
 	else{
-		$fotoSRC=$uploadDir."/".$page->param("vecchiaFoto");
-		$altFoto=$page->param('vecchioAlt');
+		if($page->param("vecchiaFoto") and $page->param('vecchioAlt')){
+			$fotoSRC=$uploadDir."/".$page->param("vecchiaFoto");
+			$altFoto=$page->param('vecchioAlt');
+			$fotoXML="<img src=\"".$fotoSRC."\" alt=\"".$altFoto."\"/>";	
+		}
 	}
-	
+
+
 	my $path="../data/articoli.xml";
 	my $parser = new XML::LibXML;
 	my $doc_tree = $parser->parse_file($path);
@@ -204,8 +210,7 @@ my $page=new CGI;
 	<articolo>
 		<luogo>".$luogo."</luogo>
 		<data>".$dataDaSalvare."</data>
-		<titolo>".$titolo."</titolo>
-		<img src=\"".$fotoSRC."\" alt=\"".$altFoto."\"/>
+		<titolo>".$titolo."</titolo>".$fotoXML."
 		<paragrafo>".$testo."</paragrafo>
 	</articolo>
 

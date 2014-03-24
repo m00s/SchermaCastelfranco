@@ -126,7 +126,7 @@ my $page=new CGI;
 			$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
 			 
 			#upload immagine
-			$uploadDir="../public_html/document";
+			$uploadDir="../public_html/document/";
 			my $dt   = DateTime->now;
 			my $date = $dt->ymd;
 			#imposto il nome della foto da salvare
@@ -161,7 +161,7 @@ my $page=new CGI;
 	<documento>
 		<titolo>$titolo</titolo>
 		<paragrafo>$testo</paragrafo>
-		<doc-completo>$docSRC</doc-completo>
+		$docXML
 	</documento>
 
 	";
