@@ -5,6 +5,14 @@ doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
 doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 <xsl:template match="/">
+<!--
+<xsl:output
+     method="xml"
+     doctype-system="about:legacy-compat"
+     encoding="UTF-8"
+     indent="yes"
+/>
+-->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
