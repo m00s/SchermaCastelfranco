@@ -550,6 +550,12 @@ p#editor-title{
 	font-weight: bold;
 	color: #B91D01;
 }
+#errore h1,h2,p{margin-bottom: 0.3em;}
+#errore p{
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
 #mostra-piu{
 	padding-top: 0.2em;
 	padding-bottom: 0.2em;
