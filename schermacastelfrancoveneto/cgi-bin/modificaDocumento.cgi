@@ -89,7 +89,7 @@ foreach my $node (@documenti) {
 		foreach $el (split('/',$docPath)){
 			$doc=$el;
 		}
-		$paragrafo= decode('UTF-8',$node->getElementsByTagName("paragrafo")->item(0)->toString);
+		$paragrafo= $node->getElementsByTagName("paragrafo")->item(0)->toString;
 		$paragrafo=~ s/\<paragrafo\>//;
 		$paragrafo=~ s/\<\/paragrafo\>//;
 		$editor=~ s/__TITOLO__/$titolo/;
@@ -144,6 +144,12 @@ my $page=new CGI;
 		    }
 		    close FH;
 		    $docXML="<doc-completo>$docSRC</doc-completo>";
+	}
+	else{
+		if($page->param('vecchioDoc')){
+			$docSRC="../document/".$page->param('vecchioDoc');
+			$docXML="<doc-completo>$docSRC</doc-completo>";
+		}
 	}
 	
 	
