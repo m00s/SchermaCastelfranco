@@ -19,7 +19,7 @@ if ($_[0] && $_[1]) {
 
 my $paragrafo="p";
 my $titolo="t";
-my $img="i";
+my $img="";
 
 my $artNodo=$doc->findnodes("//ts:articolo[ts:data='$data' and ts:luogo='$luogo']")->get_node(1);
 
@@ -32,9 +32,12 @@ foreach $imgAtt (@imgAtts) {
 	my $valore_a = $imgAtt->getValue();
 	$imgAttsString{$nome_a}=$nome_a."=\"".$valore_a."\"";
 }
-my $src=$imgAttsString{'src'};
-my $alt=$imgAttsString{'alt'};
-$img="<img class=\"img-completa\" ".$src." ".$alt." />";
+if ($imgAttsString{'src'} && $imgAttsString{'alt'})
+{
+	my $src=$imgAttsString{'src'};
+	my $alt=$imgAttsString{'alt'};
+	$img="<img class=\"img-completa\" ".$src." ".$alt." />";
+}
 
 #estrazione PARAGRAFO con nodi figli:
 my $parNodo=$artNodo->getElementsByTagName("paragrafo");
