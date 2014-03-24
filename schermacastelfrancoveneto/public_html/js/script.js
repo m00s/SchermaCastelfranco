@@ -83,67 +83,79 @@ $(document).ready(function(){
 /* FINE */
 
 /* GESTIONE SIDEBAR POSIZIONAMENTO */ /* DA NON FARE SE USA IE6 */
+function msieversion()
+   {
+      var ua = window.navigator.userAgent;
+      var msie = ua.indexOf ( "MSIE " );
 
-$(document).ready(function(){
+      if ( msie > 0 )      // If Internet Explorer, return version number
+         return parseInt (ua.substring (msie+5, ua.indexOf (".", msie )));
+      else                 // If another browser, return 0
+         return 11;
+}
 
-	var topFixed=320;
-	// bloccarlo per safari e internet explorer 6
 
-	if ($(window).width() > 850){
-			// mi salavo di quanto la scroll è distante dall'inizio pagina
-			var y = $(window).scrollTop();
 
-			if (y >= topFixed){ // se è maggiore di un valore fissato devo cambiarli classe e metterla fissa (GESTIONE RELOAD PAGINA GIA' SCROLLATA)
-				$("#sidebar").addClass("sidebar-fixed");
-				$("#sidebar").attr("id","sidebarFix");
-			}
+var ie = msieversion();
+if (ie >= 9){
+	$(document).ready(function(){
 
-	}
-});
+		var topFixed=320;
+		if ($(window).width() > 850){
+				// mi salavo di quanto la scroll è distante dall'inizio pagina
+				var y = $(window).scrollTop();
 
-// scroll
-$(window).scroll(function(){
-
-		if($(window).width() > 850){
-
-			var topFixed=320;
-			// alert(topFixed);
-			var y = $(window).scrollTop();
-			// alert(y);
-			if (y>= topFixed){
-					// alert("maggiore");
+				if (y >= topFixed){ // se è maggiore di un valore fissato devo cambiarli classe e metterla fissa (GESTIONE RELOAD PAGINA GIA' SCROLLATA)
 					$("#sidebar").addClass("sidebar-fixed");
 					$("#sidebar").attr("id","sidebarFix");
-			}else{
-					$("#sidebarFix").removeClass("sidebar-fixed");
-					$("#sidebarFix").attr("id","sidebar");
-			}
-		}else{}
-});
+				}
+
+		}
+	});
+
+	// scroll
+	$(window).scroll(function(){
+
+			if($(window).width() > 850){
+
+				var topFixed=320;
+				// alert(topFixed);
+				var y = $(window).scrollTop();
+				// alert(y);
+				if (y>= topFixed){
+						// alert("maggiore");
+						$("#sidebar").addClass("sidebar-fixed");
+						$("#sidebar").attr("id","sidebarFix");
+				}else{
+						$("#sidebarFix").removeClass("sidebar-fixed");
+						$("#sidebarFix").attr("id","sidebar");
+				}
+			}else{}
+	});
 
 
-// resize
-$(window).resize(function(){
+	// resize
+	$(window).resize(function(){
 
-	if($(window).width() > 850){
-			var topFixed=320;
-			var y = $(window).scrollTop();
+		if($(window).width() > 850){
+				var topFixed=320;
+				var y = $(window).scrollTop();
 
-			if (y >= topFixed){ // se è maggiore di un valore fissato devo cambiarli classe e metterla fissa (GESTIONE RELOAD PAGINA GIA' SCROLLATA)
-				$("#sidebar").addClass("sidebar-fixed");
-				$("#sidebar").attr("id","sidebarFix");
-			}
-	}
-	else{
-		// se siamo nella parte mobile/tablet
-			$("#sidebarFix").removeClass("sidebar-fixed");
-			$("#sidebarFix").attr("id","sidebar");
-	}
+				if (y >= topFixed){ // se è maggiore di un valore fissato devo cambiarli classe e metterla fissa (GESTIONE RELOAD PAGINA GIA' SCROLLATA)
+					$("#sidebar").addClass("sidebar-fixed");
+					$("#sidebar").attr("id","sidebarFix");
+				}
+		}
+		else{
+			// se siamo nella parte mobile/tablet
+				$("#sidebarFix").removeClass("sidebar-fixed");
+				$("#sidebarFix").attr("id","sidebar");
+		}
 
-});
+	});
 
+}
 /* FINE */
-
 
 /* SCRIPT PER IL BOX TORNA SU */
 
