@@ -14,12 +14,12 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<meta name="keywords" content="circolo, scherma, documenti, informazioni, , Castelfranco Veneto" />
 		<meta name="robots" content="index,follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/stile.css " type="text/css"/>
 		<xsl:text disable-output-escaping="yes">
 			&lt;!--[if (IE 6)|(IE 7)|(IE 8)]&gt;
 			&lt;link rel="stylesheet" href="../css/stileIE.css" type="text/css"/&gt;
 			&lt;![endif]--&gt;
 		</xsl:text>
-		<link rel="stylesheet" href="../css/stile.css " type="text/css"/>
 		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
 		<link rel="Shortcut Icon" href="../img/struttura/favicon.ico" type="image/x-icon" />
 		<script  type="text/javascript" charset="UTF-8" src="../js/librerie/jquery-1.11.0.min.js" ></script>
@@ -87,7 +87,7 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 
 					<p><a href="{$doc-completo}">Scarica documento [PDF] (<xsl:value-of select="d:dimensione" /> KB)</a></p> <!-- SISTEMARE -->
 					<p class="nascondi-torna"><a href="#content">Torna al primo documento della pagina </a>o <a href="#nav">torna al <span xml:lang="fr">menù</span> di navigazione</a></p>
-					
+
 					<xsl:if test="__NDOC__&#62;5">
 						<xsl:if test="position()&#61;(__DOC__-3)">
 							<div id="anchor"></div>

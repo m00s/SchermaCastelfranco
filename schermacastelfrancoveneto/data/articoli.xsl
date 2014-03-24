@@ -15,12 +15,12 @@ doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN" />
 		<meta name="keywords" content="circolo, scherma, articoli, news, notizie, Castelfranco Veneto" />
 		<meta name="robots" content="index,follow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/stile.css " type="text/css"/>
 		<xsl:text disable-output-escaping="yes">
 			&lt;!--[if (IE 6)|(IE 7)|(IE 8)]&gt;
 			&lt;link rel="stylesheet" href="../css/stileIE.css" type="text/css"/&gt;
 			&lt;![endif]--&gt;
 		</xsl:text>
-		<link rel="stylesheet" href="../css/stile.css " type="text/css"/>
 		<link rel="stylesheet" href="../css/print.css" type="text/css" media="print" />
 		<link rel="Shortcut Icon" href="../img/struttura/favicon.ico" type="image/x-icon" />
 		<script  type="text/javascript" charset="UTF-8" src="../js/librerie/jquery-1.11.0.min.js" ></script>
