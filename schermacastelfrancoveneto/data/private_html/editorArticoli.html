@@ -64,17 +64,17 @@
 					<fieldset>
 						<legend>Inserisci dati dell'articolo</legend>
 					<div>
-						<label>
-							<p>Luogo: <input id="luogo" type="text" name="luogo" value="__LUOGO__" tabindex="5"/></p>
-						</label>
-						<label>
-							<p>Data: <noscript><em>(aaaa-mm-gg)</em></noscript><input id="datepicker" type="text" name="datepicker" value="__DATA__" tabindex="6"/></p>
-						</label>
+						<p><label>
+							Luogo: <input id="luogo" type="text" name="luogo" value="__LUOGO__" tabindex="5"/>
+						</label></p>
+						<p><label>
+							Data: <noscript><em>(aaaa-mm-gg)</em></noscript><input id="datepicker" type="text" name="datepicker" value="__DATA__" tabindex="6"/>
+						</label></p>
 					</div>
 					<div>
-						<label>
-							<p>Titolo: <input type="text" id="titolo" name="titolo" size="40" value="__TITOLO__" onblur="setId(this.id)" tabindex="7" /></p>
-						</label>
+						<p><label>
+							Titolo: <input type="text" id="titolo" name="titolo" size="40" value="__TITOLO__" onblur="setId(this.id)" tabindex="7" />
+						</label></p>
 					</div>
 					<p>Testo: </p>
 					<p><textarea id="testo" name="testo" rows="10" cols="50" onblur="setId(this.id)" tabindex="8">__TESTO__</textarea></p>
@@ -100,7 +100,7 @@
 						<p>__VECCHIOALTFOTO__</p>
 						<p>__REINSERISCIFOTO__</p>
 						<p><label>Scegli nuova foto: <input type="file" name="foto" tabindex="16"/></label></p>
-						<label>Scegli nuova alternativa per la foto: <input type="text" id="altfoto" name="altfoto" value="__ALT__" tabindex="17"/></label></p>
+						<p><label>Scegli nuova alternativa per la foto: <input type="text" id="altfoto" name="altfoto" value="__ALT__" tabindex="17"/></label></p>
 					</fieldset>
 					<input type="hidden" name="vecchiaData" value="__DATA__"/>
 					<input type="hidden" name="vecchioLuogo" value="__LUOGO__"/>
