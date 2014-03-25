@@ -222,7 +222,7 @@ my $page=new CGI;
 				&articoloNonCorrettoModifica($luogo,$dataDaSalvare,$titolo,$testo,$altFoto,$datavecchia,$vecchioluogo,$fotoNome,$vecchioAlt);
 
 	foreach my $node(@articoli){
-		$root->removeChild($node);	
+		$root->removeChild($node);
 	}
 
 	if($root){
