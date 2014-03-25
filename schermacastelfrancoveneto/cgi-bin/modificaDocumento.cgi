@@ -59,7 +59,7 @@ close FILE;
 $editor=~ s/__SELECTART__//;
 $editor=~ s/__SELECTDOC__/selected/;
 $editor=~ s/__ERROREDOC__//;
-$editor=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__DOC__" readonly \/><\/label>/g;
+$editor=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__VECCHIODOC__" readonly \/><\/label>/g;
 $editor=~ s/__INCASODIERRORE__//;
 $editor=~ s/__VALOREMODIFICA__/SalvaDocumento/;
 $editor=~ s/__ACTION__/Salva Documento/;
@@ -74,6 +74,7 @@ $editor=~ s/__LINKMOD__/Modifica/;
 my $page=CGI->new();
 #estraggo i valori dalla query string per poi cercare l'articolo voluto
 $valore=$page->param("modifica_doc");
+my $doc;
 my $path="../data/documenti.xml";
 my $parser = new XML::LibXML;
 my $doc_tree = $parser->parse_file($path);
@@ -88,7 +89,6 @@ foreach my $node (@documenti) {
 	my $titolo=Encode::encode('utf8',$node->getElementsByTagName("titolo")->get_node(1)->string_value);
 	if($titolo eq $valore){
 		$docPath=Encode::encode('utf8',$node->getElementsByTagName("doc-completo")->get_node(1)->string_value);
-		my $doc;
 		foreach $el (split('/',$docPath)){
 			$doc=$el;
 		}
@@ -98,7 +98,7 @@ foreach my $node (@documenti) {
 		$editor=~ s/__TITOLO__/$titolo/;
 		$editor=~ s/__VECCHIOTITOLO__/$titolo/;
 		$editor=~ s/__TESTO__/$paragrafo/;
-		$editor=~ s/__DOC__/$doc/;
+		$editor=~ s/__VECCHIODOC__/$doc/;
 	}
 
 }
@@ -114,6 +114,7 @@ my $page=new CGI;
 
 	# estraggo i vecchi dati che ho salvato nei campi hidden per trovare l'articolo giusto nell'xml
 	my $vecchioTitolo=&trim($page->param('vecchioTitolo'));
+	my $vecchioD=&trim($page->param('vecchioDoc'));
 	my $titolo=&trim($page->param('titolo'));
 	my $testo=&trim($page->param('testo'));
 	my $docSRC;
@@ -123,12 +124,12 @@ my $page=new CGI;
 	my $docDim;
 
 	if($titolo eq '' or $testo eq ''){
-		&documentoNonCorrettoModifica($titolo,$testo,$vecchioTitolo,$docN);
+		&documentoNonCorrettoModifica($titolo,$testo,$vecchioTitolo,$vecchioD);
 	}
 
 	if($page->param('documento')){
 		
-			$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
+			#$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
 			$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
 			 
 			#upload documento
@@ -183,7 +184,7 @@ my $page=new CGI;
 	";
 	
 	my $nodo;
-	eval{$nodo=$parser->parse_balanced_chunk($nuovoDoc)} || die &documentoNonCorrettoModifica($titolo,$testo,$vecchioTitolo,$doc);
+	eval{$nodo=$parser->parse_balanced_chunk($nuovoDoc)} || die &documentoNonCorrettoModifica($titolo,$testo,$vecchioTitolo,$vecchioD);
 	
 	foreach my $node(@documenti){
 		$root->removeChild($node);
@@ -206,12 +207,14 @@ while(!eof(FILE)){
 }
 close FILE;
 
-my $errorField="<h2>Ci sono errori nell'inserimento dei dati</h2>";
-$string=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__VECCHIOTITOLO__" readonly \/><\/label>/g;
-$string=~ s/__TITOLO__/$_[0]/;
+my $errorField="<p class=\"errore\">Ci sono errori nell'inserimento dei dati</p>";
+$string=~ s/__SELECTART__//;
+$string=~ s/__SELECTDOC__/selected/;
+$string=~ s/__INPUTVECCHIODOCUMENTO__/ <label>Vecchio documento: <input type="text" name="vecchioDoc" value="__VECCHIODOC__" readonly \/><\/label>/g;
+$string=~ s/__TITOLO__/$_[0]/g;
 $string=~ s/__TESTO__/$_[1]/;
-$string=~ s/__VECCHIOTITOLO__/$_[2]/;
-$string=~ s/__DOC__/$_[3]/;
+$string=~ s/__VECCHIOTITOLO__/$_[2]/g;
+$string=~ s/__VECCHIODOC__/$_[3]/;
 $string=~ s/__VALOREMODIFICA__/SalvaDocumento/;
 $string=~ s/__ACTION__/Salva Documento/;
 $string=~ s/__VALSELEZIONA__/modifica/;
