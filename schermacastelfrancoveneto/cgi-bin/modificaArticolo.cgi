@@ -246,7 +246,7 @@ close FILE;
 
 my $errorField="Ci sono errori nell'inserimento dei dati, controlla tag apertura e chiusura, la data che sia scritta in maniera corretta 
 			YYYY-MM-DD(prima l'anno, poi mese,poi giorno)";
-$editor=~ s/__REINSERISCIFOTO__/Errore nell'inserimento dei dati, reinserisci la foto e controlla l'alt se è corretto/;
+$editor=~ s/__REINSERISCIFOTO__/Errore nell'inserimento dei dati, reinserisci la foto e controlla l'alt se corretto/;
 $editor=~ s/__INPUTFOTOVECCHIA__/<label>Vecchia foto: <input type="text" name="vecchiaFoto" value="__VECCHIAFOTO__" readonly\/><\/label>/g;
 $editor=~ s/__VECCHIOALTFOTO__/<label>Vecchia alternativa foto: <input type="text" name="vecchioAlt" value="__VECCHIOALT__" readonly\/><\/label>/g;
 $editor=~ s/__VECCHIOALT__/$_[8]/g;
@@ -274,6 +274,7 @@ print $editor;
 exit;
 
 }
+
 
 sub trim($)
 {
