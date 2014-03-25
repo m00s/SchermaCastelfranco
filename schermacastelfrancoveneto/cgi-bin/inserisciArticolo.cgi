@@ -100,7 +100,7 @@ while(!eof(FILE)){
 
 my $errorField="Ci sono errori nell'inserimento dei dati, controlla tag apertura e chiusura, la data che sia scritta in maniera corretta 
 			YYYY-MM-DD(prima l'anno, poi mese,poi giorno)";
-$string=~ s/__REINSERISCIFOTO__/Errore nell'inserimento dei dati, reinserisci la foto e controlla l'alt se è corretto/;
+$string=~ s/__REINSERISCIFOTO__/Errore nell'inserimento dei dati, reinserisci la foto e controlla l'alt se corretto/;
 $string=~ s/__ALT__/$_[4]/;
 $string=~ s/__LUOGO__/$_[2]/;
 $string=~ s/__DATA__/$_[0]/;
