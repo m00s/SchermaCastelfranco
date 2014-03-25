@@ -21,7 +21,7 @@ sub doInserimentoDocumento{
 		#va fatto il caricamento del file pdf come quello della foto
 	if($page->param('documento')){
 		
-			$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
+			#$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
 			$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
 			 
 			#upload immagine

@@ -166,7 +166,7 @@ my $page=new CGI;
 
 	if($page->param('foto')){
 		if($page->param('altfoto')){
-			$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
+			#$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
 			$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
 
 			#imposto il nome della foto da salvare
