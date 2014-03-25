@@ -6,8 +6,8 @@ sub doInserimentoDocumento{
 	my $page=new CGI;
 	# VERIFICA DEI DATI INSERITI
 
-	my $titolo=$page->param('titolo');
-	my $testo=$page->param('testo');
+	my $titolo=&trim($page->param('titolo'));
+	my $testo=&trim($page->param('testo'));
 	my $docSRC;
 	my $uploadDir;
 	my $docN;
@@ -108,4 +108,12 @@ print $string;
 
 exit;
 
+}
+
+sub trim($)
+{
+	my $string = shift;
+	$string =~ s/^\s+//;
+	$string =~ s/\s+$//;
+	return $string;
 }

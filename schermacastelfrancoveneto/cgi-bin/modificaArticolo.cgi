@@ -115,7 +115,7 @@ foreach my $node (@articoli) {
 		$editor=~ s/__TESTO__/$paragrafo/;
 		$editor=~ s/__FOTO__/$img/g;
 		$editor=~ s/__VECCHIAFOTO__/$img/g;
-		$editor=~ s/__ALT__/$imgalt/;
+		$editor=~ s/__ALT__//;
 		$editor=~ s/__VECCHIOALT__/$imgalt/;
 	}
 
@@ -145,13 +145,13 @@ my $page=new CGI;
 		$dataDaSalvare=	$page->param('datepicker');
 	}
 
-	my $titolo=$page->param('titolo');
-	my $luogo=$page->param('luogo');
-	my $testo=$page->param('testo');
+	my $titolo=&trim($page->param('titolo'));
+	my $luogo=&trim($page->param('luogo'));
+	my $testo=&trim($page->param('testo'));
 	my $fotoNome=$page->param('foto');
 	my $vecchiaFoto=$page->param('vecchiaFoto');
-	my $altVecchio=$page->param('vecchioAlt');
-	my $altFoto=$page->param('altfoto');
+	my $altVecchio=&trim($page->param('vecchioAlt'));
+	my $altFoto=&trim($page->param('altfoto'));
 	my $uploadDir="../public_html/img/gare";
 	my $fotoSRC="../img/gare/";
 	my $fotoXML="<img/>";
@@ -273,4 +273,12 @@ $editor=~ s/__INCASODIERRORE__/$errorField/;
 print $editor;
 exit;
 
+}
+
+sub trim($)
+{
+	my $string = shift;
+	$string =~ s/^\s+//;
+	$string =~ s/\s+$//;
+	return $string;
 }

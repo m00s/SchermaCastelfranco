@@ -8,10 +8,10 @@ my $page=new CGI;
 #estraggo la data inserita nella form e la converto in formato YYYY-MM-DD
 	my @data;
 	my $dataDaSalvare;
-	my $titolo=$page->param('titolo');
-	my $luogo=$page->param('luogo');
-	my $testo=$page->param('testo');
-	my $altFoto=$page->param('altfoto');
+	my $titolo=&trim($page->param('titolo'));
+	my $luogo=&trim($page->param('luogo'));
+	my $testo=&trim($page->param('testo'));
+	my $altFoto=&trim($page->param('altfoto'));
 	my $fotoN;	
 	my $uploadDir;
 	my $fotoSRC;
@@ -122,4 +122,12 @@ print $string;
 
 exit;
 
+}
+
+sub trim($)
+{
+	my $string = shift;
+	$string =~ s/^\s+//;
+	$string =~ s/\s+$//;
+	return $string;
 }
