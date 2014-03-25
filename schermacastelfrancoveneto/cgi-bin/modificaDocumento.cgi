@@ -113,9 +113,9 @@ my $page=new CGI;
 # VERIFICA DEI DATI INSERITI
 
 	# estraggo i vecchi dati che ho salvato nei campi hidden per trovare l'articolo giusto nell'xml
-	my $vecchioTitolo=$page->param('vecchioTitolo');
-	my $titolo=$page->param('titolo');
-	my $testo=$page->param('testo');
+	my $vecchioTitolo=&trim($page->param('vecchioTitolo'));
+	my $titolo=&trim($page->param('titolo'));
+	my $testo=&trim($page->param('testo'));
 	my $docSRC;
 	my $uploadDir="../public_html/document/";
 	my $docN;
@@ -227,4 +227,12 @@ print $string;
 
 exit;
 
+}
+
+sub trim($)
+{
+	my $string = shift;
+	$string =~ s/^\s+//;
+	$string =~ s/\s+$//;
+	return $string;
 }

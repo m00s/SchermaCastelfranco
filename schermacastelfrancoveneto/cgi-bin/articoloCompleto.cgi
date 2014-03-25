@@ -15,15 +15,13 @@ my $luogo="l";
 if ($_[0] && $_[1]) {
 	$data=$_[0];
 	$luogo=$_[1];
-	$luogo=~ s/%20/ /;
+	$luogo=~ s/%20/ /g;
 }
 
 my $paragrafo="p";
 my $titolo="t";
 my $img="";
-
 my $artNodo=$doc->findnodes("//ts:articolo[ts:data='$data' and ts:luogo='$luogo']")->get_node(1);
-
 #estrazione IMMAGINE con attributi
 my $imgNodo=$doc->findnodes("//ts:articolo[ts:data='$data' and ts:luogo='$luogo']/ts:img")->get_node(1);
 my @imgAtts = $imgNodo->getAttributes();
