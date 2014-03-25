@@ -102,7 +102,7 @@ $string=~ s/__LINKINS__/Inserisci/;
 $string=~ s/__LINKMOD__/<a href="amministraSezionePrivata.cgi?Seleziona=modifica" tabindex="1">Modifica<\/a>/;
 $string=~ s/__INPUTVECCHIODOCUMENTO__//g;
 $string=~ s/__INCASODIERRORE__/$errorField/;
-$string=~ s/__ERROREDOC__/Errore nell'inserimento dei dati, inserisci nuovamente il documento/;
+$string=~ s/__ERROREDOC__/Errore nell'inserimento dei dati, inserisci il documento/;
 
 print $string;
 

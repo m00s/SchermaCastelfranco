@@ -117,7 +117,7 @@ my $page=new CGI;
 	my $titolo=$page->param('titolo');
 	my $testo=$page->param('testo');
 	my $docSRC;
-	my $uploadDir;
+	my $uploadDir="../public_html/document/";
 	my $docN;
 	my $docXML="<doc-completo/>";
 	my $docDim;
@@ -131,8 +131,7 @@ my $page=new CGI;
 			$CGI::POST_MAX = 1024 * 5000; # grandezza massima 5MB (1024 * 5000 = 5MB)
 			$CGI::DISABLE_UPLOADS = 0; # 1 disabilita uploads, 0 abilita uploads
 			 
-			#upload immagine
-			$uploadDir="../public_html/document/";
+			#upload documento
 			my $dt   = DateTime->now;
 			my $date = $dt->ymd;
 			#imposto il nome della foto da salvare
